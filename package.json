@@ -1,0 +1,28 @@
+{
+  "name": "Hive",
+  "description": "Adult game",
+  "version": "0.4.0",
+  "author": "BlueWinds",
+  "devDependencies": {
+    "async": "1.x",
+    "grunt": "0.4.x",
+    "grunt-bump": "^0.3.1",
+    "grunt-cli": "0.1.x",
+    "grunt-coffeelint": "git+https://git@github.com/gobie/grunt-coffeelint.git",
+    "grunt-contrib-clean": "0.x",
+    "grunt-contrib-coffee": "0.x",
+    "grunt-contrib-compress": "0.x",
+    "grunt-contrib-copy": "0.8.x",
+    "grunt-contrib-uglify": "0.x",
+    "grunt-contrib-watch": "0.x",
+    "shelljs": "0.x",
+    "time-grunt": "1.x"
+  },
+  "keywords": [
+    "game",
+    "nsfw"
+  ],
+  "scripts": {
+    "postinstall": "grunt full-build"
+  }
+}
