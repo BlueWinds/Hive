@@ -45,13 +45,13 @@ Page.CatchPoliceCapture = class CatchPoliceCapture extends Page
   """
   apply: ->
     super()
-    g.officers.remove @context.worker
+    delete g.officers[@context.worker.key]
 
 Page.CatchNothing = class CatchNothing extends Page
   conditions:
     worker: {}
   text: ->"""|| bg="Sycamore/Street.jpg"
-    -- #{@worker} is bored. #{She} wandered the streets looking for someone to catch, but found nothing. Perhaps rumors of how dangerous the area has become have spread, or perhaps there was a college football game drawing everyone away.
+    -- #{@worker} is bored. #{He} wandered the streets looking for someone to catch, but found nothing. Perhaps rumors of how dangerous the area has become have spread, or perhaps there was a college football game drawing everyone away.
     <em><span class="lust">-1 Lust</span></em>
   """
   apply: ->
@@ -96,7 +96,7 @@ Page.Catch.next['veryGood'] = Page.CatchVeryGood = class CatchVeryGood extends P
   conditions:
     worker: {}
   text: ->false
-  next: Page.randomMatch
+  next: Page.trueRandom
   @next: [
     Page.CatchMan,
     Page.CatchWoman,
@@ -106,7 +106,11 @@ Page.Catch.next['veryGood'] = Page.CatchVeryGood = class CatchVeryGood extends P
     Page.CatchVirgin
   ]
 
-Page.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page.CatchVeryGood
+Page.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page
+  conditions:
+    worker: {}
+  text: ->false
+  next: Page.trueRandom
   @next: [
     Page.CatchMiss,
     Page.CatchMiss,
@@ -114,7 +118,11 @@ Page.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page.CatchVer
     Page.CatchWoman
   ]
 
-Page.Catch.next['bad'] = Page.CatchBad = class CatchBad extends Page.CatchVeryGood
+Page.Catch.next['bad'] = Page.CatchBad = class CatchBad extends Page
+  conditions:
+    worker: {}
+  text: ->false
+  next: Page.trueRandom
   @next: [
     Page.CatchPolice,
     Page.CatchNothing,
@@ -123,7 +131,11 @@ Page.Catch.next['bad'] = Page.CatchBad = class CatchBad extends Page.CatchVeryGo
     Page.CatchMiss
   ]
 
-Page.Catch.next['veryBad'] = Page.CatchVeryBad = class CatchVeryBad extends Page.CatchVeryGood
+Page.Catch.next['veryBad'] = Page.CatchVeryBad = class CatchVeryBad extends Page
+  conditions:
+    worker: {}
+  text: ->false
+  next: Page.trueRandom
   @next: [
     Page.CatchPolice,
     Page.CatchPoliceCapture

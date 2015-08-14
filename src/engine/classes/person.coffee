@@ -146,7 +146,8 @@ statCheckChances = (stat, diff, context)->
 
 Page.statCheck = ->
   items = @constructor.next
-  chances = statCheckChances(@stat, @difficulty)
+  chances = statCheckChances(@stat, @difficulty, @context)
+  console.log(items, chances)
   r = Math.random()
 
   r -= chances.veryBad

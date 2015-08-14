@@ -26,7 +26,9 @@ Page.ResearchChoice = class ResearchChoice extends Page
     $('.job', page).click (e)->
       e.preventDefault()
       job = $(@).data('job')
+      console.log(@, job);
       research(job, progress)
+      Game.gotoPage()
       return false
 
     return page
