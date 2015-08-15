@@ -100,7 +100,7 @@ Job.Raid.next.push Page.Raid2 = class Raid2 extends Page
   ||
     --> #{q}Oh, and... um... she's all alone. I don't think we need to do anything special?</q>
   ||
-    --> It's true, none of the embarrassing "distractions" I've asked her to do so far have been actually <em>necessary,</em> though they have been entertaining fro me, and that's a pretty deffiniton of "necessity." Regardless, I pat Liana on the head. #{q @['Dark Lady']}She's all yours.</q>
+    --> It's true, none of the embarrassing "distractions" I've asked her to do so far have been actually <em>necessary,</em> though they have been entertaining for me, and that's a pretty deffiniton of "necessity." Regardless, I pat Liana on the head. #{q @['Dark Lady']}She's all yours.</q>
 
   || bg="Inn/Hogtie.jpg"
     -- I crack the door open a few minutes later to see how Liana's doing with my new slave. She's doing fine.
