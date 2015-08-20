@@ -127,9 +127,10 @@ window.RoomJob = class RoomJob extends Job
 
   apply: ->
     key = g.last.context.key
+    location = g.map[g.last.context.location]
     super()
     if @room
-      g.location.jobs[key] = @room
+      location.jobs[key] = @room
 
 renderSlot = (key, conditions)->
   name = switch

@@ -35,7 +35,7 @@ Job.Slutroom::next = Page.SlutroomDaily = class SlutroomDaily extends Page
   conditions:
     depravity: fill: slutroomDepravity
   text: ->
-    if Math.random() < 0.75 then return false
+    if Math.random() < 0.75 or g.events.SlutroomDaily[0] is g.day then return false
     """|| class="jobStart" auto="1800"
         <h4>Slutroom</h4>
 
@@ -101,7 +101,7 @@ Place.Research::jobs.slutroomSybian = RoomJob.SlutroomSybian = class SlutroomSyb
   conditions:
     '|events|SlutroomStrapon': {}
   label: "Slutroom Sybian"
-  progress: 400
+  progress: 800
   text: ->"""<span class="depravity">+1</span> per day for each slutroom.
     <br>Oh. My. God. This machine that Liana showed me is the best thing ever. I need to get one for all my sluts."""
 

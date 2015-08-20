@@ -63,7 +63,7 @@ Page.CatchMiss = class CatchMiss extends Page
     worker: {}
   text: ->"""|| bg="Sycamore/Street.jpg"
     -- #{@worker} cornered a young #{Math.choice ['man', 'woman']}, but they kicked #{his} shins and knocked him into a wall escaped. It hurt not only #{his} pride, but also #{his} head.
-    <em><span class="lust">-1 Lust</span>, <span class="intelligence">-1 Lust</span></em>
+    <em><span class="lust">-1 Lust</span>, <span class="intelligence">-1 Intelligence</span></em>
   """
   apply: ->
     super()
@@ -112,8 +112,8 @@ Page.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page
   text: ->false
   next: Page.trueRandom
   @next: [
-    Page.CatchMiss,
-    Page.CatchMiss,
+    Page.CatchNothing,
+    Page.CatchNothing,
     Page.CatchMan,
     Page.CatchWoman
   ]

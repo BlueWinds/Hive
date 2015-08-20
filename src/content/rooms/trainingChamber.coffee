@@ -22,8 +22,8 @@ RoomJob.TrainingChamber::room = Job.TrainingChamber = class TrainingChamber exte
   text: -> """If I assign a woman here, I'll be training one of my male slaves into a Sadist. If I assign a man to work here, I'll be training a female slave into a Dominatrix.
   <em class="depravity">-#{trainingCost}</em>
   <br>Daily progress is <span class="intelligence">Intelligence</span> + <span class="lust">1/2 Lust</span>
-  Next Sadist: <strong>#{@dom} / #{trainingDuration}</strong>
-  Next Dominatrix: <strong>#{@sad} / #{trainingDuration}</strong>"""
+  Next Sadist: <strong>#{@sad} / #{trainingDuration}</strong>
+  Next Dominatrix: <strong>#{@dom} / #{trainingDuration}</strong>"""
   officers:
     Trainer:
       matches: (person)->
@@ -48,6 +48,8 @@ Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDai
     type: fill: -> if @Trainer.gender is 'f' then 'sad' else 'dom'
     remaining: fill: -> Math.max(0, trainingDuration - @job[@type] - @progress)
   text: ->
+    # Only display if it's the first training chamber event for the day.
+    if Math.random() > 0.5 or g.events.TrainingChamberDaily[0] is g.day then return false
     Math.choice([
       """|| bg="TrainingChamber/WoodenHorse.jpg"
         -- I always figure that people should be able to take as well as dish out. They don't have to enjoy it, but they should know what it feels like at least!"""

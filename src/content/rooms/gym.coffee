@@ -42,16 +42,16 @@ Job.Gym.next.push Page.GymDarkLady = class GymDarkLady extends Page
   || bg="Gym/Meditate.jpg"
     --> I am not human. I am not mortal. Being dead for how many thousands of years has weakened me, but not in the ways that matter. From the eternal font of power that is my soul, I draw forth magic and restore some of my body's might.
   ||
-    --> <em class="strength">+#{effect} Strength</em>"""
+    --> <em class="strength">+#{effect()} Strength</em>"""
   apply: ->
     super()
-    @context.worker.add('strength', 2)
+    @context.worker.add('strength', effect())
 
-Job.Gym.next.push Page.GymDailfy = class GymDaily extends Page
+Job.Gym.next.push Page.GymDaily = class GymDaily extends Page
   conditions:
     worker: {}
   text: ->
-    if Math.random() < 0.75 then return false
+    if Math.random() < 0.75 or g.events.GymDaily?[0] is g.day then return false
     l = [
       """|| bg="Gym/Treadmills.jpg"
         -- """,
@@ -72,7 +72,7 @@ Job.Gym.next.push Page.GymDailfy = class GymDaily extends Page
       <em class="strength">+#{effect()} Strength</em>"""
   apply: ->
     super()
-    @context.worker.add('strength', 2)
+    @context.worker.add('strength', effect())
 
 
 Place.Research::jobs.sexyGym = RoomJob.SexyGym = class SexyGym extends RoomJob

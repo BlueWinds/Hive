@@ -67,7 +67,7 @@ Page.Port = class Port extends Page
       </div>
     </form>""".replace(/\n/g, '')
 
-    page = $.render """|| speed="slow" class="screen" bg="<img src="#{@port.image}"
+    page = $.render """|| class="screen" bg="<img src="#{@port.image}"
       #{form}
       --.
         #{@port.description?() or @port.description}

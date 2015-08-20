@@ -8,6 +8,9 @@ Page.ResearchChoice = class ResearchChoice extends Page
       research(g.goal, @progress)
       return false
 
+    unless @asArray().length
+      return false
+
     jobs = $('')
     for job, key in @asArray()
       jobs = jobs.add job.renderBlock(key)
@@ -26,7 +29,6 @@ Page.ResearchChoice = class ResearchChoice extends Page
     $('.job', page).click (e)->
       e.preventDefault()
       job = $(@).data('job')
-      console.log(@, job);
       research(job, progress)
       Game.gotoPage()
       return false

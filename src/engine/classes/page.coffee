@@ -233,7 +233,14 @@ Page.randomMatch = ->
 
   return results[Math.weightedChoice weights]
 
-Page.trueRandom = -> Math.choice @constructor.next
+Page.trueRandom = ->
+  match = []
+  for page in @constructor.next
+    if typeof page is 'function' then page = new page
+    page.contextFill()
+    if page.contextMatch()
+      match.push page
+  Math.choice match
 
 Page.firstMatch = ->
   for page in @constructor.next

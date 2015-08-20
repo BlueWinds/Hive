@@ -34,12 +34,9 @@ RoomJob.Library::room = Job.Library = class Library extends Job
       label: -> if g.depravity >= trainingCost then '' else 'Need <span class="depravity">' + trainingCost + '</span>'
   next: Page.firstMatch
 
-Job.Library::next = Page.LibraryDarkLady = class LibraryDarkLady extends Page
-  conditions:
-    worker:
-      is: Officer.DarkLady
+Job.Library::next = Page.LibraryDaily = class LibraryDaily extends Page
   text: ->
-    if Math.random() < 0.75 then return false
+    if Math.random() < 0.75  or g.events.LibraryDaily[0] is g.day then return false
     l = [
       """|| bg="Library/Belly.jpg"
         -- "Can I help you find anything, #{if @worker.gender is 'f' then "ma'am" else 'sir'}? M-my shirt? Yes, I-I suppose, if you wish..." """,

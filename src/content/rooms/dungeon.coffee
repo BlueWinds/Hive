@@ -23,7 +23,7 @@ RoomJob.Dungeon::room = Job.Dungeon = class Dungeon extends Job
 
 Job.Dungeon::next = Page.DungeonDaily = class DungeonDaily extends Page
   text: ->
-    if Math.random() < 0.75 then return false
+    if Math.random() < 0.75 or g.events.DungeonDaily?[0] is g.day then return false
     """|| class="jobStart" auto="1800"
         <h4>Dungeon</h4>
 

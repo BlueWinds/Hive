@@ -25,8 +25,10 @@ Page.EmptyRoom = class EmptyRoom extends Page
       @context.push job
 
     # Add the key of the job that triggered this to the context, so the RoomJob knows which job to replace
-    for key, job of g.location.jobs when job is g.last
-      @context.key = key
+    for locKey, location of g.map
+      for key, job of location.jobs when job is g.last
+        @context.key = key
+        @context.location = locKey
 
     super()
   next: false
