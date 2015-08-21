@@ -195,7 +195,7 @@ Job.IntroFirstSlaves::next = Page.IntroFirstSlaves = class IntroFirstSlaves exte
     --> I don't like those things called "cars," though, that she assures me everyone has. The local constables might be able to summon the king's army within a few days. Then they'd burn all my tentacle gardens and lock me up and make me wear a bra in prison. That would be terrible.
 
   || bg="none"
-    -- The first step, however, is clear enough. I need to establish a magical center, and to do that, I'll need some slaves slave. Liana's too valuable for that duty, and still needed to keep me from fading out of existence besides.
+    -- The first step, however, is clear enough. I need to establish a magical center, and to do that, I'll need some slaves. Liana's too valuable for that duty, and still needed to keep me from fading out of existence besides.
   ||
     --> Liana is a mage. I am a Dark Lady. We're staying in an inn (quite a large one, in fact). The task is trivial. I make one of the walls translucent to sight, then once we locate our targets, I rotate it out of existence entirely."
 
