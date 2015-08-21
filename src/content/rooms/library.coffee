@@ -41,7 +41,7 @@ Job.Library::next = Page.LibraryDaily = class LibraryDaily extends Page
       """|| bg="Library/Belly.jpg"
         -- "Can I help you find anything, #{if @worker.gender is 'f' then "ma'am" else 'sir'}? M-my shirt? Yes, I-I suppose, if you wish..." """,
       """|| bg="Library/Empty.jpg"
-        -- Books, books, books. Heart and soul of the amazing power of "California", Liana insists, but I'm not relly a fan."""
+        -- Books, books, books. Heart and soul of the amazing power of "California", Liana insists, but I'm not really a fan."""
     ]
     if g.events.SexyLibrarian
       l.push """|| bg="Library/Sexy1.jpg"

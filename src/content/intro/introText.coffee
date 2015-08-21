@@ -54,7 +54,7 @@ Page.Intro::next = Page.Intro2 = class Intro2 extends Page
   ||
     -- Liana. I know her name without being told.
   ||
-    --> Feeble as it is, my magic can still drawn facts like that from for mind without thought. Her attitude is pleasant, a mixture of excitement and fear - the first pleasant thing to happen since I awoke bound to the floor by magic.
+    --> Feeble as it is, my magic can still draw facts like that from for mind without thought. Her attitude is pleasant, a mixture of excitement and fear - the first pleasant thing to happen since I awoke bound to the floor by magic.
 
   ||
     -- #{q @DarkLady}Call me mistress.</q>
@@ -156,7 +156,7 @@ Job.IntroFuckLiana::next = Page.IntroFuckLiana = class IntroFuckLiana extends Pa
   ||
     -- #{q @['Dark Lady']}A bra. You are never to wear a bra again. Now, get naked.</q>
   ||
-    --> <em class="depravity">+25 Depravity</em><br><em>Dark Lady: <span class="strength">+2 Strength</span></em><br><em>Liana: <span class="lust">+1 Lust</span></em>
+    --> <em class="depravity">+25</em><br><em>Dark Lady: <span class="strength">+2 Strength</span></em><br><em>Liana: <span class="lust">+1 Lust</span></em>
 """
   apply: ->
     super()
@@ -197,7 +197,7 @@ Job.IntroFirstSlaves::next = Page.IntroFirstSlaves = class IntroFirstSlaves exte
   || bg="none"
     -- The first step, however, is clear enough. I need to establish a magical center, and to do that, I'll need some slaves. Liana's too valuable for that duty, and still needed to keep me from fading out of existence besides.
   ||
-    --> Liana is a mage. I am a Dark Lady. We're staying in an inn (quite a large one, in fact). The task is trivial. I make one of the walls translucent to sight, then once we locate our targets, I rotate it out of existence entirely."
+    --> Liana is a mage. I am a Dark Lady. We're staying in an inn (quite a large one, in fact). The task is trivial. I make one of the walls translucent to sight, then once we locate our targets, I rotate it out of existence entirely.
 
   || bg="Inn/Sleepover.jpg"
     -- She steps though, startling my new slaves. One of the women opens her mouth to scream, but Liana doesn't balk, as I half expected her to, and cuts the girl off with a spell. Both of my new slaves collapse into a deep slumber. They won't wake up until we have a use for them. She steps into another room, and I hear her repeat the same spell.
@@ -242,7 +242,7 @@ Job.IntroTakeOver::next = Page.IntroTakeOver = class IntroTakeOver extends Page
   ||
     --> #{q @Liana}Do you want to go to him, or shall I give him a call?</q>
   ||
-    --> I blink. She's a smarty, this one is. Less chance of any witnesses if he comes to us. But no, I'm tired of being cooped up in this room. I do grumble a bit as I pull on clothes. Though Liana has nothing that fits properly, at least one of her "T shirts" can stretch to cover my more ample bussom.
+    --> I blink. She's a smarty, this one is. Less chance of any witnesses if he comes to us. But no, I'm tired of being cooped up in this room. I do grumble a bit as I pull on clothes. Though Liana has nothing that fits properly, at least one of her "T shirts" can stretch to cover my more ample bossom.
 
   || bg="Inn/FrontDesk.jpg"
     -- "Hello! Welcome to Holiday Inn. Liana, right? I'm glad you decided to stay with us a few extra days. Is there anything I can help with?"

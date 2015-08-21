@@ -1,6 +1,6 @@
 Place.HolidayInn = Game::map.HolidayInn = class HolidayInn extends Place
   name: 'Holiday Inn'
-  description: "This place seems to be some port of inn. It's not really the proper location for a ritual to resurect me, but Liana suceeded, so I suppose it doesn't matter that much."
+  description: "This place seems to be some port of inn. It's not really the proper location for a ritual to resurrect me, but Liana suceeded, so I suppose it doesn't matter that much."
   image: 'misc/emptyRoom.jpg'
   jobs: new Collection
   location: [655, 294]
@@ -24,7 +24,7 @@ Job.Rest.next.push Page.Rest1 = class Rest1 extends Page
   text: ->"""|| bg="Liana/Rip.jpg"
     -- Is it just me, or have her breasts grown a bit? It might be all the recent exposure to lust magic - that has been known to happen.
   ||
-    --> I spend a few minutes mauling her breasts before moving on to her clit. I give at a good flick, then order her to keep going on her own. She tends to slack off over time, so I have to keep an eye on her and occasionally remind her how hard I want her twisting her own nipples.
+    --> I spend a few minutes mauling her breasts before moving on to her clit. I give that a good flick, then order her to keep going on her own. She tends to slack off over time, so I have to keep an eye on her and occasionally remind her how hard I want her twisting her own nipples.
   ||
       --> <em>Liana: <span class="lust">+1 Lust</span><br><span class="depravity">+15</span></em>
   """
@@ -100,7 +100,7 @@ Job.Raid.next.push Page.Raid2 = class Raid2 extends Page
   ||
     --> #{q}Oh, and... um... she's all alone. I don't think we need to do anything special?</q>
   ||
-    --> It's true, none of the embarrassing "distractions" I've asked her to do so far have been actually <em>necessary,</em> though they have been entertaining for me, and that's a pretty deffiniton of "necessity." Regardless, I pat Liana on the head. #{q @['Dark Lady']}She's all yours.</q>
+    --> It's true, none of the embarrassing "distractions" I've asked her to do so far have been actually <em>necessary,</em> though they have been entertaining for me, and that's a pretty good definiton of "necessity." Regardless, I pat Liana on the head. #{q @['Dark Lady']}She's all yours.</q>
 
   || bg="Inn/Hogtie.jpg"
     -- I crack the door open a few minutes later to see how Liana's doing with my new slave. She's doing fine.
