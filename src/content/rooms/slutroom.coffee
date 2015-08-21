@@ -35,7 +35,7 @@ Job.Slutroom::next = Page.SlutroomDaily = class SlutroomDaily extends Page
   conditions:
     depravity: fill: slutroomDepravity
   text: ->
-    if Math.random() < 0.75 or g.events.SlutroomDaily[0] is g.day then return false
+    if Math.random() < 0.75 or g.events.SlutroomDaily?[0] is g.day then return false
     """|| class="jobStart" auto="1800"
         <h4>Slutroom</h4>
 

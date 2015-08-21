@@ -10,7 +10,7 @@ Place.Rooms::jobs.library = RoomJob.Library = class Library extends RoomJob
   size: 'medium'
   effects:
     depravity: -250
-    women: 3
+    women: -3
   text: ->"""People can train their <span class="intelligence">intelligence</span> here. Honestly, I'm not completely sure what smarts are good for, but I guess I might need smart people for something someday? It certainly makes Liana wet, so I guess intelligence isn't completely useless."""
 
 RoomJob.Library::next = Page.Library = class Library extends Page
@@ -36,7 +36,7 @@ RoomJob.Library::room = Job.Library = class Library extends Job
 
 Job.Library::next = Page.LibraryDaily = class LibraryDaily extends Page
   text: ->
-    if Math.random() < 0.75  or g.events.LibraryDaily[0] is g.day then return false
+    if Math.random() < 0.75  or g.events.LibraryDaily?[0] is g.day then return false
     l = [
       """|| bg="Library/Belly.jpg"
         -- "Can I help you find anything, #{if @worker.gender is 'f' then "ma'am" else 'sir'}? M-my shirt? Yes, I-I suppose, if you wish..." """,

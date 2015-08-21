@@ -852,3 +852,6 @@ page h4 {
 .no-float {
   float: none;
 }
+.strike {
+  text-decoration: line-through;
+}
