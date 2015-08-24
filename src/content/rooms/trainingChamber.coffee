@@ -55,11 +55,11 @@ RoomJob.TrainingChamber::room = Job.TrainingChamber = class TrainingChamber exte
   officers:
     Trainer:
       matches: (person)->
-        if g.depravity < trainingCost or !g[trainingBase[@choice]] then false
+        if g.depravity < trainingCost or not g[trainingBase[@choice]] then false
         else true
       label: ->
         if g.depravity < trainingCost then 'Need <span class="depravity">' + trainingCost + '</span>'
-        else if !g[trainingBase[@choice]] then 'Need slave'
+        else if not g[trainingBase[@choice]] then 'Need slave'
         else 'Trainer'
 
 Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDaily extends Page
