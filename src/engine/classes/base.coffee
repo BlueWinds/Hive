@@ -195,8 +195,9 @@ window.Collection = class Collection
   Object.defineProperty @::, 'reArray',
     value: (index)->
       values = []
-      for key in Object.keys(@)
+      for key in Object.keys(@) when not isNaN(parseInt key, 10)
         values.push @[key]
+        if @[key].key then @[key].key = values.length - 1
         delete @[key]
       $.extend @, values
 

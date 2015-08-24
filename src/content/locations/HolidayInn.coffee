@@ -89,7 +89,7 @@ Job.Raid.next.push Page.Raid1 = class Raid1 extends Page
     g.men = 3 # Doing this directly, to bypass the space requirements
   effects:
     add:
-      '|location|jobs|109': Job.SmallRoom
+      '|map|HolidayInn|jobs|109': Job.SmallRoom
 
 Job.Raid.next.push Page.Raid2 = class Raid2 extends Page
   conditions:
@@ -114,7 +114,7 @@ Job.Raid.next.push Page.Raid2 = class Raid2 extends Page
   effects:
     women: 1
     add:
-      '|location|jobs|110': Job.SmallRoom
+      '|map|HolidayInn|jobs|110': Job.SmallRoom
 
 Job.Raid.next.push Page.Raid3 = class Raid3 extends Page
   text: ->"""||
@@ -134,7 +134,7 @@ Job.Raid.next.push Page.Raid3 = class Raid3 extends Page
     women: 1
     virgins: 1
     add:
-      '|location|jobs|111': Job.SmallRoom
+      '|map|HolidayInn|jobs|111': Job.SmallRoom
 
 Job.Raid.next.push Page.Raid4 = class Raid4 extends Page
   conditions:
@@ -155,7 +155,7 @@ Job.Raid.next.push Page.Raid4 = class Raid4 extends Page
   effects:
     women: 1
     add:
-      '|location|jobs|112': Job.SmallRoom
+      '|map|HolidayInn|jobs|112': Job.SmallRoom
 
 Job.Raid.next.push Page.Raid4 = class Raid5 extends Page
   conditions:

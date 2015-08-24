@@ -14,11 +14,6 @@ Place.Sycamore::jobs.Catch = Job.Catch = class Catch extends Job
   text: ->"""Snatching people off the street is the simplest - but also most dangerous - way to get new slaves.
 
   #{Page.statCheckDescription('strength', 30, Page.Catch.next, @context)}"""
-
-Job.Catch::next = Page.Catch = class Catch extends Page
-  conditions:
-    worker: {}
-  text: ->false
   stat: 'strength'
   difficulty: 30
   next: Page.statCheck
@@ -45,7 +40,7 @@ Page.CatchPoliceCapture = class CatchPoliceCapture extends Page
   """
   apply: ->
     super()
-    delete g.officers[@context.worker.key]
+    g.officers.remove @context.worker
 
 Page.CatchNothing = class CatchNothing extends Page
   conditions:
@@ -92,7 +87,7 @@ Page.CatchVirgin = class CatchVirgin extends Page
     virgins: 1
 
 
-Page.Catch.next['veryGood'] = Page.CatchVeryGood = class CatchVeryGood extends Page
+Job.Catch.next['veryGood'] = Page.CatchVeryGood = class CatchVeryGood extends Page
   conditions:
     worker: {}
   text: ->false
@@ -106,7 +101,7 @@ Page.Catch.next['veryGood'] = Page.CatchVeryGood = class CatchVeryGood extends P
     Page.CatchVirgin
   ]
 
-Page.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page
+Job.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page
   conditions:
     worker: {}
   text: ->false
@@ -118,7 +113,7 @@ Page.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page
     Page.CatchWoman
   ]
 
-Page.Catch.next['bad'] = Page.CatchBad = class CatchBad extends Page
+Job.Catch.next['bad'] = Page.CatchBad = class CatchBad extends Page
   conditions:
     worker: {}
   text: ->false
@@ -131,7 +126,7 @@ Page.Catch.next['bad'] = Page.CatchBad = class CatchBad extends Page
     Page.CatchMiss
   ]
 
-Page.Catch.next['veryBad'] = Page.CatchVeryBad = class CatchVeryBad extends Page
+Job.Catch.next['veryBad'] = Page.CatchVeryBad = class CatchVeryBad extends Page
   conditions:
     worker: {}
   text: ->false
@@ -140,3 +135,36 @@ Page.Catch.next['veryBad'] = Page.CatchVeryBad = class CatchVeryBad extends Page
     Page.CatchPolice,
     Page.CatchPoliceCapture
   ]
+
+Place.Sycamore::jobs.rentWarehouse = Job.RentWarehouse = class RentWarehouse extends Job
+  officers:
+    Liana: '|officers|Liana'
+  label: 'Rent Warehouse Space'
+  text: ->"""Liana says she can acquire more room for exansion. She's a good girl, really, and extra space to build in is worth letting her put on clothes for (only temporarily, of course).
+
+  <span class="depravity">-150</span>"""
+  next: Page.firstNew
+  @next: []
+
+Job.RentWarehouse.next.push Page.RentWarehouse1 = class RentWarehouse1 extends Page
+  text: """|| bg="Sycamore/Street.jpg"
+    -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to exand into.
+  || bg="Liana/Gangbang.jpg"
+    --> As a reward for all her hard work, I let a bunch of slaves gangbang her.
+    <em>+1 Medium room, <span class="depravity">-150</span></em>"""
+  effects:
+    depravity: -150
+    add:
+      '|map|Sycamore|jobs|1': Job.MediumRoom
+
+Job.RentWarehouse.next.push Page.RentWarehouse1 = class RentWarehouse1 extends Page
+  text: """|| bg="Sycamore/Street.jpg"
+    -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to exand into. It was a bit more expensive than she anticipatied, but she managed in the end.
+  || bg="Liana/Gangbang.jpg"
+    --> As a punishment for wasting my money, I let a bunch of slaves gangbang her.
+    <em>+1 Medium room, <span class="depravity">-175</span></em>"""
+  effects:
+    depravity: -175
+    add:
+      '|map|Sycamore|jobs|1': Job.MediumRoom
+      

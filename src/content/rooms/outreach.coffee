@@ -124,16 +124,3 @@ Page.Outreach.next['veryGood'] = Page.OutreachVeryGood = class OutreachVeryGood 
     Page.OutreachWomen,
     Page.OutreachMixed
   ]
-
-Place.Research::jobs.OutreachSex = RoomJob.OutreachSex = class OutreachSex extends RoomJob
-  label: "Sexual Favors"
-  progress: 250
-  conditions:
-    '|events|Outreach': {}
-  text: ->"""<span class="lust">+1 lust</span> per worker when recruiting men.
-  <br>Obviously it isn't the idea of "having sex" which needs to be researched so much as it is the spells necessary to keep the activities quiet."""
-
-RoomJob.OutreachSex::next = Page.OutreachSex = class OutreachSex extends Page
-  text: ->"""|| bg="Library/Nude2.jpg"
-    -- Hm. I do remember why I let people wear clothes now - if they're not wearing any, then they quickly lose their embarrassment when they have to take them off. Oh well. Guess I'll only make them take off their clothes randomly.
-  """

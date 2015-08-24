@@ -127,12 +127,14 @@ Page.schema.properties.difficulty =
   gte: 1
   optional: true
 
-statCheckChances = (stat, diff, context)->
+statCheckChances = (stats, diff, context)->
   sum = 1
-  if context
-    sum += Page.sumStat stat, context, context
-  else
-    sum += Page.sumStat stat, g.officers
+  stats = stat.split('|')
+  for stat in stats
+    if context
+      sum += Page.sumStat stat, context, context
+    else
+      sum += Page.sumStat stat, g.officers
   chances = {
     veryBad: Math.pow(diff / (sum * 2), 2)
     bad: diff / sum

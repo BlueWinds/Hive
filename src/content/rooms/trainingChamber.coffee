@@ -1,5 +1,19 @@
-trainingDuration = 300
+trainingDuration =
+  Dominatrix: 300
+  Sadist: 300
+  Maid: 300
+  SexSlave: 150
 trainingCost = 5
+trainingBase =
+  Dominatrix: 'women'
+  Sadist: 'men'
+  Maid: 'virgins'
+  SexSlave: 'women'
+
+choices = ->
+  c = {Dominatrix: 'Dominatrix', Sadist: 'Sadist'}
+  if g.events.Maid then c.Maid = 'Maid'
+  if g.events.SexSlave then c.SexSlave = 'Sex Slave'
 
 Place.Rooms::jobs.training = RoomJob.TrainingChamber = class TrainingChamber extends RoomJob
   label: "Training Chamber"
@@ -8,7 +22,7 @@ Place.Rooms::jobs.training = RoomJob.TrainingChamber = class TrainingChamber ext
     men: -1
     women: -1
   size: 'small'
-  text: ->"""Lets me train ♂ Slaves into Sadists, and ♀ Slaves into Dominatrices. Willing human assistants are nice, sometimes. Requires one male and female slave each, permanently installed as teaching aids."""
+  text: ->"""Lets me train ♂ Slaves into Sadists, and ♀ Slaves into Dominatrices. Willing human assistants are nice, sometimes. Requires one male and female slave each, permanently installed as teaching aids. I'll also be able to research other servant types later."""
 
 RoomJob.TrainingChamber::next = Page.TrainingChamber = class TrainingChamber extends Page
   text: -> """|| bg="TrainingChamber/WoodenHorse.jpg"
@@ -18,63 +32,141 @@ RoomJob.TrainingChamber::next = Page.TrainingChamber = class TrainingChamber ext
   """
 
 RoomJob.TrainingChamber::room = Job.TrainingChamber = class TrainingChamber extends Job
+  choice: 'Sadist'
+  Dominatrix: 0
+  Sadist: 0
+  Maid: 0
+  SexSlave: 0
+
   label: "Training Chamber"
-  text: -> """If I assign a woman here, I'll be training one of my male slaves into a Sadist. If I assign a man to work here, I'll be training a female slave into a Dominatrix.
-  <em class="depravity">-#{trainingCost}</em>
-  <br>Daily progress is <span class="intelligence">Intelligence</span> + <span class="lust">1/2 Lust</span>
-  Next Sadist: <strong>#{@sad} / #{trainingDuration}</strong>
-  Next Dominatrix: <strong>#{@dom} / #{trainingDuration}</strong>"""
+  text: -> """Here I can train slaves into a wide variety of useful roles.
+
+    <em class="depravity">-#{trainingCost}</em>
+    <br>Daily progress is <span class="intelligence">Intelligence</span> + <span class="lust">1/2 Lust</span>
+    #{dropdown choices(), @choice}: <strong>#{@[@choice]} / #{trainingDuration[@choice]}</strong>
+  """
+
+  renderBlock: (mainKey, location)->
+    element = $ super(mainKey, location)
+    element.on 'change', 'input', =>
+      @choice = $('input:checked', element).val()
+    return element
+
   officers:
     Trainer:
       matches: (person)->
-        if g.depravity < trainingCost then false
-        else if g.men and person.gender is 'f' then true
-        else if g.women and person.gender is 'm' then true
-        else false
+        if g.depravity < trainingCost or !g[trainingBase[@choice]] then false
+        else true
       label: ->
         if g.depravity < trainingCost then 'Need <span class="depravity">' + trainingCost + '</span>'
-        else if g.men and g.women then ''
-        else if g.men then 'Female'
-        else if g.women then 'Male'
-        else 'Need slave'
-  dom: 0
-  sad: 0
+        else if !g[trainingBase[@choice]] then 'Need slave'
+        else 'Trainer'
 
 Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDaily extends Page
   conditions:
     Trainer: {}
     job: '|last'
     progress: fill: -> @Trainer.intelligence + Math.floor(0.5 * @Trainer.lust)
-    type: fill: -> if @Trainer.gender is 'f' then 'sad' else 'dom'
-    remaining: fill: -> Math.max(0, trainingDuration - @job[@type] - @progress)
+    remaining: fill: -> Math.max(0, trainingDuration - @job[@job.choice] - @progress)
   text: ->
     # Only display if it's the first training chamber event for the day.
     if Math.random() > 0.5 or g.events.TrainingChamberDaily[0] is g.day then return false
-    Math.choice([
+
+    choices = if @job.choice is 'Dominatrix' then [
       """|| bg="TrainingChamber/WoodenHorse.jpg"
         -- I always figure that people should be able to take as well as dish out. They don't have to enjoy it, but they should know what it feels like at least!"""
       """|| bg="TrainingChamber/F1.jpg"
-        -- You'd think the training slave would have gotten used to it by now, but no, a heel jammed in the cunt always hurts.""",
-      """|| bg="TrainingChamber/Exercise.jpg"
-        -- Of course not everyone is fit enough to serve me when they first arrive. A bit of magic to make their exercise go faster is more effective than forcing the whole thing magically.""",
+        -- You'd think the training slave would have gotten used to it by now, but no, a heel jammed in the cunt always hurts."""
+      """|| bg="TrainingChamber/F2.jpg"
+        -- That glorious smirk, simultaniously so superior to her victim and yet asking permission from me..."""
+      """|| bg="TrainingChamber/F3.jpg"
+        --"""
+      """|| bg="TrainingChamber/F4.jpg"
+        --"""
+    ] else if @job.choice is 'Sadist' then [
       """|| bg="TrainingChamber/M1.jpg"
-        -- A #{if @Trainer.gender is 'f' then 'Dom' else 'Domme'}'s training includes not only physical skills, but also mental ones. They need to be able to <em>look</em> scary.""",
-    ]) + """
+        -- A Sadist's training includes not only physical skills, but also mental ones. They need to be able to <em>look</em> scary."""
+      """|| bg="TrainingChamber/M2.jpg"
+        -- While some men are natural brutes and enjoy watching people suffer, others learn to take a bit of pride in their artistry."""
+      """|| bg="TrainingChamber/M3.jpg"
+        -- My very favorite sadists are those that look so innocent you can hardly believe their manic grin when they finally get to have their way with a tender little body."""
+    ] else if @job.choice is 'Maid' then [
+      """|| bg="TrainingChamber/Maid1.jpg"
+        -- Polite! Unfailingly polite. I demand perfection in few things, but this is one of them."""
+      """|| bg="TrainingChamber/Maid2.jpg"
+        -- A well trained maid should be ready to bare herself to her master at any time. She must still blush, though - she's a domestic servant, not some common slut."""
+      """|| bg="TrainingChamber/Maid3.jpg"
+        -- She's a natural. Just look at that smile."""
+      """|| bg="TrainingChamber/Maid4.jpg"
+        -- Still embarrassed by how short your skirt is? Don't worry dear, you'll get over it soon. What? No, of course you can't have your underwear back."""
+    ] else if @job.choice is 'SexSlave' then [
+      """|| bg="TrainingChamber/Exercise.jpg"
+        -- Of course not everyone is fit enough to serve me when they first arrive. A bit of magic to make their exercise go faster is more effective than forcing the whole thing magically."""
+      """|| bg="TrainingChamber/SS1.jpg"
+        || bg="TrainingChamber/SS2.jpg"
+        || bg="TrainingChamber/SS3.jpg"
+        || bg="TrainingChamber/SS4.jpg"
+        || bg="TrainingChamber/SS5.jpg"
+        || bg="TrainingChamber/SS6.jpg"
+        """
+      """|| bg="TrainingChamber/SS11.jpg"
+        || bg="TrainingChamber/SS12.jpg"
+        || bg="TrainingChamber/SS13.jpg"
+        || bg="TrainingChamber/SS14.jpg"
+        || bg="TrainingChamber/SS15.jpg"
+        || bg="TrainingChamber/SS16.jpg"
+        """
+      """|| bg="TrainingChamber/SS21.jpg"
+        -- While normally I wouldn't interfere in a slave's training, this is a special case. The girl <em>sold bras</em> for a living. I'd better hit her brain with a few carefully chosen spells to make sure she doesn't lapse back into bad habits."""
+      """|| bg="TrainingChamber/SS31.jpg"
+        -- Getting used to nudity is one of the primary goals in her training."""
+      """|| bg="TrainingChamber/SS41.jpg"
+        """
+    ]
+    Math.choice(choices) + """
 
     ||
       --> <em>+#{@progress} progress (#{@remaining} remaining)<br><span class="depravity">-#{trainingCost}</span></em>"""
   apply: ->
     super()
-    type = @context.type
-    @context.job[type] += @context.progress
+    choice = @context.job.choice
+    @context.job[choice] += @context.progress
     if not @context.remaining
-      g[if type is 'sad' then 'men' else 'women'] -= 1
-      @context.job[type] = 0
-      g.officers.push officer = new classes[type]
+      g[trainingBase[choice]] -= 1
+      @context.job[choice] = 0
+      g.officers.push officer = new Officer[choice]
       officer.key = (g.officers.length - 1).toString()
   effects:
     depravity: -trainingCost
 
-classes =
-  dom: Officer.Dominatrix
-  sad: Officer.Sadist
+Place.Research::jobs.maid = RoomJob.Maid = class Maid extends RoomJob
+  conditions:
+    '|events|Outreach': {}
+  label: "Train Maids"
+  progress: 250
+  text: ->"""Allows me to train <span class="virgins"></span> slaves into Maids at in my Training Chamber."""
+
+RoomJob.Maid::next = Page.Maid = class Maid extends Page
+  text: ->"""|| bg="Library/Sexy1.jpg"
+    -- There was a young sailor from Brighton,
+    Who remarked to his girl "You're a tight one."
+    She replied "'Pon my soul,
+    You're in the wrong hole;
+    There's plenty of room in the right one."
+  """
+
+Place.Research::jobs.sexSlave = RoomJob.SexSlave = class SexSlave extends RoomJob
+  conditions:
+    '|events|Maid': {}
+  label: "Train Sex Slaves"
+  progress: 500
+  text: ->"""Allows me to train <span class="women"></span> slaves into Sex Slaves at in my Training Chamber."""
+
+RoomJob.SexSlave::next = Page.SexSlave = class SexSlave extends Page
+  text: ->"""|| bg="Library/Sexy1.jpg"
+    -- I wooed a stewed nude in Bermuda,
+    I was lewd but my god she was lewder.
+    She said it was crude
+    To be wooed in the nude -
+    I pursued her, subdued her and screwed her."
+  """

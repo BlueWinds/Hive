@@ -14,11 +14,11 @@ Place.Rooms::jobs.library = RoomJob.Library = class Library extends RoomJob
   text: ->"""People can train their <span class="intelligence">intelligence</span> here. Honestly, I'm not completely sure what smarts are good for, but I guess I might need smart people for something someday? It certainly makes Liana wet, so I guess intelligence isn't completely useless."""
 
 RoomJob.Library::next = Page.Library = class Library extends Page
-  text: -> """|| bg="Library/Treadmills.jpg"
+  text: -> """|| bg="Library/Empty.jpg"
     -- Books. Fucking books everywhere. "California" seems to produce them by the truckload. Their scribes must be amazing.
   || bg="Liana/Happy.jpg"
     --> #{q g.officers.Liana}We don't use scribes, we have these things called...</q>
-  || bg="Liana/"
+  || bg="Liana/Tentacles.jpg"
     --> #{q}Ahh! Mistress...?</q>
   ||
     #{q g.officers.DarkLady}Hush dear. Don't correct me when I'm ranting.</q>
@@ -75,10 +75,11 @@ Place.Research::jobs.sexyLibrarian = RoomJob.SexyLibrarian = class SexyLibrarian
 
 RoomJob.SexyLibrarian::next = Page.SexyLibrarian = class SexyLibrarian extends Page
   text: ->"""|| bg="Library/Sexy1.jpg"
-    -- With diamond-cut mind and body of a whore,
-    A woman like that, you always want more.
-    Don't judge her with eyes, find the real treasure -
-    Pretty face, bright smile, conversation is pleasure.
+    -- The limerick's callous and crude,
+    Its morals distressingly lewd;
+    It's not worth the reading
+    By persons of breeding -
+    It's designed to be callous and rude.
   """
 
 Place.Research::jobs.nudeLibrarian = RoomJob.NudeLibrarian = class NudeLibrarian extends RoomJob

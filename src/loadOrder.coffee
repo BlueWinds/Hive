@@ -25,7 +25,7 @@ module.exports = [
 # People & Units
   'content/people/DarkLady.coffee'
   'content/people/Liana.coffee'
-  'content/people/DominatrixSadist.coffee'
+  'content/people/TrainingChamber.coffee'
 
 # Rooms
   'content/rooms/empty.coffee'
