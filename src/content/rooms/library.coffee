@@ -37,6 +37,8 @@ RoomJob.Library::room = Job.Library = class Library extends Job
   next: Page.firstMatch
 
 Job.Library::next = Page.LibraryDaily = class LibraryDaily extends Page
+  conditions:
+    worker: {}
   text: ->
     if Math.random() < 0.75  or g.events.LibraryDaily?[0] is g.day then return false
     l = [

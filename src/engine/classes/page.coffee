@@ -253,7 +253,6 @@ Page.firstNew = ->
   for page in @constructor.next
     if typeof page is 'function' then page = new page
     page.contextFill()
-    console.log page, page.context, page.conditions
     if page.contextMatch() and not g.events[page.constructor.name]
       return page
 

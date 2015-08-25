@@ -84,9 +84,8 @@ Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDai
       """|| bg="TrainingChamber/F2.jpg"
         -- That glorious smirk, simultaneously so superior to her victim and yet asking permission from me..."""
       """|| bg="TrainingChamber/F3.jpg"
-        --"""
-      """|| bg="TrainingChamber/F4.jpg"
-        --"""
+        -- #{q g.officers.DarkLady}Honk-honk,</q> I squeeze her titties. She blushes and stammers something about "disrupting her concentration. On top of everyone else, putty in my hands - perfect."""
+      """|| bg="TrainingChamber/F4.jpg" """
     ] else if @job.choice is 'Sadist' then [
       """|| bg="TrainingChamber/M1.jpg"
         -- A Sadist's training includes not only physical skills, but also mental ones. They need to be able to <em>look</em> scary."""

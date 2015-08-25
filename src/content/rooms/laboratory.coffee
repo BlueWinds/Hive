@@ -14,7 +14,7 @@ RoomJob.Laboratory::next = Page.Laboratory = class Laboratory extends Page
 RoomJob.Laboratory::room = Job.Laboratory = class Laboratory extends Job
   label: "Laboratory"
   text: -> """It's not just a matter of sticking things in new orifices - I need to make sure my slaves are happy and healthy with each new perversion I bless them with. A researcher here can help me figure out how.
-  <br>Daily progress is <span class="intelligence">Intelligence</span> + <span class="lust">1/2 Magic</span>.
+  <br>Daily progress is <span class="intelligence">Intelligence</span> + <span class="magic">1/2 Magic</span>.
   <em><span class="depravity">-1/2</em> per point of progress</em>"""
   officers:
     Researcher: {}

@@ -142,6 +142,9 @@ Place.Sycamore::jobs.rentWarehouse = Job.RentWarehouse = class RentWarehouse ext
     Liana: '|officers|Liana'
   conditions:
     '|depravity': gte: 150
+    '|events|RentWarehouse|length':
+      lt: 4
+      optional: true
   label: 'Rent Warehouse'
   text: ->"""Liana says she can acquire more room for expansion. She's a good girl, really, and extra space to build in is worth letting her put on clothes for (only temporarily, of course).
 
