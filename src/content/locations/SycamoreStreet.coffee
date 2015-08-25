@@ -143,7 +143,7 @@ Place.Sycamore::jobs.rentWarehouse = Job.RentWarehouse = class RentWarehouse ext
   conditions:
     '|depravity': gte: 150
   label: 'Rent Warehouse'
-  text: ->"""Liana says she can acquire more room for exansion. She's a good girl, really, and extra space to build in is worth letting her put on clothes for (only temporarily, of course).
+  text: ->"""Liana says she can acquire more room for expansion. She's a good girl, really, and extra space to build in is worth letting her put on clothes for (only temporarily, of course).
 
   <span class="depravity">-150</span>"""
   next: Page.firstNew
@@ -174,7 +174,7 @@ Job.Tunnel = class Tunnel extends Job
 
 Job.RentWarehouse.next.push Page.RentWarehouse1 = class RentWarehouse1 extends Page
   text: ->"""|| bg="Sycamore/Street.jpg"
-    -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to exand into.
+    -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to expand into.
   || bg="Liana/Gangbang.jpg"
     --> As a reward for all her hard work, I let a bunch of slaves gangbang her.
     <em>+1 Medium room, <span class="depravity">-150</span></em>"""
@@ -201,7 +201,7 @@ Job.Tunnel2 = class Tunnel2 extends Job.Tunnel
 
 Job.RentWarehouse.next.push Page.RentWarehouse2 = class RentWarehouse2 extends Page
   text: ->"""|| bg="Sycamore/Street.jpg"
-    -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to exand into. It was a bit more expensive than anticipatied, but she managed in the end.
+    -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to expand into. It was a bit more expensive than anticipated, but she managed in the end.
   || bg="Liana/Gangbang.jpg"
     --> As a punishment for wasting my money, I let a bunch of slaves gangbang her.
     <em>+1 Medium room, <span class="depravity">-175</span></em>"""

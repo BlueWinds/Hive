@@ -5,7 +5,7 @@ Place.Rooms::jobs.outreach = RoomJob.Outreach = class Outreach extends RoomJob
     depravity: -150
     men: -2
     women: -2
-  text: ->"""I can't just take over this village with a horde of orcs, like I would have in the old days. The authorities are too well organized. I'll need a comunity outreach center to start <span class="strike">brainwashing</span> educating the populace into joining me willingly."""
+  text: ->"""I can't just take over this village with a horde of orcs, like I would have in the old days. The authorities are too well organized. I'll need a community outreach center to start <span class="strike">brainwashing</span> educating the populace into joining me willingly."""
 
 RoomJob.Outreach::next = Page.Outreach = class Outreach extends Page
   text: -> """|| bg="Outreach/1.jpg"
@@ -41,7 +41,7 @@ Page.OutreachMan = class OutreachMan extends Page
     """|| class="jobStart" auto="1800"
       <h4>Outreach Center</h4>
     || bg="Outreach/3.jpg"
-      -- Bikini babes handing out flyiers for a free welcome barbecue? Sign one new (soon to be) slave up. He hardly even objected when the girls told him it was a lifetime commitment (the breasts almost popping out of her string bikini probably had something to do with that).
+      -- Bikini babes handing out fliers for a free welcome barbecue? Sign one new (soon to be) slave up. He hardly even objected when the girls told him it was a lifetime commitment (the breasts almost popping out of her string bikini probably had something to do with that).
       <em class="men">+1</em>
     """
   effects:

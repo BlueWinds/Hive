@@ -47,7 +47,7 @@ Page.Intro::next = Page.Intro2 = class Intro2 extends Page
   text: ->"""|| bg="Liana/Happy.jpg"
     -- She starts at the sound of my voice, smacking her head against the bed behind her. It takes a moment of scrambling before she brushes hair out of her face, and another moment before she manages to obey my command.
   ||
-    --> #{q @Liana}Welcome to the mortal realm, maam. I... um, I wasn't sure that you actually existed.</q> She giggles, grinning at her own audacity, then clears her throat and goes on.
+    --> #{q @Liana}Welcome to the mortal realm, ma'am. I... um, I wasn't sure that you actually existed.</q> She giggles, grinning at her own audacity, then clears her throat and goes on.
   ||
     --> #{q @Liana}If it would please you, I would like to make a bargain.</q>
 
@@ -242,7 +242,7 @@ Job.IntroTakeOver::next = Page.IntroTakeOver = class IntroTakeOver extends Page
   ||
     --> #{q @Liana}Do you want to go to him, or shall I give him a call?</q>
   ||
-    --> I blink. She's a smarty, this one is. Less chance of any witnesses if he comes to us. But no, I'm tired of being cooped up in this room. I do grumble a bit as I pull on clothes. Though Liana has nothing that fits properly, at least one of her "T shirts" can stretch to cover my more ample bossom.
+    --> I blink. She's a smarty, this one is. Less chance of any witnesses if he comes to us. But no, I'm tired of being cooped up in this room. I do grumble a bit as I pull on clothes. Though Liana has nothing that fits properly, at least one of her "T shirts" can stretch to cover my more ample bosom.
 
   || bg="Inn/FrontDesk.jpg"
     -- "Hello! Welcome to Holiday Inn. Liana, right? I'm glad you decided to stay with us a few extra days. Is there anything I can help with?"

@@ -28,7 +28,7 @@ RoomJob.Library::next = Page.Library = class Library extends Page
 
 RoomJob.Library::room = Job.Library = class Library extends Job
   label: "Library"
-  text: -> """I really do not see the point of a library. If people are me, they're already devistatingly intelligent. If they're not, all they need to know is obedience and fucking. Sigh. Liana's giving me that <em>look</em> again. Guess I'll buy more books.
+  text: -> """I really do not see the point of a library. If people are me, they're already devastatingly intelligent. If they're not, all they need to know is obedience and fucking. Sigh. Liana's giving me that <em>look</em> again. Guess I'll buy more books.
   <br><em class="intelligence">+#{effect()} Intelligence</em>"""
   officers:
     worker:

@@ -4,7 +4,7 @@ Place.Rooms::jobs.lab = RoomJob.Laboratory = class Laboratory extends RoomJob
     depravity: -100
     virgins: -2
   size: 'medium'
-  text: ->"""I can research upgrades to my various rooms here. It's embarrassing to consider how poorly run my current opperation is."""
+  text: ->"""I can research upgrades to my various rooms here. It's embarrassing to consider how poorly run my current operation is."""
 
 RoomJob.Laboratory::next = Page.Laboratory = class Laboratory extends Page
   text: -> """|| bg="Laboratory/1.jpg"

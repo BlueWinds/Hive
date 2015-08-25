@@ -100,14 +100,14 @@ Job.Raid.next.push Page.Raid2 = class Raid2 extends Page
   ||
     --> #{q}Oh, and... um... she's all alone. I don't think we need to do anything special?</q>
   ||
-    --> It's true, none of the embarrassing "distractions" I've asked her to do so far have been actually <em>necessary,</em> though they have been entertaining for me, and that's a pretty good definiton of "necessity." Regardless, I pat Liana on the head. #{q @['Dark Lady']}She's all yours.</q>
+    --> It's true, none of the embarrassing "distractions" I've asked her to do so far have been actually <em>necessary,</em> though they have been entertaining for me, and that's a pretty good definition of "necessity." Regardless, I pat Liana on the head. #{q @['Dark Lady']}She's all yours.</q>
 
   || bg="Inn/Hogtie.jpg"
     -- I crack the door open a few minutes later to see how Liana's doing with my new slave. She's doing fine.
   ||
-    --> #{q @Liana}Going home to your family for the weekend, Jamie? No, I don't think so. I think you're going to be a sex slave now. Make fun of my hair, will you...</q> Liana shoves her onto her back with one foot, and delivers a vicous slap across the breast.
+    --> #{q @Liana}Going home to your family for the weekend, Jamie? No, I don't think so. I think you're going to be a sex slave now. Make fun of my hair, will you...</q> Liana shoves her onto her back with one foot, and delivers a vicious slap across the breast.
   ||
-    --> I close the door quietly with a smile. Best give them some more time to get reacquanted.
+    --> I close the door quietly with a smile. Best give them some more time to get reacquainted.
   ||
     --> <em class="women">+1</em>
   """
@@ -120,7 +120,7 @@ Job.Raid.next.push Page.Raid3 = class Raid3 extends Page
   text: ->"""||
     -- Sometimes, the simplest methods are best.
   ||
-    --> Find a weak mind, just briming with desire to experiment for the first time.
+    --> Find a weak mind, just brimming with desire to experiment for the first time.
   ||
     --> Pump in lust magic.
   || bg="Inn/Fisting.jpg"
@@ -141,7 +141,7 @@ Job.Raid.next.push Page.Raid4 = class Raid4 extends Page
     'Dark Lady': {}
     'Liana': {}
   text: ->"""||
-    -- For once, I'm in the mood to do the dirty work myself. Liana follows on my heels as I head down the hall, looking for an occupied room we haven't taken posession of yet. One door in particular calls out to me, I unlock the door with a touch (these locks are pathetic, nothing like the solid latches or bars I remember from the last time I wandered the world).
+    -- For once, I'm in the mood to do the dirty work myself. Liana follows on my heels as I head down the hall, looking for an occupied room we haven't taken possession of yet. One door in particular calls out to me, I unlock the door with a touch (these locks are pathetic, nothing like the solid latches or bars I remember from the last time I wandered the world).
 
   || bg="Inn/Computer.jpg"
     -- Sometimes it's too simple. She's half naked at her desk, chain trailing from her neck, touching herself and moaning.

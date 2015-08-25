@@ -16,9 +16,9 @@ RoomJob.AuctionHouse::next = Page.AuctionHouse = class AuctionHouse extends Page
 
 basePrice =
   Sadist: 125
-  Dominatrix: 125
+  Domme: 125
   Maid: 200
-  SexSlave: 100
+  SexSlave: 125
 sellPrice = (p)->
   unless p then return 0
   Math.floor(basePrice[p] * (50 + p.strength + p.intelligence + p.lust + p.magic * 5) / 100)
@@ -28,7 +28,7 @@ RoomJob.AuctionHouse::room = Job.AuctionHouse = class AuctionHouse extends Job
   officers:
     Dealer: {}
     Merchandise: isnt: [Officer.DarkLady, Officer.Liana]
-  text: ->"""This isn't the sort of auction where low-grade human chattel is dealt with - exclusive merchandise, exclusive clientelle. All the of the merchandise's stats contribute to the price (<em class="depravity">#{sellPrice @context.Merchandise}</em>).
+  text: ->"""This isn't the sort of auction where low-grade human chattel is dealt with - exclusive merchandise, exclusive clientele. All the of the merchandise's stats contribute to the price (<em class="depravity">#{sellPrice @context.Merchandise}</em>).
 
     #{Page.statCheckDescription('intelligence|lust', 65, Job.AuctionHouse.next, @context)}"""
   stat: 'intelligence|lust'
@@ -51,7 +51,7 @@ Job.AuctionHouse.next['good'] = Page.AuctionGood = class AuctionGood extends Pag
     """|| bg="AuctionHouse/4.jpg"
       -- "And next up we have this wonderful slut and her sister. Own both in the bargain of the century. Shall we start the bidding at $25,000... $25,000 from the gentlemen up front. $30,000... yes, I have $30,000..." """
     """|| bg="AuctionHouse/5.jpg"
-      -- "Yes she is, the cuttest little slut you ever did see. Ladies and gentlemen, just look at how wet she is at the prospect of being owned by one of you. Shall I ask her to do anything else before we begin? Yes? Good idea sir, someone bring me a butt plug. Now, let's start the bidding at $20,000. Come on, don't be shy..." """
+      -- "Yes she is, the cutest little slut you ever did see. Ladies and gentlemen, just look at how wet she is at the prospect of being owned by one of you. Shall I ask her to do anything else before we begin? Yes? Good idea sir, someone bring me a butt plug. Now, let's start the bidding at $20,000. Come on, don't be shy..." """
     ]) + "\n<em class='depravity'>+#{@price}</em>"
   apply: ->
     super()

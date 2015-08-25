@@ -1,11 +1,11 @@
 trainingDuration =
-  Dominatrix: 300
+  Domme: 300
   Sadist: 300
   Maid: 300
   SexSlave: 150
 trainingCost = 5
 trainingBase =
-  Dominatrix: 'women'
+  Domme: 'women'
   Sadist: 'men'
   Maid: 'virgins'
   SexSlave: 'women'
@@ -13,7 +13,7 @@ trainingBase =
 choices = ->
   c = {}
   if g.men then c.Sadist = 'Sadist'
-  if g.women then c.Dominatrix = 'Dominatrix'
+  if g.women then c.Domme = 'Domme'
   if g.events.Maid and g.virgins then c.Maid = 'Maid'
   if g.events.SexSlave and g.women then c.SexSlave = 'Sex Slave'
   if Object.keys(c).length is 0 then c[''] = ''
@@ -26,7 +26,7 @@ Place.Rooms::jobs.training = RoomJob.TrainingChamber = class TrainingChamber ext
     men: -1
     women: -1
   size: 'small'
-  text: ->"""Lets me train ♂ Slaves into Sadists, and ♀ Slaves into Dominatrices. Willing human assistants are nice, sometimes. Requires one male and female slave each, permanently installed as teaching aids. I'll also be able to research other servant types later."""
+  text: ->"""Lets me train ♂ Slaves into Sadists, and ♀ Slaves into Dommes. Willing human assistants are nice, sometimes. Requires one male and female slave each, permanently installed as teaching aids. I'll also be able to research other servant types later."""
 
 RoomJob.TrainingChamber::next = Page.TrainingChamber = class TrainingChamber extends Page
   text: -> """|| bg="TrainingChamber/WoodenHorse.jpg"
@@ -37,7 +37,7 @@ RoomJob.TrainingChamber::next = Page.TrainingChamber = class TrainingChamber ext
 
 RoomJob.TrainingChamber::room = Job.TrainingChamber = class TrainingChamber extends Job
   choice: 'Sadist'
-  Dominatrix: 0
+  Domme: 0
   Sadist: 0
   Maid: 0
   SexSlave: 0
@@ -76,13 +76,13 @@ Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDai
     remaining: fill: ->
       Math.max(0, trainingDuration[@job.choice] - @job[@job.choice] - @progress)
   text: ->
-    c = if @job.choice is 'Dominatrix' then [
+    c = if @job.choice is 'Domme' then [
       """|| bg="TrainingChamber/WoodenHorse.jpg"
         -- I always figure that people should be able to take as well as dish out. They don't have to enjoy it, but they should know what it feels like at least!"""
       """|| bg="TrainingChamber/F1.jpg"
         -- You'd think the training slave would have gotten used to it by now, but no, a heel jammed in the cunt always hurts."""
       """|| bg="TrainingChamber/F2.jpg"
-        -- That glorious smirk, simultaniously so superior to her victim and yet asking permission from me..."""
+        -- That glorious smirk, simultaneously so superior to her victim and yet asking permission from me..."""
       """|| bg="TrainingChamber/F3.jpg"
         --"""
       """|| bg="TrainingChamber/F4.jpg"

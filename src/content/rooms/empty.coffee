@@ -23,7 +23,7 @@ Job.MediumRoom = class MediumRoom extends Job
     'Dark Lady': '|officers|DarkLady'
   type: 'special'
   label: "Empty Space"
-  text: ->"""An empty suite, garage or officespace. I can turn it into something more useful."""
+  text: ->"""An empty suite, garage or office space. I can turn it into something more useful."""
   size: 'medium'
   next: Page.EmptyRoom
 

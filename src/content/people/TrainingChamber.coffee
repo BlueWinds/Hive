@@ -1,11 +1,11 @@
-Officer.Dominatrix = class Dominatrix extends Officer
-  name: 'Dominatrix'
+Officer.Domme = class Domme extends Officer
+  name: 'Domme'
   gender: 'f'
   strength: 15
   magic: 0
   intelligence: 25
   lust: 20
-  description: ->"""Cruel and lovely, equally at home weilding a whip or a gentle kiss... a woman after my own heart."""
+  description: ->"""Cruel and lovely, equally at home wielding a whip or a gentle kiss... a woman after my own heart."""
   image: ->
     @imageKey or= Math.floor(Math.random() * @constructor.images.length)
     return @constructor.images[@imageKey]
@@ -40,7 +40,7 @@ Officer.Maid = class Maid extends Officer
   magic: 0
   intelligence: 10
   lust: 15
-  description: ->"""Uniforms vary from puffy to short, lipstick varies from nonexistant to bright red, and masters vary from kind to harsh. The one thing that doesn't vary is that she'll be 'cleaning' a bit more than windows..."""
+  description: ->"""Uniforms vary from puffy to short, lipstick varies from nonexistent to bright red, and masters vary from kind to harsh. The one thing that doesn't vary is that she'll be 'cleaning' a bit more than windows..."""
   image: ->
     @imageKey or= Math.floor(Math.random() * @constructor.images.length)
     return @constructor.images[@imageKey]
