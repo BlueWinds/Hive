@@ -11,9 +11,13 @@ trainingBase =
   SexSlave: 'women'
 
 choices = ->
-  c = {Dominatrix: 'Dominatrix', Sadist: 'Sadist'}
-  if g.events.Maid then c.Maid = 'Maid'
-  if g.events.SexSlave then c.SexSlave = 'Sex Slave'
+  c = {}
+  if g.men then c.Sadist = 'Sadist'
+  if g.women then c.Dominatrix = 'Dominatrix'
+  if g.events.Maid and g.virgins then c.Maid = 'Maid'
+  if g.events.SexSlave and g.women then c.SexSlave = 'Sex Slave'
+  if Object.keys(c).length is 0 then c[''] = ''
+  return c
 
 Place.Rooms::jobs.training = RoomJob.TrainingChamber = class TrainingChamber extends RoomJob
   label: "Training Chamber"
@@ -39,14 +43,14 @@ RoomJob.TrainingChamber::room = Job.TrainingChamber = class TrainingChamber exte
   SexSlave: 0
 
   label: "Training Chamber"
-  text: -> """Here I can train slaves into a wide variety of useful roles.
+  text: ->"""Here I can train slaves into a wide variety of useful roles. <em class="depravity">-#{trainingCost}</em>
 
-    <em class="depravity">-#{trainingCost}</em>
-    <br>Daily progress is <span class="intelligence">Intelligence</span> + <span class="lust">1/2 Lust</span>
-    #{dropdown choices(), @choice}: <strong>#{@[@choice]} / #{trainingDuration[@choice]}</strong>
+    #{dropdown choices(), @choice}: <strong>#{@[@choice] or 0} / #{trainingDuration[@choice] or 0}</strong>
+    <br>Daily progress: <span class="intelligence">Int</span> + <span class="lust">1/2 Lust</span>
   """
 
   renderBlock: (mainKey, location)->
+    unless choices()[@choice]? then @choice = Object.keys(choices())[0]
     element = $ super(mainKey, location)
     element.on 'change', 'input', =>
       @choice = $('input:checked', element).val()
@@ -65,14 +69,14 @@ RoomJob.TrainingChamber::room = Job.TrainingChamber = class TrainingChamber exte
 Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDaily extends Page
   conditions:
     Trainer: {}
-    job: '|last'
+    job:
+      path: '|last'
+      matches: (job)-> job.choice
     progress: fill: -> @Trainer.intelligence + Math.floor(0.5 * @Trainer.lust)
-    remaining: fill: -> Math.max(0, trainingDuration - @job[@job.choice] - @progress)
+    remaining: fill: ->
+      Math.max(0, trainingDuration[@job.choice] - @job[@job.choice] - @progress)
   text: ->
-    # Only display if it's the first training chamber event for the day.
-    if Math.random() > 0.5 or g.events.TrainingChamberDaily[0] is g.day then return false
-
-    choices = if @job.choice is 'Dominatrix' then [
+    c = if @job.choice is 'Dominatrix' then [
       """|| bg="TrainingChamber/WoodenHorse.jpg"
         -- I always figure that people should be able to take as well as dish out. They don't have to enjoy it, but they should know what it feels like at least!"""
       """|| bg="TrainingChamber/F1.jpg"
@@ -123,7 +127,7 @@ Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDai
       """|| bg="TrainingChamber/SS41.jpg"
         """
     ]
-    Math.choice(choices) + """
+    Math.choice(c) + """
 
     ||
       --> <em>+#{@progress} progress (#{@remaining} remaining)<br><span class="depravity">-#{trainingCost}</span></em>"""

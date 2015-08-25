@@ -16,11 +16,15 @@ updateJob = (jobDiv)->
   else if $('.person-info', jobDiv).length
     divs.addClass 'half-ready'
 
-  newText = job.text().replace(/\n/g, "<br>")
-  $('.job-description', jobDiv).html(newText).addTooltips()
+  newText = $(job.renderBlock()).find('.job-description')
+  $('.job-description', jobDiv).replaceWith(newText).addTooltips()
 
   jobDiv.closest('page').removeClass('confirm')
   jobDiv.closest('page').find('options').tooltip('hide')
+
+  $('input', jobDiv).change -> setTimeout(->
+    updateJob jobDiv
+  , 0)
 
 ordering =
   plot: 0
@@ -78,7 +82,7 @@ Page.Port = class Port extends Page
     for div in jobs
       location = $(div).attr('data-location')
       job = g.map[location].jobs[$(div).attr('data-key')]
-      for key, conditions of job.officers when job.context[key]?.matches conditions
+      for key, conditions of job.officers when job.context[key]?.matches conditions, job
         slot = $('.job-officers li[data-slot="' + key + '"]', div)
         person = job.context[key]
         person = $('.person-info[data-key="' + (person.key or person.name) + '"]', page)
@@ -140,6 +144,7 @@ applyPort = (element)->
   $('.job', element).click (e)->
     # If we click inside a person-div, then activate / deactivate them, but don't move everyone else.
     if $(e.target).closest('.person-info').length then return
+    if $(e.target).filter('button, input, label').length then return
 
     jobDiv = $(@)
     job = jobDiv.data 'job'
@@ -147,15 +152,20 @@ applyPort = (element)->
       personDiv = $(@)
       if personDiv.closest(jobDiv).length then return
       assignPersonToJob(personDiv, job, jobDiv)
-
-    $('.job', element).dblclick (e)->
-      if $(e.target).closest('.person-info').length
-        return
-      $('.crew .person-info').addClass 'active'
-      $(@).click()
-      $('.crew .person-info').removeClass 'active'
-    # Now that all the crew-elements are in the right spot, update the job's context with its new workers, any maybe mark it as ready to go.
     updateJob(jobDiv)
+
+  $('.job', element).dblclick (e)->
+    if $(e.target).closest('.person-info').length
+      return
+    if slot = $(e.target).closest('li').attr('data-slot')
+      if worker = g.getItem($(@).data('job').officers[slot])
+        person = $('.person-info[data-key="' + (worker.key or worker.name) + '"]', element)
+        person.addClass 'active'
+    $('.crew .person-info').addClass 'active'
+    $(@).click()
+    $('.crew .person-info').removeClass 'active'
+    # Now that all the crew-elements are in the right spot, update the job's context with its new workers, any maybe mark it as ready to go.
+    updateJob $(@)
 
   # Move all active crew back into holding, then update the jobs they may have been removed from
   $('.crew', element).click (e)->
@@ -169,16 +179,12 @@ applyPort = (element)->
       updateJob(jobDiv)
 
   # The page has been rendered. Once the player clicks "done", start the day.
-  work = $('button', element).eq(0)
-  work.click doWorkClick
+  $('button', element).last().prev().click doWorkClick
 
-  sail = $('button', element).eq(1)
-  sail.click (e)->
+  $('button', element).last().click (e)->
     e.preventDefault()
-
     (new Page.SetSail).show()
     setTimeout(Game.gotoPage, 0)
-
     return false
 
   return element
@@ -199,7 +205,7 @@ assignPersonToJob = (personDiv, job, jobDiv)->
   # Find an unoccupied slot that the person matches, and put them there.
   slot = person instanceof Officer and Collection::findIndex.call job.officers, (conditions, key)->
     slotDiv = $('li[data-slot="' + key + '"]', jobDiv)
-    return $('.person-info', slotDiv).length is 0 and person.matches(conditions)
+    return $('.person-info', slotDiv).length is 0 and person.matches(conditions, job)
 
   slot = if slot
     $('li[data-slot="' + slot + '"]', jobDiv)

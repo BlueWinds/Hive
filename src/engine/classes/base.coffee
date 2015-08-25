@@ -55,10 +55,10 @@ window.GameObject = class GameObject
           delete data[key]
     return data
 
-  matches: (conditions)->
+  matches: (conditions, context)->
     if typeof conditions is 'string'
       return g.getItem(conditions) is @
-    return partMatches(@, conditions)
+    return partMatches.call(context, @, conditions)
 
 window.Collection = class Collection
   constructor: (data)->
@@ -111,7 +111,7 @@ window.Collection = class Collection
         if target?.matches and not target.matches(value) then return false
         if not target then return value.optional
 
-        unless partMatches(target, value) then return false
+        unless partMatches(@, target, value) then return false
 
       return @
 
@@ -239,7 +239,7 @@ Collection.partMatches = partMatches = (value, condition)->
   if condition.is and not Collection.oneOf(value, condition.is) then return false
   if condition.isnt and Collection.oneOf(value, condition.isnt) then return false
 
-  if condition.matches and not condition.matches(value)
+  if condition.matches and not condition.matches.call(@, value, value)
     return false
   return true
 

@@ -99,13 +99,13 @@ Page.OutreachMixed = class OutreachMixed extends Page
     women: 2
     virgins: 1
 
-Page.Outreach.next['bad'] = Page.OutreachBad = class OutreachBad extends Page
+Job.Outreach.next['bad'] = Page.OutreachBad = class OutreachBad extends Page
   text: ->
     if Math.random() < 0.75  or g.events.Outreach?[0] is g.day then return false
     """|| bg="Outreach/Resting.jpg"
       -- The girls ran around looking for someone to recruit, but didn't manage to attract any attention."""
 
-Page.Outreach.next['good'] = Page.OutreachGood = class OutreachGood extends Page
+Job.Outreach.next['good'] = Page.OutreachGood = class OutreachGood extends Page
   text: ->false
   next: Page.trueRandom
   @next: [
@@ -116,7 +116,7 @@ Page.Outreach.next['good'] = Page.OutreachGood = class OutreachGood extends Page
     Page.OutreachVirgin
   ]
 
-Page.Outreach.next['veryGood'] = Page.OutreachVeryGood = class OutreachVeryGood extends Page
+Job.Outreach.next['veryGood'] = Page.OutreachVeryGood = class OutreachVeryGood extends Page
   text: ->false
   next: Page.trueRandom
   @next: [

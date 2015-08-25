@@ -37,7 +37,7 @@ window.Job = class Job extends Page
 
   renderBlock: (mainKey, location)->
     slots = for key, conditions of @officers
-      renderSlot(key, conditions)
+      renderSlot.call(@, key, conditions)
 
     return """<div class="#{@type} job clearfix" data-key="#{mainKey}" data-location="#{location}">
       <div class="col-xs-6">
@@ -134,7 +134,7 @@ window.RoomJob = class RoomJob extends Job
 
 renderSlot = (key, conditions)->
   name = switch
-    when conditions.label then conditions.label()
+    when conditions.label then conditions.label.call(@)
     when key[0] is key[0].toUpperCase() then key
     else 'Anyone'
 

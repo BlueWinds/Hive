@@ -31,7 +31,7 @@ RoomJob.AuctionHouse::room = Job.AuctionHouse = class AuctionHouse extends Job
   next: Page.statCheck
   @next: {}
 
-Job.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page
+Job.AuctionHouse.next['good'] = Page.CatchGood = class CatchGood extends Page
   conditions:
     Merchandise: {}
     price: fill: -> sellPrice @Merchandise
@@ -53,7 +53,7 @@ Job.Catch.next['good'] = Page.CatchGood = class CatchGood extends Page
   effects:
     depravity: 'price'
 
-Job.Catch.next['bad'] = Page.CatchBad = class CatchBad extends Page
+Job.AuctionHouse.next['bad'] = Page.CatchBad = class CatchBad extends Page
   conditions:
     Merchandise: {}
   text: ->"""|| bg="AuctionHouse/7.jpg"
