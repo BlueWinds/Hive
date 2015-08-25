@@ -58,7 +58,7 @@ window.GameObject = class GameObject
   matches: (conditions, context)->
     if typeof conditions is 'string'
       return g.getItem(conditions) is @
-    return partMatches.call(context, @, conditions)
+    return partMatches(@, conditions, context)
 
 window.Collection = class Collection
   constructor: (data)->
@@ -108,10 +108,10 @@ window.Collection = class Collection
         if not value then return not target
         if typeof value is 'string' then return target is g.getItem value
 
-        if target?.matches and not target.matches(value) then return false
+        if target?.matches and not target.matches(value, @) then return false
         if not target then return value.optional
 
-        unless partMatches(@, target, value) then return false
+        unless partMatches(target, value, @) then return false
 
       return @
 
@@ -233,13 +233,13 @@ window.Collection = class Collection
   Object.defineProperty @::, 'find',
     value: (compare)-> @[@.findIndex compare]
 
-Collection.partMatches = partMatches = (value, condition)->
+Collection.partMatches = partMatches = (value, condition, context)->
   unless Collection.numericComparison(value, condition) then return false
 
   if condition.is and not Collection.oneOf(value, condition.is) then return false
   if condition.isnt and Collection.oneOf(value, condition.isnt) then return false
 
-  if condition.matches and not condition.matches.call(@, value, value)
+  if condition.matches and not condition.matches(value, context)
     return false
   return true
 

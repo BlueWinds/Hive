@@ -58,8 +58,8 @@ RoomJob.TrainingChamber::room = Job.TrainingChamber = class TrainingChamber exte
 
   officers:
     Trainer:
-      matches: (person)->
-        if g.depravity < trainingCost or not g[trainingBase[@choice]] then false
+      matches: (person, job)->
+        if g.depravity < trainingCost or not g[trainingBase[job.choice]] then false
         else true
       label: ->
         if g.depravity < trainingCost then 'Need <span class="depravity">' + trainingCost + '</span>'
@@ -144,8 +144,6 @@ Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDai
     depravity: -trainingCost
 
 Place.Research::jobs.maid = RoomJob.Maid = class Maid extends RoomJob
-  conditions:
-    '|events|Outreach': {}
   label: "Train Maids"
   progress: 250
   text: ->"""Allows me to train <span class="virgins"></span> slaves into Maids at in my Training Chamber."""
@@ -162,6 +160,7 @@ RoomJob.Maid::next = Page.Maid = class Maid extends Page
 Place.Research::jobs.sexSlave = RoomJob.SexSlave = class SexSlave extends RoomJob
   conditions:
     '|events|Maid': {}
+    '|events|Outreach': {}
   label: "Train Sex Slaves"
   progress: 500
   text: ->"""Allows me to train <span class="women"></span> slaves into Sex Slaves at in my Training Chamber."""

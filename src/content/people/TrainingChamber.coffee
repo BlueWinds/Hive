@@ -3,7 +3,7 @@ Officer.Dominatrix = class Dominatrix extends Officer
   gender: 'f'
   strength: 15
   magic: 0
-  intelligence: 20
+  intelligence: 25
   lust: 20
   description: ->"""Cruel and lovely, equally at home weilding a whip or a gentle kiss... a woman after my own heart."""
   image: ->
@@ -19,7 +19,7 @@ Officer.Dominatrix = class Dominatrix extends Officer
 Officer.Sadist = class Sadist extends Officer
   name: 'Sadist'
   gender: 'm'
-  strength: 20
+  strength: 25
   magic: 0
   intelligence: 15
   lust: 20

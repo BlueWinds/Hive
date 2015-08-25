@@ -141,7 +141,7 @@ window.Page = class Page extends GameObject
   couldMatch: ->
     for key, val of @conditions
       if key[0] is '|'
-        if checkGetItem(key, val) then continue else return false
+        if checkGetItem(key, val, @context) then continue else return false
       if val.optional or val.fill or val.matches or $.isEmptyObject(val) then continue
 
       target = getTarget(val)
@@ -253,6 +253,7 @@ Page.firstNew = ->
   for page in @constructor.next
     if typeof page is 'function' then page = new page
     page.contextFill()
+    console.log page, page.context, page.conditions
     if page.contextMatch() and not g.events[page.constructor.name]
       return page
 
@@ -271,11 +272,11 @@ window.PlayerOptionPage = class PlayerOptionPage extends Page
   next: false
 
 
-checkGetItem = (key, val)->
+checkGetItem = (key, val, context)->
   target = g.getItem(key)
   if not val then return not target?
   unless target or val.optional then return false
-  unless Collection.partMatches(target, val) then return false
+  unless Collection.partMatches(target, val, context) then return false
   return true
 
 getTarget = (val)->

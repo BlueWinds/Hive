@@ -55,7 +55,7 @@ Page.ResearchChoice = class ResearchChoice extends Page
 
 research = (job, progress)->
   g.goal = job
-  job.progress += progress * 2
+  job.progress += Math.min(g.depravity, progress) * 2
 
   if job.progress > 0
     g.queue.unshift new Page.ResearchContinues

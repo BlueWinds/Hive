@@ -8,12 +8,14 @@ Place.Sycamore = Game::map.Sycamore = class Sycamore extends Place
     HolidayInn: -1
 
 Place.Sycamore::jobs.Catch = Job.Catch = class Catch extends Job
+  conditions:
+    '|freeSpace': gte: 1
   officers:
     worker: {}
   label: 'Catch Slaves'
   text: ->"""Snatching people off the street is the simplest - but also most dangerous - way to get new slaves.
 
-  #{Page.statCheckDescription('strength', 30, Page.Catch.next, @context)}"""
+  #{Page.statCheckDescription('strength', 30, Job.Catch.next, @context)}"""
   stat: 'strength'
   difficulty: 30
   next: Page.statCheck
@@ -120,8 +122,6 @@ Job.Catch.next['bad'] = Page.CatchBad = class CatchBad extends Page
   next: Page.trueRandom
   @next: [
     Page.CatchPolice,
-    Page.CatchNothing,
-    Page.CatchMiss,
     Page.CatchMiss,
     Page.CatchMiss
   ]
@@ -133,21 +133,47 @@ Job.Catch.next['veryBad'] = Page.CatchVeryBad = class CatchVeryBad extends Page
   next: Page.trueRandom
   @next: [
     Page.CatchPolice,
+    Page.CatchPoliceCapture,
     Page.CatchPoliceCapture
   ]
 
 Place.Sycamore::jobs.rentWarehouse = Job.RentWarehouse = class RentWarehouse extends Job
   officers:
     Liana: '|officers|Liana'
-  label: 'Rent Warehouse Space'
+  conditions:
+    '|depravity': gte: 150
+  label: 'Rent Warehouse'
   text: ->"""Liana says she can acquire more room for exansion. She's a good girl, really, and extra space to build in is worth letting her put on clothes for (only temporarily, of course).
 
   <span class="depravity">-150</span>"""
   next: Page.firstNew
   @next: []
 
+Job.Tunnel = class Tunnel extends Job
+  progress: 0
+  needed: 100
+  officers:
+    worker:
+      matches: -> if g.depravity < 5 then false else true
+      label: -> if g.depravity < 5 then 'Need depravity' else ''
+    worker2:
+      matches: -> if g.depravity < 5 then false else true
+      label: -> if g.depravity < 5 then 'Need depravity' else ''
+      optional: true
+  label: 'Dig Tunnel'
+  text: ->"""While the Holiday Inn is a single building, I can't move naked - or unwilling and chained up - slaves freely along city streets. I need a tunnel. <em class="depravity">-5</em>
+
+    <strong>#{@progress} / #{@needed}</strong>
+    Daily progress: <span class="strength">Strength</span>"""
+  effects:
+    depravity: -5
+  apply: ->
+    super()
+    @progress += @context.worker.strength
+    @progress += @context.worker2?.strength or 0
+
 Job.RentWarehouse.next.push Page.RentWarehouse1 = class RentWarehouse1 extends Page
-  text: """|| bg="Sycamore/Street.jpg"
+  text: ->"""|| bg="Sycamore/Street.jpg"
     -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to exand into.
   || bg="Liana/Gangbang.jpg"
     --> As a reward for all her hard work, I let a bunch of slaves gangbang her.
@@ -155,16 +181,79 @@ Job.RentWarehouse.next.push Page.RentWarehouse1 = class RentWarehouse1 extends P
   effects:
     depravity: -150
     add:
-      '|map|Sycamore|jobs|1': Job.MediumRoom
+      '|map|Sycamore|jobs|1': Job.Tunnel
 
-Job.RentWarehouse.next.push Page.RentWarehouse1 = class RentWarehouse1 extends Page
-  text: """|| bg="Sycamore/Street.jpg"
-    -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to exand into. It was a bit more expensive than she anticipatied, but she managed in the end.
+Job.Tunnel::next = Page.Tunnel = class Tunnel extends Page
+  jobKey: 1
+  conditions:
+    progress: '|last|progress'
+    needed: '|last|needed'
+  text: ->"""|| bg="Sycamore/Tunnel1.jpg"
+    -- <strong>#{@progress} / #{@needed}</strong>
+    <em class="depravity">-5</em>"""
+  apply: ->
+    super()
+    if @context.progress >= @context.needed
+      g.map.Sycamore.jobs[@jobKey] = new Job.MediumRoom
+
+Job.Tunnel2 = class Tunnel2 extends Job.Tunnel
+  needed: 200
+
+Job.RentWarehouse.next.push Page.RentWarehouse2 = class RentWarehouse2 extends Page
+  text: ->"""|| bg="Sycamore/Street.jpg"
+    -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to exand into. It was a bit more expensive than anticipatied, but she managed in the end.
   || bg="Liana/Gangbang.jpg"
     --> As a punishment for wasting my money, I let a bunch of slaves gangbang her.
     <em>+1 Medium room, <span class="depravity">-175</span></em>"""
   effects:
     depravity: -175
     add:
-      '|map|Sycamore|jobs|1': Job.MediumRoom
-      
+      '|map|Sycamore|jobs|2': Job.Tunnel2
+
+Job.Tunnel2::next = Page.Tunnel2 = class Tunnel2 extends Page.Tunnel
+  jobKey: 2
+  text: ->"""|| bg="Sycamore/Tunnel2.jpg"
+    -- <strong>#{@progress} / #{@needed}</strong>
+    <em class="depravity">-5</em>"""
+
+Job.Tunnel3 = class Tunnel3 extends Job.Tunnel
+  needed: 400
+
+Job.RentWarehouse.next.push Page.RentWarehouse3 = class RentWarehouse3 extends Page
+  text: ->"""|| bg="Sycamore/Street.jpg
+    -- Liana did good. I have a new building all my own, with a couple of smaller rooms I can fill up with fun toys for my slaves.
+  || bg="Liana/Gangbang.jpg"
+    --> I gave her a break from all the hard work she does on my behalf with a nice relaxing gangbang."""
+  effects:
+    depravity: -150
+    add:
+      '|map|Sycamore|jobs|3': Job.Tunnel3
+
+Job.Tunnel3::next = Page.Tunnel3 = class Tunnel3 extends Page.Tunnel
+  text: ->"""|| bg="Sycamore/Tunnel3.jpg"
+    -- <strong>#{@progress} / #{@needed}</strong>
+    <em class="depravity">-5</em>"""
+  apply: ->
+    super()
+    if @context.progress >= @context.needed
+      g.map.Sycamore.jobs[3] = new Job.SmallRoom
+      g.map.Sycamore.jobs[3.5] = new Job.SmallRoom
+
+Job.Tunnel4 = class Tunnel4 extends Job.Tunnel
+  needed: 800
+
+Job.RentWarehouse.next.push Page.RentWarehouse4 = class RentWarehouse4 extends Page
+  text: ->"""|| bg="Sycamore/Street.jpg
+    -- Empty warehouse space? Sure, I love empty warehouse space!
+  || bg="Liana/Gangbang.jpg"
+    --> Shame it took so long. Maybe a nice brutal gangbang will convince Liana to work faster next time."""
+  effects:
+    depravity: -175
+    add:
+      '|map|Sycamore|jobs|4': Job.Tunnel4
+
+Job.Tunnel4::next = Page.Tunnel4 = class Tunnel4 extends Page.Tunnel
+  jobKey: 4
+  text: ->"""|| bg="Sycamore/Tunnel4.jpg"
+    -- <strong>#{@progress} / #{@needed}</strong>
+    <em class="depravity">-5</em>"""

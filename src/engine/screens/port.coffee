@@ -154,18 +154,7 @@ applyPort = (element)->
       assignPersonToJob(personDiv, job, jobDiv)
     updateJob(jobDiv)
 
-  $('.job', element).dblclick (e)->
-    if $(e.target).closest('.person-info').length
-      return
-    if slot = $(e.target).closest('li').attr('data-slot')
-      if worker = g.getItem($(@).data('job').officers[slot])
-        person = $('.person-info[data-key="' + (worker.key or worker.name) + '"]', element)
-        person.addClass 'active'
-    $('.crew .person-info').addClass 'active'
-    $(@).click()
-    $('.crew .person-info').removeClass 'active'
-    # Now that all the crew-elements are in the right spot, update the job's context with its new workers, any maybe mark it as ready to go.
-    updateJob $(@)
+  $('.job', element).dblclick jobDoubleClick
 
   # Move all active crew back into holding, then update the jobs they may have been removed from
   $('.crew', element).click (e)->
@@ -237,3 +226,17 @@ doWorkClick = (e)->
   # All jobs have now been processed. Trigger the first one.
   setTimeout(Game.gotoPage, 0)
   return false
+
+jobDoubleClick = (e)->
+  if $(e.target).closest('.person-info').length then return
+
+  page = $(@).closest('page')
+  if slot = $(e.target).closest('li').attr('data-slot')
+    if worker = g.getItem($(@).data('job').officers[slot])
+      person = $('.person-info[data-key="' + (worker.key or worker.name) + '"]', page)
+      person.addClass 'active'
+  $('.crew .person-info').addClass 'active'
+  $(@).click()
+  $('.crew .person-info').removeClass 'active'
+  # Now that all the crew-elements are in the right spot, update the job's context with its new workers, any maybe mark it as ready to go.
+  updateJob $(@)

@@ -129,8 +129,7 @@ Page.schema.properties.difficulty =
 
 statCheckChances = (stats, diff, context)->
   sum = 1
-  stats = stat.split('|')
-  for stat in stats
+  for stat in stats.split('|')
     if context
       sum += Page.sumStat stat, context, context
     else
@@ -162,8 +161,8 @@ Page.statCheck = ->
     return items.good
   return items.veryGood or items.good
 
-Page.statCheckDescription = (stat, difficulty, items, context)->
-  chances = statCheckChances(stat, difficulty, context)
+Page.statCheckDescription = (stats, difficulty, items, context)->
+  chances = statCheckChances(stats, difficulty, context)
   percent = (chance)-> Math.round(chance * 100) + '%'
   results = []
 
@@ -178,7 +177,11 @@ Page.statCheckDescription = (stat, difficulty, items, context)->
   else
     results.push "Bad: #{percent chances.bad + chances.veryBad}"
 
-  return "<span class='#{stat}'>#{stat.capitalize()}</span>, difficulty #{difficulty}:
+  a = for stat in stats.split '|'
+    "<span class='#{stat}'>#{stat.capitalize()}</span>"
+  a.push ('difficulty ' + difficulty)
+
+  """#{a.join ', '}:
   <ul class='stat-check'>
-    <li>" + results.join('</li><li>') + '</li>
-  </ul>'
+    <li>#{results.join('</li><li>')}</li>
+  </ul>"""

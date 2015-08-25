@@ -1,5 +1,7 @@
 Place.Rooms::jobs.auction = RoomJob.AuctionHouse = class AuctionHouse extends RoomJob
-  label: "AuctionHouse"
+  conditions:
+    '|events|Outreach': {}
+  label: "Auction House"
   size: 'medium'
   effects:
     depravity: -200
@@ -17,44 +19,48 @@ basePrice =
   Dominatrix: 125
   Maid: 200
   SexSlave: 100
-sellPrice = (p)-> basePrice[p] * (50 + p.strength + p.intelligence + p.lust + p.magic * 5) / 100
+sellPrice = (p)->
+  unless p then return 0
+  Math.floor(basePrice[p] * (50 + p.strength + p.intelligence + p.lust + p.magic * 5) / 100)
 
 RoomJob.AuctionHouse::room = Job.AuctionHouse = class AuctionHouse extends Job
-  label: "AuctionHouse"
-  text: -> """This isn't the sort of auction where low-grade human chattel is dealt with - exclusive merchandise, exclusive clientelle. <span class="lust">Lust</span> and <span class="intelligence">Intellegence</span> both affect the probability of a successful sale, and all the of the merchandise's stats contribute to the price.
-  <br><em class="depravity">+#{sellPrice @context.merchandise}</em>"""
+  label: "Auction House"
   officers:
     Dealer: {}
-    Merchandsie: isnt: [Officer.DarkLady, Officer.Liana]
+    Merchandise: isnt: [Officer.DarkLady, Officer.Liana]
+  text: ->"""This isn't the sort of auction where low-grade human chattel is dealt with - exclusive merchandise, exclusive clientelle. All the of the merchandise's stats contribute to the price (<em class="depravity">#{sellPrice @context.Merchandise}</em>).
+
+    #{Page.statCheckDescription('intelligence|lust', 65, Job.AuctionHouse.next, @context)}"""
   stat: 'intelligence|lust'
   difficulty: 65
   next: Page.statCheck
   @next: {}
+  type: 'special'
 
-Job.AuctionHouse.next['good'] = Page.CatchGood = class CatchGood extends Page
+Job.AuctionHouse.next['good'] = Page.AuctionGood = class AuctionGood extends Page
   conditions:
     Merchandise: {}
     price: fill: -> sellPrice @Merchandise
-  text: -> Math.choice [
+  text: -> Math.choice([
     """|| bg="AuctionHouse/1.jpg"
-      -- On her hands and knees, the #{@Merchandise} showed off #{his} charms for the customers, and they snapped #{him} right up.""",
+      -- On her hands and knees, this shows off her charms for the customers, and they snapped her right up.""",
     """|| bg="AuctionHouse/2.jpg"
       -- All the slaves sold here are highly trained - the chains and gags are hardly necessary, but they do add a certain ambiance to the proceedings that I'd be loath to do without."""
     """|| bg="AuctionHouse/3.jpg"
-      -- The #{@Worker.toLowerCase()} displays #{his} obedience for #{his} new owner."""
+      -- She displays her obedience for her new (potential) owner."""
     """|| bg="AuctionHouse/4.jpg"
       -- "And next up we have this wonderful slut and her sister. Own both in the bargain of the century. Shall we start the bidding at $25,000... $25,000 from the gentlemen up front. $30,000... yes, I have $30,000..." """
     """|| bg="AuctionHouse/5.jpg"
       -- "Yes she is, the cuttest little slut you ever did see. Ladies and gentlemen, just look at how wet she is at the prospect of being owned by one of you. Shall I ask her to do anything else before we begin? Yes? Good idea sir, someone bring me a butt plug. Now, let's start the bidding at $20,000. Come on, don't be shy..." """
-    ] + "\n<span class='depravity'>+#{@price}</span>"
+    ]) + "\n<em class='depravity'>+#{@price}</em>"
   apply: ->
     super()
     g.officers.remove @context.Merchandise
   effects:
     depravity: 'price'
 
-Job.AuctionHouse.next['bad'] = Page.CatchBad = class CatchBad extends Page
+Job.AuctionHouse.next['bad'] = Page.AuctionBad = class AuctionBad extends Page
   conditions:
     Merchandise: {}
-  text: ->"""|| bg="AuctionHouse/7.jpg"
-    -- The #{@Merchandise.toLowerCase()} didn't sell today - quite a shame, but no one was willing to shell out a fair price for the #{him}. Oh well, there's always tomorrow."""
+  text: ->"""|| bg="AuctionHouse/6.jpg"
+    -- The #{@Merchandise.name.toLowerCase()} didn't sell today - quite a shame, but no one was willing to shell out a fair price for the #{him}. Oh well, there's always tomorrow."""

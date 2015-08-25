@@ -9,8 +9,10 @@ Place.Rooms::jobs.library = RoomJob.Library = class Library extends RoomJob
   label: "Library"
   size: 'medium'
   effects:
-    depravity: -250
+    depravity: -200
     women: -3
+  conditions:
+    '|events|Laboratory': {}
   text: ->"""People can train their <span class="intelligence">intelligence</span> here. Honestly, I'm not completely sure what smarts are good for, but I guess I might need smart people for something someday? It certainly makes Liana wet, so I guess intelligence isn't completely useless."""
 
 RoomJob.Library::next = Page.Library = class Library extends Page
