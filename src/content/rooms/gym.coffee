@@ -19,7 +19,7 @@ RoomJob.Gym::next = Page.Gym = class Gym extends Page
     --> The postal system in this kingdom is amazing. I have only to tell my servants to spend their money, and like magic the appropriate items show up on my doorstop.
   """
 
-RoomJob.Gym::room = Job.Gym = class Gym extends Job
+Job.Gym = class Gym extends Job
   label: "Gym"
   text: -> """Running around, working out and generally getting sweaty and exhausted has some benefits for humans.
   <br><em class="strength">+#{effect()} Strength</em>"""

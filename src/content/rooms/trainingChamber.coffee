@@ -35,7 +35,7 @@ RoomJob.TrainingChamber::next = Page.TrainingChamber = class TrainingChamber ext
     --> Taking a fine, upstanding young woman and reducing her to a fierce mess of lust and base desires is a fine art, and this room is filled with toys... not for doing this, but for teaching others how to do it.
   """
 
-RoomJob.TrainingChamber::room = Job.TrainingChamber = class TrainingChamber extends Job
+Job.TrainingChamber = class TrainingChamber extends Job
   choice: 'Sadist'
   Domme: 0
   Sadist: 0

@@ -15,7 +15,7 @@ RoomJob.Dungeon::next = Page.Dungeon = class Dungeon extends Page
     --> All I need is some additional soundproofing and a couple of places to set the chains in the floor, and my new dungeon is complete.
   """
 
-RoomJob.Dungeon::room = Job.Dungeon = class Dungeon extends Job
+Job.Dungeon = class Dungeon extends Job
   label: "Dungeon"
   text: ->"""It's a dungeon. It holds six slaves until I find a use for them. No fun to be had here, just a soundproofed holding pen."""
   type: 'boring'

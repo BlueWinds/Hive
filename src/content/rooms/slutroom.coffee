@@ -25,7 +25,7 @@ RoomJob.Slutroom::next = Page.Slutroom = class Slutroom extends Page
     --> And a pair of mindless women with orders to fuck for all eternity.
   """
 
-RoomJob.Slutroom::room = Job.Slutroom = class Slutroom extends Job
+Job.Slutroom = class Slutroom extends Job
   label: "Slutroom"
   text: ->"""Simply letting the two mindless fuckslaves go at it 18 hours a day is the purpose of a slutroom. <span class="depravity">+#{slutroomDepravity()}</span> daily"""
   officers: {}

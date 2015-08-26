@@ -55,7 +55,7 @@ Job.Rest.next.push Page.Rest2 = class Rest2 extends Page
 Place.HolidayInn::jobs.raid = Job.Raid = class Raid extends Job
   type: 'special'
   conditions:
-    '|freeSpace': gte: 2
+    '|freeSpace': gt: 2
     '|events|Slutroom': {}
     '|events|Raid|length':
       optional: true
@@ -82,14 +82,12 @@ Job.Raid.next.push Page.Raid1 = class Raid1 extends Page
   || bg="Liana/2guys.jpg"
     -- When I finally arrive to rescue her, Liana has them well... distracted. She's a good girl.
   ||
-      --> <em class="men">+2</em>
+      --> <em class="men">+3</em>
   """
-  apply: ->
-    super()
-    g.men = 3 # Doing this directly, to bypass the space requirements
   effects:
     add:
       '|map|HolidayInn|jobs|109': Job.SmallRoom
+    men: 3
 
 Job.Raid.next.push Page.Raid2 = class Raid2 extends Page
   conditions:

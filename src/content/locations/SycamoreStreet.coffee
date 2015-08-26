@@ -232,7 +232,10 @@ Job.RentWarehouse.next.push Page.RentWarehouse3 = class RentWarehouse3 extends P
     add:
       '|map|Sycamore|jobs|3': Job.Tunnel3
 
-Job.Tunnel3::next = Page.Tunnel3 = class Tunnel3 extends Page.Tunnel
+Job.Tunnel3::next = Page.Tunnel3 = class Tunnel3 extends Page
+  conditions:
+    progress: '|last|progress'
+    needed: '|last|needed'
   text: ->"""|| bg="Sycamore/Tunnel3.jpg"
     -- <strong>#{@progress} / #{@needed}</strong>
     <em class="depravity">-5</em>"""
@@ -240,7 +243,7 @@ Job.Tunnel3::next = Page.Tunnel3 = class Tunnel3 extends Page.Tunnel
     super()
     if @context.progress >= @context.needed
       g.map.Sycamore.jobs[3] = new Job.SmallRoom
-      g.map.Sycamore.jobs[3.5] = new Job.SmallRoom
+      g.map.Sycamore.jobs[4] = new Job.SmallRoom
 
 Job.Tunnel4 = class Tunnel4 extends Job.Tunnel
   needed: 800
@@ -253,10 +256,10 @@ Job.RentWarehouse.next.push Page.RentWarehouse4 = class RentWarehouse4 extends P
   effects:
     depravity: -175
     add:
-      '|map|Sycamore|jobs|4': Job.Tunnel4
+      '|map|Sycamore|jobs|5': Job.Tunnel4
 
 Job.Tunnel4::next = Page.Tunnel4 = class Tunnel4 extends Page.Tunnel
-  jobKey: 4
+  jobKey: 5
   text: ->"""|| bg="Sycamore/Tunnel4.jpg"
     -- <strong>#{@progress} / #{@needed}</strong>
     <em class="depravity">-5</em>"""

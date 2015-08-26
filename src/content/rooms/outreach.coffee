@@ -14,7 +14,7 @@ RoomJob.Outreach::next = Page.Outreach = class Outreach extends Page
     -- I love volunteers.
   """
 
-RoomJob.Outreach::room = Job.Outreach = class Outreach extends Job
+Job.Outreach = class Outreach extends Job
   label: "Outreach Center"
   text: -> """Snatching women of the street is effective, but I can't do it too often or people will stop going out alone. A nice "Hiring" sign though and some cute bimbos, though? Attracts young people like flies to honey.
   <br><em>Recruit slaves safely.</em>
@@ -66,7 +66,7 @@ Page.OutreachVirgin = class OutreachVirgin extends Page
     """|| class="jobStart" auto="1800"
       <h4>Outreach Center</h4>
     || bg="Outreach/1.jpg"
-      -- "Oh, aren't you the cutest little thing. Just out of high-school, are you, and looking for a job? Excellent, well, I have an opportunity I think would fit great inside yo... oops, I mean would be a great for <em>for</em> you..."
+      -- "Oh, aren't you the cutest little thing. Just out of high-school, are you, and looking for a job? Excellent, well, I have an opportunity I think would fit great inside yo... oops, I mean would be a great fit <em>for</em> you..."
       <em class="virgins">+1</em>
     """
   effects:

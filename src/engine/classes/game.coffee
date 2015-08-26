@@ -91,7 +91,7 @@ window.Game = class Game extends GameObject
       g[stat] = Math.max(g[stat], 0)
 
   Object.defineProperty @::, 'freeSpace', {get: ->
-    space = if @events.Raid?.length > 1 then 0 else 6
+    space = 6
     for name, location of g.map
       for key, job of location.jobs when job instanceof Job.Dungeon
         space += 6

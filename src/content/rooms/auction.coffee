@@ -18,12 +18,12 @@ basePrice =
   Sadist: 125
   Domme: 125
   Maid: 200
-  SexSlave: 125
+  'Sex Slave': 125
 sellPrice = (p)->
   unless p then return 0
   Math.floor(basePrice[p] * (50 + p.strength + p.intelligence + p.lust + p.magic * 5) / 100)
 
-RoomJob.AuctionHouse::room = Job.AuctionHouse = class AuctionHouse extends Job
+Job.AuctionHouse = class AuctionHouse extends Job
   label: "Auction House"
   officers:
     Dealer: {}
