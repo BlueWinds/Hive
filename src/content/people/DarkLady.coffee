@@ -9,3 +9,8 @@ Game::officers.DarkLady = Officer.DarkLady = class DarkLady extends Officer
   text: '#ff9368'
   image: 'misc/DarkLady.jpg'
   description: ->"""It's me. I'm going to take over the world."""
+  max:
+    strength: 100
+    magic: 100
+    intelligence: 100
+    lust: 100

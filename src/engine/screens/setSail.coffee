@@ -25,9 +25,9 @@ Page.SetSail = class SetSail extends Page
       page.scrollLeft(x)
       page.scrollTop(y)
     , 1)
-    $('.location img', page).click (e)->
+    $('.location', page).click (e)->
       e.preventDefault()
-      key = $(@).parent().parent().attr 'data-key'
+      key = $(@).attr 'data-key'
       if key
         g.location = g.map[key]
       g.queue.push new Page.Port

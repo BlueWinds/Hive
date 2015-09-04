@@ -51,6 +51,14 @@ window.Person = class Person extends GameObject
       magic: statSchema
       intelligence: statSchema
       lust: statSchema
+      max:
+        type: 'object'
+        properties:
+          strength: statSchema
+          magic: statSchema
+          intelligence: statSchema
+          lust: statSchema
+
 
   # Each Person subclass should have @images and optionally @colors.
 
@@ -93,7 +101,7 @@ window.Person = class Person extends GameObject
     @[stat] += amount
     # Randomly round non-whole number stats
     @[stat] = Math.floor(@[stat]) + (Math.random() < @[stat] % 1)
-    @[stat] = Math.max 0, Math.min(@[stat], 100)
+    @[stat] = Math.max 0, Math.min(@[stat], @max[stat] or 100)
 
 Game.schema.properties.crew =
   type: Collection

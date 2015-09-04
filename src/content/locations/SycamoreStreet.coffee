@@ -263,3 +263,26 @@ Job.Tunnel4::next = Page.Tunnel4 = class Tunnel4 extends Page.Tunnel
   text: ->"""|| bg="Sycamore/Tunnel4.jpg"
     -- <strong>#{@progress} / #{@needed}</strong>
     <em class="depravity">-5</em>"""
+
+Place.Sycamore::jobs.whore = Job.Whore = class Whore extends Job
+  conditions:
+    '|events|Outreach': {}
+    depravity: fill: -> Math.floor(@context['Sex Slave'].lust / 6)
+  officers:
+    'Sex Slave':
+      is: Officer.SexSlave
+  label: 'Streetwalk'
+  text: ->"""Sycamore Street isn't the nicest part of town, so one of my sluts selling her body won't be that unusual of a sight.
+
+  <em><span class="depravity>+#{depravity}</span></em>"""
+  next: Page.randomChoice
+  @next: []
+  type: 'boring'
+
+Job.Whore.next.push Page.WhoreNothing = class WhoreNothing extends Page
+  conditions:
+    depravity: {}
+  text: ->"""|| bg=""
+    --"""
+  effects:
+    depravity: 'depravity'

@@ -135,7 +135,10 @@ Job.TrainingChamber::next = Page.TrainingChamberDaily = class TrainingChamberDai
     choice = @context.job.choice
     @context.job[choice] += @context.progress
     if not @context.remaining
-      g[trainingBase[choice]] -= 1
+      e = {}
+      e[trainingBase[choice]] = -1
+      g.applyEffects e
+
       @context.job[choice] = 0
       g.officers.push officer = new Officer[choice]
       officer.key = (g.officers.length - 1).toString()

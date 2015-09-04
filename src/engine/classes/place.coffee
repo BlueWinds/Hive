@@ -38,16 +38,7 @@ window.Place = class Place extends GameObject
 
   jobs: new Collection
 
-  renderBlock: (key, distance)->
-
-    return """<div data-key="#{key}" class="location" style="left: #{@location[0]}px; top: #{@location[1]}px;">
-      <div class="name">#{@name}</div>
-      <div class="full">
-        <div class="name">#{@name}</div>
-        <img src="game/content/images/#{@image}">
-        <div class="description">#{@description?() or @description}</div>
-      </div>
-    </div>"""
+  renderBlock: (key, distance)-> """<div data-key="#{key}" class="location" style="left: #{@location[0]}px; top: #{@location[1]}px;"><div class="name">#{@name}</div></div>"""
 
   toString: -> return @name
 

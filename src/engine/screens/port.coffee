@@ -56,8 +56,12 @@ Page.Port = class Port extends Page
     jobs = Array::sort.call(jobs, Job.jobSort)
     jobLabels = Array::sort.call(jobLabels, Job.jobSort)
 
-    officers = for key, person of g.officers
+    officers = (for key, person of g.officers
       person.renderBlock(key)
+    ).sort (a, b)->
+      a = g.officers[a.match(/data-key="(.*?)"/)[1]]
+      b = g.officers[b.match(/data-key="(.*?)"/)[1]]
+      (b.strength + b.magic + b.intelligence + b.lust) - (a.strength + a.magic + a.intelligence + a.lust)
 
     form = """<form class="clearfix">
       <div class="col-md-2">
@@ -85,7 +89,7 @@ Page.Port = class Port extends Page
       for key, conditions of job.officers when job.context[key]?.matches conditions, job
         slot = $('.job-officers li[data-slot="' + key + '"]', div)
         person = job.context[key]
-        person = $('.person-info[data-key="' + (person.key or person.name) + '"]', page)
+        person = $('.person-info[data-key="' + (if person.key? then person.key else person.name) + '"]', page)
         person.prependTo(slot)
     $('.job', page).each ->
       updateJob $(@)
