@@ -69,7 +69,7 @@ Job.Library::next = add class LibraryDaily extends Page
     super()
     @context.worker.add('intelligence', effect())
 
-add class SexyLibrarian extends RoomJob
+add class SexyLibrarian extends ResearchJob
   conditions:
     '|events|Library': {}
   label: "Sexy Librarians"
@@ -86,7 +86,7 @@ add class SexyLibrarian extends Page
     It's designed to be callous and rude.
   """
 
-add class NudeLibrarian extends RoomJob
+add class NudeLibrarian extends ResearchJob
   label: "Nude Librarians"
   progress: 700
   conditions:
