@@ -106,7 +106,7 @@ text.full {
   height: 100%;
   position: absolute;
 }
-text.short {
+.port text {
   height: auto;
   min-height: 0;
 }
@@ -154,16 +154,16 @@ input.inline:disabled {
 .dropdown-toggle.inline.active {
   background: #222;
   border-color: #666;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-top: none;
-  padding-top: 3px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+  padding-bottom: 3px;
   position: relative;
   z-index: 1001;
 }
 .dropdown-menu.inline {
   border: 1px solid #666666;
-  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
   min-width: 110px;
   padding: 0;
 }
@@ -283,12 +283,11 @@ input.inline:disabled {
   font-size: 0.7em;
   vertical-align: top;
 }
-.job-tabs .list-group-item:first-child {
+.job-tabs .list-group-item:first-child, .job-tabs .first-visible {
   border-top-left-radius: 6px;
 }
-.job-tabs .list-group-item:last-child {
+.job-tabs .list-group-item:last-child, .job-tabs .last-visible {
   border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
 }
 .tall-tabs .job-tabs .list-group-item:last-child {
   border-bottom-right-radius: 6px;
@@ -353,34 +352,13 @@ input.inline:disabled {
   border-bottom: 1px solid #666;
   padding: 5px 8px;
 }
-.job-officers {
+.job-people {
   margin: 0;
   list-style: none;
 }
 .job-description {
   font-size: 0.9em;
   margin: 10px 0 10px 10px;
-}
-.job-crew-label {
-  bottom: 0;
-  color: #333;
-  content: "Crew";
-  font-size: 2em;
-  line-height: 55px;
-  position: absolute;
-  text-align: center;
-  width: 100%;
-}
-.job-crew {
-  height: 55px;
-  margin-bottom: 0;
-  margin-top: 5px;
-  padding: 0;
-}
-.job-crew .person-info {
-  float: left;
-  margin-right: -34%;
-  width: calc(50% - 30px);
 }
 .worker-requirements .name {
   color: #999;
@@ -402,10 +380,10 @@ input.inline:disabled {
 .person-info:hover .name,
 .job:hover,
 .job:hover .block-label,
-.crew:hover {
+.people:hover {
   border-color: #777;
 }
-.job-officers li {
+.job-people li {
   margin: 8px 0;
 }
 .person-info.active, .person-info.active .name {
@@ -431,8 +409,7 @@ input.inline:disabled {
 .stats {
   clear: left;
 }
-.stats span,
-.worker-requirements span {
+.stats span {
   display: inline-block;
   line-height: 32px;
   text-align: center;
@@ -460,7 +437,7 @@ input.inline:disabled {
   user-select: none;
   -moz-user-select: none;
 }
-.crew .person-info, .hires .person-info {
+.people .person-info, .hires .person-info {
   float: left;
   margin: 8px 15px;
   width: calc(50% - 30px);
@@ -557,7 +534,7 @@ input.inline:disabled {
 .full img {
   float: left;
   height: 9em;
-  margin: 20px 20px 10px 10px;
+  margin: 20px 10px 10px 10px;
 }
 .full .description {
   clear: both;
@@ -855,3 +832,8 @@ page h4 {
 .strike {
   text-decoration: line-through;
 }
+.strong {
+  font-weight: 700;
+}
+q.DarkLady, q.D { color: #ff9368; }
+q.Liana, q.L { color: #ffd195; }

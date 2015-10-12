@@ -8,7 +8,7 @@ updateJob = (jobDiv)->
   divs.removeClass('ready half-ready')
   $('.person-info', jobDiv).each ->
     key = $(@).attr('data-key')
-    person = g.officers[key]
+    person = g.people[key]
     workers[key] = person
   job.updateFromDiv(jobDiv)
   if job.contextReady()
@@ -16,7 +16,7 @@ updateJob = (jobDiv)->
   else if $('.person-info', jobDiv).length
     divs.addClass 'half-ready'
 
-  newText = $(job.renderBlock()).find('.job-description')
+  newText = $(job.renderBlock(jobDiv.attr('data-key'), jobDiv.attr('data-location'))).find('.job-description')
   $('.job-description', jobDiv).replaceWith(newText).addTooltips()
 
   jobDiv.closest('page').removeClass('confirm')
@@ -38,17 +38,14 @@ Job.jobSort = (j1, j2)->
   return ordering[t1] - ordering[t2]
 
 Page.Port = class Port extends Page
-  conditions:
-    port: '|location'
   text: ->
     jobs = $('')
     jobLabels = $('')
 
     locs = Object.keys(g.map.HolidayInn.destinations)
-    locs.push 'HolidayInn'
     for l in locs
       [j, jl] = getJobDivs(g.map[l].jobs, l)
-      if g.map[l] isnt @port
+      if g.map[l] isnt g.location
         jl.addClass('hidden')
       jobs = jobs.add j
       jobLabels = jobLabels.add jl
@@ -56,11 +53,14 @@ Page.Port = class Port extends Page
     jobs = Array::sort.call(jobs, Job.jobSort)
     jobLabels = Array::sort.call(jobLabels, Job.jobSort)
 
-    officers = (for key, person of g.officers
-      person.renderBlock(key)
+    jobLabels.not('.hidden').first().addClass('first-visible')
+    jobLabels.not('.hidden').last().addClass('last-visible')
+
+    people = (for key, person of g.people
+      person.renderBlock(key, (if person.active then 'active' else ''))
     ).sort (a, b)->
-      a = g.officers[a.match(/data-key="(.*?)"/)[1]]
-      b = g.officers[b.match(/data-key="(.*?)"/)[1]]
+      a = g.people[a.match(/data-key="(.*?)"/)[1]]
+      b = g.people[b.match(/data-key="(.*?)"/)[1]]
       (b.strength + b.magic + b.intelligence + b.lust) - (a.strength + a.magic + a.intelligence + a.lust)
 
     form = """<form class="clearfix">
@@ -71,23 +71,23 @@ Page.Port = class Port extends Page
         <div class="jobs column-block"></div>
       </div>
       <div class="col-lg-4 col-md-5">
-        <div class="crew clearfix column-block">#{officers.join('')}</div>
+        <div class="people clearfix column-block">#{people.join('')}</div>
       </div>
     </form>""".replace(/\n/g, '')
 
-    page = $.render """|| class="screen" bg="<img src="#{@port.image}"
+    page = $.render """|| class="screen port"
       #{form}
-      --.
-        #{@port.description?() or @port.description}
-        #{options ['Done', 'Change Location'], ['', '']}
+      --
+        #{g.location.description?() or g.location.description}
+        #{options ['Done', 'Map'], ['', '']}
     """
     $('.jobs', page).append(jobs)
     $('.job-tabs', page).append(jobLabels)
     for div in jobs
       location = $(div).attr('data-location')
       job = g.map[location].jobs[$(div).attr('data-key')]
-      for key, conditions of job.officers when job.context[key]?.matches conditions, job
-        slot = $('.job-officers li[data-slot="' + key + '"]', div)
+      for key, conditions of job.people when job.context[key]?.matches conditions, job
+        slot = $('.job-people li[data-slot="' + key + '"]', div)
         person = job.context[key]
         person = $('.person-info[data-key="' + (if person.key? then person.key else person.name) + '"]', page)
         person.prependTo(slot)
@@ -143,7 +143,9 @@ applyPort = (element)->
   })
 
   people = $('.person-info', element)
-  people.click -> $(@).toggleClass 'active'
+  people.click ->
+    $(@).toggleClass 'active'
+    g.people[$(@).attr('data-key')].active = $(@).hasClass('active')
 
   $('.job', element).click (e)->
     # If we click inside a person-div, then activate / deactivate them, but don't move everyone else.
@@ -160,13 +162,14 @@ applyPort = (element)->
 
   $('.job', element).dblclick jobDoubleClick
 
-  # Move all active crew back into holding, then update the jobs they may have been removed from
-  $('.crew', element).click (e)->
+  # Move all active people back into holding, then update the jobs they may have been removed from
+  $('.people', element).click (e)->
     if $(e.target).closest('.person-info').length
       return
     if $('.person-info.active', element).length
-      $('.person-info.active', element).appendTo @
-      .removeClass('active')
+      people = $('.person-info.active', element).appendTo @
+      .removeClass('active').each ->
+        delete g.people[$(@).attr('data-key')].active
     $('.job', element).each ->
       jobDiv = $(@)
       updateJob(jobDiv)
@@ -190,26 +193,21 @@ setTall = ->
 
 assignPersonToJob = (personDiv, job, jobDiv)->
   key = personDiv.attr('data-key')
-  person = g.officers[key] or g.crew[key]
+  person = g.people[key]
 
   if personDiv.hasClass('injured') and not job.acceptInjured
     return
 
   # Find an unoccupied slot that the person matches, and put them there.
-  slot = person instanceof Officer and Collection::findIndex.call job.officers, (conditions, key)->
+  slot = person instanceof Person and Collection::findIndex.call job.people, (conditions, key)->
     slotDiv = $('li[data-slot="' + key + '"]', jobDiv)
     return $('.person-info', slotDiv).length is 0 and person.matches(conditions, job)
 
-  slot = if slot
-    $('li[data-slot="' + slot + '"]', jobDiv)
-  else
-    $('.job-crew', jobDiv)
-
-  if slot.length
-    personDiv.removeClass('active')
-
+  if slot
     prevJobDiv = personDiv.closest '.job'
-    slot.prepend(personDiv)
+    $('li[data-slot="' + slot + '"]', jobDiv).prepend(personDiv)
+    personDiv.removeClass('active')
+    delete g.people[personDiv.attr('data-key')].active
     updateJob(prevJobDiv)
 
 doWorkClick = (e)->
@@ -225,6 +223,8 @@ doWorkClick = (e)->
       # The job is good, shift it into the "upcoming pages" array. This reverses the ordering, so "normal" jobs come first, then special ones, then plot.
       g.queue.unshift(job)
 
+  for key, person of g.people
+    delete person.active
   g.queue.push new Page.NextDay
   g.queue.push new (g.location.constructor.port or Page.Port)
   # All jobs have now been processed. Trigger the first one.
@@ -236,11 +236,20 @@ jobDoubleClick = (e)->
 
   page = $(@).closest('page')
   if slot = $(e.target).closest('li').attr('data-slot')
-    if worker = g.getItem($(@).data('job').officers[slot])
+    slot = $(@).data('job').people[slot]
+    if worker = getDblclickWorker(slot)
       person = $('.person-info[data-key="' + (worker.key or worker.name) + '"]', page)
       person.addClass 'active'
-  $('.crew .person-info').addClass 'active'
+  $('.people .person-info').addClass 'active'
   $(@).click()
-  $('.crew .person-info').removeClass 'active'
-  # Now that all the crew-elements are in the right spot, update the job's context with its new workers, any maybe mark it as ready to go.
+  $('.people .person-info').removeClass('active').each ->
+    delete g.people[$(@).attr('data-key')].active
+  # Now that all the people-elements are in the right spot, update the job's context with its new workers, any maybe mark it as ready to go.
   updateJob $(@)
+
+getDblclickWorker = (slot)->
+  if typeof slot is 'string'
+    g.getItem(slot)
+  else if typeof slot.is is 'function'
+    g.people.find (p)-> p instanceof slot.is
+  else false

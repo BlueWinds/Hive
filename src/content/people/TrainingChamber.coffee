@@ -1,4 +1,8 @@
-Officer.Domme = class Domme extends Officer
+sticky = ->
+  @imageKey or= Math.floor(Math.random() * @constructor.images.length)
+  return @constructor.images[@imageKey]
+
+add class Domme extends Person
   name: 'Domme'
   gender: 'f'
   strength: 15
@@ -6,14 +10,12 @@ Officer.Domme = class Domme extends Officer
   intelligence: 25
   lust: 20
   max:
-    strength: 50
-    magic: 15
-    intelligence: 70
-    lust: 70
+    strength: 20
+    magic: 5
+    intelligence: 50
+    lust: 25
   description: ->"""Cruel and lovely, equally at home wielding a whip or a gentle kiss... a woman after my own heart."""
-  image: ->
-    @imageKey or= Math.floor(Math.random() * @constructor.images.length)
-    return @constructor.images[@imageKey]
+  image: sticky
   @images: [
     'TrainingChamber/F1.jpg'
     'TrainingChamber/F2.jpg'
@@ -21,7 +23,7 @@ Officer.Domme = class Domme extends Officer
     'TrainingChamber/F4.jpg'
   ]
 
-Officer.Sadist = class Sadist extends Officer
+add class Sadist extends Person
   name: 'Sadist'
   gender: 'm'
   strength: 25
@@ -29,43 +31,39 @@ Officer.Sadist = class Sadist extends Officer
   intelligence: 15
   lust: 20
   max:
-    strength: 50
-    magic: 15
-    intelligence: 70
-    lust: 70
+    strength: 40
+    magic: 5
+    intelligence: 30
+    lust: 25
   description: ->"""A malicious grin and a firm conviction that women should be groveling while he fucks them... a man after my own heart."""
-  image: ->
-    @imageKey or= Math.floor(Math.random() * @constructor.images.length)
-    return @constructor.images[@imageKey]
+  image: sticky
   @images: [
     'TrainingChamber/M1.jpg'
     'TrainingChamber/M2.jpg'
     'TrainingChamber/M3.jpg'
   ]
 
-Officer.Maid = class Maid extends Officer
+add class Maid extends Person
   name: 'Maid'
   gender: 'f'
   strength: 5
   magic: 0
   intelligence: 10
-  lust: 15
+  lust: 10
   max:
-    strength: 75
+    strength: 70
     magic: 5
-    intelligence: 50
-    lust: 50
+    intelligence: 15
+    lust: 20
   description: ->"""Uniforms vary from puffy to short, lipstick varies from nonexistent to bright red, and masters vary from kind to harsh. The one thing that doesn't vary is that she'll be 'cleaning' a bit more than windows..."""
-  image: ->
-    @imageKey or= Math.floor(Math.random() * @constructor.images.length)
-    return @constructor.images[@imageKey]
+  image: sticky
   @images: [
     'TrainingChamber/Maid4.jpg'
     'TrainingChamber/Maid5.jpg'
     'TrainingChamber/Maid6.jpg'
   ]
 
-Officer.SexSlave = class SexSlave extends Officer
+add class SexSlave extends Person
   name: 'Sex Slave'
   gender: 'f'
   strength: 5
@@ -73,14 +71,32 @@ Officer.SexSlave = class SexSlave extends Officer
   intelligence: 5
   lust: 35
   max:
-    strength: 35
-    magic: 15
-    intelligence: 20
+    strength: 20
+    magic: 1
+    intelligence: 15
     lust: 80
   description: ->"""She has one purpose in life, and she's learned to both accept her role and love it."""
-  image: ->
-    @imageKey or= Math.floor(Math.random() * @constructor.images.length)
-    return @constructor.images[@imageKey]
+  image: sticky
+  @images: [
+    'TrainingChamber/SS31.jpg'
+    'TrainingChamber/SS41.jpg'
+    'TrainingChamber/SS51.jpg'
+  ]
+
+add class ManWhore extends Person
+  name: 'Man Whore'
+  gender: 'm'
+  strength: 5
+  magic: 0
+  intelligence: 5
+  lust: 35
+  max:
+    strength: 20
+    magic: 1
+    intelligence: 15
+    lust: 80
+  description: ->"""He's got a cock, an asshole and a mouth, and he's not afraid to have any of them used. He'd rather enjoy it, in fact."""
+  image: sticky
   @images: [
     'TrainingChamber/SS31.jpg'
     'TrainingChamber/SS41.jpg'

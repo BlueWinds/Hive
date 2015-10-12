@@ -1,4 +1,4 @@
-Place.Rooms::jobs.outreach = RoomJob.Outreach = class Outreach extends RoomJob
+add class Outreach extends RoomJob
   label: "Community Outreach Center"
   size: 'medium'
   effects:
@@ -7,20 +7,20 @@ Place.Rooms::jobs.outreach = RoomJob.Outreach = class Outreach extends RoomJob
     women: -2
   text: ->"""I can't just take over this village with a horde of orcs, like I would have in the old days. The authorities are too well organized. I'll need a community outreach center to start <span class="strike">brainwashing</span> educating the populace into joining me willingly."""
 
-RoomJob.Outreach::next = Page.Outreach = class Outreach extends Page
+add class Outreach extends Page
   text: -> """|| bg="Outreach/1.jpg"
     -- Humans like being slaves, and they like owning slaves, and they like sex. With some... volunteers... I can help remind them of these facts, which in turn makes them much less likely to call upon the kingdom to defend them from my efforts.
     -- More importantly, though, I can get volunteers!
     -- I love volunteers.
   """
 
-Job.Outreach = class Outreach extends Job
+add class Outreach extends Job
   label: "Outreach Center"
   text: -> """Snatching women of the street is effective, but I can't do it too often or people will stop going out alone. A nice "Hiring" sign though and some cute bimbos, though? Attracts young people like flies to honey.
   <br><em>Recruit slaves safely.</em>
 
   #{Page.statCheckDescription('lust', 30, Job.Outreach.next, @context)}"""
-  officers:
+  people:
     worker:
       gender: is: 'f'
     worker2:
@@ -35,7 +35,7 @@ Job.Outreach = class Outreach extends Job
   @next: {}
   type: 'boring'
 
-Page.OutreachMan = class OutreachMan extends Page
+add class OutreachMan extends Page
   text: ->
     if g.events.Outreach?[1] is g.day then return false
     """|| class="jobStart" auto="1800"
@@ -47,7 +47,7 @@ Page.OutreachMan = class OutreachMan extends Page
   effects:
     men: 1
 
-Page.OutreachWoman = class OutreachWoman extends Page
+add class OutreachWoman extends Page
   text: ->
     if g.events.Outreach?[1] is g.day then return false
     """|| class="jobStart" auto="1800"
@@ -60,7 +60,7 @@ Page.OutreachWoman = class OutreachWoman extends Page
   effects:
     women: 1
 
-Page.OutreachVirgin = class OutreachVirgin extends Page
+add class OutreachVirgin extends Page
   text: ->
     if g.events.Outreach?[1] is g.day then return false
     """|| class="jobStart" auto="1800"
@@ -72,7 +72,7 @@ Page.OutreachVirgin = class OutreachVirgin extends Page
   effects:
     virgins: 1
 
-Page.OutreachMen = class OutreachMen extends Page
+add class OutreachMen extends Page
   text: ->
     if g.events.Outreach?[1] is g.day then return false
     """|| class="jobStart" auto="1800"
@@ -87,7 +87,7 @@ Page.OutreachMen = class OutreachMen extends Page
   effects:
     men: 3
 
-Page.OutreachWomen = class OutreachWomen extends Page
+add class OutreachWomen extends Page
   text: ->
     if g.events.Outreach?[1] is g.day then return false
     """|| class="jobStart" auto="1800"
@@ -98,7 +98,7 @@ Page.OutreachWomen = class OutreachWomen extends Page
   effects:
     women: 3
 
-Page.OutreachMixed = class OutreachMixed extends Page
+add class OutreachMixed extends Page
   text: ->
     if g.events.Outreach?[1] is g.day then return false
     """|| class="jobStart" auto="1800"
@@ -114,7 +114,7 @@ Page.OutreachMixed = class OutreachMixed extends Page
     women: 2
     virgins: 1
 
-Job.Outreach.next['bad'] = Page.OutreachBad = class OutreachBad extends Page
+Job.Outreach.next['bad'] = add class OutreachBad extends Page
   text: ->
     if g.events.Outreach?[0] is g.day then return false
     """|| class="jobStart" auto="1800"
@@ -122,7 +122,7 @@ Job.Outreach.next['bad'] = Page.OutreachBad = class OutreachBad extends Page
     || bg="Outreach/Resting.jpg"
       -- The girls ran around looking for someone to recruit, but didn't manage to attract any attention."""
 
-Job.Outreach.next['good'] = Page.OutreachGood = class OutreachGood extends Page
+Job.Outreach.next['good'] = add class OutreachGood extends Page
   text: ->false
   next: Page.trueRandom
   @next: [
@@ -133,7 +133,7 @@ Job.Outreach.next['good'] = Page.OutreachGood = class OutreachGood extends Page
     Page.OutreachVirgin
   ]
 
-Job.Outreach.next['veryGood'] = Page.OutreachVeryGood = class OutreachVeryGood extends Page
+Job.Outreach.next['veryGood'] = add class OutreachVeryGood extends Page
   text: ->false
   next: Page.trueRandom
   @next: [

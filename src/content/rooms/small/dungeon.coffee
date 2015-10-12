@@ -1,4 +1,4 @@
-Place.Rooms::jobs.dungeon = RoomJob.Dungeon = class Dungeon extends RoomJob
+add class Dungeon extends RoomJob
   label: "Dungeon"
   effects:
     depravity: -25
@@ -6,22 +6,20 @@ Place.Rooms::jobs.dungeon = RoomJob.Dungeon = class Dungeon extends RoomJob
   size: 'small'
   text: ->"""Slaves need a place to stay too, until I find a task for them. I can't have more than six unused slaves per dungeon. Takes two male slave-guards to keep them fed and clean and pacified."""
 
-RoomJob.Dungeon::next = Page.Dungeon = class Dungeon extends Page
+add class Dungeon extends Page
   text: -> """|| bg="Dungeon/Empty.jpg"
     -- Normally I'd have a team of architects to handle this sort of mundane work, but with things as they are, well...
-  ||
     --> One thing this pathetic kingdom of "America" does do well is buildings. It's hardly even cold at all, much more pleasant for the inmates. I'm more of a torture-you-with-pleasure sort of Dark Lady than a torture-you-with-misery one, so that's nice.
-  ||
     --> All I need is some additional soundproofing and a couple of places to set the chains in the floor, and my new dungeon is complete.
   """
 
-Job.Dungeon = class Dungeon extends Job
+add class Dungeon extends Job
   label: "Dungeon"
   text: ->"""It's a dungeon. It holds six slaves until I find a use for them. No fun to be had here, just a soundproofed holding pen."""
   type: 'boring'
-  officers: {}
+  people: {}
 
-Job.Dungeon::next = Page.DungeonDaily = class DungeonDaily extends Page
+Job.Dungeon::next = add class DungeonDaily extends Page
   text: ->
     if Math.random() < 0.75 or g.events.DungeonDaily?[0] is g.day then return false
     """|| class="jobStart" auto="1800"

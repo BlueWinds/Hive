@@ -1,8 +1,6 @@
 nsfwFiles = require('./src/loadOrder').map (f)->('src/' + f)
 
 module.exports = (grunt) ->
-  require('time-grunt')(grunt);
-
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -56,10 +54,10 @@ module.exports = (grunt) ->
           'public/game/engine/style.css': ['src/engine/style.css']
       images:
         files: [{
-          cwd: 'src/content'
+          cwd: 'src'
           expand: true
           src: ['**/*.png', '**/*.jpg']
-          dest: 'public/game/content'
+          dest: 'public/game'
         }]
     uglify:
       options:

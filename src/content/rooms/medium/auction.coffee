@@ -1,34 +1,35 @@
-Place.Rooms::jobs.auction = RoomJob.AuctionHouse = class AuctionHouse extends RoomJob
-  conditions:
-    '|events|Outreach': {}
+add class AuctionHouse extends RoomJob
   label: "Auction House"
   size: 'medium'
   effects:
     depravity: -200
     women: -2
     men: -1
-  text: ->"""Selling slaves is an ancient tradition of mine. In addition to being fucking sexy, a slave auction is a great way to raise fast capital for further expansion. Liana tells me slavery is illegal in the Ooessay (why does she wince every time I say her country's name?), so I'll have to modify the basic formula a bit, but still."""
+  text: ->"""Selling slaves is an ancient tradition of mine. In addition to being fucking sexy, a slave auction is a great way to raise fast capital for further expansion. Liana tells me slavery is illegal in the Oooessay (why does she wince every time I say her country's name?), so I'll have to modify the basic formula a bit, but still."""
 
-RoomJob.AuctionHouse::next = Page.AuctionHouse = class AuctionHouse extends Page
+add class AuctionHouse extends Page
   text: -> """|| bg="AuctionHouse/1.jpg"
-    -- To avoid attracting the notice of anyone who might be inclined to object, I've warded the auction house with powerful spells. As soon as you leave, the memory fades to nothing more than a sexy dream - unless you've bought a slave, in which case you're in too deep to back out.</q>
+    -- To avoid attracting the notice of anyone who might be inclined to object, I've warded the auction house with powerful spells. As soon as you leave, the memory fades to nothing more than a sexy dream - unless you've bought a slave, in which case you're in too deep to back out.
   """
 
 basePrice =
-  Sadist: 125
-  Domme: 125
+  Sadist: 75
+  Domme: 100
   Maid: 200
   'Sex Slave': 125
+  'Sex Slave': 100
 sellPrice = (p)->
   unless p then return 0
   Math.floor(basePrice[p] * (50 + p.strength + p.intelligence + p.lust + p.magic * 5) / 100)
 
-Job.AuctionHouse = class AuctionHouse extends Job
+add class AuctionHouse extends Job
   label: "Auction House"
-  officers:
-    Dealer: {}
-    Merchandise: isnt: [Officer.DarkLady, Officer.Liana]
-  text: ->"""This isn't the sort of auction where low-grade human chattel is dealt with - exclusive merchandise, exclusive clientele. All the of the merchandise's stats contribute to the price (<em class="depravity">#{sellPrice @context.Merchandise}</em>).
+  people:
+    Dealer: is: [Person.DarkLady, Person.Liana, Person.Sadist, Person.Domme]
+    Merchandise: isnt: [Person.DarkLady, Person.Liana]
+  text: ->"""This isn't the sort of auction where low-grade human chattel is dealt with - exclusive merchandise, exclusive clientele. All the of the merchandise's stats contribute to the price.
+
+  <em class="depravity">+#{sellPrice @context.Merchandise}</em>.
 
     #{Page.statCheckDescription('intelligence|lust', 65, Job.AuctionHouse.next, @context)}"""
   stat: 'intelligence|lust'
@@ -37,8 +38,9 @@ Job.AuctionHouse = class AuctionHouse extends Job
   @next: {}
   type: 'special'
 
-Job.AuctionHouse.next['good'] = Page.AuctionGood = class AuctionGood extends Page
+Job.AuctionHouse.next['good'] = add class AuctionGood extends Page
   conditions:
+    job: '|last'
     Merchandise: {}
     price: fill: -> sellPrice @Merchandise
   text: -> Math.choice([
@@ -55,11 +57,12 @@ Job.AuctionHouse.next['good'] = Page.AuctionGood = class AuctionGood extends Pag
     ]) + "\n<em class='depravity'>+#{@price}</em>"
   apply: ->
     super()
-    g.officers.remove @context.Merchandise
+    delete @context.job.context.Merchandise
+    g.people.remove @context.Merchandise
   effects:
     depravity: 'price'
 
-Job.AuctionHouse.next['bad'] = Page.AuctionBad = class AuctionBad extends Page
+Job.AuctionHouse.next['bad'] = add class AuctionBad extends Page
   conditions:
     Merchandise: {}
   text: ->"""|| bg="AuctionHouse/6.jpg"

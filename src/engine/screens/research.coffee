@@ -36,7 +36,7 @@ Page.ResearchChoice = class ResearchChoice extends Page
     return page
 
   apply: ->
-    researcher = g.last.context.Researcher
+    researcher = g.last.context.researcher
     @context.progress = -Math.min(g.depravity, Math.floor(researcher.intelligence * 0.5 + researcher.magic * 0.25))
 
     for key, job of g.map.Research.jobs when job instanceof Job or job.prototype instanceof Job
@@ -63,7 +63,7 @@ research = (job, progress)->
     g.queue.unshift job
     g.goal.progress = 0
     delete g.goal
-    g.map.Research[job.key] = false
+    g.map.Research.jobs[job.key] = false
 
 Place.Research = Game::map.Research = class Research extends Place
   name: 'Research Options'
@@ -71,7 +71,7 @@ Place.Research = Game::map.Research = class Research extends Place
   image: 'misc/emptyRoom.jpg'
 
   destinations: new Collection
-  jobs: new Collection # Unlike normal locations, this collection takes RoomJobs rather than normal Jobs
+  jobs: new Collection # Unlike normal locations, this collection takes ResearchJobs rather than normal Jobs
   location: [0, 0]
 
 Page.ResearchContinues = class ResearchContinues extends Page

@@ -23,7 +23,7 @@ module.exports = (grunt)->
     html = html.replace(/<\/?q>/g, '"')
     html = html.replace(/#\{q.*?\}/g, '"')
     html = html.replace(/bg="none"/g, '')
-    html = html.replace(/bg="(.+?)"/g, '<a href="game/content/images/$1"><img width=150 src="game/content/images/$1"></a>')
+    html = html.replace(/bg="(.+?)"/g, '<a href="game/images/$1"><img width=150 src="game/images/$1"></a>')
     fs.writeFileSync 'public/dump.html', html
     return data
 
@@ -34,6 +34,7 @@ dumpObj = ->
 
   _class = null
   for line in result.output.split("\n") when line
+    oline = line
     line = line.replace /"""/g, ''
     line = line.replace 'text: ->', ''
     line = line.replace 'description: ->', ''
@@ -43,6 +44,6 @@ dumpObj = ->
     else if line.match(/\|\|/)
       end = if data[_class].length then '</page>' else ''
       data[_class]?.push "#{end}<page><p><em>#{line.match(/\|\|(.*)/)[1]}</em></p>"
-    else
+    else if line.match(/\.coffee:(.*)/)
       data[_class]?.push "<p>#{line.match(/\.coffee:(.*)/)[1]}</p>"
   return data

@@ -36,7 +36,7 @@ getNextDiv = ->
   currentPage = $('page.active').data('page')
 
   until $('page.active + page').length
-    currentPage = getNextPage(currentPage) or g.queue.shift()
+    currentPage = getNextPage(currentPage) or g.queue.shift() or new Page.Port
 
     try
       currentPage.apply()
@@ -98,7 +98,7 @@ $.fn?.addTooltips = ->
 
 errorPage = (page, error)->
   element = $.render """||
-    -- Problem in #{page.constructor.name}
+    -- Problem in #{page?.constructor.name}
     #{error.toString()}
     <blockquote><pre></pre></blockquote>
   """
@@ -143,7 +143,8 @@ $ ->
     position = $(@).toggleClass('active').position()
     menu = $(@).next()
     menu.css 'left', position.left
-    menu.css 'top', position.top - menu.height() - 3
+    menu.css 'top', position.top + $(@).height() + 3
+    menu.css 'min-width', $(@).outerWidth() + 5
 
   c.on 'change', '.dropdown-menu input', ->
     button = $(@).parent().parent().prev()

@@ -14,7 +14,7 @@ Page.Load = class Load extends Page
       blob = URL.createObjectURL blob
 
       # game.money might not be defined in older saves. Be boring and just misreport it as 0.
-      name = "Day #{game.day} - #{game.location} - #{game.money or 0}β"
+      name = "Day #{game.day} - #{game.location} - #{game.depravity}D"
       row = [
         name
         "#{months[date.getMonth()]} #{date.getDate()}, #{date.getHours()}:#{date.getMinutes()}"

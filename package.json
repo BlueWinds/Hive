@@ -1,7 +1,7 @@
 {
   "name": "Hive",
   "description": "Adult game",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": "BlueWinds",
   "devDependencies": {
     "async": "1.x",
@@ -15,8 +15,7 @@
     "grunt-contrib-copy": "0.8.x",
     "grunt-contrib-uglify": "0.x",
     "grunt-contrib-watch": "0.x",
-    "shelljs": "0.x",
-    "time-grunt": "1.x"
+    "shelljs": "0.x"
   },
   "keywords": [
     "game",

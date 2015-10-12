@@ -12,11 +12,6 @@ conditionsSchema =
 
     # A rule can also be a more complex set of properties for pulling in an object conditionally.
     properties:
-      path:
-        # The path at which to find the object we're comparing against. {path: 'crew|Nat'} is the "long form" of just 'crew|Nat'.
-        type: 'string'
-        optional: true
-        pattern: /^\|[a-zA-Z0-9\| ]+$/
       fill: # The context is filled in here with this function's return value. Eg: conditions: {fish: {fill: -> return 3}} will turn into context: {fish: 3}
         # Called with the current context as @, after all non-"fill" properties have been filled.
         type: 'function'
@@ -137,14 +132,14 @@ window.Page = class Page extends GameObject
 
   context: new Collection
 
-  contextMatch: -> return @context.matches @conditions
+  contextMatch: -> @context.matches @conditions
   couldMatch: ->
     for key, val of @conditions
       if key[0] is '|'
         if checkGetItem(key, val, @context) then continue else return false
       if val.optional or val.fill or val.matches or $.isEmptyObject(val) then continue
 
-      target = getTarget(val)
+      target = g.getItem(val)
       unless target then return false
       unless Collection.numericComparison(target, val) then return false
 
@@ -214,9 +209,9 @@ Game.schema.properties.events =
       items:
         type: 'integer'
 
-Page.sumStat = (stat, context, officers = g.officers)->
+Page.sumStat = (stat, context, people = g.people)->
   sum = 0
-  for key, person of context when officers[key] or key <= 10
+  for key, person of context when people[key] or key <= 10
     sum += person[stat]
   return sum
 
@@ -270,24 +265,9 @@ window.PlayerOptionPage = class PlayerOptionPage extends Page
     return element
   next: false
 
-
 checkGetItem = (key, val, context)->
   target = g.getItem(key)
   if not val then return not target?
   unless target or val.optional then return false
   unless Collection.partMatches(target, val, context) then return false
   return true
-
-getTarget = (val)->
-  if typeof val is 'string'
-    return g.getItem(val)
-  if val.path
-    target = get.getItem val.path
-  if val.is
-    target or= g.officers.find((o)-> o instanceof val.is)
-    target or= g.crew.find((c)-> c instanceof val.is)
-
-  if val.is and not Collection.oneOf(target, val.is) then return false
-  if val.isnt and Collection.oneOf(target, val.isnt) then return false
-
-  return target

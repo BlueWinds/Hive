@@ -1,11 +1,7 @@
 # Setting up a whole bunch of global functions to make rendering pages more convenient.
 
-# lastP is always the most recent person referenced (by one of these functions or by displaying their image or name). This makes things like "#{He @CrewMember} hands #{his} cup to her" possible - notice how the second use doesn't require an argument.
+# lastP is always the most recent person referenced (by one of these functions or by displaying their image or name). This makes things like "#{He @person} hands #{his} cup to her" possible - notice how the second use doesn't require an argument.
 lastP = null
-window.q = (person = lastP)->
-  lastP = person
-  return "<q style='color: #{person.text or '#FFF'}'>"
-q.toString = q
 
 # Minor linguistic note - events have to be written in the male form in code because his->her, him->her are impossible to tell apart from the feminine side.
 window.he = (p = lastP)-> lastP = p; if p.gender is 'f' then 'she' else 'he'
@@ -73,10 +69,10 @@ window.Person = class Person extends GameObject
 
   renderBlock: (key, classes = '')->
     stats = for stat in ['strength', 'magic', 'intelligence', 'lust']
-      "<span class='#{stat}'>#{@[stat]}</span>"
+      "<span class='#{stat}#{if @[stat] is @max[stat] then ' strong' else ''}'>#{@[stat]}</span>"
 
     fullStats = for stat in ['strength', 'magic', 'intelligence', 'lust'] when @[stat]?
-      """<tr class='#{stat}'><td>#{stat.capitalize()}</td><td>#{@[stat]}</td></tr>"""
+      """<tr class='#{stat}#{if @[stat] is @max[stat] then ' strong' else ''}'><td>#{stat.capitalize()}</td><td>#{@[stat]}</td></tr>"""
 
     return """<div data-key="#{key}" class="person-info #{classes}">
       <div class="name" style="color: #{@text};">#{@name}</div>
@@ -84,7 +80,7 @@ window.Person = class Person extends GameObject
       <div class="full">
         <div class="name">#{@name}</div>
         <table class="stats">#{fullStats.join ''}</table>
-        <img src="game/content/images/#{@image?() or @image}">
+        <img src="game/images/#{@image?() or @image}">
         <div class="description">#{@description?() or @description}</div>
       </div>
     </div>"""
@@ -103,15 +99,10 @@ window.Person = class Person extends GameObject
     @[stat] = Math.floor(@[stat]) + (Math.random() < @[stat] % 1)
     @[stat] = Math.max 0, Math.min(@[stat], @max[stat] or 100)
 
-Game.schema.properties.crew =
-  type: Collection
-  items:
-    type: Person
 Game.schema.properties.people =
   type: Collection
   items:
     type: Person
-Game::crew = new Collection
 Game::people = new Collection
 
 $ ->
@@ -141,7 +132,7 @@ statCheckChances = (stats, diff, context)->
     if context
       sum += Page.sumStat stat, context, context
     else
-      sum += Page.sumStat stat, g.officers
+      sum += Page.sumStat stat, g.people
   chances = {
     veryBad: Math.pow(diff / (sum * 2), 2)
     bad: diff / sum

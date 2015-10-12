@@ -5,7 +5,7 @@ effect = ->
   if g.events.NudeLibrarian then e += 0.5
   return e
 
-Place.Rooms::jobs.library = RoomJob.Library = class Library extends RoomJob
+add class Library extends RoomJob
   label: "Library"
   size: 'medium'
   effects:
@@ -15,28 +15,28 @@ Place.Rooms::jobs.library = RoomJob.Library = class Library extends RoomJob
     '|events|Laboratory': {}
   text: ->"""People can train their <span class="intelligence">intelligence</span> here. Honestly, I'm not completely sure what smarts are good for, but I guess I might need smart people for something someday? It certainly makes Liana wet, so I guess intelligence isn't completely useless."""
 
-RoomJob.Library::next = Page.Library = class Library extends Page
+add class Library extends Page
   text: -> """|| bg="Library/Empty.jpg"
     -- Books. Fucking books everywhere. "California" seems to produce them by the truckload. Their scribes must be amazing.
   || bg="Liana/Happy.jpg"
-    --> #{q g.officers.Liana}We don't use scribes, we have these things called...</q>
+    --> `L We don't use scribes, we have these things called...`
   || bg="Liana/Tentacles.jpg"
-    --> #{q}Ahh! Mistress...?</q>
-  ||
-    #{q g.officers.DarkLady}Hush dear. Don't correct me when I'm ranting.</q>
+    --> `L Ahh! Mistress...?`
+    --> `D Hush dear. Don't correct me when I'm ranting.`
   """
 
-Job.Library = class Library extends Job
+add class Library extends Job
   label: "Library"
   text: -> """I really do not see the point of a library. If people are me, they're already devastatingly intelligent. If they're not, all they need to know is obedience and fucking. Sigh. Liana's giving me that <em>look</em> again. Guess I'll buy more books.
-  <br><em class="intelligence">+#{effect()} Intelligence</em>"""
-  officers:
+
+  <em class="intelligence">+#{effect()} Intelligence</em>"""
+  people:
     worker:
-      matches: -> if g.depravity >= trainingCost then true else false
+      matches: (w)-> g.depravity >= trainingCost and w.intelligence < w.max.intelligence
       label: -> if g.depravity >= trainingCost then '' else 'Need <span class="depravity">' + trainingCost + '</span>'
   next: Page.firstMatch
 
-Job.Library::next = Page.LibraryDaily = class LibraryDaily extends Page
+Job.Library::next = add class LibraryDaily extends Page
   conditions:
     worker: {}
   text: ->
@@ -69,7 +69,7 @@ Job.Library::next = Page.LibraryDaily = class LibraryDaily extends Page
     super()
     @context.worker.add('intelligence', effect())
 
-Place.Research::jobs.sexyLibrarian = RoomJob.SexyLibrarian = class SexyLibrarian extends RoomJob
+add class SexyLibrarian extends RoomJob
   conditions:
     '|events|Library': {}
   label: "Sexy Librarians"
@@ -77,7 +77,7 @@ Place.Research::jobs.sexyLibrarian = RoomJob.SexyLibrarian = class SexyLibrarian
   text: ->"""<span class="intelligence">+0.5 Intelligence</span> when training in a library.
   <br>I'd rather check out a book from a sexy librarian than I would from an unsexy one. So obvious, duh."""
 
-RoomJob.SexyLibrarian::next = Page.SexyLibrarian = class SexyLibrarian extends Page
+add class SexyLibrarian extends Page
   text: ->"""|| bg="Library/Sexy1.jpg"
     -- The limerick's callous and crude,
     Its morals distressingly lewd;
@@ -86,7 +86,7 @@ RoomJob.SexyLibrarian::next = Page.SexyLibrarian = class SexyLibrarian extends P
     It's designed to be callous and rude.
   """
 
-Place.Research::jobs.nudeLibrarian = RoomJob.NudeLibrarian = class NudeLibrarian extends RoomJob
+add class NudeLibrarian extends RoomJob
   label: "Nude Librarians"
   progress: 700
   conditions:
@@ -94,7 +94,7 @@ Place.Research::jobs.nudeLibrarian = RoomJob.NudeLibrarian = class NudeLibrarian
   text: ->"""<span class="intelligence">+0.5 Intelligence</span> when training in a library.
   <br>Honestly, I don't know why I let anyone wear clothes at all."""
 
-RoomJob.NudeLibrarian::next = Page.NudeLibrarian = class NudeLibrarian extends Page
+add class NudeLibrarian extends Page
   text: ->"""|| bg="Library/Nude2.jpg"
     -- Hm. I do remember why I let people wear clothes now - if they're not wearing any, then they quickly lose their embarrassment when they have to take them off. Oh well. Guess I'll only make them take off their clothes randomly.
   """

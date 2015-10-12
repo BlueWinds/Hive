@@ -1,3 +1,27 @@
+window.add = (item)->
+  classes = [
+    [Person],
+    [Place, Game::map],
+    [ResearchJob, Place.Research::jobs],
+    [RoomJob, Place.Rooms::jobs],
+    [Job, (item)->
+      if item::place then Game::map[item::place]::jobs[item.name] = item
+    ],
+    [Page, (item)->
+      if RoomJob[item.name] then RoomJob[item.name]::next = item
+      else if ResearchJob[item.name] then ResearchJob[item.name]::next = item
+      else if Job[item.name] then Job[item.name]::next = item
+    ]
+  ]
+
+  for [_class, location] in classes when item.prototype instanceof _class
+    _class[item.name] = item
+    if typeof location is 'function' then location(item)
+    else if location then location[item.name] = item
+    break
+
+  return item
+
 window.Game = class Game extends GameObject
   @schema:
     type: @
@@ -103,8 +127,8 @@ dayList = [null, '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', 
 recursiveCopy = (obj, data)->
   for key, value of data when key isnt '_'
     if typeof value is 'object'
-      if value._ and not obj[key]
-        _class = value._.split '|'
+      _class = value._?.split '|'
+      if value._ and obj[key]?.constructor.name isnt _class[1]
         try
           obj[key] =  new window[_class[0]][_class[1]] {}, [], ''
         catch e

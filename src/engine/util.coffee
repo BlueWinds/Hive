@@ -118,21 +118,23 @@ Formatting guide:
     || attr="val"
     <div>Tags will be appended to the page, until a text starts</div>
 
-  Start <text>
+  Start new <text>
     -- Can be followed by contents
     Each new line after this starts a new paragraph.
+    <button>Any line that starts with a tag won't be wrapped in a paragraph.</button>
+    `Natalie This text will be quoted in Natalie's colors`
 
     Extra new lines will be ignored.
-    <b>After a text has started in a page, all following lines will be included in it. Any line that starts with a tag won't be wrapped in a paragraph.</b>
-
-  Start short <text>
-    --.
+    -- After a text has started in a page, any following texts will keep the current background / character art.
 
   Start full <text>
     --|
 
   Continue last <text>
     -->
+
+  Quote text:
+  `D quoted text` transforms to <q class="D">quoted text</q>
 ###
 
 $.render = (element)->
@@ -140,40 +142,40 @@ $.render = (element)->
     return element or $('')
 
   pages = $('<div></div>')
-  page = false
-  text = false
-  for line in element.split("\n")
+  for line, index in lines = element.split("\n")
     line = line.trim()
     if line.match /^\|\|/
-      page = $('<page></page>')
-      pages.append page
-      text = false
-
+      pages.append page = $('<page></page>')
       addAttrs(page, line)
-      addBackground(page)
-    else
-      text = nonPageLine(line, text, page, pages)
+      addBackground(page, pages)
+    else if line.match(/--/)
+      textLine(line, pages)
+    else if line
+      page = pages.children().last()
+      parent = if page.find('text').length then page.find('text') else page
+      parent.append('<p>' + line + '</p>')
 
-  return pages.children()
+  return if pages.children().length then pages.children() else false
 
-nonPageLine = (line, text, page, pages)->
-  if line.match(/^-->/)
-    text = pages.find('text').last().clone()
-    page.append(text)
-    line = line.replace(/-->/, '')
-  else if line.match(/^--/)
-    text = $('<text></text>')
-    page.append(text)
-    if line.match(/^--\./) then text.addClass 'short'
-    else if line.match(/^--\|/) then text.addClass 'full'
-    line = line.replace(/--[\.\|]?/, '')
+textLine = (line, pages)->
+  page = pages.children().last()
+  if page.find('text').length
+    page = page.clone()
+    page.find('text').remove()
+    pages.append page
 
-  if line.match(/^</) and not text
-    (text or page).append(line)
-  else if line
-    text.append('<p>' + line + '</p>')
+  text = if line.match(/^-->/)
+    pages.find('text').last().clone()
+  else if line.match(/^--\|/)
+    $('<text class="full"></text>')
+  else
+    $('<text></text>')
 
-  return text
+  page.append(text)
+  line = line.replace(/--\|?>?/, '')
+
+  line = line.replace(/`([a-zA-Z]*) (.+?)`/g, "<q class='$1'>$2</q>")
+  text.append('<p>' + line + '</p>')
 
 addAttrs = (element, text)->
   for attr in text.match(/\w+=".+?"/g) or []
@@ -182,7 +184,7 @@ addAttrs = (element, text)->
 
 addBackground = (element)->
   if element.attr 'bg'
-    bg = 'url("game/content/images/' + element.attr('bg') + '")'
+    bg = 'url("game/images/' + element.attr('bg') + '")'
   else
     bg = element.prev().css('background-image')
 

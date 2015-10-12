@@ -11,16 +11,12 @@ window.Job = class Job extends Page
       type:
         type: 'string'
         match: /plot|special|normal|boring/
-      # conditions is used to determine whether the job shows up at all, and create an initial context. Once it has, "officers" defines slots for people who must / can work the job for it to apply.
+      # conditions is used to determine whether the job shows up at all, and create an initial context. Once it has, "people" defines slots for people who must / can work the job for it to apply.
       conditions: Page.schema.properties.conditions
       text: # text is used as a small blurb, rather than its own page
         type: 'function'
-      # Each officer will be added to the job's context before @next is called.
-      officers: Page.schema.properties.conditions
-      # If crew can be brought along for this job. This number is the minimum number required to do the job.
-      crew:
-        type: 'integer'
-        optional: true
+      # Each person will be added to the job's context before @next is called.
+      people: Page.schema.properties.conditions
       apply: # Called once when the job is run to modify the game state with the results of this job. Be absolutely sure to call super() inside this function.
         type: 'function'
         optional: true
@@ -36,37 +32,29 @@ window.Job = class Job extends Page
   type: 'normal'
 
   renderBlock: (mainKey, location)->
-    slots = for key, conditions of @officers
+    slots = for key, conditions of @people
       renderSlot.call(@, key, conditions)
 
     return """<div class="#{@type} job clearfix" data-key="#{mainKey}" data-location="#{location}">
       <div class="col-xs-6">
         <div class="job-description">#{@text().replace(/\n/g, "<br>")}</div>
       </div>
-      <ul class="job-officers col-xs-6">#{slots.join ''}</ul>
-      #{if @crew? then '<div class="job-crew-label">Crew (need ' + @crew + ')</div><ul class="job-crew col-xs-12"></ul>' else ''}
+      <ul class="job-people col-xs-6">#{slots.join ''}</ul>
     </div>"""
 
   updateFromDiv: (div)->
     @contextFill()
     context = @context
-    for key, slot of @officers
+    for key, slot of @people
       slotDiv = $('li[data-slot="' + key + '"]', div)
       person = $('.person-info', slotDiv).attr 'data-key'
       if person
-        context[key] = g.officers[person]
-
-    if @crew?
-      $('.job-crew .person-info', div).each (index)->
-        person = $(@).attr 'data-key'
-        context.push g.crew[person] or g.officers[person]
+        context[key] = g.people[person]
 
     return context
 
   contextReady: ->
-    if @context.length < @crew
-      return false
-    for key, value of @officers
+    for key, value of @people
       unless @context[key] or value.optional
         return false
     return @contextMatch()
@@ -132,16 +120,25 @@ window.RoomJob = class RoomJob extends Job
     if Job[@constructor.name]
       location.jobs[key] = new Job[@constructor.name]
 
+window.ResearchJob = class ResearchJob extends RoomJob
+  @schema: # Similar to a room job, but with even fewer properties.
+    type: @
+    properties:
+      label:
+        type: 'string'
+      conditions: Job.schema.properties.conditions
+      text:
+        type: 'function'
+      context:
+        optional: true
+        type: Collection
+
 renderSlot = (key, conditions)->
   name = switch
     when conditions.label then conditions.label.call(@)
     when key[0] is key[0].toUpperCase() then key
-    else 'Anyone'
-
-  stats = for stat in ['business', 'sailing', 'combat']
-    "<span class='#{stat}'>#{conditions[stat]?.gte or ''}</span>"
+    else ''
 
   """<li data-slot="#{key}"><div class="worker-requirements">
-    #{ if name then '<div class="name">' + name + '</div>' else '' }
-    <div class="stats">#{stats.join ''}</div>
+    #{if name then '<div class="name">' + name + '</div>' else ''}
   </div></li>"""

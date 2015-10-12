@@ -6,7 +6,6 @@ module.exports = [
   'engine/classes/game.coffee'
   'engine/classes/page.coffee'
   'engine/classes/person.coffee'
-  'engine/classes/officer.coffee'
   'engine/classes/job.coffee'
   'engine/classes/place.coffee'
   'engine/gui.coffee'
@@ -23,24 +22,27 @@ module.exports = [
   'content/update.coffee'
 
 # People & Units
-  'content/people/DarkLady.coffee'
-  'content/people/Liana.coffee'
+  'content/people/Characters.coffee'
   'content/people/TrainingChamber.coffee'
 
 # Rooms
   'content/rooms/empty.coffee'
-  'content/rooms/slutroom.coffee'
-  'content/rooms/dungeon.coffee'
-  'content/rooms/trainingChamber.coffee'
-  'content/rooms/gym.coffee'
-  'content/rooms/library.coffee'
-  'content/rooms/laboratory.coffee'
-  'content/rooms/outreach.coffee'
-  'content/rooms/auction.coffee'
+  'content/rooms/small/dungeon.coffee'
+  'content/rooms/small/slutroom.coffee'
+  'content/rooms/small/trainingChamber.coffee'
+  'content/rooms/medium/auction.coffee'
+  'content/rooms/medium/gym.coffee'
+  'content/rooms/medium/laboratory.coffee'
+  'content/rooms/medium/library.coffee'
+  'content/rooms/medium/outreach.coffee'
+  'content/rooms/large/milking.coffee'
+  'content/rooms/large/galleria.coffee'
 
 # Locations
   'content/locations/HolidayInn.coffee'
   'content/locations/SycamoreStreet.coffee'
+  'content/locations/CityCouncil.coffee'
+  'content/locations/NorthEnd.coffee'
 
 # Introduction
   'content/intro/introText.coffee'
