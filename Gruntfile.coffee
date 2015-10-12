@@ -78,11 +78,6 @@ module.exports = (grunt) ->
         src: ['**/*']
         cwd: 'public'
         expand: true
-    bump:
-      options:
-        pushTo: 'origin'
-        commitFiles: ['-a']
-        createTag: false
   }
   grunt.initConfig config
 

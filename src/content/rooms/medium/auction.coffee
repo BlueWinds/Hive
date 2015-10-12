@@ -17,7 +17,7 @@ basePrice =
   Domme: 100
   Maid: 200
   'Sex Slave': 125
-  'Sex Slave': 100
+  'Man Whore': 100
 sellPrice = (p)->
   unless p then return 0
   Math.floor(basePrice[p] * (50 + p.strength + p.intelligence + p.lust + p.magic * 5) / 100)
