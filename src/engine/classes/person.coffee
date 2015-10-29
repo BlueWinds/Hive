@@ -21,6 +21,7 @@ His.toString = His
 boy.toString = boy
 man.toString = man
 men.toString = men
+sir.toString = sir
 
 statSchema = {type: 'number', gte: 0, lte: 100}
 
