@@ -59,7 +59,7 @@ Job.Library::next = add class LibraryDaily extends Page
       l.push """|| bg="Library/Nude1.jpg"
         -- It's exhausting, keeping the shelves straight when most visitors would rather fuck you than complete their assigned research."""
       l.push """|| bg="Library/Nude2.jpg"
-        -- "Look, I can see you're a distracted. Shall I help you relax before a bit before you get started?" """
+        -- "Look, I can see you're distracted. Shall I help you relax before a bit before you get started?" """
 
     return """|| class="jobStart" auto="1800"
       <h4>Library</h4>
