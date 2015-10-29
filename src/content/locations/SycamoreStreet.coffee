@@ -1,6 +1,6 @@
 add class Sycamore extends Place
   name: 'Sycamore Street'
-  description: "Empty businesses, boarded up windows, hookers, broken bottles... it's not much, it's a place to start."
+  description: "Empty businesses, boarded up windows, hookers, broken bottles... it's not much, but it's a place to start."
   image: 'Sycamore/Street.jpg'
   jobs: new Collection
     Fire: Job.Fire
@@ -181,7 +181,7 @@ add class Release extends Page
       """|| bg="Sycamore/Release1.jpg"
         -- Some markers, some rope, a public restroom... I wiped her memory of her time with me and left her there. I'm sure someone will let her out eventually, but for now... public use. Just giving back to the community which has given me so much.""",
       """|| bg="Sycamore/Release2.jpg"
-        -- A bit of magical soundproofing on the box so no one gets suspcious, a letter detailing her circumstances (half-trained slave needs new home), and a random address halfway across the country. Someone's day jsut got brighter.""",
+        -- A bit of magical soundproofing on the box so no one gets suspcious, a letter detailing her circumstances (half-trained slave needs new home), and a random address halfway across the country. Someone's day just got brighter.""",
       """|| bg="Sycamore/Release3.jpg"
         -- Special delivery for the college football team's locker room.""",
       """|| bg="Sycamore/Release4.jpg"
@@ -381,9 +381,9 @@ add class Whore extends Page
         -- Whore. She won't even open her mouth until he's ready to shove a cock in it."""
     ] else if @w1 instanceof Person.Liana then [
       """|| bg="Liana/Whore1.jpg"
-        -- While it's true that I've corrupted Liana to some extent, she somehow retains a core of purity and joy that perhaps I <em>could</em> touch, but really have no desire too. She's a powerful mage, a fiesty temptress, smart and loyal and... I must be coming down with something.
+        -- While it's true that I've corrupted Liana to some extent, she somehow retains a core of purity and joy that perhaps I <em>could</em> touch, but really have no desire to. She's a powerful mage, a feisty temptress, smart and loyal and... I must be coming down with something.
       ||
-        --> Snapping the scrying window closed, I order someone to bring me a cup of pineapple juice, a butt plug and a hole to put it in. I'm supposed to be taking over the world, not feeling jealous of some here human about to fuck her senseless.
+        --> Snapping the scrying window closed, I order someone to bring me a cup of pineapple juice, a butt plug and a hole to put it in. I'm supposed to be taking over the world, not feeling jealous of some mere human about to fuck her senseless.
         -->"""
       """|| bg="Liana/Whore21.jpg"
       || bg="Liana/Whore22.jpg"
@@ -401,7 +401,7 @@ add class Whore extends Page
       """|| bg="Sycamore/WhoreMale2.jpg"
         -- """
       """|| bg="Sycamore/WhoreMale3.jpg"
-        -- Seriously, what sort of gut just carries a leash and colar in his pocket, in case he happens to stumble across some casual sex?
+        -- Seriously, what sort of gut just carries a leash and collar in his pocket, in case he happens to stumble across some casual sex?
         --> The awesome kind, clearly."""
       """|| bg="Sycamore/WhoreMale4.jpg"
         -- Busy day at the office, but still want to fuck? Call Dark Lady's Escorts now. We deliver."""
