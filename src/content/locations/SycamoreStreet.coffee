@@ -179,7 +179,7 @@ add class Release extends Page
     if Math.random() < 0.75 then return false
     c = if @choice is 'men' then [
       """|| bg="Sycamore/Street.jpg"
-        -- My trusted servant released one of the men into the streets of Sycamore. He won't remember a thing."""
+        -- My trusted servant released one of the men at the end of Sycamore Street. He won't remember a thing."""
     ] else [
       """|| bg="Sycamore/Release1.jpg"
         -- Some markers, some rope, a public restroom... I wiped her memory of her time with me and left her there. I'm sure someone will let her out eventually, but for now... public use. Just giving back to the community which has given me so much.""",
