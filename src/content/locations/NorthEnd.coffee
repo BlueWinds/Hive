@@ -1,6 +1,6 @@
 add class NorthEnd extends Place
   name: 'North End'
-  description: 'I have a "zoning permit" for this area. Time to whatever the fuck I want.'
+  description: 'I have a "zoning permit" for this area. Time to do whatever the fuck I want.'
   image: 'Council/NorthEnd.jpg'
   jobs: new Collection
     Fire: Job.Fire
