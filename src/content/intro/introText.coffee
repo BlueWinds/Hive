@@ -32,7 +32,7 @@ Page.Intro::next = Page.Intro2 = class Intro2 extends Page
     --> `L If it would please you, I would like to make a bargain.`
 
     -- Liana. I know her name without being told.
-    --> Feeble as it is, my magic can still draw facts like that from for mind without thought. Her attitude is pleasant, a mixture of excitement and fear - the first pleasant thing to happen since I awoke bound to the floor by magic.
+    --> Feeble as it is, my magic can still draw facts like that from her mind without thought. Her attitude is pleasant, a mixture of excitement and fear - the first pleasant thing to happen since I awoke bound to the floor by magic.
 
     -- `D Call me mistress.`
     --> `L You are not my mistress. Not yet, at least.`
@@ -75,7 +75,7 @@ Job.IntroFuckLiana::next = Page.IntroFuckLiana = class IntroFuckLiana extends Pa
   text: ->"""|| bg="Liana/Happy.jpg"
     -- I've been... well, if not precisely <i>dead</i>, at least something pretty close for quite some time. And since she's just pledged herself to me...
   || bg="Liana/Grope.jpg"
-    --> I reach a up underneath her shirt, expecting to grope her breasts roughly, and encounter something covering them.
+    --> I reach a hand up underneath her shirt, expecting to grope her breasts roughly, and encounter something covering them.
     --> She grasps my wrist, and I ignore her surprised look, exploring the fabric she has on underneath.
     --> It's springy. Her shirt stretches too, most unnaturally. I frown at her.
 
@@ -127,7 +127,7 @@ Job.IntroFirstSlaves::next = Page.IntroFirstSlaves = class IntroFirstSlaves exte
     --> I laugh. She looks so earnest, worrying about such a thing. And cute, too, with her breasts bobbing and cunt still dripping occasionally. I must be getting soft.
 
   || bg="Liana/Happy.jpg"
-    -- We spend the next several hours going over a bit of local history and geography. "California" seems in just one kingdom in a larger empire, the Yousa. But we're in a small, isolated town which might as well just be begging for conversion into my new stronghold. A couple of foreign wars, but nothing local. Perfect.
+    -- We spend the next several hours going over a bit of local history and geography. "California" seems to be just one kingdom in a larger empire, the Yousa. But we're in a small, isolated town which might as well just be begging for conversion into my new stronghold. A couple of foreign wars, but nothing local. Perfect.
     --> I don't like those things called "cars," though, that she assures me everyone has. The local constables might be able to summon the king's army within a few days. Then they'd burn all my tentacle gardens and lock me up and make me wear a bra in prison. That would be terrible.
 
   || bg="none"
@@ -184,7 +184,7 @@ Job.IntroTakeOver::next = Page.IntroTakeOver = class IntroTakeOver extends Page
     --> `L A bra, mistress.`
 
     --> `D Right. A bra.`
-    -- `D You, slave, she's not to be without a cock inside her for twenty four hours.` I order one of my male slaves to attend to her. `D After that you, bra-girl, return to the front desk. This place is closed for repairs until further notice, no more customers, but keep everything running like normal.`
+    -- `D You, slave, she's not to be without a cock inside her for twenty four hours.` I order one of my male slaves to attend to her. `D After that - you, bra-girl, return to the front desk. This place is closed for repairs until further notice. No more customers, but keep everything running like normal.`
     --> `D You can keep your shirt, since you'll be dealing with the outside world, but while you're behind that counter, no pants or underwear, ever.` Since I haven't actually mind controlled her, just added a hint of obedience and a pound of not-telling-anyone, I back my commands up with a threat. `D Anyone catches you with pants on inside this room, I'll make you work topless too.`
 
     -- Liana, perhaps sensing that I'm liable to keep ranting and raving and piling punishments on the hussy as long as that... thing... remains in my sight, banishes the bra with a spell.
@@ -221,7 +221,7 @@ add class Council extends Page
     -- `L I am happy to serve, mistress. I was hesitant at first - you know how often demons like to talk about taking over the world, and how seldom they actually manage more than getting killed within the first few weeks...`
     --> `D I'm not a demon, as you well know by now.`
 
-    --> `L Oh, of course not mistress. Just explaining why I didn't want to go straight for the throat, as it were. Anyway, the city council meets once a week, and if you lend me some magic, it should be simple enough to wring special concessions out of them...`
+    --> `L Oh, of course not, mistress. Just explaining why I didn't want to go straight for the throat, as it were. Anyway, the city council meets once a week, and if you lend me some magic, it should be simple enough to wring special concessions out of them...`
     -- <em>New location: <b>City Council</b></em>
   """
   apply: ->
