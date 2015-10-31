@@ -184,7 +184,7 @@ Job.IntroTakeOver::next = Page.IntroTakeOver = class IntroTakeOver extends Page
     --> `L A bra, mistress.`
 
     --> `D Right. A bra.`
-    -- `D You, slave, she's not to be without a cock inside her for twenty four hours.` I order one of my male slaves to attend to her. `D After that - you, bra-girl, return to the front desk. This place is closed for repairs until further notice. No more customers, but keep everything running like normal.`
+    -- `D You, slave, she's not to be without a cock inside her for twenty four hours.` I order one of my male slaves to attend to her. `D After that, you, bra-girl, return to the front desk. This place is closed for repairs until further notice. No more customers, but keep everything running like normal.`
     --> `D You can keep your shirt, since you'll be dealing with the outside world, but while you're behind that counter, no pants or underwear, ever.` Since I haven't actually mind controlled her, just added a hint of obedience and a pound of not-telling-anyone, I back my commands up with a threat. `D Anyone catches you with pants on inside this room, I'll make you work topless too.`
 
     -- Liana, perhaps sensing that I'm liable to keep ranting and raving and piling punishments on the hussy as long as that... thing... remains in my sight, banishes the bra with a spell.

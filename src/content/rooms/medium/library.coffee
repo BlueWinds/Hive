@@ -43,7 +43,7 @@ Job.Library::next = add class LibraryDaily extends Page
     if Math.random() < 0.75  or g.events.LibraryDaily?[0] is g.day then return false
     l = [
       """|| bg="Library/Belly.jpg"
-        -- "Can I help you find anything, #{sir}? M-my shirt? Yes, I-I suppose, if you wish..." """,
+        -- "Can I help you find anything, #{sir @worker}? M-my shirt? Yes, I-I suppose, if you wish..." """,
       """|| bg="Library/Empty.jpg"
         -- Books, books, books. Heart and soul of the amazing power of "California", Liana insists, but I'm not really a fan."""
     ]
