@@ -404,7 +404,7 @@ add class Whore extends Page
       """|| bg="Sycamore/WhoreMale2.jpg"
         -- """
       """|| bg="Sycamore/WhoreMale3.jpg"
-        -- Seriously, what sort of gut just carries a leash and collar in his pocket, in case he happens to stumble across some casual sex?
+        -- Seriously, what sort of guy just carries a leash and collar in his pocket, in case he happens to stumble across some casual sex?
         --> The awesome kind, clearly."""
       """|| bg="Sycamore/WhoreMale4.jpg"
         -- Busy day at the office, but still want to fuck? Call Dark Lady's Escorts now. We deliver."""
