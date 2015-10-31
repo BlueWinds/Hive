@@ -43,7 +43,7 @@ Job.Galleria::next = add class GalleriaDaily extends Page
       """|| bg="Galleria/2.jpg"
         -- There's a wide selection to suit a variety of tastes. Brown, black, redhead... hm. I guess they are all skinny young bitches. Oh well, I work with what I'm given."""
       """|| bg="Galleria/3.jpg"
-        -- Resting after a hard day's work. They may be slaves, but I they're treated well."""
+        -- Resting after a hard day's work. They may be slaves, but they're treated well."""
     ]
     if g.events.GalleriaVisitors
       c.push """|| bg="Galleria/4.jpg"
