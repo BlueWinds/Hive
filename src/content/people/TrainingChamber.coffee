@@ -98,7 +98,7 @@ add class ManWhore extends Person
   description: ->"""He's got a cock, an asshole and a mouth, and he's not afraid to have any of them used. He'd rather enjoy it, in fact."""
   image: sticky
   @images: [
-    'TrainingChamber/SS31.jpg'
-    'TrainingChamber/SS41.jpg'
-    'TrainingChamber/SS51.jpg'
+    'TrainingChamber/MH1.jpg'
+    'TrainingChamber/MH2.jpg'
+    'TrainingChamber/MH3.jpg'
   ]

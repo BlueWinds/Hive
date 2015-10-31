@@ -12,6 +12,7 @@ window.His = (p = lastP)-> lastP = p; if p.gender is 'f' then 'Her' else 'His'
 window.boy = (p = lastP)-> lastP = p; if p.gender is 'f' then 'girl' else 'boy'
 window.man = (p = lastP)-> lastP = p; if p.gender is 'f' then 'woman' else 'man'
 window.men = (p = lastP)-> lastP = p; if p.gender is 'f' then 'women' else 'men'
+window.sir = (p = lastP)-> lastP = p; if p.gender is 'f' then "ma'am" else 'sir'
 he.toString = he
 He.toString = He
 him.toString = him
@@ -20,6 +21,7 @@ His.toString = His
 boy.toString = boy
 man.toString = man
 men.toString = men
+sir.toString = sir
 
 statSchema = {type: 'number', gte: 0, lte: 100}
 
