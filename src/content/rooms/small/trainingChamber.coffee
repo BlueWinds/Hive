@@ -165,7 +165,7 @@ Job.TrainingChamber::next = add class TrainingChamberDaily extends Page
 add class Maid extends ResearchJob
   label: "Train Maids"
   progress: 250
-  text: ->"""Allows me to train <span class="virgins"></span> slaves into Maids at in my Training Chamber."""
+  text: ->"""Allows me to train <span class="virgins"></span> slaves into Maids at Training Chambers."""
 
 add class Maid extends Page
   text: ->"""|| bg="Library/Sexy1.jpg"

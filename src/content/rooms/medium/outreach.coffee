@@ -21,13 +21,10 @@ add class Outreach extends Job
 
   #{Page.statCheckDescription('lust', 30, Job.Outreach.next, @context)}"""
   people:
-    worker:
-      gender: is: 'f'
+    worker: {}
     worker2:
-      gender: is: 'f'
       optional: true
     worker3:
-      gender: is: 'f'
       optional: true
   stat: 'lust'
   difficulty: 30
