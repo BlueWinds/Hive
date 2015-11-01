@@ -1,6 +1,6 @@
 add class HolidayInn extends Place
   name: 'Holiday Inn'
-  description: "This place seems to be some sort of inn. It's not really the proper location for a ritual to resurrect me, but Liana suceeded, so I suppose it doesn't matter that much."
+  description: "This place seems to be some sort of inn. It's not really the proper location for a ritual to resurrect me, but Liana succeeded, so I suppose it doesn't matter that much."
   image: 'misc/emptyRoom.jpg'
   jobs: new Collection
   location: [655, 294]

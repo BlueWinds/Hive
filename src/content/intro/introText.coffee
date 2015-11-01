@@ -61,7 +61,7 @@ Place.HolidayInn::jobs.introLiana = Job.IntroFuckLiana = class IntroFuckLiana ex
     Liana: '|people|Liana'
   type: 'plot'
   label: 'Fuck Liana'
-  text: ->"""It's been too long since I had a good lay. Being dead for a few millenia really puts a fire in one's loins."""
+  text: ->"""It's been too long since I had a good lay. Being dead for a few millennia really puts a fire in one's loins."""
 
 Job.IntroFirstSlaves = class IntroFirstSlaves extends Job
   people:
