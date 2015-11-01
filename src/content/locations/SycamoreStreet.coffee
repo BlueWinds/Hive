@@ -184,7 +184,7 @@ add class Release extends Page
       """|| bg="Sycamore/Release1.jpg"
         -- Some markers, some rope, a public restroom... I wiped her memory of her time with me and left her there. I'm sure someone will let her out eventually, but for now... public use. Just giving back to the community which has given me so much.""",
       """|| bg="Sycamore/Release2.jpg"
-        -- A bit of magical soundproofing on the box so no one gets suspcious, a letter detailing her circumstances (half-trained slave needs new home), and a random address halfway across the country. Someone's day just got brighter.""",
+        -- A bit of magical soundproofing on the box so no one gets suspicious, a letter detailing her circumstances (half-trained slave needs new home), and a random address halfway across the country. Someone's day just got brighter.""",
       """|| bg="Sycamore/Release3.jpg"
         -- Special delivery for the college football team's locker room.""",
       """|| bg="Sycamore/Release4.jpg"
