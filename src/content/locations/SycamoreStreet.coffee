@@ -382,6 +382,8 @@ add class Whore extends Page
         -- Some girls go in for a more cute and innocent look. Works pretty well, especially when their clients learn they're not wearing underwear."""
       """|| bg="Sycamore/Whore5.jpg"
         -- Whore. She won't even open her mouth until he's ready to shove a cock in it."""
+      """|| bg="Sycamore/Whore6.jpg"
+        -- #{@pimp} gets a call from a guy we've seen before. He wants our girl to 'bring extra condoms this time.' Looks like she's in for a long night."""
     ] else if @w1 instanceof Person.Liana then [
       """|| bg="Liana/Whore1.jpg"
         -- While it's true that I've corrupted Liana to some extent, she somehow retains a core of purity and joy that perhaps I <em>could</em> touch, but really have no desire to. She's a powerful mage, a feisty temptress, smart and loyal and... I must be coming down with something.

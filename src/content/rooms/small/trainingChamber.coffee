@@ -94,6 +94,8 @@ Job.TrainingChamber::next = add class TrainingChamberDaily extends Page
         -- `D Honk-honk,` I squeeze her titties. She blushes and stammers something about "disrupting her concentration. Dominant with everyone else, putty in my hands - perfect."""
       """|| bg="TrainingChamber/F4.jpg"
         --"""
+      """|| bg="TrainingChamber/F5.jpg"
+        -- We threw our newest dominatrix a graduation party with some of the male slaves. Poor things. I don't think they knew what they were getting into."""
     ] else if @job.choice is 'Sadist' then [
       """|| bg="TrainingChamber/M1.jpg"
         -- A Sadist's training includes not only physical skills, but also mental ones. They need to be able to <em>look</em> scary."""
