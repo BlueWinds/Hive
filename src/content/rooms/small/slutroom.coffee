@@ -78,7 +78,7 @@ add class SlutroomFisting extends ResearchJob
   label: "Slutroom Fisting"
   progress: 200
   text: ->"""<span class="depravity">+1</span> per day for each slutroom.
-    <br>Repeat after me: I want to be stretched, I want to be taken, with your fist in my cunt by mind becomes vacant."""
+    <br>Repeat after me: I want to be stretched, I want to be taken, with your fist in my cunt my mind becomes vacant."""
 
 add class SlutroomFisting extends Page
   text: ->"""|| bg="Slutroom/Fisting1.jpg"
