@@ -70,7 +70,7 @@ Job.Milking.next.push add class MilkingDaily extends Page
       """|| bg="Milking/2.jpg"
         -- Pregnant cows are put in different positions throughout the work day to help ensure their health and the health of their children.""",
       """|| bg="Milking/3.jpg"
-        -- It's visitor's day! The milk store has a <em>very</em> popular customer loyalty program.""",
+        -- It's visitors' day! The milk store has a <em>very</em> popular customer loyalty program.""",
       """|| bg="Milking/4.jpg"
         -- Aww, looks like she hasn't accepted her now place yet. Don't worry, honey, you may have been kidnapped and brutally turned into human livestock, but you'll forget all about your old life in a month or two.""",
       """|| bg="Milking/5.jpg"
