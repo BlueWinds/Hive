@@ -5,7 +5,7 @@ add class AuctionHouse extends RoomJob
     depravity: -200
     women: -2
     men: -1
-  text: ->"""Selling slaves is an ancient tradition of mine. In addition to being fucking sexy, a slave auction is a great way to raise fast capital for further expansion. Liana tells me slavery is illegal in the Yousa (why does she wince every time I say her country's name?), so I'll have to modify the basic formula a bit, but still."""
+  text: ->"""Selling slaves is an ancient tradition of mine. In addition to being fucking sexy, a slave auction is a great way to raise fast capital for further expansion. Liana tells me slavery is illegal in the Oosay (why does she wince every time I say her country's name?), so I'll have to modify the basic formula a bit, but still."""
 
 add class AuctionHouse extends Page
   text: -> """|| bg="AuctionHouse/1.jpg"

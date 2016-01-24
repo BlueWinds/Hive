@@ -32,7 +32,7 @@ add class Zoning extends Page
     -- My poor brain. I've never seen a room filled with such boredom, seeping out of the walls and oozing into me like some boring-slime.
 
   || bg="Council/Vibrator.jpg"
-    --> It's a good thing I brought a bunch of slaves to keep me entertained, trying not to squirm in the audience as their vibrators wiggle and thrust in and out. Combining a touch of magic with the Yousa's sex toys is a promising field of study.
+    --> It's a good thing I brought a bunch of slaves to keep me entertained, trying not to squirm in the audience as their vibrators wiggle and thrust in and out. Combining a touch of magic with the Ooo-Essay's sex toys is a promising field of study.
 
     -- Liana draws on some of my power and slaps the old men with a bit of temporary suggestibility. `L Now, gentlemen, I know it's not on the agenda, but the north end of town is getting rather run down, isn't it? I'm sure you'll all be pleased to vote yes on my new ordinance for the promotion of industry. My mistress here will develop the area in accordance with...`
 
