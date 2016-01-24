@@ -45,7 +45,7 @@ Job.Slutroom::next = add class SlutroomDaily extends Page
         -- Looks like someone has snuck in and taken advantage of her. Excellent.""",
       """|| bg="Slutroom/4.jpg"
         -- Something is very wrong here. They have clothes - how the hell did they get those? I strip them bare immediately, of course.""",
-      """|| bg="Slutroom/mf.jpg"
+      """|| bg="Slutroom/MF.jpg"
         -- One of my males deserved a special reward. My sluts were more than happy to oblige.""",
     ]
 
