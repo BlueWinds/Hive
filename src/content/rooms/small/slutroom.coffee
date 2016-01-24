@@ -43,6 +43,10 @@ Job.Slutroom::next = add class SlutroomDaily extends Page
         -- The chains are purely decorative. They don't have any thoughts other than fucking each other silly. Just the way it should be.""",
       """|| bg="Slutroom/3.jpg"
         -- Looks like someone has snuck in and taken advantage of her. Excellent.""",
+      """|| bg="Slutroom/4.jpg"
+        -- Something is very wrong here. They have clothes - how the hell did they get those? I strip them bare immediately, of course.""",
+      """|| bg="Slutroom/mf.jpg"
+        -- One of my males deserved a special reward. My sluts were more than happy to oblige.""",
     ]
 
     """|| class="jobStart" auto="1800"
@@ -74,7 +78,7 @@ add class SlutroomFisting extends ResearchJob
   label: "Slutroom Fisting"
   progress: 200
   text: ->"""<span class="depravity">+1</span> per day for each slutroom.
-    <br>Repeat after me: I want to be stretched, I want to be taken, with your fist in my cunt by mind becomes vacant."""
+    <br>Repeat after me: I want to be stretched, I want to be taken, with your fist in my cunt my mind becomes vacant."""
 
 add class SlutroomFisting extends Page
   text: ->"""|| bg="Slutroom/Fisting1.jpg"

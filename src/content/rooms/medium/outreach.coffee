@@ -16,7 +16,7 @@ add class Outreach extends Page
 
 add class Outreach extends Job
   label: "Outreach Center"
-  text: -> """Snatching women of the street is effective, but I can't do it too often or people will stop going out alone. A nice "Hiring" sign though and some cute bimbos, though? Attracts young people like flies to honey.
+  text: -> """Snatching women of the street is effective, but I can't do it too often or people will stop going out alone. A nice "Hiring" sign and some cute bimbos, though? Attracts young people like flies to honey.
   <br><em>Recruit slaves safely.</em>
 
   #{Page.statCheckDescription('lust', 30, Job.Outreach.next, @context)}"""
