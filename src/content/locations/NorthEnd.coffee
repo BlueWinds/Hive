@@ -28,7 +28,7 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal1 extends Page
   text: ->"""|| bg="Liana/Happy.jpg"
   -- `L I found her.`
   --> `D Found who?`
-  --> `L My ecconomics professor. She flunked me. She's part of the reason I summoned you to get revenge. I saw her in the slave pens.`
+  --> `L My economics professor. She flunked me. She's part of the reason I summoned you to get revenge. I saw her in the slave pens.`
   --> `D I thought you summoned me because you were my loyal servant.`
 
   -- `L Um... yes, that too mistress. But you promised me I could have everyone from the university to do with as I see fit.`
@@ -37,7 +37,7 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal1 extends Page
   --> `D ...`
 
   -- `L Oh, um... yeah, I guess I did say I just wanted the dean's office. But may I have her anyway, mistress?`
-  --> I have no idea what a Dean is, but she asked so cutely I can't help but agree. Well, that may be the wrong term for the sadistic gleam in her eye... but "cute" is my story and I'm sticking too it.
+  --> I have no idea what a Dean is, but she asked so cutely I can't help but agree. Well, that may be the wrong term for the sadistic gleam in her eye... but "cute" is my story and I'm sticking to it.
   --> `D Very well.`
   """
 
@@ -56,7 +56,7 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal3 extends Page
   || bg="Council/Professor1.jpg"
     --> I'm no longer in my oh-so-comfortable room - as I write, I'm huddling under the bridge she chained me to. I've got nothing to my name except this diary, a pen, a sheet of prices, and a box to lock them in. The sheet of prices is the worst thing.
 
-    --| <table class="table table-striped"><tr><td>$10</td><td>500ml cum (fresh!)</td></tr><tr><td>$50</td><td>Bottled water</td></tr><tr><td>$50</td><td>New pen and additional paper</td></tr><tr><td>$120</td><td>Loaf of bread</td></tr><tr><td>$800</td><td>Panties</td></tr><tr><td>$1000</td><td>One Night inside</td></tr><tr><td>$15000</td><td>One letter of her name</td></tr></table>
+    --| <table class="table table-striped"><tr><td>$10</td><td>500ml cum (fresh!)</td></tr><tr><td>$50</td><td>Bottled water</td></tr><tr><td>$50</td><td>New pen and additional paper</td></tr><tr><td>$120</td><td>Loaf of bread</td></tr><tr><td>$800</td><td>Panties</td></tr><tr><td>$1000</td><td>One night inside</td></tr><tr><td>$15000</td><td>One letter of her name</td></tr></table>
 
     Etc. I've skipped a bunch. It goes on.
 
@@ -66,9 +66,9 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal3 extends Page
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal4 extends Page
   text: ->"""|| bg="Council/Professor1.jpg"
     -- Dear diary.
-    --> Today I sucked a cock for $20. How humiliating. But... I'm really thirsty. $20 isn't much, but it's better than nothing. Would she really let me die, if I refused to humiliate myself like this? I don't know, and honestly, I'm kind of scared to find out. Who knew we had such students at our school? I guess it only goes to shew that there's a bit of demon in all of us... Oh, wait, I have to go. It looks like that guy is back, and he brought friends. Horrible as it may be, I need the money.
+    --> Today I sucked a cock for $20. How humiliating. But... I'm really thirsty. $20 isn't much, but it's better than nothing. Would she really let me die, if I refused to humiliate myself like this? I don't know, and honestly, I'm kind of scared to find out. Who knew we had such students at our school? I guess it only goes to show that there's a bit of demon in all of us... Oh, wait, I have to go. It looks like that guy is back, and he brought friends. Horrible as it may be, I need the money.
 
-    --> Wow, that was disgusting. I've now sucked more cocks today than I have in the rest of my life put together. My boyfriends always wanted me to, but I never really like the taste. At least I have enough money now to affort some scanty meals and a bottle of water when she comes to check up on me in a few hours.
+    --> Wow, that was disgusting. I've now sucked more cocks today than I have in the rest of my life put together. My boyfriends always wanted me to, but I never really like the taste. At least I have enough money now to afford some scanty meals and a bottle of water when she comes to check up on me in a few hours.
   """
 
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal5 extends Page
@@ -76,7 +76,7 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal5 extends Page
     -- Dear diary.
     --> Today has been a very, very bad day. I guess there's some sort of big event? Anyway, I saw hardly anyone at all, and they were all busy. I only managed to earn $40 today. Combined with the $30 I have left from yesterday... it's not enough for food. Shit. I'm hungry though, so... oh god, I can't belive I'm acutally going to order cum for food. I miss my old life. But you do what you have to.
 
-    --> I've also given up hope of rescue. It seems like there's a spell around me - I don't know what's wrong with these people, but no one seems to care if I ask for help. I think I'm going to bu stuck here until I can buy my way out. Fuck. $15000 per letter of her name? I don't even know how long it is! I'm going to be here for a while.
+    --> I've also given up hope of rescue. It seems like there's a spell around me - I don't know what's wrong with these people, but no one seems to care if I ask for help. I think I'm going to be stuck here until I can buy my way out. Fuck. $15000 per letter of her name? I don't even know how long it is! I'm going to be here for a while.
   """
 
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal6 extends Page
@@ -97,10 +97,10 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal7 extends Page
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal8 extends Page
   text: ->"""|| bg="Council/Professor3.jpg"
     -- Dear diary.
-    --> I had quite a line today! Seems that word has spread about the naked woman under the bridge who'll do anything you ask. I heard some people muttering about the prices - apparently there are more prostitutes in town than I'd thought - so I lowered my prices yesterday to make sure everyone keeps coming back. Today I ended up takeing everone double - front door and ass - just to keep up with demand.
+    --> I had quite a line today! Seems that word has spread about the naked woman under the bridge who'll do anything you ask. I heard some people muttering about the prices - apparently there are more prostitutes in town than I'd thought - so I lowered my prices yesterday to make sure everyone keeps coming back. Today I ended up taking everyone double - front door and ass - just to keep up with demand.
 
   || bg="Council/Professor2.jpg"
-    --> I'm so sore, and really tired, but with $15000... tomorrow I'll be ablo to afford the first letter of her name. Maybe one letter will be enough to jog my memory?
+    --> I'm so sore, and really tired, but with $15000... tomorrow I'll be able to afford the first letter of her name. Maybe one letter will be enough to jog my memory?
   """
 
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal9 extends Page

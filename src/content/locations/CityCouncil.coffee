@@ -68,7 +68,7 @@ add class Zoning extends Page
 #   text: ->"""|| bg="Council/Building.jpg"
 #     -- My poor brain. I've never seen a room filled with such boredom, seeping out of the walls and oozing into me like some boring-oozing-slime-brain-hurty-thingie. I'm getting dumber just thinking about it.
 #     --> I'm being patient, though, hardly fidgeting at all while Liana deals with the formalities. `l Now, gentlemen, I'm here to speak in support of ordinance 12487...`
-#     --> Blah blah blah. They vote yes, of course - how could they not, when none of the are mages and the room's simply humming with power, twisting everyone who isn't me around her cute little pinky.
+#     --> Blah blah blah. They vote yes, of course - how could they not, when none of them are mages and the room's simply humming with power, twisting everyone who isn't me around her cute little pinky.
 #
 #     -- `D Is it done?`
 #     --> `L Yes mistress.`
