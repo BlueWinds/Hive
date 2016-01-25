@@ -27,7 +27,7 @@ add class Galleria extends Job
   label: "Galleria"
   text: ->"""18 hours :ahem: using the facilities should help remind them why we do what we do..
 
-  <span class="lust">+#{effect()} Lust</span>, <span class="depravity">-1</span> per current <span class="lust">lust</span>."""
+  <span class="lust">+#{effect()} Lust</span>, <span class="depravity">#{if g.events.GalleriaVisitors then '-0.5' else '-1'}</span> per current <span class="lust">lust</span>."""
   people:
     worker: matches: (w)-> g.depravity >= trainingCost(w) and w.lust < w.max.lust
   type: 'boring'
@@ -74,7 +74,7 @@ Job.Galleria::next = add class GalleriaDaily extends Page
 add class GalleriaVisitors extends ResearchJob
   conditions:
     '|events|Galleria': {}
-  label: "Through the wall"
+  label: "Galleria Visitors"
   progress: 600
   text: ->"""<span class="depravity">-50% </span> cost when visiting the galleria.
   <br>Hmm. It seems like the girls could use more work. Let's invite people from the town to pay them a visit."""

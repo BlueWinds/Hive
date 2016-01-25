@@ -39,13 +39,13 @@ Job.Rest.next.push add class Rest2 extends Page
     -- What a slut. She starts moaning as soon as I grope her.
     --> Well, to be fair that probably has more to do with the dildo I've had her wearing underneath her panties all day. But still...
     --> `D Slut.`
-    --> <em>Liana: <span class="lust">+1 Lust</span><br><span class="depravity">+15</span></em>
+    --> <em>Liana: <span class="lust">+1 Lust</span><br><span class="depravity">+25</span></em>
   """
   apply: ->
     super()
     g.people.Liana.add('lust', 1)
   effects:
-    depravity: 15
+    depravity: 25
 
 add class Raid extends Job
   place: 'HolidayInn'
