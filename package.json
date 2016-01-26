@@ -1,13 +1,15 @@
 {
   "name": "Hive",
   "description": "Adult game",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": "BlueWinds",
   "devDependencies": {
     "async": "1.x",
+    "coffeelint": "1.x",
     "grunt": "0.4.x",
+    "grunt-bump": "0.7.x",
     "grunt-cli": "0.1.x",
-    "grunt-coffeelint": "git+https://git@github.com/gobie/grunt-coffeelint.git",
+    "grunt-coffeelint": "git+https://git@github.com/primazp/grunt-coffeelint.git",
     "grunt-contrib-clean": "0.x",
     "grunt-contrib-coffee": "0.x",
     "grunt-contrib-compress": "0.x",
