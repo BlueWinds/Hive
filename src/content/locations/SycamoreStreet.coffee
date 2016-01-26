@@ -368,6 +368,7 @@ add class Whore extends Page
   conditions:
     depravity: fill: -> whoreDepravity(g.last.context)
     w1: {}
+    pimp: {}
   text: ->
     if Math.random() < 0.75 then return false
     c = if @w1 instanceof Person.SexSlave then [

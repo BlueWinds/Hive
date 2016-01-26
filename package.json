@@ -7,7 +7,6 @@
     "async": "1.x",
     "coffeelint": "1.x",
     "grunt": "0.4.x",
-    "grunt-bump": "0.7.x",
     "grunt-cli": "0.1.x",
     "grunt-coffeelint": "git+https://git@github.com/primazp/grunt-coffeelint.git",
     "grunt-contrib-clean": "0.x",
