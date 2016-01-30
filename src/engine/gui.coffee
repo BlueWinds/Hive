@@ -95,6 +95,11 @@ $.fn?.addTooltips = ->
     placement: 'right'
     container: 'page.active'
   )
+  $('text', @).not('.full').tooltip(
+    title: "'h' to hide"
+    placement: 'right'
+    container: 'body'
+  )
 
 errorPage = (page, error)->
   element = $.render """||
@@ -122,11 +127,15 @@ $ ->
   setTimeout -> $(window).resize()
 
   c.on 'click', (e)->
-    page = $(e.currentTarget)
-
-    if e.clientX >= page.offset().left + page.width() - 28 and
-        e.clientY <= page.offset().top + 34
+    if $('page.active text.min').length
+      $('page.active text').removeClass 'min'
+    else if e.clientX >= c.offset().left + c.width() - 28 and
+        e.clientY <= c.offset().top + 34
       considerGoto(-1)
+    else if $('page.active text').length and
+        e.clientX >= c.offset().left + c.width() - 22 and
+        e.clientY >= c.offset().top + c.height() - 29
+      $('page.active text').addClass 'min'
     else
       considerGoto(1)
 
@@ -232,3 +241,5 @@ keyPress = (e)->
   # Left, up
   else if e.keyCode in [37, 38]
     considerGoto(-1)
+  else if e.keyCode is 72
+    $('page.active text').toggleClass 'min'

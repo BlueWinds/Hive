@@ -192,3 +192,60 @@ add class Fire extends Page
     size = RoomJob[type]::size
     room = Job[size.capitalize() + 'Room']
     g.map[@context.location].jobs[@context.choice] = new room
+
+add class VisitGym extends Job
+  place: 'HolidayInn'
+  conditions:
+    '|events|SexyGym': {}
+    '|map|HolidayInn|jobs|gym': matches: (j)-> j instanceof Job.Gym
+  people:
+    'Dark Lady': is: Person.DarkLady
+    Sadist:
+      is: Person.Sadist
+    'Sadist ':
+      is: Person.Sadist
+    'Sadist  ':
+      is: Person.Sadist
+  type: 'plot'
+  label: "A visitor"
+  text: ->"""I smell... I smell a bra. In the gym. Someone's getting punished for this, and for once I don't think it's Liana."""
+
+add class VisitGym extends Page
+  text: ->"""|| bg="Gym/Treadmills.jpg"
+    -- Ever since I started exercising my girls there, the gym has been quite popular with the locals. Usually the men, of course, who aren't at all adverse to the fact that some of the sluts like to take their shirts off when it gets too hot.
+
+    For some reason it's quite hard to heat the place up with magic - a spell or somesuch keeps sucking all the heat out. I'll figure it out someday.
+
+    -- Today, though, something is amiss.
+    --> `D Her.` I point, and security moves to surround her.
+    --> ` Um... I, uh, I'm looking for one of my friends? I think she's here? Can... can you help... eep!` She struggles a little bit as "security" drags her into the back room. Now, how shall I punish her for wearing a bra in my...
+
+  || bg="Gym/VisitCasual.jpg"
+    -- ` Excuse me, Ms., do you know what just happened?` My my, what a delightful piece of work she is. And not even one of mine!
+    --> `D She was not feeling well. I'm just having the doctor take a look at her for a moment,`
+    --> ` Oh. She's my friend, I think she was looking for me.`
+    --> `D Ah. Well, you're welcome to come back and speak with her if you like. She may be tied up for while.`
+
+  || bg="Gym/VisitFingering1.jpg"
+    -- We step into one of the gym's back offices, and the friend immediately blushes bright crimson. ` Kateyln?!`
+  || bg="Gym/VisitFingering2.jpg"
+    --> ` A-Amanda? What're you doing here!` Kateyln tries to stand, but a strong hand from the "doctor" (and another busy one) keeps her in place.
+    --> They stare at eachother flabbergasted. This is delightful. Amanda just can't seem to move. Kateyln can't help but moan. I grin and watch their increasingly mortified expressions.
+
+  || bg="Gym/VisitGangbang1.jpg"
+    -- Also, it gives security time to get behind Amanda. One of them throws her onto a bed and rips open her shirt.
+    --> `D Amanda. As you well know, there're no bras allowed in the gym. And I can see,` I grope Kateyln's chest, `D You didn't tell your friend. Now you both need to be punished for violating the rules.`
+    --> ` Violating the rules? What sort of fucking rule is... Yahhh!`
+
+  || bg="Gym/VisitMortified.jpg"
+    -- Cocks. Not just fun, also great for shutting up bitches. `D So as I was saying. Amanda, you get superfucked. Kateyln, you knew the rule and let her bring one in anyway. You get fucked.`
+
+  || bg="Gym/VisitGangbang1.jpg"
+    --> ` Wait, I didn't sign up, I just came to find my friend! What's wrong with you people...`
+
+  || bg="Gym/VisitGangbang2.jpg"
+    --> Her complaints don't really help her, nor does closing her eyes. She can still hear her friend getting fucked right next to her. Kateyln, on the other hand, can't seem to stop staring in horrified fascination as her friend is violated by three strangers in front of her. I grin and leave them to it.
+  """
+  effects:
+    remove:
+      '|map|HolidayInn|jobs|VisitGym': Job.VisitGym

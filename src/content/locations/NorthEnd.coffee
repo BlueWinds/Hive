@@ -14,8 +14,7 @@ add class ProfessorsOrdeal extends Job
   place: 'NorthEnd'
   conditions:
     '|events': matches: (e)->
-      notFinished = not e.ProfessorsOrdeal11
-      return notFinished and (not e.ProfessorsOrdeal or e.ProfessorsOrdeal.length < 2 or e.ProfessorsOrdeal[0] < (g.day - 4))
+      return not e.ProfessorsOrdeal or e.ProfessorsOrdeal.length < 2 or e.ProfessorsOrdeal[0] < (g.day - 4)
   people:
     Liana: '|people|Liana'
   type: 'plot'
@@ -126,3 +125,6 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal11 extends Page
   || bg="Council/Professor3.jpg"
     --> Anyway, this will be my last entry. I'm running out of paper, and don't see why I should bother to get more. It's been fun reading back through my earlier entries - god, I used to be such a prude! Time to go, though. I see one of my regulars coming, and promised him something extra special for his complimentary 100th visit.
   """
+  effects:
+    remove:
+      '|map|NorthEnd|jobs|ProfessorsOrdeal': Job.ProfessorsOrdeal
