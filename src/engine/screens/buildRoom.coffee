@@ -7,7 +7,7 @@ Page.EmptyRoom = class EmptyRoom extends Page
 
     Array::sort.call(jobs, Job.jobSort)
 
-    page = $.render """|| speed="slow" class="screen sail" bg="misc/emptyRoom.jpg"
+    page = $.render """|| speed="slow" class="screen sail" bg="misc/emptyRoom"
       <div class="col-xs-8 col-xs-offset-2"></div>
     """
     $('.col-xs-8', page).append jobs

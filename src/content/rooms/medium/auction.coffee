@@ -8,7 +8,7 @@ add class AuctionHouse extends RoomJob
   text: ->"""Selling slaves is an ancient tradition of mine. In addition to being fucking sexy, a slave auction is a great way to raise fast capital for further expansion. Liana tells me slavery is illegal in the Oosay (why does she wince every time I say her country's name?), so I'll have to modify the basic formula a bit, but still."""
 
 add class AuctionHouse extends Page
-  text: -> """|| bg="AuctionHouse/1.jpg"
+  text: -> """|| bg="AuctionHouse/1"
     -- To avoid attracting the notice of anyone who might be inclined to object, I've warded the auction house with powerful spells. As soon as you leave, the memory fades to nothing more than a sexy dream - unless you've bought a slave, in which case you're in too deep to back out.
   """
 
@@ -44,15 +44,15 @@ Job.AuctionHouse.next['good'] = add class AuctionGood extends Page
     Merchandise: {}
     price: fill: -> sellPrice @Merchandise
   text: -> Math.choice([
-    """|| bg="AuctionHouse/1.jpg"
+    """|| bg="AuctionHouse/1"
       -- On her hands and knees, this shows off her charms for the customers, and they snapped her right up.""",
-    """|| bg="AuctionHouse/2.jpg"
+    """|| bg="AuctionHouse/2"
       -- All the slaves sold here are highly trained - the chains and gags are hardly necessary, but they do add a certain ambiance to the proceedings that I'd be loath to do without."""
-    """|| bg="AuctionHouse/3.jpg"
+    """|| bg="AuctionHouse/3"
       -- She displays her obedience for her new (potential) owner."""
-    """|| bg="AuctionHouse/4.jpg"
+    """|| bg="AuctionHouse/4"
       -- "And next up we have this wonderful slut and her sister. Own both in the bargain of the century. Shall we start the bidding at $25,000... $25,000 from the gentlemen up front. $30,000... yes, I have $30,000..." """
-    """|| bg="AuctionHouse/5.jpg"
+    """|| bg="AuctionHouse/5"
       -- "Yes she is, the cutest little slut you ever did see. Ladies and gentlemen, just look at how wet she is at the prospect of being owned by one of you. Shall I ask her to do anything else before we begin? Yes? Good idea sir, someone bring me a butt plug. Now, let's start the bidding at $20,000. Come on, don't be shy..." """
     ]) + "\n<em class='depravity'>+#{@price}</em>"
   apply: ->
@@ -65,5 +65,5 @@ Job.AuctionHouse.next['good'] = add class AuctionGood extends Page
 Job.AuctionHouse.next['bad'] = add class AuctionBad extends Page
   conditions:
     Merchandise: {}
-  text: ->"""|| bg="AuctionHouse/6.jpg"
+  text: ->"""|| bg="AuctionHouse/6"
     -- The #{@Merchandise.name.toLowerCase()} didn't sell today - quite a shame, but no one was willing to shell out a fair price for the #{him}. Oh well, there's always tomorrow."""

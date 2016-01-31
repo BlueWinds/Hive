@@ -19,7 +19,7 @@ Page.ResearchChoice = class ResearchChoice extends Page
     Array::sort.call(jobs, Job.jobSort)
 
 
-    page = $.render """|| speed="slow" class="screen sail" bg="Laboratory/1.jpg"
+    page = $.render """|| speed="slow" class="screen sail" bg="Laboratory/1"
       <div class="col-xs-8 col-xs-offset-2 clearfix no-float"></div>
     """
     $('.col-xs-8', page).append jobs
@@ -68,12 +68,12 @@ research = (job, progress)->
 Place.Research = Game::map.Research = class Research extends Place
   name: 'Research Options'
   description: -> false
-  image: 'misc/emptyRoom.jpg'
+  image: 'misc/emptyRoom'
 
   destinations: new Collection
   jobs: new Collection # Unlike normal locations, this collection takes ResearchJobs rather than normal Jobs
   location: [0, 0]
 
 Page.ResearchContinues = class ResearchContinues extends Page
-  text: ->"""|| bg="Laboratory/#{Math.choice ['1.jpg', '2.jpg']}"
+  text: ->"""|| bg="Laboratory/#{Math.choice ['1', '2']}"
     -- Research continues on #{g.goal.label}. #{g.goal.progress} points remaining."""

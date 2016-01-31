@@ -1,7 +1,7 @@
 add class HolidayInn extends Place
   name: 'Holiday Inn'
   description: "This place seems to be some sort of inn. It's not really the proper location for a ritual to resurrect me, but Liana succeeded, so I suppose it doesn't matter that much."
-  image: 'misc/emptyRoom.jpg'
+  image: 'misc/emptyRoom'
   jobs: new Collection
   location: [655, 294]
   destinations: new Collection
@@ -23,7 +23,7 @@ add class Rest extends Job
   @next: []
 
 Job.Rest.next.push add class Rest1 extends Page
-  text: ->"""|| bg="Liana/Rip.jpg"
+  text: ->"""|| bg="Liana/Rip"
     -- Is it just me, or have her breasts grown a bit? It might be all the recent exposure to lust magic - that has been known to happen.
     --> I spend a few minutes mauling her breasts before moving on to her clit. I give that a good flick, then order her to keep going on her own. She tends to slack off over time, so I have to keep an eye on her and occasionally remind her how hard I want her twisting her own nipples.
       --> <em>Liana: <span class="lust">+1 Lust</span><br><span class="depravity">+25</span></em>
@@ -35,7 +35,7 @@ Job.Rest.next.push add class Rest1 extends Page
     depravity: 25
 
 Job.Rest.next.push add class Rest2 extends Page
-  text: ->"""|| bg="Liana/Grope.jpg"
+  text: ->"""|| bg="Liana/Grope"
     -- What a slut. She starts moaning as soon as I grope her.
     --> Well, to be fair that probably has more to do with the dildo I've had her wearing underneath her panties all day. But still...
     --> `D Slut.`
@@ -68,9 +68,9 @@ Job.Raid.next.push add class Raid1 extends Page
   text: ->"""||
     -- `D Ok. Here's what we're going to do. You get them to open the door, lure them into their back room. I'll follow you in fifteen minutes, and take care of them while they're distracted.`
     --> `L How am I supposed to do that, mistress?`
-  || bg="Liana/noPants.jpg"
+  || bg="Liana/noPants"
     --> I push her out the door, then gesture at her pants. They disappear. She's not wearing any underwear, of course - she never gets those anymore. `D Use your imagination, dear.`
-  || bg="Liana/2guys.jpg"
+  || bg="Liana/2guys"
     -- When I finally arrive to rescue her, Liana has them well... distracted. She's a good girl.
       --> <em class="men">+3</em>
   """
@@ -80,12 +80,12 @@ Job.Raid.next.push add class Raid1 extends Page
     men: 3
 
 Job.Raid.next.push add class Raid2 extends Page
-  text: ->"""|| bg="Liana/Happy.jpg"
+  text: ->"""|| bg="Liana/Happy"
     -- `L I just saw someone check in to room 110. She's really cute, mistress, and we used to be friends. Can we take her? I want to play.`
     --> `L Oh, and... um... she's all alone. I don't think we need to do anything special?`
     --> It's true, none of the embarrassing "distractions" I've asked her to do so far have been actually <em>necessary,</em> though they have been entertaining for me, and that's a pretty good definition of "necessity." Regardless, I pat Liana on the head. `D She's all yours.`
 
-  || bg="Inn/Hogtie.jpg"
+  || bg="Inn/Hogtie"
     -- I crack the door open a few minutes later to see how Liana's doing with my new slave. She's doing fine.
     --> `L Going home to your family for the weekend, Jamie? No, I don't think so. I think you're going to be a sex slave now. Make fun of my hair, will you...` Liana shoves her onto her back with one foot, and delivers a vicious slap across the breast.
     --> I close the door quietly with a smile. Best give them some more time to get reacquainted.
@@ -101,7 +101,7 @@ Job.Raid.next.push add class Raid3 extends Page
     -- Sometimes, the simplest methods are best.
     --> Find a weak mind, just brimming with desire to experiment for the first time.
     --> Pump in lust magic.
-  || bg="Inn/Fisting.jpg"
+  || bg="Inn/Fisting"
     --> Collect her and her stronger willed friend while they're distracted, but before the one on top can lose her virginity.
     -- <em class="virgins">+1</em>
     <em class="women">+1</em>
@@ -116,7 +116,7 @@ Job.Raid.next.push add class Raid4 extends Page
   text: ->"""||
     -- For once, I'm in the mood to do the dirty work myself. Liana follows on my heels as I head down the hall, looking for an occupied room we haven't taken possession of yet. One door in particular calls out to me, I unlock the door with a touch (these locks are pathetic, nothing like the solid latches or bars I remember from the last time I wandered the world).
 
-  || bg="Inn/Computer.jpg"
+  || bg="Inn/Computer"
     -- Sometimes it's too simple. She's half naked at her desk, chain trailing from her neck, touching herself and moaning.
     --> While I drain her mind, Liana examines the shining box on the table. `L She was talking with her mistress online.`
     --> Slut. She'll be much happier with a real mistress to serve than a crazy magical lightning box.
@@ -128,11 +128,11 @@ Job.Raid.next.push add class Raid4 extends Page
       '|map|HolidayInn|jobs|112': Job.SmallRoom
 
 Job.Raid.next.push add class Raid5 extends Page
-  text: ->"""|| bg="Inn/Cuckold.jpg"
+  text: ->"""|| bg="Inn/Cuckold"
     -- The door opens.
     --> Liana blinks in surprise.
     --> The man blinks in surprise.
-  || bg="Slutroom/Oral3.jpg"
+  || bg="Slutroom/Oral3"
     --> His former girlfriend, busy slurping on the pussy I assigned her a few days ago, doesn't notice anyone else in the room.
     -- Before he can say anything, I hit him over the back of the head with a metal cannister. It would have been awkward if he'd screamed, and the girl's busy slurping and shouldn't be distracted, and now I have a bonus slave. Everyone wins.
     --> <em class="men">+1</em>
@@ -181,9 +181,9 @@ add class Fire extends Page
     -- `L Wait, is... is that a box of matches?`
     --> `D I'm redecorating the #{g.map[@location].jobs[@choice].label}.`
     --> `L Can I smash everything first?`
-  ||  bg="Liana/Happy.jpg"
+  ||  bg="Liana/Happy"
     --> How can I say no to a request like that? I hand her a baseball bat and the box of matches for when she's done.
-  || bg="Liana/Fire.jpg"
+  || bg="Liana/Fire"
     -->
     """
   apply: ->
@@ -211,7 +211,7 @@ add class VisitGym extends Job
   text: ->"""I smell... I smell a bra. In the gym. Someone's getting punished for this, and for once I don't think it's Liana."""
 
 add class VisitGym extends Page
-  text: ->"""|| bg="Gym/Treadmills.jpg"
+  text: ->"""|| bg="Gym/Treadmills"
     -- Ever since I started exercising my girls there, the gym has been quite popular with the locals. Usually the men, of course, who aren't at all adverse to the fact that some of the sluts like to take their shirts off when it gets too hot.
 
     For some reason it's quite hard to heat the place up with magic - a spell or somesuch keeps sucking all the heat out. I'll figure it out someday.
@@ -220,30 +220,30 @@ add class VisitGym extends Page
     --> `D Her.` I point, and security moves to surround her.
     --> ` Um... I, uh, I'm looking for one of my friends? I think she's here? Can... can you help... eep!` She struggles a little bit as "security" drags her into the back room. Now, how shall I punish her for wearing a bra in my...
 
-  || bg="Gym/VisitCasual.jpg"
+  || bg="Gym/VisitCasual"
     -- ` Excuse me, Ms., do you know what just happened?` My my, what a delightful piece of work she is. And not even one of mine!
     --> `D She was not feeling well. I'm just having the doctor take a look at her for a moment,`
     --> ` Oh. She's my friend, I think she was looking for me.`
     --> `D Ah. Well, you're welcome to come back and speak with her if you like. She may be tied up for while.`
 
-  || bg="Gym/VisitFingering1.jpg"
+  || bg="Gym/VisitFingering1"
     -- We step into one of the gym's back offices, and the friend immediately blushes bright crimson. ` Kateyln?!`
-  || bg="Gym/VisitFingering2.jpg"
+  || bg="Gym/VisitFingering2"
     --> ` A-Amanda? What're you doing here!` Kateyln tries to stand, but a strong hand from the "doctor" (and another busy one) keeps her in place.
     --> They stare at eachother flabbergasted. This is delightful. Amanda just can't seem to move. Kateyln can't help but moan. I grin and watch their increasingly mortified expressions.
 
-  || bg="Gym/VisitGangbang1.jpg"
+  || bg="Gym/VisitGangbang1"
     -- Also, it gives security time to get behind Amanda. One of them throws her onto a bed and rips open her shirt.
     --> `D Amanda. As you well know, there're no bras allowed in the gym. And I can see,` I grope Kateyln's chest, `D You didn't tell your friend. Now you both need to be punished for violating the rules.`
     --> ` Violating the rules? What sort of fucking rule is... Yahhh!`
 
-  || bg="Gym/VisitMortified.jpg"
+  || bg="Gym/VisitMortified"
     -- Cocks. Not just fun, also great for shutting up bitches. `D So as I was saying. Amanda, you get superfucked. Kateyln, you knew the rule and let her bring one in anyway. You get fucked.`
 
-  || bg="Gym/VisitGangbang1.jpg"
+  || bg="Gym/VisitGangbang1"
     --> ` Wait, I didn't sign up, I just came to find my friend! What's wrong with you people...`
 
-  || bg="Gym/VisitGangbang2.jpg"
+  || bg="Gym/VisitGangbang2"
     --> Her complaints don't really help her, nor does closing her eyes. She can still hear her friend getting fucked right next to her. Kateyln, on the other hand, can't seem to stop staring in horrified fascination as her friend is violated by three strangers in front of her. I grin and leave them to it.
   """
   effects:

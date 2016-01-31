@@ -9,7 +9,7 @@ add class Milking extends RoomJob
   text: ->"""While human women don't usually produce that much milk, I find the humiliation delightful, and the rows of distended breasts and chained cunts ready for use is its own reward."""
 
 add class Milking extends Page
-  text: -> """|| bg="Milking/5.jpg"
+  text: -> """|| bg="Milking/5"
     -- Cowgirls. Milking machines. Sweet. Slutrooms are great, but I can pull a whole lot more sex magic out of a room stuffed to the brim with constantly stimulated and milked women than I can from just two slaves.
   """
 
@@ -46,7 +46,7 @@ Job.Milking.next.push add class MilkingAdd extends Page
   text: ->
     """|| class="jobStart" auto="1800"
       <h4>Milking Barn</h4>
-    || bg="Milking/Add.jpg"
+    || bg="Milking/Add"
       -- Fresh meat for a new milking stall. Don't worry, her breasts will fill out soon enough.
       <em><span class="women">-1</span>, <span class="depravity">+1</span> daily</em>
     """
@@ -65,15 +65,15 @@ Job.Milking.next.push add class MilkingDaily extends Page
         <h4>Milking Barn</h4>
 
     """ +  Math.choice [
-      """|| bg="Milking/1.jpg"
+      """|| bg="Milking/1"
         -- The cows need to be stimulated at least once an hour for optimum production. It's a demanding job, but a combination of male and female staff keep them working at their full potential 12 hours a day.""",
-      """|| bg="Milking/2.jpg"
+      """|| bg="Milking/2"
         -- Pregnant cows are put in different positions throughout the work day to help ensure their health and the health of their children.""",
-      """|| bg="Milking/3.jpg"
+      """|| bg="Milking/3"
         -- It's visitors' day! The milk store has a <em>very</em> popular customer loyalty program.""",
-      """|| bg="Milking/4.jpg"
+      """|| bg="Milking/4"
         -- Aww, looks like she hasn't accepted her now place yet. Don't worry, honey, you may have been kidnapped and brutally turned into human livestock, but you'll forget all about your old life in a month or two.""",
-      """|| bg="Milking/5.jpg"
+      """|| bg="Milking/5"
         -- Happy cows are productive cows! After their mandatory two hour exercise break, look at how excited they are to be strapped back in!""",
     ]
   effects:
@@ -88,7 +88,7 @@ add class ExtraPens extends RoomJob
   <br>The architect was an idiot. Of course we want the cows crammed in tightly. These are sexy cows, and if they want to caress each other, we should let them!"""
 
 add class ExtraPens extends Page
-  text: ->"""|| bg="Milking/5.jpg"
+  text: ->"""|| bg="Milking/5"
     -- There once was a farmer named Jill,
       Who used a milking machine for a thrill.
       She let out a great shout
@@ -105,7 +105,7 @@ add class MilkingPregnancy extends ResearchJob
   <br>Who in the world thought that giving the milk cows contraceptives was a good idea? I mean, sure we have to redesign a bit to accommodate the different body shape, but..."""
 
 add class MilkingPregnancy extends Page
-  text: ->"""|| bg="Milking/2.jpg"
+  text: ->"""|| bg="Milking/2"
     -- Q. Should I have a baby after 35?
        A. No, 35 children is enough.
 

@@ -72,7 +72,7 @@ window.Game = class Game extends GameObject
   women: 0
   virgins: 0
   version: 0
-  mapImage: "Map.jpg"
+  mapImage: "Map"
 
   getItem: (path)->
     if typeof path is 'string'

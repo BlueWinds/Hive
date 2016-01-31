@@ -16,10 +16,10 @@ add class Galleria extends RoomJob
   text: ->"""Women get used as sex objects, men get to have their way with sex objects. Either way, they can increase their <span class="lust">lust</span> here."""
 
 add class Galleria extends Page
-  text: -> """|| bg="Galleria/3.jpg"
+  text: -> """|| bg="Galleria/3"
     -- `D Sluts, atteeeeen-tion!`
     --> `D Saaaaaal-ute!`
-  || bg="Galleria/1.jpg"
+  || bg="Galleria/1"
     --> `D Very good girls, as you were.`
   """
 
@@ -38,25 +38,25 @@ Job.Galleria::next = add class GalleriaDaily extends Page
   text: ->
     if Math.random() < 0.0 or g.events.GalleriaDaily?[0] is g.day then return false
     c = [
-      """|| bg="Galleria/1.jpg"
+      """|| bg="Galleria/1"
         -- Just because it's mostly women, doesn't mean I haven't scattered a few men in here to satisfy other tastes.""",
-      """|| bg="Galleria/2.jpg"
+      """|| bg="Galleria/2"
         -- There's a wide selection to suit a variety of tastes. Brown, black, redhead... hm. I guess they are all skinny young bitches. Oh well, I work with what I'm given."""
-      """|| bg="Galleria/3.jpg"
+      """|| bg="Galleria/3"
         -- Resting after a hard day's work. They may be slaves, but they're treated well."""
     ]
     if g.events.GalleriaVisitors
-      c.push """|| bg="Galleria/4.jpg"
+      c.push """|| bg="Galleria/4"
         -- Today's special - half off if you can make her cum and scream at the same time!"""
-      c.push """|| bg="Galleria/5.jpg"
+      c.push """|| bg="Galleria/5"
         -- Visitors tend to be a bit rougher on the girls than my own servants. I'm not really sure why that is. Oh well, they'll survive.""",
     if g.events.InWall
-      c.push """|| bg="Galleria/6.jpg"
+      c.push """|| bg="Galleria/6"
         -- It is a less than dignified position, and even the fact that they only have to work half-days when they're in the wall doesn't make up for it for many of them."""
-      c.push """|| bg="Galleria/71.jpg"
+      c.push """|| bg="Galleria/71"
         -- "Nice day out today, isn't it?"
         --> "Um... a bit lewd to talk about the weather while you're wiping the spunk off my asshole, isn't it?"
-      || bg="Galleria/72.jpg"
+      || bg="Galleria/72"
         --> "Oh, I suppose so. Just trying to be friendly. Sorry, I'll come around this side first next time."
       """
 
@@ -80,7 +80,7 @@ add class GalleriaVisitors extends ResearchJob
   <br>Hmm. It seems like the girls could use more work. Let's invite people from the town to pay them a visit."""
 
 add class GalleriaVisitors extends Page
-  text: ->"""|| bg="Galleria/5.jpg"
+  text: ->"""|| bg="Galleria/5"
     -- Amber (who called herself Skye)
       Spread her thighs, as she said with a sigh:
       "I've shaved myself bare
@@ -97,7 +97,7 @@ add class InWall extends ResearchJob
   <br>If you lock them in, they can't squirm around and avoid your attentions. Fun."""
 
 add class InWall extends Page
-  text: ->"""|| bg="Galleria/6.jpg"
+  text: ->"""|| bg="Galleria/6"
     -- On the breast of the whore named Gail.
       Was tattooed the price of her tail.
       And on her behind,

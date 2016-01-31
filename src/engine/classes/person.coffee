@@ -82,7 +82,7 @@ window.Person = class Person extends GameObject
       <div class="full">
         <div class="name">#{@name}</div>
         <table class="stats">#{fullStats.join ''}</table>
-        <img src="game/images/#{@image?() or @image}">
+        <img src="game/images/#{@image?() or @image}.jpg">
         <div class="description">#{@description?() or @description}</div>
       </div>
     </div>"""

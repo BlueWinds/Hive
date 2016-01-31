@@ -16,11 +16,11 @@ add class Library extends RoomJob
   text: ->"""People can train their <span class="intelligence">intelligence</span> here. Honestly, I'm not completely sure what smarts are good for, but I guess I might need smart people for something someday? It certainly makes Liana wet, so I guess intelligence isn't completely useless."""
 
 add class Library extends Page
-  text: -> """|| bg="Library/Empty.jpg"
+  text: -> """|| bg="Library/Empty"
     -- Books. Fucking books everywhere. "California" seems to produce them by the truckload. Their scribes must be amazing.
-  || bg="Liana/Happy.jpg"
+  || bg="Liana/Happy"
     --> `L We don't use scribes, we have these things called...`
-  || bg="Liana/Tentacles.jpg"
+  || bg="Liana/Tentacles"
     --> `L Ahh! Mistress...?`
     --> `D Hush dear. Don't correct me when I'm ranting.`
   """
@@ -42,23 +42,23 @@ Job.Library::next = add class LibraryDaily extends Page
   text: ->
     if Math.random() < 0.75  or g.events.LibraryDaily?[0] is g.day then return false
     l = [
-      """|| bg="Library/Belly.jpg"
+      """|| bg="Library/Belly"
         -- "Can I help you find anything, #{sir @worker}? M-my shirt? Yes, I-I suppose, if you wish..." """,
-      """|| bg="Library/Empty.jpg"
+      """|| bg="Library/Empty"
         -- Books, books, books. Heart and soul of the amazing power of "California", Liana insists, but I'm not really a fan."""
     ]
     if g.events.SexyLibrarian
-      l.push """|| bg="Library/Sexy1.jpg"
+      l.push """|| bg="Library/Sexy1"
         -- This librarian seems to be taking her authority to punish late books rather seriously."""
-      l.push """|| bg="Library/Sexy2.jpg"
+      l.push """|| bg="Library/Sexy2"
         -- It's exhausting, keeping the shelves straight when most visitors would rather fuck you than complete their assigned research."""
-      l.push """|| bg="Library/Sexy3.jpg"
+      l.push """|| bg="Library/Sexy3"
         -- "Stop leaving all the books out! I'm a librarian, not your mother!" """
 
     if g.events.NudeLibrarian
-      l.push """|| bg="Library/Nude1.jpg"
+      l.push """|| bg="Library/Nude1"
         -- It's exhausting, keeping the shelves straight when most visitors would rather fuck you than complete their assigned research."""
-      l.push """|| bg="Library/Nude2.jpg"
+      l.push """|| bg="Library/Nude2"
         -- "Look, I can see you're distracted. Shall I help you relax before a bit before you get started?" """
 
     return """|| class="jobStart" auto="1800"
@@ -78,7 +78,7 @@ add class SexyLibrarian extends ResearchJob
   <br>I'd rather check out a book from a sexy librarian than I would from an unsexy one. So obvious, duh."""
 
 add class SexyLibrarian extends Page
-  text: ->"""|| bg="Library/Sexy1.jpg"
+  text: ->"""|| bg="Library/Sexy1"
     -- The limerick's callous and crude,
     Its morals distressingly lewd;
     It's not worth the reading
@@ -95,6 +95,6 @@ add class NudeLibrarian extends ResearchJob
   <br>Honestly, I don't know why I let anyone wear clothes at all."""
 
 add class NudeLibrarian extends Page
-  text: ->"""|| bg="Library/Nude2.jpg"
+  text: ->"""|| bg="Library/Nude2"
     -- Hm. I do remember why I let people wear clothes now - if they're not wearing any, then they quickly lose their embarrassment when they have to take them off. Oh well. Guess I'll only make them take off their clothes randomly.
   """

@@ -13,7 +13,7 @@ add class Gym extends RoomJob
   text: ->"""People can train their <span class="strength">strength</span> here. So far I've relied on my magic to get my way, but it's somewhat boring having to hunt every new slave myself."""
 
 add class Gym extends Page
-  text: -> """|| bg="Gym/Treadmills.jpg"
+  text: -> """|| bg="Gym/Treadmills"
     -- While I myself am of course eternally perfect, I can hardly expect the same of my merely mortal servants.
     --> The postal system in this kingdom is amazing. I have only to tell my servants to spend their money, and like magic the appropriate items show up on my doorstop.
   """
@@ -37,7 +37,7 @@ Job.Gym.next.push add class GymDarkLady extends Page
   ||
     -- I'm not going to do anything so undignified as sweat. Fuck that.
     -- I sit on the ground, cross my legs, and sink into myself. Most people wouldn't expect to find the Dark Lady of lust and domination to meditate, but... most people don't really know me very well.
-  || bg="Gym/Meditate.jpg"
+  || bg="Gym/Meditate"
     --> I am not human. I am not mortal. Being dead for how many thousands of years has weakened me, but not in the ways that matter. From the eternal font of power that is my soul, I draw forth magic and restore some of my body's might.
     --> <em class="strength">+#{effect()} Strength</em>"""
   apply: ->
@@ -50,17 +50,17 @@ Job.Gym.next.push add class GymDaily extends Page
   text: ->
     if Math.random() < 0.75 or g.events.GymDaily?[0] is g.day then return false
     l = [
-      """|| bg="Gym/Treadmills.jpg"
+      """|| bg="Gym/Treadmills"
         --""",
-      """|| bg="Gym/Bike1.jpg"
+      """|| bg="Gym/Bike1"
         --""",
-      """|| bg="Gym/Bike2.jpg"
+      """|| bg="Gym/Bike2"
         --""",
     ]
     if g.events.SexyGym
-      l.push """|| bg="Gym/Nude1.jpg"
+      l.push """|| bg="Gym/Nude1"
         -- These girls are faster than they look. Catching them is a hard prize to earn!"""
-      l.push """|| bg="Gym/Nude2.jpg"
+      l.push """|| bg="Gym/Nude2"
         --"""
 
     return """|| class="jobStart" auto="1800"
@@ -78,7 +78,7 @@ add class SexyGym extends ResearchJob
   <br>Really, clothes just get in the way when you're exercising."""
 
 add class SexyGym extends Page
-  text: ->"""|| bg="Gym/Nude1.jpg"
+  text: ->"""|| bg="Gym/Nude1"
     -- I've added all sorts of fun games to the gym. Catch her you get to fuck her. He catches you he fucks you. Lift ten more pounds than last week and get a blow job.
      --> Ok, not really "all sorts."
      --> Look, I'm the Dark Lady. I like to stick with what I know.

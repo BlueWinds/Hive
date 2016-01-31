@@ -17,10 +17,10 @@ add class Domme extends Person
   description: ->"""Cruel and lovely, equally at home wielding a whip or a gentle kiss... a woman after my own heart."""
   image: sticky
   @images: [
-    'TrainingChamber/F1.jpg'
-    'TrainingChamber/F2.jpg'
-    'TrainingChamber/F3.jpg'
-    'TrainingChamber/F4.jpg'
+    'TrainingChamber/F1'
+    'TrainingChamber/F2'
+    'TrainingChamber/F3'
+    'TrainingChamber/F4'
   ]
 
 add class Sadist extends Person
@@ -38,9 +38,9 @@ add class Sadist extends Person
   description: ->"""A malicious grin and a firm conviction that women should be groveling while he fucks them... a man after my own heart."""
   image: sticky
   @images: [
-    'TrainingChamber/M1.jpg'
-    'TrainingChamber/M2.jpg'
-    'TrainingChamber/M3.jpg'
+    'TrainingChamber/M1'
+    'TrainingChamber/M2'
+    'TrainingChamber/M3'
   ]
 
 add class Maid extends Person
@@ -58,9 +58,9 @@ add class Maid extends Person
   description: ->"""Uniforms vary from puffy to short, lipstick varies from nonexistent to bright red, and masters vary from kind to harsh. The one thing that doesn't vary is that she'll be 'cleaning' a bit more than windows..."""
   image: sticky
   @images: [
-    'TrainingChamber/Maid4.jpg'
-    'TrainingChamber/Maid5.jpg'
-    'TrainingChamber/Maid6.jpg'
+    'TrainingChamber/Maid4'
+    'TrainingChamber/Maid5'
+    'TrainingChamber/Maid6'
   ]
 
 add class SexSlave extends Person
@@ -78,9 +78,9 @@ add class SexSlave extends Person
   description: ->"""She has one purpose in life, and she's learned to both accept her role and love it."""
   image: sticky
   @images: [
-    'TrainingChamber/SS31.jpg'
-    'TrainingChamber/SS41.jpg'
-    'TrainingChamber/SS51.jpg'
+    'TrainingChamber/SS31'
+    'TrainingChamber/SS41'
+    'TrainingChamber/SS51'
   ]
 
 add class ManWhore extends Person
@@ -98,7 +98,7 @@ add class ManWhore extends Person
   description: ->"""He's got a cock, an asshole and a mouth, and he's not afraid to have any of them used. He'd rather enjoy it, in fact."""
   image: sticky
   @images: [
-    'TrainingChamber/MH1.jpg'
-    'TrainingChamber/MH2.jpg'
-    'TrainingChamber/MH3.jpg'
+    'TrainingChamber/MH1'
+    'TrainingChamber/MH2'
+    'TrainingChamber/MH3'
   ]

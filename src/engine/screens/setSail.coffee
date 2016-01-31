@@ -14,7 +14,7 @@ Page.SetSail = class SetSail extends Page
     page = $.render """|| speed="slow" class="screen set-sail"
       <form><div class="bg"></div>#{locations.join('').replace(/\n/g, '')}</form>
     """
-    $('.bg', page).css('background-image', 'url("game/images/' + g.mapImage + '")')
+    $('.bg', page).css('background-image', 'url("game/images/' + g.mapImage + '.jpg")')
 
     # Triggering mousemove with touchmove so that dragscroll will work on touchscreen devices
     page.dragScroll({top: 0, bottom: 1000, left: 0, right: 1500})

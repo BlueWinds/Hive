@@ -1,7 +1,7 @@
 add class Sycamore extends Place
   name: 'Sycamore Street'
   description: "Empty businesses, boarded up windows, hookers, broken bottles... it's not much, but it's a place to start."
-  image: 'Sycamore/Street.jpg'
+  image: 'Sycamore/Street'
   jobs: new Collection
     Fire: Job.Fire
   location: [633, 354]
@@ -25,7 +25,7 @@ add class Catch extends Job
 add class CatchPolice extends Page
   conditions:
     worker: {}
-  text: ->"""|| bg="Sycamore/Police.jpg"
+  text: ->"""|| bg="Sycamore/Police"
     -- It went poorly. #{if @worker is g.people.DarkLady then 'I' else ('My ' + @worker)} was shot by the police, though #{if @worker is g.people.DarkLady then 'I' else he()} did manage to escape. At least the officer was hot.
     <em><span class="strength">-6 strength</span></em>
   """
@@ -37,7 +37,7 @@ add class CatchPoliceCapture extends Page
   conditions:
     worker:
       isnt: [Person.DarkLady, Person.Liana]
-  text: ->"""|| bg="Sycamore/Police.jpg"
+  text: ->"""|| bg="Sycamore/Police"
     -- My #{@worker} has been captured by the police! Damn it. I'll have to trigger the remote memory erasure spell I implanted - #{he} won't be of any more use to me, but at least they won't be able to get any information out of #{him}.
     <em>#{@worker} is captured.</em>
   """
@@ -48,7 +48,7 @@ add class CatchPoliceCapture extends Page
 add class CatchNothing extends Page
   conditions:
     worker: {}
-  text: ->"""|| bg="Sycamore/Street.jpg"
+  text: ->"""|| bg="Sycamore/Street"
     -- #{@worker} is bored. #{He} wandered the streets looking for someone to catch, but found nothing. Perhaps rumors of how dangerous the area has become have spread, or perhaps there was a college football game drawing everyone away.
     <em><span class="lust">-1 Lust</span></em>
   """
@@ -59,7 +59,7 @@ add class CatchNothing extends Page
 add class CatchMiss extends Page
   conditions:
     worker: {}
-  text: ->"""|| bg="Sycamore/Street.jpg"
+  text: ->"""|| bg="Sycamore/Street"
     -- #{@worker} cornered a young #{Math.choice ['man', 'woman']}, but they kicked #{his} shins and knocked him into a wall escaped. It hurt not only #{his} pride, but also #{his} head.
     <em><span class="lust">-1 Lust</span>, <span class="intelligence">-1 Intelligence</span></em>
   """
@@ -69,21 +69,21 @@ add class CatchMiss extends Page
     @context.worker.add 'intelligence', -1
 
 add class CatchMan extends Page
-  text: ->"""|| bg="Sycamore/#{Math.choice ['CaptureM1', 'CaptureM2']}.jpg"
+  text: ->"""|| bg="Sycamore/#{Math.choice ['CaptureM1', 'CaptureM2']}"
     -- <em><span class="men">+1</span></em>
   """
   effects:
     men: 1
 
 add class CatchWoman extends Page
-  text: ->"""|| bg="Sycamore/#{Math.choice ['CaptureF1', 'CaptureF2']}.jpg"
+  text: ->"""|| bg="Sycamore/#{Math.choice ['CaptureF1', 'CaptureF2']}"
     -- <em><span class="women">+1</span></em>
   """
   effects:
     women: 1
 
 add class CatchVirgin extends Page
-  text: ->"""|| bg="Sycamore/CaptureF3.jpg"
+  text: ->"""|| bg="Sycamore/CaptureF3"
     -- <em><span class="virgins">+1</span></em>
   """
   effects:
@@ -178,20 +178,20 @@ add class Release extends Page
   text: ->
     if Math.random() < 0.75 then return false
     c = if @choice is 'men' then [
-      """|| bg="Sycamore/Street.jpg"
+      """|| bg="Sycamore/Street"
         -- My trusted servant released one of the men at the end of Sycamore Street. He won't remember a thing."""
     ] else [
-      """|| bg="Sycamore/Release1.jpg"
+      """|| bg="Sycamore/Release1"
         -- Some markers, some rope, a public restroom... I wiped her memory of her time with me and left her there. I'm sure someone will let her out eventually, but for now... public use. Just giving back to the community which has given me so much.""",
-      """|| bg="Sycamore/Release2.jpg"
+      """|| bg="Sycamore/Release2"
         -- A bit of magical soundproofing on the box so no one gets suspicious, a letter detailing her circumstances (half-trained slave needs new home), and a random address halfway across the country. Someone's day just got brighter.""",
-      """|| bg="Sycamore/Release3.jpg"
+      """|| bg="Sycamore/Release3"
         -- Special delivery for the college football team's locker room.""",
-      """|| bg="Sycamore/Release4.jpg"
+      """|| bg="Sycamore/Release4"
         -- I made a Liana take her to the tallest building in town and leave her locked in a closet overnight. I wonder if the janitor will have some fun before he lets her go?""",
-      """|| bg="Sycamore/Release5.jpg"
+      """|| bg="Sycamore/Release5"
         -- The wonderful thing about magic is that no one else in this age seems to have it. That thing will vibrate randomly throughout the day, and it will *not* come out for at least a month.""",
-      """|| bg="Sycamore/Release6.jpg"
+      """|| bg="Sycamore/Release6"
         -- One of my servants left her in the kitchen of a random house, one leg chained in place. She'll have to wait for them to get home from work."""
     ]
 
@@ -247,9 +247,9 @@ add class Tunnel extends Job
     @progress += @context.worker2?.strength or 0
 
 Job.RentWarehouse.next.push add class RentWarehouse1 extends Page
-  text: ->"""|| bg="Sycamore/Street.jpg"
+  text: ->"""|| bg="Sycamore/Street"
     -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to expand into.
-  || bg="Liana/Gangbang.jpg"
+  || bg="Liana/Gangbang"
     --> As a reward for all her hard work, I let a bunch of slaves gangbang her.
     <em>+1 Medium room, <span class="depravity">-150</span></em>"""
   effects:
@@ -262,7 +262,7 @@ add class Tunnel extends Page
   conditions:
     progress: '|last|progress'
     needed: '|last|needed'
-  text: ->"""|| bg="Sycamore/Tunnel1.jpg"
+  text: ->"""|| bg="Sycamore/Tunnel1"
     -- <strong>#{@progress} / #{@needed}</strong>
     <em class="depravity">-5</em>"""
   apply: ->
@@ -274,9 +274,9 @@ add class Tunnel2 extends Job.Tunnel
   needed: 200
 
 Job.RentWarehouse.next.push add class RentWarehouse2 extends Page
-  text: ->"""|| bg="Sycamore/Street.jpg"
+  text: ->"""|| bg="Sycamore/Street"
     -- After a bit of negotiating with one of the property owners on Sycamore Street, Liana has acquired a new location for me to expand into. It was a bit more expensive than anticipated, but she managed in the end.
-  || bg="Liana/Gangbang.jpg"
+  || bg="Liana/Gangbang"
     --> As a punishment for wasting my money, I let a bunch of slaves gangbang her.
     <em>+1 Medium room, <span class="depravity">-175</span></em>"""
   effects:
@@ -286,7 +286,7 @@ Job.RentWarehouse.next.push add class RentWarehouse2 extends Page
 
 add class Tunnel2 extends Page.Tunnel
   jobKey: 2
-  text: ->"""|| bg="Sycamore/Tunnel2.jpg"
+  text: ->"""|| bg="Sycamore/Tunnel2"
     -- <strong>#{@progress} / #{@needed}</strong>
     <em class="depravity">-5</em>"""
 
@@ -294,9 +294,9 @@ add class Tunnel3 extends Job.Tunnel
   needed: 400
 
 Job.RentWarehouse.next.push add class RentWarehouse3 extends Page
-  text: ->"""|| bg="Sycamore/Street.jpg
+  text: ->"""|| bg="Sycamore/Street"
     -- Liana did good. I have a new building all my own, with a couple of smaller rooms I can fill up with fun toys for my slaves.
-  || bg="Liana/Gangbang.jpg"
+  || bg="Liana/Gangbang"
     --> I gave her a break from all the hard work she does on my behalf with a nice relaxing gangbang."""
   effects:
     depravity: -150
@@ -307,7 +307,7 @@ add class Tunnel3 extends Page
   conditions:
     progress: '|last|progress'
     needed: '|last|needed'
-  text: ->"""|| bg="Sycamore/Tunnel3.jpg"
+  text: ->"""|| bg="Sycamore/Tunnel3"
     -- <strong>#{@progress} / #{@needed}</strong>
     <em class="depravity">-5</em>"""
   apply: ->
@@ -320,9 +320,9 @@ add class Tunnel4 extends Job.Tunnel
   needed: 800
 
 Job.RentWarehouse.next.push add class RentWarehouse4 extends Page
-  text: ->"""|| bg="Sycamore/Street.jpg
+  text: ->"""|| bg="Sycamore/Street"
     -- Empty warehouse space? Sure, I love empty warehouse space!
-  || bg="Liana/Gangbang.jpg"
+  || bg="Liana/Gangbang"
     --> Shame it took so long. Maybe a nice brutal gangbang will convince Liana to work faster next time."""
   effects:
     depravity: -175
@@ -331,7 +331,7 @@ Job.RentWarehouse.next.push add class RentWarehouse4 extends Page
 
 add class Tunnel4 extends Page.Tunnel
   jobKey: 5
-  text: ->"""|| bg="Sycamore/Tunnel4.jpg"
+  text: ->"""|| bg="Sycamore/Tunnel4"
     -- <strong>#{@progress} / #{@needed}</strong>
     <em class="depravity">-5</em>"""
 
@@ -372,29 +372,29 @@ add class Whore extends Page
   text: ->
     if Math.random() < 0.75 then return false
     c = if @w1 instanceof Person.SexSlave then [
-      """|| bg="Sycamore/Whore1.jpg"
+      """|| bg="Sycamore/Whore1"
         -- Condoms are sexy! He lasts longer, she doesn't waste my magic needing to be cured of diseases."""
-      """|| bg="Sycamore/Whore2.jpg"
+      """|| bg="Sycamore/Whore2"
         -- He was a little rough, but she took her pounding like a champ. As high earner for the month, she deserves a reward - if I remember tomorrow, I'll make Liana serve her for a few hours."""
-      """|| bg="Sycamore/Whore3.jpg"
+      """|| bg="Sycamore/Whore3"
         -- "That's a good little slut. You like it and you hate the way it lets me see what you really want. Go on, tell me to stop if that's what you're actually thinking..."
         -- He's a bit corny, but, well, as long as he's paying she's hardly in a position to complain."""
-      """|| bg="Sycamore/Whore4.jpg"
+      """|| bg="Sycamore/Whore4"
         -- Some girls go in for a more cute and innocent look. Works pretty well, especially when their clients learn they're not wearing underwear."""
-      """|| bg="Sycamore/Whore5.jpg"
+      """|| bg="Sycamore/Whore5"
         -- Whore. She won't even open her mouth until he's ready to shove a cock in it."""
-      """|| bg="Sycamore/Whore6.jpg"
+      """|| bg="Sycamore/Whore6"
         -- #{@pimp} gets a call from a guy we've seen before. He wants our girl to 'bring extra condoms this time.' Looks like she's in for a long night."""
     ] else if @w1 instanceof Person.Liana then [
-      """|| bg="Liana/Whore1.jpg"
+      """|| bg="Liana/Whore1"
         -- While it's true that I've corrupted Liana to some extent, she somehow retains a core of purity and joy that perhaps I <em>could</em> touch, but really have no desire to. She's a powerful mage, a feisty temptress, smart and loyal and... I must be coming down with something.
       ||
         --> Snapping the scrying window closed, I order someone to bring me a cup of pineapple juice, a butt plug and a hole to put it in. I'm supposed to be taking over the world, not feeling jealous of some mere human about to fuck her senseless.
         -->"""
-      """|| bg="Liana/Whore21.jpg"
-      || bg="Liana/Whore22.jpg"
-      || bg="Liana/Whore23.jpg"
-      || bg="Liana/Whore23.jpg"
+      """|| bg="Liana/Whore21"
+      || bg="Liana/Whore22"
+      || bg="Liana/Whore23"
+      || bg="Liana/Whore23"
         -- "Wow that went in easy. You have lots of experience?"
         `L That's a myth. It went in easy because I'm turned on.`
         "Oh. Well, you're a slut either way."
@@ -402,14 +402,14 @@ add class Whore extends Page
       """
 
     ] else if @w1 instanceof Person.ManWhore then [
-      """|| bg="Sycamore/WhoreMale1.jpg"
+      """|| bg="Sycamore/WhoreMale1"
         -- Tempting as it is to grab her for my own collection, any woman who's going to pay a man off the street for sex is a woman too valuable to just throw in a cell and brainwash."""
-      """|| bg="Sycamore/WhoreMale2.jpg"
+      """|| bg="Sycamore/WhoreMale2"
         -- """
-      """|| bg="Sycamore/WhoreMale3.jpg"
+      """|| bg="Sycamore/WhoreMale3"
         -- Seriously, what sort of guy just carries a leash and collar in his pocket, in case he happens to stumble across some casual sex?
         --> The awesome kind, clearly."""
-      """|| bg="Sycamore/WhoreMale4.jpg"
+      """|| bg="Sycamore/WhoreMale4"
         -- Busy day at the office, but still want to fuck? Call Dark Lady's Escorts now. We deliver."""
     ]
 

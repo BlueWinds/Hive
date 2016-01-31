@@ -17,11 +17,11 @@ add class Slutroom extends RoomJob
 add class Slutroom extends Page
   text: -> """||
     -- A slutroom is really quite simple. It needs three things.
-  || bg="Slutroom/Bed.jpg"
+  || bg="Slutroom/Bed"
     --> A bed.
-  || bg="Slutroom/Food.jpg"
+  || bg="Slutroom/Food"
     --> An enchanted plate of self-renewing food.
-  || bg="Slutroom/1.jpg"
+  || bg="Slutroom/1"
     --> And a pair of mindless women with orders to fuck for all eternity.
   """
 
@@ -37,15 +37,15 @@ Job.Slutroom::next = add class SlutroomDaily extends Page
   text: ->
     if Math.random() < 0.75 or g.events.SlutroomDaily?[0] is g.day then return false
     c = [
-      """|| bg="Slutroom/1.jpg"
+      """|| bg="Slutroom/1"
         -- I poke my head in for a moment, but all is as it should be, horny and wet and mindless.""",
-      """|| bg="Slutroom/2.jpg"
+      """|| bg="Slutroom/2"
         -- The chains are purely decorative. They don't have any thoughts other than fucking each other silly. Just the way it should be.""",
-      """|| bg="Slutroom/3.jpg"
+      """|| bg="Slutroom/3"
         -- Looks like someone has snuck in and taken advantage of her. Excellent.""",
-      """|| bg="Slutroom/4.jpg"
+      """|| bg="Slutroom/4"
         -- Something is very wrong here. They have clothes - how the hell did they get those? I strip them bare immediately, of course.""",
-      """|| bg="Slutroom/MF.jpg"
+      """|| bg="Slutroom/MF"
         -- One of my males deserved a special reward. My sluts were more than happy to oblige.""",
     ]
 
@@ -64,7 +64,7 @@ add class SlutroomOral extends ResearchJob
     <br>With a new spell added to the occupants, they can subsist entirely off of eating each other out, no more food needed."""
 
 add class SlutroomOral extends Page
-  text: ->"""|| bg="Slutroom/Oral3.jpg"
+  text: ->"""|| bg="Slutroom/Oral3"
     -- There was a young sapphic named Anna
     Who stuffed her friend's cunt with banana,
     Which she sucked bit by bit
@@ -81,7 +81,7 @@ add class SlutroomFisting extends ResearchJob
     <br>Repeat after me: I want to be stretched, I want to be taken, with your fist in my cunt my mind becomes vacant."""
 
 add class SlutroomFisting extends Page
-  text: ->"""|| bg="Slutroom/Fisting1.jpg"
+  text: ->"""|| bg="Slutroom/Fisting1"
       -- Bridget the Midget, the dwarf who loves sucking;
       Bridget the Midget, she comes when she's fucking.
       She loves a good fisting, both active and passive;
@@ -97,7 +97,7 @@ add class SlutroomStrapon extends ResearchJob
     <br>While my sex magic certainly gains the most from women, it also reacts well to penetration. I can give them toys, and then get the best of both worlds!"""
 
 add class SlutroomStrapon extends Page
-  text: ->"""|| bg="Slutroom/Strapon1.jpg"
+  text: ->"""|| bg="Slutroom/Strapon1"
     -- A pansy who lived in Khartoum
       Took a lesbian up to his room,
       And they argued all night
@@ -113,7 +113,7 @@ add class SlutroomSybian extends ResearchJob
     <br>Oh. My. God. This machine that Liana showed me is the best thing ever. I need to get one for all my sluts."""
 
 add class SlutroomSybian extends Page
-  text: ->"""|| bg="Slutroom/Sybian1.jpg"
+  text: ->"""|| bg="Slutroom/Sybian1"
     -- The limerick’s an art form complex
       Whose contents run chiefly to sex;
         It’s famous for virgins

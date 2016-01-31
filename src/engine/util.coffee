@@ -184,7 +184,7 @@ addAttrs = (element, text)->
 
 addBackground = (element)->
   if element.attr 'bg'
-    bg = 'url("game/images/' + element.attr('bg') + '")'
+    bg = 'url("game/images/' + element.attr('bg') + '.jpg")'
   else
     bg = element.prev().css('background-image')
 
