@@ -17,8 +17,8 @@ add class Rest extends Job
   label: 'Mess with Liana'
   text: ->"""While entertaining, it's not, strictly speaking, the most productive thing I can do with a day.
 
-  Liana: <span class="lust">+1 Lust</span></em>
-  <em><span class="depravity">+25</span>"""
+  <em>Liana: <span class="lust">+1 Lust</span>
+  <span class="depravity">+25</span></em>"""
   next: Page.randomMatch
   @next: []
 
@@ -179,7 +179,7 @@ add class Fire extends Page
     choice: '|last|choice'
   text: ->"""||
     -- `L Wait, is... is that a box of matches?`
-    --> `D I'm redecorating the #{g.map[@location].jobs[@choice].label}.`
+    --> `D I'm redecorating the #{g.map[@location].jobs[@choice].label}. Already let the slaves out.`
     --> `L Can I smash everything first?`
   ||  bg="Liana/Happy"
     --> How can I say no to a request like that? I hand her a baseball bat and the box of matches for when she's done.

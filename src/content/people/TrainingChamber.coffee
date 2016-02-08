@@ -1,4 +1,4 @@
-sticky = ->
+sticky = Person.sticky = ->
   @imageKey or= Math.floor(Math.random() * @constructor.images.length)
   return @constructor.images[@imageKey]
 
@@ -32,7 +32,7 @@ add class Sadist extends Person
   lust: 20
   max:
     strength: 40
-    magic: 5
+    magic: 0
     intelligence: 30
     lust: 25
   description: ->"""A malicious grin and a firm conviction that women should be groveling while he fucks them... a man after my own heart."""
@@ -52,7 +52,7 @@ add class Maid extends Person
   lust: 10
   max:
     strength: 70
-    magic: 5
+    magic: 1
     intelligence: 15
     lust: 20
   description: ->"""Uniforms vary from puffy to short, lipstick varies from nonexistent to bright red, and masters vary from kind to harsh. The one thing that doesn't vary is that she'll be 'cleaning' a bit more than windows..."""
@@ -72,9 +72,9 @@ add class SexSlave extends Person
   lust: 35
   max:
     strength: 20
-    magic: 1
+    magic: 3
     intelligence: 15
-    lust: 80
+    lust: 65
   description: ->"""She has one purpose in life, and she's learned to both accept her role and love it."""
   image: sticky
   @images: [
@@ -92,9 +92,9 @@ add class ManWhore extends Person
   lust: 35
   max:
     strength: 20
-    magic: 1
+    magic: 0
     intelligence: 15
-    lust: 80
+    lust: 65
   description: ->"""He's got a cock, an asshole and a mouth, and he's not afraid to have any of them used. He'd rather enjoy it, in fact."""
   image: sticky
   @images: [

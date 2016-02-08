@@ -33,9 +33,11 @@ ordering =
   boring: 3
 
 Job.jobSort = (j1, j2)->
-  t1 = $(j1).data('job').type
-  t2 = $(j2).data('job').type
-  return ordering[t1] - ordering[t2]
+  unless j1.jt
+    j1.jt = $(j1).data('job').type
+  unless j2.jt
+    j2.jt = $(j2).data('job').type
+  return ordering[j1.jt] - ordering[j2.jt]
 
 Page.Port = class Port extends Page
   text: ->

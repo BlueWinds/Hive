@@ -27,6 +27,7 @@ add class Library extends Page
 
 add class Library extends Job
   label: "Library"
+  type: 'boring'
   text: -> """I really do not see the point of a library. If people are me, they're already devastatingly intelligent. If they're not, all they need to know is obedience and fucking. Sigh. Liana's giving me that <em>look</em> again. Guess I'll buy more books.
 
   <em class="intelligence">+#{effect()} Intelligence</em>"""
@@ -40,7 +41,7 @@ Job.Library::next = add class LibraryDaily extends Page
   conditions:
     worker: {}
   text: ->
-    if Math.random() < 0.75  or g.events.LibraryDaily?[0] is g.day then return false
+    if $('page').length and (Math.random() < 0.75  or g.events.LibraryDaily?[0] is g.day) then return false
     l = [
       """|| bg="Library/Belly"
         -- "Can I help you find anything, #{sir @worker}? M-my shirt? Yes, I-I suppose, if you wish..." """,

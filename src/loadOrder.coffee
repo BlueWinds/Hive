@@ -24,12 +24,14 @@ module.exports = [
 # People & Units
   'content/people/Characters.coffee'
   'content/people/TrainingChamber.coffee'
+  'content/people/MagicCircle.coffee'
 
 # Rooms
   'content/rooms/empty.coffee'
   'content/rooms/small/dungeon.coffee'
   'content/rooms/small/slutroom.coffee'
   'content/rooms/small/trainingChamber.coffee'
+  'content/rooms/small/magicCircle.coffee'
   'content/rooms/medium/auction.coffee'
   'content/rooms/medium/gym.coffee'
   'content/rooms/medium/laboratory.coffee'

@@ -48,7 +48,7 @@ Job.Gym.next.push add class GymDaily extends Page
   conditions:
     worker: {}
   text: ->
-    if Math.random() < 0.75 or g.events.GymDaily?[0] is g.day then return false
+    if $('page').length and (Math.random() < 0.75 or g.events.GymDaily?[0] is g.day) then return false
     l = [
       """|| bg="Gym/Treadmills"
         --""",

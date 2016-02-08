@@ -1,4 +1,4 @@
-trainingCost = 5
+trainingCost = 7
 trainingDetails =
   Sadist:
     duration: 300
@@ -63,11 +63,10 @@ add class TrainingChamber extends Job
   people:
     trainer:
       matches: (person, job)->
-        if g.depravity < trainingCost or not g[trainingDetails[job.choice]?.base] then false
+        if g.depravity < trainingCost then false
         else true
       label: ->
         if g.depravity < trainingCost then 'Need <span class="depravity">' + trainingCost + '</span>'
-        else if not g[trainingDetails[@choice]?.base] then 'Need slave'
         else ''
 
 for name of trainingDetails
@@ -82,7 +81,7 @@ Job.TrainingChamber::next = add class TrainingChamberDaily extends Page
     remaining: fill: -> Math.max(0, trainingDetails[@job.choice].duration - @job[@job.choice] - @progress)
   text: ->
     # Unlike most "boring" events, these are independent of each other.
-    if Math.random() < 0.75 then return false
+    if $('page').length and Math.random() < 0.75 and @remaining then return false
     c = if @job.choice is 'Domme' then [
       """|| bg="TrainingChamber/WoodenHorse"
         -- I always figure that people should be able to take as well as dish out. They don't have to enjoy it, but they should know what it feels like at least!"""
@@ -148,7 +147,7 @@ Job.TrainingChamber::next = add class TrainingChamberDaily extends Page
         <h4>Training Chamber</h4>
 
       #{Math.choice(c)}
-        <em>+#{@progress} progress (#{@remaining} remaining)<br><span class="depravity">-#{trainingCost}</span></em>"""
+        <em>#{@progress} progress (#{@remaining} more needed)<br><span class="depravity">-#{trainingCost}</span></em>"""
   apply: ->
     super()
     choice = @context.job.choice

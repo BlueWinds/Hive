@@ -27,14 +27,14 @@ add class Outreach extends Job
     worker3:
       optional: true
   stat: 'lust'
-  difficulty: 30
+  difficulty: 40
   next: Page.statCheck
   @next: {}
   type: 'boring'
 
 add class OutreachMan extends Page
   text: ->
-    if g.events.Outreach?[1] is g.day then return false
+    if $('page').length and (Math.random() < 0.5 or g.events.Outreach?[1] is g.day) then return false
     """|| class="jobStart" auto="1800"
       <h4>Outreach Center</h4>
     || bg="Outreach/3"

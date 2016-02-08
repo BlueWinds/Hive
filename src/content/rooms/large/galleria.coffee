@@ -3,6 +3,9 @@ effect = ->
   if g.events.InWall then e += 1
   return e
 
+cumEffect = (w)->
+  if g.events.GaleriaPublicUse then Math.round(w.lust / 10) else 0
+
 trainingCost = (w)->
   w.lust * (if g.events.GalleriaVisitors then 0.5 else 1)
 
@@ -36,7 +39,7 @@ Job.Galleria::next = add class GalleriaDaily extends Page
   conditions:
     worker: {}
   text: ->
-    if Math.random() < 0.0 or g.events.GalleriaDaily?[0] is g.day then return false
+    if $('page').length and (Math.random() < 0.75 or g.events.GalleriaDaily?[0] is g.day) then return false
     c = [
       """|| bg="Galleria/1"
         -- Just because it's mostly women, doesn't mean I haven't scattered a few men in here to satisfy other tastes.""",
@@ -46,19 +49,30 @@ Job.Galleria::next = add class GalleriaDaily extends Page
         -- Resting after a hard day's work. They may be slaves, but they're treated well."""
     ]
     if g.events.GalleriaVisitors
-      c.push """|| bg="Galleria/4"
+      c.push """|| bg="Galleria/Visitors1"
         -- Today's special - half off if you can make her cum and scream at the same time!"""
-      c.push """|| bg="Galleria/5"
+      c.push """|| bg="Galleria/Visitors2"
         -- Visitors tend to be a bit rougher on the girls than my own servants. I'm not really sure why that is. Oh well, they'll survive.""",
     if g.events.InWall
-      c.push """|| bg="Galleria/6"
-        -- It is a less than dignified position, and even the fact that they only have to work half-days when they're in the wall doesn't make up for it for many of them."""
-      c.push """|| bg="Galleria/71"
+      c.push """|| bg="Galleria/Wall1.1"
         -- "Nice day out today, isn't it?"
         --> "Um... a bit lewd to talk about the weather while you're wiping the spunk off my asshole, isn't it?"
-      || bg="Galleria/72"
+      || bg="Galleria/Wall1.2"
         --> "Oh, I suppose so. Just trying to be friendly. Sorry, I'll come around this side first next time."
       """
+      c.push """|| bg="Galleria/Wall2"
+        -- It is a less than dignified position, and even the fact that they only have to work half-days when they're in the wall doesn't make up for it for many of them."""
+      c.push """|| bg="Galleria/Wall3"
+        -- Cunts on display, cunts for use. They belong to women, but who cares?"""
+      c.push """|| bg="Galleria/Wall4"
+        -- Sometimes it's nice to leave the legs free - they can squirm and react more effectively that way."""
+    if g.events.GaleriaPublicUse
+      c.push """|| bg="Galleria/Use1"
+        -- I publish daily rankings based on the size of the pool of cum at each of their feet. Competition is fierce."""
+      c.push """|| bg="Galleria/Use2"
+        -- Such a sad face. It's ok little lady, they still enjoyed it even if you didn't get to swallow."""
+      c.push """|| bg="Galleria/Use3"
+        -- Some women enjoy being used like a fuckdoll more than might be strictly called "healthy"."""
 
     """|| class="jobStart" auto="1800"
         <h4>Galleria</h4>
@@ -69,7 +83,10 @@ Job.Galleria::next = add class GalleriaDaily extends Page
   apply: ->
     super()
     @context.worker.add 'lust', effect()
-    g.applyEffects {depravity: -trainingCost(@context.worker)}
+    g.applyEffects {
+      depravity: -trainingCost(@context.worker)
+      cum: cumEffect(@context.worker)
+    }
 
 add class GalleriaVisitors extends ResearchJob
   conditions:
@@ -92,7 +109,7 @@ add class InWall extends ResearchJob
   conditions:
     '|events|GalleriaVisitors': {}
   label: "Through the wall"
-  progress: 900
+  progress: 500
   text: ->"""<span class="lust">+1 Lust</span> when visiting the galleria.
   <br>If you lock them in, they can't squirm around and avoid your attentions. Fun."""
 
@@ -103,4 +120,22 @@ add class InWall extends Page
       And on her behind,
       For the sake of the blind,
       Was the same information in Braille.
+  """
+
+add class GaleriaPublicUse extends ResearchJob
+  conditions:
+    '|events|MoreResources': {}
+    '|events|GalleriaVisitors': {}
+  label: "Public Use"
+  progress: 250
+  text: ->"""Vists to the Galeria generate <span class="lust">Lust / 10</span> <span class="cum"></span>.
+    <br>Tie 'em up, fuck 'em, get out of the way, let's keep the line moving."""
+
+add class GaleriaPublicUse extends Page
+  text: ->"""|| bg="Galleria/Use3"
+    -- A luscious psychotic named Jane
+      Sucked every man on a train.
+      She said, "Please don't panic,
+      I'm just nymphomanic,
+      This wouldn't be fun were I sane."
   """

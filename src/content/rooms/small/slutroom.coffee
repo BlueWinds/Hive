@@ -34,8 +34,9 @@ add class Slutroom extends Job
 Job.Slutroom::next = add class SlutroomDaily extends Page
   conditions:
     depravity: fill: slutroomDepravity
+    cum: fill: -> if g.events.SlutroomCum then 1 else 0
   text: ->
-    if Math.random() < 0.75 or g.events.SlutroomDaily?[0] is g.day then return false
+    if $('page').length and (Math.random() < 0.75 or g.events.SlutroomDaily?[0] is g.day) then return false
     c = [
       """|| bg="Slutroom/1"
         -- I poke my head in for a moment, but all is as it should be, horny and wet and mindless.""",
@@ -49,13 +50,46 @@ Job.Slutroom::next = add class SlutroomDaily extends Page
         -- One of my males deserved a special reward. My sluts were more than happy to oblige.""",
     ]
 
+    if g.events.SlutroomOral
+      c.push """|| bg="Slutroom/Oral1"
+        -- ` Mmgmph, mmm, hmmmmm, mmmumghmph...`
+        `D Carry on, don't let me interrupt. I'll just stand here and watch a while.`"""
+      c.push """|| bg="Slutroom/Oral2"
+        -- She's found the spot. That wonderful, sensitive little spot. And now she's tongue-fucking it."""
+      c.push """|| bg="Slutroom/Oral3"
+        -- If you're going to cum first, it's only fair to finish the other woman off in return."""
+    if g.events.SlutroomFisting
+      c.push """|| bg="Slutroom/Fisting1"
+        -- That wine is going to be hell to get out of the table cloth. But totally worth it."""
+      c.push """|| bg="Slutroom/Fisting2"
+        -- Oh. Geeze. I didn't think she'd be able to fit both hands in there. Ouch."""
+      c.push """|| bg="Slutroom/Fisting3"
+        -- I bet that relieved "it fit" smile will change in a moment when the fingers start wiggling."""
+    if g.events.SlutroomStrapon
+      c.push """|| bg="Slutroom/Strapon1"
+        -- It's not that she wanted a cock, it's that she wanted to fuck people. The distinction isn't all that subtle, guys."""
+      c.push """|| bg="Slutroom/Strapon2"
+        -- Look at them both, just dripping. I sneak up behind and put a finger in both asses at the same time, and as expected, the squeals are delightful."""
+    if g.events.SlutroomSybian
+      c.push """|| bg="Slutroom/Sybian1"
+        -- Girl, you're going to have to lick that floor clean later. No-no, you can't stop. Just wanted to let you know."""
+      c.push """|| bg="Slutroom/Sybian2"
+        -- Truley the finest invention of the age."""
+    if g.events.SlutroomCum
+      c.push """|| bg="Slutroom/Cum1"
+        -- I like this "internet." My kind of place. Liana, get one for everyone."""
+      c.push """|| bg="Slutroom/Cum2"
+        -- Sssh, don't disturb them. This is my favorite part."""
+
     """|| class="jobStart" auto="1800"
         <h4>Slutroom</h4>
 
       #{Math.choice c}
+      <em class="depravity">+#{slutroomDepravity()}</em>#{if @cum then ', <span class="cum">+1</span>' else ''}
     """
   effects:
     depravity: 'depravity'
+    cum: 'cum'
 
 add class SlutroomOral extends ResearchJob
   label: "Slutroom Cunnilingus"
@@ -85,7 +119,7 @@ add class SlutroomFisting extends Page
       -- Bridget the Midget, the dwarf who loves sucking;
       Bridget the Midget, she comes when she's fucking.
       She loves a good fisting, both active and passive;
-      Believe me, her botty-hole is quite massive.
+      Believe me good sir, her holes are quite massive.
   """
 
 add class SlutroomStrapon extends ResearchJob
@@ -98,7 +132,7 @@ add class SlutroomStrapon extends ResearchJob
 
 add class SlutroomStrapon extends Page
   text: ->"""|| bg="Slutroom/Strapon1"
-    -- A pansy who lived in Khartoum
+    -- A pansy who lived in Cancun
       Took a lesbian up to his room,
       And they argued all night
       Over who had the right
@@ -119,3 +153,20 @@ add class SlutroomSybian extends Page
         It’s famous for virgins
         And masculine urgin’s
       And vulgar erotic effects."""
+
+add class SlutroomCum extends ResearchJob
+  conditions:
+    '|events|SlutroomStrapon': {}
+    '|events|MoreResources': {}
+  label: "Slutroom cum collection"
+  progress: 200
+  text: ->"""<span class="cum">+1</span> per day for each slutroom.
+    <br>Why does everyone always assume I mean men when I talk about cum? Female cum is just as magically powerful and pleasant."""
+
+add class SlutroomCum extends Page
+  text: ->"""|| bg="Slutroom/Cum2"
+    -- Two lesbians north of the town,
+      Made sixty-nine love on the ground.
+      Their unbridled lust
+      Leaked out in the dust
+      And made so much mud that they drowned!"""

@@ -42,6 +42,12 @@ window.Game = class Game extends GameObject
         type: 'integer'
       virgins:
         type: 'integer'
+      milk:
+        type: 'integer'
+        optional: true
+      cum:
+        type: 'integer'
+        optional: true
     strict: true
   @passDay: []
   @update: [] # Update items are in the format {pre: ()->, post: ()->}, both properties optional.
@@ -56,12 +62,16 @@ window.Game = class Game extends GameObject
     for item in objects
       for key, value of item when typeof value is 'string' and value[0] is '|'
         item[key] = @getItem value
-    unless gameData
-      @version = Game.update.length
-      return
+    @version = Game.update.length
+
+    unless gameData then return
 
     # Now we recursively copy the data into our new clean game.
     recursiveCopy.call @, @, gameData
+
+    for i in updates
+      Game.update[i].post?.call(@)
+    return
 
   export: ->
     super [], [], ''
@@ -87,14 +97,17 @@ window.Game = class Game extends GameObject
     return target
 
   setGameInfo: ->
-    element = $ '.nav'
+    element = $('.nav')
     $('.day', element).html @date
     $('.depravity', element).html @depravity
-    $('.men', element).html @men
-    $('.women', element).html @women
-    $('.virgins', element).html @virgins
-    $('#game-info img').attr 'src', @location.image
-    $('#game-info .description').html @location.description?() or @location.description
+    $('.slaves', element).html "#{@men + @women + @virgins}/#{@space}"
+    $('.slaves', element).tooltip('destroy').attr 'title', """
+      <span class="men">#{@men}</span>
+      <span class="women">#{@women}</span>
+      <span class="virgins">#{@virgins}</span>"""
+    if @milk? then $('.milk', element).removeClass('hidden').html(@milk) else $('.milk', element).addClass('hidden')
+    if @cum? then $('.cum', element).removeClass('hidden').html(@cum) else $('.cum', element).addClass('hidden')
+    element.addTooltips()
 
   startDate = new Date(2021, 9, 31)
 
@@ -106,20 +119,23 @@ window.Game = class Game extends GameObject
   applyEffects: (effects, context)->
     applyAddRemove.call(@, effects)
 
-    for stat in ['depravity', 'virgins', 'women', 'men'] when effects[stat]
+    for stat in ['depravity', 'virgins', 'women', 'men', 'milk', 'cum'] when effects[stat] and @[stat]?
       amount = if typeof effects[stat] is 'string' then context[effects[stat]] else effects[stat]
-      # For resources other than depravity, limit them by free space
-      amount = Math.min(amount, if stat is 'depravity' then amount else @freeSpace)
+      if stat in ['women', 'men', 'virgins']
+        amount = Math.min(amount, @freeSpace)
 
       g[stat] += amount
       g[stat] = Math.max(g[stat], 0)
 
-  Object.defineProperty @::, 'freeSpace', {get: ->
+  Object.defineProperty @::, 'space', {get: ->
     space = 6
     for name, location of g.map
       for key, job of location.jobs when job instanceof Job.Dungeon
         space += 6
-    return Math.max(space - g.men - g.women - g.virgins, 0)
+    return space
+  }
+  Object.defineProperty @::, 'freeSpace', {get: ->
+    return Math.max(@space - g.men - g.women - g.virgins, 0)
   }
 months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 dayList = [null, '1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th', '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th', '31st']

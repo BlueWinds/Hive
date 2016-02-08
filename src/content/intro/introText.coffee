@@ -227,3 +227,30 @@ add class Council extends Page
   apply: ->
     super()
     g.map.HolidayInn.destinations.Council = -1
+
+add class MoreResources extends Job
+  place: 'HolidayInn'
+  conditions:
+    '|events|Galleria': {}
+  people:
+    'Dark Lady': is: Person.DarkLady
+    Liana: is: Person.Liana
+  type: 'plot'
+  label: "Expansion"
+  text: ->"""Now that my little "operation" is stable, it's time to start looking into real power. That means more magic."""
+
+add class MoreResources extends Page
+  text: ->"""|| bg="Inn/Pentagram"
+    -- I don't want to be chained to Liana forever. In addition to all the things that can go wrong with a frail human (not that she's particularly frail, mind you, anything but), as long as she's busy anchoring me to the world, I'm limited by her magic, and her magic is limited by me.
+
+    She needs another few years to grow into her power, but when the time comes... the ritual to stop aging is difficult enough as is. I think she'll be powerful enough, but not if I'm tying up three quarters of her magic.
+
+    --> Anyway, distractions. It's time to start my minions collecting milk and cum, since the ley-lines in this part of the world are pathetically weak. Time for more research!
+  """
+  apply: ->
+    super()
+    g.milk = 0
+    g.cum = 0
+  effects:
+    remove:
+      '|map|HolidayInn|jobs|MoreResources': Job.MoreResources

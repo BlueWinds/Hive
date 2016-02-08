@@ -32,7 +32,7 @@ window.Job = class Job extends Page
   type: 'normal'
 
   renderBlock: (mainKey, location)->
-    slots = for key, conditions of @people
+    slots = for key, conditions of @people when not conditions.hide?()
       renderSlot.call(@, key, conditions)
 
     return """<div class="#{@type} job clearfix" data-key="#{mainKey}" data-location="#{location}">
@@ -110,7 +110,7 @@ window.RoomJob = class RoomJob extends Job
     if @progress
       "Needs #{@progress} points"
     else
-      (for res in ['depravity', 'men', 'women', 'virgins'] when @effects[res]
+      (for res in ['depravity', 'men', 'women', 'virgins', 'cum', 'milk'] when @effects[res]
         "<span class='#{res} costPart'>#{-@effects[res]}</span>").join('')
 
   apply: ->

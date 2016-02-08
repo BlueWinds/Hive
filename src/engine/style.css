@@ -604,6 +604,12 @@ input.inline:disabled {
 .virgins::after {
   content: "☿";
 }
+.milk::after {
+  content: "M";
+}
+.cum::after {
+  content: "C";
+}
 .nav li {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -755,7 +761,7 @@ options button.btn {
 }
 .sail .job {
   cursor: pointer;
-  min-height: 11em;
+  min-height: 12em;
 }
 .sail .col-xs-6:last-child:nth-child(odd) {
   clear: both;

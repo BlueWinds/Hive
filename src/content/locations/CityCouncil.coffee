@@ -145,7 +145,7 @@ add class BlackmailOfficer2 extends Page
   || bg="Council/Police"
     -- ` Addictive tentacle slime.` Her voice is flat, and scary in its own way, but not disbelieving. Good.
     --> `D You'd have to physically restrain him up to stop him from visiting me. And if he doesn't show up once a week from now on, news just might leak that you're keeping your husband chained up in your basement.`
-    --> ` What d you want.`
+    --> ` What do you want.`
 
     -- `D Oh, just don't voice your concerns about the supernatural any more. I won't ask you not to do your job, that'd be silly, we want everyone kept safe as much as you. But no more questions about demons. Magic's real, and we're better at it than you.`
     --> ` Fuck you. But as long as Donny's ok, I'll play ball.`

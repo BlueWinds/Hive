@@ -354,14 +354,14 @@ add class Whore extends Job
       is: [Person.Domme, Person.Sadist]
     w1:
       label: ->'Slut'
-      is: [Person.SexSlave, Person.Liana, Person.ManWhore]
+      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy]
     w2:
       label: ->'Slut'
-      is: [Person.SexSlave, Person.Liana, Person.ManWhore]
+      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy]
       optional: true
     w3:
       label: ->'Slut'
-      is: [Person.SexSlave, Person.Liana, Person.ManWhore]
+      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy]
       optional: true
 
 add class Whore extends Page
@@ -370,22 +370,28 @@ add class Whore extends Page
     w1: {}
     pimp: {}
   text: ->
-    if Math.random() < 0.75 then return false
-    c = if @w1 instanceof Person.SexSlave then [
+    if $('page').length and Math.random() < 0.75 then return false
+
+    c = []
+    inof = (cl)=> return @w1 instanceof cl or @w2 instanceof cl or @w3 instanceof cl
+
+    if inof Person.SexSlave then c.push.apply c, [
       """|| bg="Sycamore/Whore1"
         -- Condoms are sexy! He lasts longer, she doesn't waste my magic needing to be cured of diseases."""
       """|| bg="Sycamore/Whore2"
         -- He was a little rough, but she took her pounding like a champ. As high earner for the month, she deserves a reward - if I remember tomorrow, I'll make Liana serve her for a few hours."""
       """|| bg="Sycamore/Whore3"
         -- "That's a good little slut. You like it and you hate the way it lets me see what you really want. Go on, tell me to stop if that's what you're actually thinking..."
-        -- He's a bit corny, but, well, as long as he's paying she's hardly in a position to complain."""
+        --> He's a bit corny, but, well, as long as he's paying she's hardly in a position to complain."""
       """|| bg="Sycamore/Whore4"
         -- Some girls go in for a more cute and innocent look. Works pretty well, especially when their clients learn they're not wearing underwear."""
       """|| bg="Sycamore/Whore5"
         -- Whore. She won't even open her mouth until he's ready to shove a cock in it."""
       """|| bg="Sycamore/Whore6"
         -- #{@pimp} gets a call from a guy we've seen before. He wants our girl to 'bring extra condoms this time.' Looks like she's in for a long night."""
-    ] else if @w1 instanceof Person.Liana then [
+    ]
+
+    if inof Person.Liana then c.push.apply c, [
       """|| bg="Liana/Whore1"
         -- While it's true that I've corrupted Liana to some extent, she somehow retains a core of purity and joy that perhaps I <em>could</em> touch, but really have no desire to. She's a powerful mage, a feisty temptress, smart and loyal and... I must be coming down with something.
       ||
@@ -400,8 +406,9 @@ add class Whore extends Page
         "Oh. Well, you're a slut either way."
         -->
       """
+    ]
 
-    ] else if @w1 instanceof Person.ManWhore then [
+    if inof Person.ManWhore then c.push.apply c, [
       """|| bg="Sycamore/WhoreMale1"
         -- Tempting as it is to grab her for my own collection, any woman who's going to pay a man off the street for sex is a woman too valuable to just throw in a cell and brainwash."""
       """|| bg="Sycamore/WhoreMale2"
@@ -413,9 +420,22 @@ add class Whore extends Page
         -- Busy day at the office, but still want to fuck? Call Dark Lady's Escorts now. We deliver."""
     ]
 
-    """|| class="jobStart" auto="1800"
-        <h4>Prostitution</h4>
+    if inof Person.Catgirl then c.push.apply c, [
+      """|| bg="Sycamore/WhoreCatgirl1"
+        -- ` Heh. Do I want to do what to the bunny? For $100? I'd do that for free. Heheh. She'll never know what hit her.`"""
+      """|| bg="Sycamore/WhoreCatgirl2"
+        -- ` Mrrrow! So shiny. Want.`"""
+      """|| bg="Sycamore/WhoreCatgirl3"
+        -- Come on boy, can't you see she's distracted. You'll have to grab her head and facefuck it if you want that cock in her mouth."""
+    ]
 
+    if inof Person.Catboy then c.push.apply c, [
+      """|| bg="Sycamore/WhoreCatboy1"
+        -- Good kitty, just keep purring."""
+    ]
+
+    return """|| class="jobStart" auto="1800"
+        <h4>Prostitution</h4>
       #{Math.choice c}
         <em><span class="depravity">+#{@depravity}</span></em>"""
   effects:

@@ -100,6 +100,7 @@ $.fn?.addTooltips = ->
     placement: 'right'
     container: 'body'
   )
+  return @
 
 errorPage = (page, error)->
   element = $.render """||
