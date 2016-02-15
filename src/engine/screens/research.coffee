@@ -36,8 +36,7 @@ Page.ResearchChoice = class ResearchChoice extends Page
     return page
 
   apply: ->
-    researcher = g.last.context.researcher
-    @context.progress = -Math.min(g.depravity, Math.floor(researcher.intelligence * 0.5 + researcher.magic * 0.25))
+    @context.progress = -Page.Laboratory.researchProgress(g.last.context.researcher)
 
     for key, job of g.map.Research.jobs when job instanceof Job or job.prototype instanceof Job
       if typeof job is 'function'

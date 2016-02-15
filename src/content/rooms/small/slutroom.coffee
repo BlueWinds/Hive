@@ -39,15 +39,15 @@ Job.Slutroom::next = add class SlutroomDaily extends Page
     if $('page').length and (Math.random() < 0.75 or g.events.SlutroomDaily?[0] is g.day) then return false
     c = [
       """|| bg="Slutroom/1"
-        -- I poke my head in for a moment, but all is as it should be, horny and wet and mindless.""",
+        -- I poke my head in for a moment, but all is as it should be, horny and wet and mindless."""
       """|| bg="Slutroom/2"
-        -- The chains are purely decorative. They don't have any thoughts other than fucking each other silly. Just the way it should be.""",
+        -- The chains are purely decorative. They don't have any thoughts other than fucking each other silly. Just the way it should be."""
       """|| bg="Slutroom/3"
-        -- Looks like someone has snuck in and taken advantage of her. Excellent.""",
+        -- Looks like someone has snuck in and taken advantage of her. Excellent."""
       """|| bg="Slutroom/4"
-        -- Something is very wrong here. They have clothes - how the hell did they get those? I strip them bare immediately, of course.""",
+        -- Something is very wrong here. They have clothes - how the hell did they get those? I strip them bare immediately, of course."""
       """|| bg="Slutroom/MF"
-        -- One of my males deserved a special reward. My sluts were more than happy to oblige.""",
+        -- One of my males deserved a special reward. My sluts were more than happy to oblige."""
     ]
 
     if g.events.SlutroomOral

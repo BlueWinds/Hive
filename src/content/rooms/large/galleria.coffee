@@ -114,7 +114,7 @@ add class InWall extends ResearchJob
   <br>If you lock them in, they can't squirm around and avoid your attentions. Fun."""
 
 add class InWall extends Page
-  text: ->"""|| bg="Galleria/6"
+  text: ->"""|| bg="Galleria/Wall4"
     -- On the breast of the whore named Gail.
       Was tattooed the price of her tail.
       And on her behind,

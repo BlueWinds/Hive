@@ -100,11 +100,10 @@ window.Game = class Game extends GameObject
     element = $('.nav')
     $('.day', element).html @date
     $('.depravity', element).html @depravity
-    $('.slaves', element).html "#{@men + @women + @virgins}/#{@space}"
-    $('.slaves', element).tooltip('destroy').attr 'title', """
-      <span class="men">#{@men}</span>
-      <span class="women">#{@women}</span>
-      <span class="virgins">#{@virgins}</span>"""
+    $('.space', element).html "#{@men + @women + @virgins}/#{@space}"
+    $('.men', element).html @men
+    $('.women', element).html @women
+    $('.virgins', element).html @virgins
     if @milk? then $('.milk', element).removeClass('hidden').html(@milk) else $('.milk', element).addClass('hidden')
     if @cum? then $('.cum', element).removeClass('hidden').html(@cum) else $('.cum', element).addClass('hidden')
     element.addTooltips()
@@ -159,14 +158,6 @@ recursiveCopy = (obj, data)->
       obj[key] = value
 
 applyAddRemove = (effects)->
-  for key, value of effects.add or {}
-    parts = key.split '|'
-    property = parts.pop()
-    result = if typeof value is 'function' then new value else value
-
-    if result.addAs then result.addAs property
-    else @getItem(parts.join '|')[property] = result
-
   for key, value of effects.remove or {}
     parts = key.split '|'
     property = parts.pop()
@@ -179,3 +170,11 @@ applyAddRemove = (effects)->
       # If it's inherited, we set it to "false" to mark it as actually gone.
       if @getItem(parts.join '|')[property]
         @getItem(parts.join '|')[property] = false
+
+  for key, value of effects.add or {}
+    parts = key.split '|'
+    property = parts.pop()
+    result = if typeof value is 'function' then new value else value
+
+    if result.addAs then result.addAs property
+    else @getItem(parts.join '|')[property] = result

@@ -155,3 +155,190 @@ add class BlackmailOfficer2 extends Page
   effects:
     remove:
       '|map|Council|jobs|BlackmailOfficer2': Job.BlackmailOfficer2
+
+Place.Council::jobs.Dorm = add class DormApproval extends Job
+  type: 'plot'
+  people:
+    Liana:
+      is: Person.Liana
+      label: -> if g.depravity >= 400 then 'Liana' else 'Need <span class="depravity">400</span>'
+      matches: -> g.depravity >= 400
+  conditions:
+    '|events|BlackmailOfficer2|0': matches: (d)-> d < (g.day - 5)
+  label: 'College Dormitory'
+  text: ->"""<q class="L">The city is accepting bids for a new dormitory. We're not state certified contractors, but one of you pets is.</q>
+  <q class="D">Huh?</q>
+  <q class="L">I can make people be naked even when they don't want to be.</q>
+  <q class="D">Ah. By all means.</q>
+
+  <em class="depravity">-400</em>"""
+
+add class ConstructDorm extends Job
+  type: 'plot'
+  people:
+    DarkLady:
+      is: Person.DarkLady
+      label: ->
+        if g.depravity >= 200 and g.men >= 4 and g.women >= 4
+          'Dark Lady'
+        else
+          'Need <span class="depravity">200</span>, <span class="women">4</span> and <span class="men">4</span>'
+      matches: -> g.depravity >= 200 and g.men >= 4 and g.women >= 4
+    Liana:
+      is: Person.Liana
+      matches: -> g.depravity >= 200 and g.men >= 4 and g.women >= 4
+  label: 'Construct Dorm'
+  text: ->"""The biggest building I've yet constructed. I'm not really sure where Liana's going with this, but seems like she has some ideas, so...
+
+  <em class="depravity">-200</em>, <span class="women">-4</span> and <span class="men">-4</span>"""
+
+add class DormApproval extends Page
+  text: ->"""|| bg="Inn/FrontDeskPanties"
+    -- ` As you can see in the proposal, I've managed the Holiday Inn here for five years, and during that time, patronage has grown immensely. With my experience in hospitality and guest management... aaah, um, I'm uniquely qualified to... ahh...`
+    --> ` Is everything allright, maam?`
+    -->  ` Yes, I'm sorry. As sorry. Um. As I was saying...`
+
+  || bg="Inn/FrontDeskSquirm"
+    -- `D Liana. Stop playing with the vibrator and let the woman speak,` I whisper to her, and take the remote out of her hand. `D It'll be easier to focus if it doesn't keep changing settings on her.` I set it to maximum.
+    --> ` Ah, yes, very sorry. Mmm. So as you can see in the documents provided, aahh, due to contacts in the construction industry...`
+    --> The police woman we're blackmailing glares at us, but doesn't say anything. I'm sure she'll keep a close eye on our new project, but that's ok - she won't find anything untoward. Just lots of exposed flesh.
+  """
+  effects:
+    remove:
+      '|map|Council|jobs|Dorm': Job.DormApproval
+    add:
+      '|map|Council|jobs|Dorm': Job.ConstructDorm
+
+dormDepravity = ->
+  d = 15
+  if g.events.DormHourly then d += 10
+  return d
+
+add class Dorm extends Job
+  label: "College Dorm"
+  text: ->"""Men pay double rent. Women are free, but have to rent thoir clothing by the square foot by the hour. <span class="depravity">+#{dormDepravity()}</span> daily"""
+  people: {}
+  type: 'boring'
+
+add class ConstructDorm extends Page
+  text: ->"""|| bg="Dorm/Empty"
+    -- `D Hm. Seems kind of boring so far. And people just live here?`
+    --> `L It's all in how you sell it. I'm setting the price at about double the other dorms for men, but women get to live here free. The kick is that they're not allowed to own clothes while they live here. Anything wearable has to be rented from the front desk by the hour.`
+    --> `D I like it.`
+
+    -- `L It's all upfront in the rental agreement, they know what they're in for. Well, mostly. I'll be slowly raising the price for more conservative clothes and reducing it for sluttier ones. Um... I have to make bras available to start, but I'll be raising the price very... Aah!`
+
+  || bg="Liana/Nude"
+    --> `L My clothes! I'm sorry mistr... mghmph!`
+  || bg="Liana/Bound"
+    --> `D No bras.`
+  """
+  effects:
+    remove:
+      '|map|Council|jobs|Dorm': Job.ConstructDorm
+    add:
+      '|map|Council|jobs|Dorm': Job.Dorm
+
+Job.Dorm::next = add class DormDaily extends Page
+  conditions:
+    depravity: fill: dormDepravity
+  text: ->
+    if $('page').length and Math.random() < 0.75 then return false
+    c = [
+      """|| bg="Dorm/11"
+        -- ` I keep thinking about that new dorm that opened. I hear from the women who live there what a good deal it is - I could quite my part time job and spend those hours studying.`
+      || bg="Dorm/12"
+        --> ` But have you seen the way they dress? I'm really not sure if it's worth it - my parents would be so upset if they found out. And my boyfriend...`
+      || bg="Dorm/13"
+        --> `Well, I'm pretty sure he'd like it at least.`"""
+      """|| bg="Dorm/21"
+        -- The old chearleading uniforms were cute, but with so many of the women living in my dorms, they've had to cut back a bit.
+      || bg="Dorm/22"
+        --> It's still a bit expensive - discussions in the locker room is usually about who they'll have to blow to get a few more inches taken off the top, and tank top."""
+      """|| bg="Dorm/31"
+        -- ` ...if I go to sleep naked, I'll have to walk to the front desk to get something to wear in the morning...`
+      || bg="Dorm/32"
+        --> ` Oh hell, fine. I guess it's not any more embarrassing than the other things I've done since I moved in here.`"""
+      """|| bg="Dorm/41"
+        -- ` You fucking pervs, staring at me all the time. I catch you looking my way one more time...`
+      || bg="Dorm/42"
+      || bg="Dorm/43"
+        -- ` I hate this goddamn wind. That's it, I'm moving back to a sane dormitory as soon as my contract's up.`"""
+      """|| bg="Dorm/5"
+        -- Dorm rules apply even on weekends and holidays - riding the train into the city is expensive or exhibitionary, pick one."""
+      """|| bg="Dorm/6"
+        -- Two layers up top so her nipples didn't show, or panties. One has to make tough choices in this economy."""
+      """|| bg="Dorm/7"
+        -- She thought she was safe wearing long pants. Whoops."""
+      """|| bg="Dorm/8"
+        -- Borrowing clothes from a friend is a breach of contract. The monitors always know, somehow. Someone will come by and let her out in a few hours."""
+    ]
+
+    if g.events.DormHourly
+      c.push """|| bg="Dorm/Hourly1"
+        -- Hiding naked in the bathroom between classes.
+        --> Aww, poor dear. The budget this month must be rough."""
+      c.push """|| bg="Dorm/Hourly2"
+        -- If you're going to hide in the bathrooms naked between classes, make absolutely certain you lock the stall door."""
+      c.push """|| bg="Dorm/Hourly3"
+        --` I, uh, I wasn't doing anything! Wait, no, you can't come in, you pervy janitor!`"""
+      c.push """|| bg="Dorm/Hourly41"
+        -- Out for a weekend ride, she waits until she's out where no one's around...
+      || bg="Dorm/Hourly42"
+        -- ...and the clothes come off. What she was wearing before was pretty cheap - maybe she was just looking for an excuse."""
+
+    if g.events.DormDiscount
+      c.push """|| bg="Dorm/Discount1"
+        -- She didn't think it would be this hard to focus on the lecture with the <em>non</em>-vibrating version. Unfortunately, I was feeling a bit vindictive this morning and enchanted all the dildos to squirm."""
+      c.push """|| bg="Dorm/Discount2"
+        -- The vibrator will turn on at some point today, and won't turn off. If she wears it all day, her clothes are free - if she takes it out, they cost double. Better hope it waits until she's home for the evening..."""
+      c.push """|| bg="Dorm/Discount3"
+        -- Some of the discount tasks are more aggressive than others. They'll be getting free clothing for a week - combined with free rent, it makes college much more affordable."""
+      c.push """|| bg="Dorm/Discount4"
+        -- Staying in her own locker all day in return for a week's free clothing - how unlucky that the buzzing attracted attention!"""
+      c.push """|| bg="Dorm/Discount5"
+        -- Was the chastity-belt, orgasm denying magic and vibrator combo really worth it, girl? I mean, yes, you're actually making money right now rather than spending it, but that stuff isn't coming off for a week."""
+
+    """|| class="jobStart" auto="1800"
+        <h4>College Dorm</h4>
+
+      #{Math.choice c}
+      <em class="depravity">+#{dormDepravity()}</em>
+    """
+  effects:
+    depravity: 'depravity'
+
+add class DormHourly extends ResearchJob
+  label: "True Hourly Rates"
+  progress: 300
+  conditions:
+    '|events|DormDaily': {}
+  text: ->"""<span class="depravity">+10</span> per day from the Dorm.
+    <br>If we charge by the hour <i>worn</i> rather than by the hour <i>rented</i>, we can draw women into all sorts of compromising situations."""
+
+add class DormHourly extends Page
+  text: ->"""|| bg="Dorm/Hourly3"
+    -- "Dead batteries," groaned frustrated Corrie,
+      As she urgently took inventory,
+      Of her vegetable crisper,
+      And moaned in a whisper,
+      "I am so hot from reading that story."
+  """
+
+add class DormDiscount extends ResearchJob
+  label: "Dorm Discounts"
+  progress: 300
+  conditions:
+    '|events|DormDaily': {}
+    '|events|Nudity': {}
+  text: ->"""<span class="depravity">+10</span> per day from the Dorm.
+    <br>Idea. We can offer discounts on various clothing items if the girls perform various... tasks. It's not prostitution if <em>they're</em> paying <em>us!</em>"""
+
+add class DormDiscount extends Page
+  text: ->"""|| bg="Dorm/Discount1"
+    -- "There was a young lass from Port Keel
+      Whose genitals were made of blue steel.
+      She got all her thrills,
+      From pneumatic drills,
+      And an off-centered emery wheel."
+  """

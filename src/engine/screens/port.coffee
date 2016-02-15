@@ -106,7 +106,11 @@ getJobDivs = (jobs, location)->
   jobLabels = $('')
 
   maybeAddJob = (key, job)->
-    unless job.contextMatch() then return
+    unless job.contextMatch()
+      # Clear out any workers from hidden jobs so they don't get stolen if the job reappears
+      for w of job.people
+        delete job.context[w]
+      return
 
     jobDivs = jobDivs.add job.renderBlock(key, location)
     jobDivs.last().data 'job', job

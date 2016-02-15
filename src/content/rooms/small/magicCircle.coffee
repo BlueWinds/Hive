@@ -76,11 +76,11 @@ add class MagicCircle extends Job
       cost.unshift '<em class="magic">+1 Magic</em>'
     else
       result = """#{@[@choice] or 0} / #{trainingDetails[@choice]?.duration or 0}
-      <br><span class="magic">Magic</span> + 20 daily"""
+      <br> +#{(@context.worker?.magic + 20) or 0} daily"""
 
-    return """Raising witches and sorceresses is hard work. Or I could to warp humans into... other things. Decisions, decisions.
+    return """Raising witches and sorceresses is hard work. Or I could to warp humans into... other things with <span class="magic">magic</span>. Decisions, decisions.
 
-    #{dropdown choices(), @choice} <strong>#{result}</strong>
+    Train #{dropdown choices(), @choice} <strong>#{result}</strong>
     <em>#{cost.join ', '}</em>"""
   type: 'boring'
   people:
