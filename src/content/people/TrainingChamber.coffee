@@ -9,7 +9,7 @@ add class Domme extends Person
   magic: 0
   intelligence: 25
   lust: 20
-  max:
+  max: new Collection
     strength: 20
     magic: 5
     intelligence: 50
@@ -30,7 +30,7 @@ add class Sadist extends Person
   magic: 0
   intelligence: 15
   lust: 20
-  max:
+  max: new Collection
     strength: 40
     magic: 0
     intelligence: 30
@@ -50,7 +50,7 @@ add class Maid extends Person
   magic: 0
   intelligence: 10
   lust: 10
-  max:
+  max: new Collection
     strength: 70
     magic: 1
     intelligence: 15
@@ -70,7 +70,7 @@ add class SexSlave extends Person
   magic: 0
   intelligence: 5
   lust: 35
-  max:
+  max: new Collection
     strength: 20
     magic: 3
     intelligence: 15
@@ -90,7 +90,7 @@ add class ManWhore extends Person
   magic: 0
   intelligence: 5
   lust: 35
-  max:
+  max: new Collection
     strength: 20
     magic: 0
     intelligence: 15

@@ -34,7 +34,7 @@ add class Slutroom extends Job
 Job.Slutroom::next = add class SlutroomDaily extends Page
   conditions:
     depravity: fill: slutroomDepravity
-    cum: fill: -> if g.events.SlutroomCum then 1 else 0
+    cum: fill: -> if g.events.SlutroomCum then 0.5 else 0
   text: ->
     if $('page').length and (Math.random() < 0.75 or g.events.SlutroomDaily?[0] is g.day) then return false
     c = [
@@ -85,7 +85,7 @@ Job.Slutroom::next = add class SlutroomDaily extends Page
         <h4>Slutroom</h4>
 
       #{Math.choice c}
-      <em class="depravity">+#{slutroomDepravity()}</em>#{if @cum then ', <span class="cum">+1</span>' else ''}
+      <em class="depravity">+#{slutroomDepravity()}</em>#{if @cum then ', <span class="cum">+0.5</span>' else ''}
     """
   effects:
     depravity: 'depravity'
@@ -160,7 +160,7 @@ add class SlutroomCum extends ResearchJob
     '|events|MoreResources': {}
   label: "Slutroom cum collection"
   progress: 200
-  text: ->"""<span class="cum">+1</span> per day for each slutroom.
+  text: ->"""<span class="cum">+0.5</span> per day for each slutroom.
     <br>Why does everyone always assume I mean men when I talk about cum? Female cum is just as magically powerful and pleasant."""
 
 add class SlutroomCum extends Page

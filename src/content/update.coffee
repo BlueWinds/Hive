@@ -7,3 +7,9 @@ Game.update.push {
         job.workers = Math.min(12, job.workers)
     return
 }
+Game.update.push {
+  post: ->
+    for name, person of @people
+      person.max = new Collection(person.max)
+    return
+}

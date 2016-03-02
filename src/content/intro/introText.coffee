@@ -254,3 +254,65 @@ add class MoreResources extends Page
   effects:
     remove:
       '|map|HolidayInn|jobs|MoreResources': Job.MoreResources
+
+add class Tentacles extends Job
+  place: 'HolidayInn'
+  conditions:
+    '|events|MagicCircle': {}
+  people:
+    'Dark Lady':
+      is: Person.DarkLady
+      label: -> if D.magic >= 30 then 'Dark Lady' else 'Dark Lady (<span class="magic">30+</span>)'
+      matches: (p)-> p.magic >= 30
+    Liana: is: Person.Liana
+  type: 'plot'
+  label: "A Serious Talk"
+  text: ->"""There is something I must discuss with Liana."""
+  next: Page.firstNew
+  @next: []
+
+Job.Tentacles.next.push add class Tentacles1 extends Page
+  text: ->"""|| bg="Liana/Happy"
+    -- `D Liana dear. Sit.`
+    --> She sits, fidgeting nervously. `L Um... did I do something...`
+    --> `D No, you're been a very good girl. But...` I hate myself right now. I don't know how to do this. I put a hand to my forehead and rub it. Isn't that mortals do when they're at a loss? I'm making Liana nervous. She's never seen me pace before. Have I ever paced before? I don't think so.
+
+  || bg="Inn/Pentagram"
+    -- `D There is something very wrong with the world. I recently regained enough power to teleport, and I've been...`
+    --> `L That's a thing you can do? Can I do that?`
+    --> `D Yes, you're easily powerful enough. I'll show you later. But the point is, I've been exploring. It appears that you and I are the most powerful magical beings in the world.`
+    --> She doesn't get it. She can hear how much that bothers me, but she doesn't know why. Leana puts a hand on my forearm. I'm pathetic, to be reassured by contact with a human. I brush her arm off.
+
+    -- `D I've been intensely cautious in my approach, because by all rights we ought to have holy crusaders knocking down our doors by now, and I wanted to seem nothing more than a succubus or some such minor nonsense. But where are the gods and demon lords and sorcerers and saints? I can't find them. I don't know why. Clearly magic still works. There's you, the amulet that can resist you, some of the slaves have minor talents. But the world used to be swimming in magic, and all that's left are fragments.`
+
+  || bg="Liana/Crying"
+    --> She's crying. Damn it. Of course I hadn't told her any of what has been bothering me - she's just a slave, even if a pretty one. I rub my hand on my forehead again. `D Look. I don't know where the gods are - I lost that war, but they're not here and I am. So I'm going to take over the world, and give you your revenge and any other little treats you like along the way. But it's only fair you know that I'm a bit confused, and I don't mean just the absurd complexity of your tell-a-visions.`"""
+
+Job.Tentacles.next.push add class Tentacles2 extends Page
+  text: ->"""||
+    -- `L Mistress? May I speak with you?`
+  || bg="Liana/Kneeling"
+    --> I gesture her to my side, and she kneels obediently on the floor, hands folded in her lap waiting for me to acknowledge her presence. To anyone else it might look like I'm just staring off into thin air, but she can feel the forces moving around me. This is delicate work. I finish a mental component of the spell, leave it hanging there and turn my attention to her as I continue to feed it power.
+
+    -- `L I've been thinking about what you said, about where all the magic is, and... well, you're always saying what a powerful mage I am, but I wasn't, not until I met you. Summoning you was the first thing I was ever able to do, and I've just been getting stronger since then... well, anyway, I don't think there is magic in the world, I think it's just you and I was lucky to be nearby when you arrived.`
+    --> So that's what's been bothering her. She's been quiet ever since I spoke with her last time. `D Potential is inborn. I can't empower anyone else beyond very strict limits, defined from birth. You are... you are unusual, for a human, let's just leave it at that. If you'd been useless like most of the toys around here, I'd have corrupted your mind and broken the contract long ago.`
+
+    -- `D Don't look so shocked. You're my second because I chose you, not because of some silly contract you tried to force on me.`
+    --> `L Uh. Um. I... I didn't... About the lack of magic...`
+    --> `D Forget about it. Not important. Here, catch.` I throw the almost-complete spell in her direction. She reaches out to catch the ball of tightly woven power with her bare hands.
+
+  || bg="Liana/Tentacles"
+    -- Silly girl. Don't try to catch magic with your hands.
+    --> `D I've finally managed to summon one in its natural, long-lived form.`
+  || bg="Cocoon/Build2"
+    --> `D We should install him in one of the warehouses in North End... Are you even listening? Pay attention Liana, this is important.`"""
+  apply: ->
+    super()
+    g.tentaclesReady = true
+  effects:
+    remove:
+      '|map|HolidayInn|jobs|Tentacles': Job.Tentacles
+    add:
+      '|map|NorthEnd|jobs|4': Job.LargeRoom
+      '|map|NorthEnd|jobs|5': Job.SmallRoom
+      '|map|NorthEnd|jobs|6': Job.SmallRoom

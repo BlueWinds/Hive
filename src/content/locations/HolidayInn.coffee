@@ -144,6 +144,7 @@ burnChoices = (loc)->
   c = {}
   for key, job of loc.jobs when RoomJob[job.constructor.name]
     c[key] = job.label
+  delete c.BreedingPit
   return c
 
 add class Fire extends Job

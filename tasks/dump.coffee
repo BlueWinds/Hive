@@ -23,7 +23,7 @@ module.exports = (grunt)->
     html = html.replace(/<\/?q>/g, '"')
     html = html.replace(/#\{q.*?\}/g, '"')
     html = html.replace(/bg="none"/g, '')
-    html = html.replace(/bg="(.+?)"/g, '<a href="game/images/$1"><img width=150 src="game/images/$1.jpg"></a>')
+    html = html.replace(/bg="(.+?)"/g, '<a href="game/images/$1.jpg"><img width=150 src="game/images/$1.jpg"></a>')
     fs.writeFileSync 'public/dump.html', html
     return data
 

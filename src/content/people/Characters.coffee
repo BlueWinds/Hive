@@ -9,9 +9,9 @@ Game::people.DarkLady = add class DarkLady extends Person
   lust: 50
   image: 'misc/DarkLady'
   description: ->"""It's me. I'm going to take over the world."""
-  max:
+  max: new Collection
     strength: 100
-    magic: 100
+    magic: 30
     intelligence: 100
     lust: 100
 
@@ -20,13 +20,13 @@ Game::people.Liana = add class Liana extends Person
   name: 'Liana'
   gender: 'f'
   strength: 15
-  magic: 60
+  magic: 30
   intelligence: 50
   lust: 25
   image: 'Liana/Happy'
   description: ->"""Fucktoy #1. Quite a powerful mage, and my first lieutenant. She was kicked out of university for cheating on a test, and decided to "show them all" by summoning me. Also my favorite human, though don't tell her I said so."""
-  max:
+  max: new Collection
     strength: 40
-    magic: 80
+    magic: 50
     intelligence: 100
     lust: 100

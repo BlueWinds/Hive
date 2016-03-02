@@ -99,7 +99,7 @@ window.Person = class Person extends GameObject
     @[stat] += amount
     # Randomly round non-whole number stats
     @[stat] = Math.floor(@[stat]) + (Math.random() < @[stat] % 1)
-    @[stat] = Math.max 0, Math.min(@[stat], @max[stat] or 100)
+    @[stat] = Math.max 0, Math.min(@[stat], @max[stat])
 
 Game.schema.properties.people =
   type: Collection

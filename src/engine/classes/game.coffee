@@ -123,7 +123,7 @@ window.Game = class Game extends GameObject
       if stat in ['women', 'men', 'virgins']
         amount = Math.min(amount, @freeSpace)
 
-      g[stat] += amount
+      g[stat] += Math.randomRound(amount)
       g[stat] = Math.max(g[stat], 0)
 
   Object.defineProperty @::, 'space', {get: ->

@@ -11,7 +11,7 @@ add class Milking extends RoomJob
   text: ->"""While human women don't produce that much milk, I find the humiliation delightful, and the rows of distended breasts and chained cunts ready for use is its own reward. Oh, and they do produce <em>some</em> milk, which is quite useful magically."""
 
 add class Milking extends Page
-  text: -> """|| bg="Milking/5"
+  text: -> """|| bg="Milking/2"
     -- Cowgirls. Milking machines. Sweet. Slutrooms are great for sex magic, but they don't produce much milk. A room stuffed to the brim with constantly stimulated and milked women is just the ticket.
   """
 

@@ -73,7 +73,7 @@ add class MagicCircle extends Job
 
     if @choice is 'Magic'
       result = ''
-      cost.unshift '<em class="magic">+1 Magic</em>'
+      cost.unshift '<em class="magic">+2 Magic</em>'
     else
       result = """#{@[@choice] or 0} / #{trainingDetails[@choice]?.duration or 0}
       <br> +#{(@context.worker?.magic + 20) or 0} daily"""
@@ -130,11 +130,11 @@ add class MagicCircleMagic extends Page
     return """|| class="jobStart" auto="1800"
       <h4>Magic Circle</h4>
     #{Math.choice c}
-      <em class="magic">+1 Magic</em>
+      <em class="magic">+2 Magic</em>
       <em class="cum">-#{trainingDetails.Magic.cost.cum}</em>"""
   apply: ->
     super()
-    @context.worker.add('magic', 1)
+    @context.worker.add('magic', 2)
   effects:
     cum: -trainingDetails.Magic.cost.cum
 

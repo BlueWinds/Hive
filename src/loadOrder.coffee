@@ -32,6 +32,7 @@ module.exports = [
   'content/rooms/small/slutroom.coffee'
   'content/rooms/small/trainingChamber.coffee'
   'content/rooms/small/magicCircle.coffee'
+  'content/rooms/small/cocoon.coffee'
   'content/rooms/medium/auction.coffee'
   'content/rooms/medium/gym.coffee'
   'content/rooms/medium/laboratory.coffee'
@@ -39,6 +40,8 @@ module.exports = [
   'content/rooms/medium/outreach.coffee'
   'content/rooms/large/milking.coffee'
   'content/rooms/large/galleria.coffee'
+  'content/rooms/large/spawningPit.coffee'
+  'content/rooms/large/breedingPit.coffee'
 
 # Locations
   'content/locations/HolidayInn.coffee'

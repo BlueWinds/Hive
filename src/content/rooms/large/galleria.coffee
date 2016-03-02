@@ -23,7 +23,7 @@ add class Galleria extends Page
     -- `D Sluts, atteeeeen-tion!`
     --> `D Saaaaaal-ute!`
   || bg="Galleria/1"
-    --> `D Very good girls, as you were.`
+    --> `D Very good, girls. As you were.`
   """
 
 add class Galleria extends Job
@@ -97,7 +97,7 @@ add class GalleriaVisitors extends ResearchJob
   <br>Hmm. It seems like the girls could use more work. Let's invite people from the town to pay them a visit."""
 
 add class GalleriaVisitors extends Page
-  text: ->"""|| bg="Galleria/5"
+  text: ->"""|| bg="Galleria/Visitors2"
     -- Amber (who called herself Skye)
       Spread her thighs, as she said with a sigh:
       "I've shaved myself bare

@@ -5,7 +5,7 @@ add class Catgirl extends Person
   magic: 1
   intelligence: 0
   lust: 20
-  max:
+  max: new Collection
     strength: 15
     magic: 7
     intelligence: 10
@@ -27,7 +27,7 @@ add class Catboy extends Person
   magic: 1
   intelligence: 5
   lust: 10
-  max:
+  max: new Collection
     strength: 30
     magic: 1
     intelligence: 25
