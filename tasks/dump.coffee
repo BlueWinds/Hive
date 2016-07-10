@@ -33,7 +33,7 @@ dumpObj = ->
   data = {}
 
   _class = null
-  for line in result.output.split("\n") when line
+  for line in result.split("\n") when line
     oline = line
     line = line.replace /"""/g, ''
     line = line.replace 'text: ->', ''

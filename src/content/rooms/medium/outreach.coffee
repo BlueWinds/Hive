@@ -38,7 +38,7 @@ add class OutreachMan extends Page
     """|| class="jobStart" auto="1800"
       <h4>Outreach Center</h4>
     || bg="Outreach/3"
-      -- Bikini babes handing out fliers for a free welcome barbecue? Sign one new (soon to be) slave up. He hardly even objected when the girls told him it was a lifetime commitment (the breasts almost popping out of her string bikini probably had something to do with that).
+      -- Bikini babes handing out fliers for a free welcome barbecue? Sign one new (soon to be) slave up. He hardly even objected when the girls told him it was a lifetime commitment (the breasts almost popping out of her top probably had something to do with that).
       <em class="men">+1</em>
     """
   effects:

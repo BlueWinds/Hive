@@ -38,6 +38,7 @@ module.exports = [
   'content/rooms/medium/laboratory.coffee'
   'content/rooms/medium/library.coffee'
   'content/rooms/medium/outreach.coffee'
+  'content/rooms/medium/studio.coffee'
   'content/rooms/large/milking.coffee'
   'content/rooms/large/galleria.coffee'
   'content/rooms/large/spawningPit.coffee'
