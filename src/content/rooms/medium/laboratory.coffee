@@ -18,7 +18,7 @@ stillResearch = ->
 add class Laboratory extends Job
   label: "Laboratory"
   text: -> """It's not just a matter of sticking things in new orifices - I need to make sure my slaves are happy and healthy with each new perversion I bless them with. A researcher here can help me figure out how, with their <span class="intelligence">Intelligence</span> and <span class="magic">Magic</span>.
-  <br><span class="depravity">-#{progress @context.researcher}, +#{progress(@context.researcher) * 2} progress</em>
+  <br><span class="depravity">-#{progress @context.researcher}</span>, +#{progress(@context.researcher) * 2} progress</em>
   <em>#{g.goal?.label or ''}</em>
   #{g.goal?.progress or 0}/#{g.goal?.constructor::progress or 0}"""
   people:

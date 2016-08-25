@@ -7,15 +7,56 @@ add class Sycamore extends Place
   location: [633, 354]
   destinations: new Collection
 
+add class Resistance extends Job
+  place: 'Sycamore'
+  type: 'plot'
+  people:
+    'Dark Lady': '|people|DarkLady'
+    Liana: '|people|Liana'
+  label: 'Walk with Liana'
+  text: ->"""Liana has something she wants to talk to me about, something-something police we're doomed. Perhaps I'd better listen."""
+
+Job.Resistance::next = add class Resistance extends Page
+  text: ->"""|| bg="Sycamore/Street"
+    -- Liana leads me out into the daylight. It's not my favorite place to be - rather exposed to the accursed daystar, nothing fun happening near... wait, nope, I hear people fucking in one of the buildings nearby. Nothing fun happening nearby <i>that I get to watch.</i> My lieutenant seems rather happy, which I suppose is a good thing.
+  || bg="Liana/Coat"
+    -- `L You know, when I summoned you I just wanted to abduct my professors, torture them a bit, maybe make them run around naked. I wasn't expecting you to be quite so... vigerous. Taking over everything's fun, mind you, just not what I was expecting to do.`
+    --> I smirk, wait for her to go on.
+    --> `L Anyway, I wanted to warn you about how things work here in the modern world. You can maybe get away with a couple of disappearances here or there, but too much more of what we did back at the motel and you'll start attracting attention. I'm amazed no one's reported your slaves missing yet.`
+
+    -- `D Of course not. I've woven a Forgetting over our activities. People forget their suspicions unusually quickly in its presence.`
+    --> `L Really? That's useful. I haven't felt anything.`
+    --> `D Of course not. It would be a poor spell if it could be noticed casually. You're immune, of course, being a mage. Search for it sometime, you'll feel it blanketing the town.`
+    --> Liana blinks a few times, looking puzzled. Right. She's not a mage yet, just a dabbling ameture. I explain how she can see magical energy. An amature, but a gifted one - she picks up the principle instantly.
+
+    -- `L Anyway, that's what I wanted to tell you, but it sounds like you already know.` She smiles and twirls, long hair flowing in the wind.
+    --> `D Your skirt.`
+    --> `L What?`
+    --> `D If we're done talking, give me your skirt.`
+
+  || bg="Liana/noPants"
+    -- <em>Resistance (R) is a number ranging from 0-100, representing how suspicious and alert the town is. It adds to the difficulty of all stat checks, making you less likely to succeed. It decays slowly on its own (due to the Dark Lady's spell), though eventually you'll find other ways to decrease it later.</em>
+
+    <em><span class="resistance">+5</span></em>
+  """
+  apply: ->
+    super()
+    g.resistance = 5
+  effects:
+    remove:
+      '|map|Sycamore|jobs|Resistance': Job.Resistance
+
 add class Catch extends Job
   place: 'Sycamore'
   conditions:
     '|freeSpace': gte: 1
+    '|events|Resistance': {}
   people:
     worker: {}
   label: 'Catch Slaves'
   text: ->"""Snatching people off the street is the simplest - but also most dangerous - way to get new slaves.
 
+  <span class="resistance">+1 to +5</span>
   #{Page.statCheckDescription('strength', 30, Job.Catch.next, @context)}"""
   stat: 'strength'
   difficulty: 20
@@ -27,11 +68,12 @@ add class CatchPolice extends Page
     worker: {}
   text: ->"""|| bg="Sycamore/Police"
     -- It went poorly. #{if @worker is g.people.DarkLady then 'I' else ('My ' + @worker)} was shot by the police, though #{if @worker is g.people.DarkLady then 'I' else he()} did manage to escape. At least the officer was hot.
-    <em><span class="strength">-6 strength</span></em>
+    <em><span class="strength">-6 strength</span>, <span class="resistance">+5</span></em>
   """
   apply: ->
     super()
     @context.worker.add 'strength', -6
+    g.resistance += 5
 
 add class CatchPoliceCapture extends Page
   conditions:
@@ -39,55 +81,61 @@ add class CatchPoliceCapture extends Page
       isnt: [Person.DarkLady, Person.Liana]
   text: ->"""|| bg="Sycamore/Police"
     -- My #{@worker} has been captured by the police! Damn it. I'll have to trigger the remote memory erasure spell I implanted - #{he} won't be of any more use to me, but at least they won't be able to get any information out of #{him}.
-    <em>#{@worker} is captured.</em>
+    <em>#{@worker} is captured. <span class="resistance">+5</span></em>
   """
   apply: ->
     super()
     g.people.remove @context.worker
+    g.resistance += 5
 
 add class CatchNothing extends Page
   conditions:
     worker: {}
   text: ->"""|| bg="Sycamore/Street"
     -- #{@worker} is bored. #{He} wandered the streets looking for someone to catch, but found nothing. Perhaps rumors of how dangerous the area has become have spread, or perhaps there was a college football game drawing everyone away.
-    <em><span class="lust">-1 Lust</span></em>
+    <em><span class="lust">-1 Lust</span>, <span class="resistance">+1</span></em>
   """
   apply: ->
     super()
     @context.worker.add 'lust', -1
+    g.resistance += 1
 
 add class CatchMiss extends Page
   conditions:
     worker: {}
   text: ->"""|| bg="Sycamore/Street"
     -- #{@worker} cornered a young #{Math.choice ['man', 'woman']}, but they kicked #{his} shins and knocked him into a wall escaped. It hurt not only #{his} pride, but also #{his} head.
-    <em><span class="lust">-1 Lust</span>, <span class="intelligence">-1 Intelligence</span></em>
+    <em><span class="lust">-1 Lust</span>, <span class="intelligence">-1 Intelligence</span>, <span class="resistance">+3</span></em>
   """
   apply: ->
     super()
     @context.worker.add 'lust', -1
     @context.worker.add 'intelligence', -1
+    g.resistance += 2
 
 add class CatchMan extends Page
   text: ->"""|| bg="Sycamore/#{Math.choice ['CaptureM1', 'CaptureM2']}"
-    -- <em><span class="men">+1</span></em>
+    -- <em><span class="men">+1</span>, <span class="resistance">+3</span></em>
   """
   effects:
     men: 1
+    resistance: 3
 
 add class CatchWoman extends Page
   text: ->"""|| bg="Sycamore/#{Math.choice ['CaptureF1', 'CaptureF2']}"
-    -- <em><span class="women">+1</span></em>
+    -- <em><span class="women">+1</span>, <span class="resistance">+4</span></em>
   """
   effects:
     women: 1
+    resistance: 4
 
 add class CatchVirgin extends Page
   text: ->"""|| bg="Sycamore/CaptureF3"
-    -- <em><span class="virgins">+1</span></em>
+    -- <em><span class="virgins">+1</span>, <span class="resistance">+5</span></em>
   """
   effects:
     virgins: 1
+    resistance: 5
 
 
 Job.Catch.next['veryGood'] = add class CatchVeryGood extends Page
@@ -154,9 +202,11 @@ add class Release extends Job
   choice: 'men'
   label: 'Release Slave'
   type: 'boring'
+  conditions:
+    '|events|Laboratory': {}
   text: ->"""I've got a lot of #{dropdown choices(), @choice} in my dungeons. I can have some fun and clean up space at the same time!
 
-    <span class="#{@choice}">-1</span>, <span class="depravity">+#{releaseValue[@choice] or 0}</span>
+    <span class="#{@choice}">-1</span>, <span class="depravity">+#{releaseValue[@choice] or 0}</span>, <span class="resistance">-1</span>
   """
   renderBlock: (mainKey, location)->
     unless choices()[@choice]? then @choice = Object.keys(choices())[0]
@@ -199,11 +249,12 @@ add class Release extends Page
       <h4>Release Slave</h4>
 
     #{Math.choice c}
-      <span class='#{@choice}'>-1</span>, <span class='depravity'>+#{releaseValue[@choice]}</span>"""
+      <span class='#{@choice}'>-1</span>, <span class='depravity'>+#{releaseValue[@choice]}</span>, <span class="resistance">-1</span>"""
   apply: ->
     super()
     effects =
       depravity: releaseValue[@context.choice]
+      resistance: -1
     effects[@context.choice] = -1
     g.applyEffects(effects)
 
@@ -347,7 +398,7 @@ add class Whore extends Job
   label: 'Prostitution'
   text: ->"""Sycamore Street isn't the nicest part of town, so one of my sluts selling her body won't be that unusual of a sight.
 
-  <em><span class="depravity">+#{whoreDepravity(@context)}</span></em>"""
+  <em><span class="depravity">+#{whoreDepravity(@context)}</span>, <span class="resistance">+1</span></em>"""
   people:
     pimp:
       label: ->'Domme or Sadist'
@@ -437,6 +488,7 @@ add class Whore extends Page
     return """|| class="jobStart" auto="1800"
         <h4>Prostitution</h4>
       #{Math.choice c}
-        <em><span class="depravity">+#{@depravity}</span></em>"""
+        <em><span class="depravity">+#{@depravity}</span>, <span class="resistance">+1</span></em>"""
   effects:
     depravity: 'depravity'
+    resistance: 1

@@ -60,7 +60,7 @@ add class Nudity extends Job
   label: 'Public Nudity'
   text: ->"""Fuck skulking about and cloaking my servants in clothes or concealing magic. People should be free to show their bodies.
 
-  <em class="depravity">-800</em>"""
+  <em class="depravity">-800</em>, <span class="resistance">-1</span> daily"""
 
 add class Nudity extends Page
   text: ->"""|| bg="Council/Building"
@@ -75,11 +75,15 @@ add class Nudity extends Page
     -->  `D Very well. Naked, now, all of you.`
   || bg="Council/Nudity"
     -- I give the still slightly dazed old men of the city council a nice little reward as the audience - composed almost entirely of attractive slaves of mine - shed their clothes and reveal what's been going on underneath. They did just do me a favor, after all, and it might encourage them to continue to see things my way in the future.
+
+    <em><span class="resistance">-1</span> daily</em>
   """
   effects:
     depravity: -800
     remove:
       '|map|Council|jobs|Nudity': Job.Nudity
+
+Game.passDay.push -> g.applyEffects {resistance: -2}
 
 add class BlackmailOfficer extends Job
   place: 'Council'
@@ -87,6 +91,7 @@ add class BlackmailOfficer extends Job
   conditions:
     '|events|Zoning': {}
     '|events|CatchPolice': {}
+    '|resistance': {gte: 20}
   people:
     Liana:
       is: Person.Liana
@@ -98,6 +103,7 @@ add class BlackmailOfficer2 extends Job
   type: 'plot'
   conditions:
     '|events|BlackmailOfficer|0': matches: (d)-> d < (g.day - 10)
+    '|resistance': {gte: 20}
   people:
     'Dark Lady':
       is: Person.DarkLady
@@ -190,7 +196,7 @@ add class ConstructDorm extends Job
   label: 'Construct Dorm'
   text: ->"""The biggest building I've yet constructed. I'm not really sure where Liana's going with this, but seems like she has some ideas, so...
 
-  <em class="depravity">-200</em>, <span class="women">-4</span> and <span class="men">-4</span>"""
+  <em class="depravity">-200</em>, <span class="women">-4</span> and <span class="men">-4</span>, <span class="resistance">+1</span> daily"""
 
 add class DormApproval extends Page
   text: ->"""|| bg="Inn/FrontDeskPanties"
@@ -212,6 +218,7 @@ add class DormApproval extends Page
 dormDepravity = ->
   d = 15
   if g.events.DormHourly then d += 10
+  if g.events.DormDiscount then d += 10
   return d
 
 add class Dorm extends Job
@@ -246,7 +253,7 @@ Job.Dorm::next = add class DormDaily extends Page
     if $('page').length and Math.random() < 0.75 then return false
     c = [
       """|| bg="Dorm/11"
-        -- ` I keep thinking about that new dorm that opened. I hear from the women who live there what a good deal it is - I could quite my part time job and spend those hours studying.`
+        -- ` I keep thinking about that new dorm that opened. I hear from the women who live there what a good deal it is - I could quit my part time job and spend those hours studying.`
       || bg="Dorm/12"
         --> ` But have you seen the way they dress? I'm really not sure if it's worth it - my parents would be so upset if they found out. And my boyfriend...`
       || bg="Dorm/13"
@@ -303,10 +310,11 @@ Job.Dorm::next = add class DormDaily extends Page
         <h4>College Dorm</h4>
 
       #{Math.choice c}
-      <em class="depravity">+#{dormDepravity()}</em>
+      <em><span class="depravity">+#{dormDepravity()}</span>, <span class="resistance">+1</span></em>
     """
   effects:
     depravity: 'depravity'
+    resistance: 1
 
 add class DormHourly extends ResearchJob
   label: "True Hourly Rates"

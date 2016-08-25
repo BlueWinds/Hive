@@ -610,6 +610,9 @@ input.inline:disabled {
 .cum::after {
   content: "C";
 }
+.resistance::after {
+  content: "R";
+}
 .nav li {
   padding-top: 15px;
   padding-bottom: 15px;

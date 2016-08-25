@@ -19,6 +19,7 @@ add class Outreach extends Job
   text: -> """Snatching women of the street is effective, but I can't do it too often or people will stop going out alone. A nice "Hiring" sign and some cute bimbos, though? Attracts young people like flies to honey.
   <br><em>Recruit slaves safely.</em>
 
+  <span class="resistance">+1</span>
   #{Page.statCheckDescription('lust', 30, Job.Outreach.next, @context)}"""
   people:
     worker: {}
@@ -31,6 +32,8 @@ add class Outreach extends Job
   next: Page.statCheck
   @next: {}
   type: 'boring'
+  effects:
+    resistance: 1
 
 add class OutreachMan extends Page
   text: ->

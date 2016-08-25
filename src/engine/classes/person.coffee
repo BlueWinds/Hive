@@ -129,6 +129,7 @@ Page.schema.properties.difficulty =
   optional: true
 
 statCheckChances = (stats, diff, context)->
+  diff += (g.resistance or 0)
   sum = 1
   for stat in stats.split('|')
     if context

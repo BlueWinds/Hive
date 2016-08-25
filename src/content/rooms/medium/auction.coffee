@@ -31,7 +31,7 @@ add class AuctionHouse extends Job
     Merchandise: isnt: [Person.DarkLady, Person.Liana]
   text: ->"""This isn't the sort of auction where low-grade human chattel is dealt with - exclusive merchandise, exclusive clientele. All the of the merchandise's stats contribute to the price.
 
-  <em class="depravity">+#{sellPrice @context.Merchandise}</em>.
+  <em><span class="depravity">+#{sellPrice @context.Merchandise}</span>, <span class="resistance">+5</span></em>.
 
     #{Page.statCheckDescription('intelligence|lust', 65, Job.AuctionHouse.next, @context)}"""
   stat: 'intelligence|lust'
@@ -66,13 +66,14 @@ Job.AuctionHouse.next['good'] = add class AuctionGood extends Page
           -- How horrible. I hope her new master lets her catch the toy eventually."""
       ]
 
-    return Math.choice(c) + "\n<em class='depravity'>+#{@price}</em>"
+    return Math.choice(c) + "\n<em><span class='depravity'>+#{@price}</span>, <span class='resistance'>+5</span></em>"
   apply: ->
     super()
     delete @context.job.context.Merchandise
     g.people.remove @context.Merchandise
   effects:
     depravity: 'price'
+    resistance: 5
 
 Job.AuctionHouse.next['bad'] = add class AuctionBad extends Page
   conditions:

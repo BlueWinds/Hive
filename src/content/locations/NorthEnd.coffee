@@ -128,3 +128,54 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal11 extends Page
   effects:
     remove:
       '|map|NorthEnd|jobs|ProfessorsOrdeal': Job.ProfessorsOrdeal
+
+add class TentacleRaid extends Job
+  place: 'NorthEnd'
+  conditions:
+    '|events|BreedingPitDails': {}
+    '|depravity':
+      gte: 100
+  people:
+    'Dark Lady': '|people|DarkLady'
+    'Goon 1': {optional: true}
+    'Goon 2': {optional: true}
+  label: "Hunting"
+  text: ->"""A dose of nighttime terrors would do this sleepy little town some good (by convincing them not to oppose me). Also, it would be good preparation for taking over completely, which is a thing I've put off for far too long now.
+
+  <span class='depravity'>-50</span>, <span class="resistance">-5</span>"""
+  next: Page.TentacleRaid
+
+add class TentacleRaid extends Page
+  text: ->
+    c = [
+      """|| bg="NorthEnd/Raid11"
+        || bg="NorthEnd/Raid12"
+        || bg="NorthEnd/Raid13"
+        || bg="NorthEnd/Raid14"
+        || bg="NorthEnd/Raid15"
+        || bg="NorthEnd/Raid16"
+        || bg="NorthEnd/Raid16"
+        -- It may look like she has it easier than most girls violated by tentacles, but I assure you, the "spin + egg injection" setting is no joke. She'll soon be the proud mother of the next generation of horrors.""",
+      """|| bg="NorthEnd/Raid2"
+        -- She can cling as much as she likes now, but this breed is patient. Eventually she'll relax and it can swallow her to act as the new incubation core.""",
+      """|| bg="NorthEnd/Raid31"
+        || bg="NorthEnd/Raid32"
+        || bg="NorthEnd/Raid32"
+        || bg="NorthEnd/Raid32"
+        -- Pretty sure she genuinely enjoyed this. Some girls are just fucked in the head, I guess. Unlike most of the brood mothers, I'll let her go to carry out her term at home.""",
+      """|| bg="NorthEnd/Raid41"
+        || bg="NorthEnd/Raid42"
+        || bg="NorthEnd/Raid43"
+        || bg="NorthEnd/Raid44"
+        || bg="NorthEnd/Raid45"
+        || bg="NorthEnd/Raid45"
+        -- Once she stops struggling I'll let her arms and legs loose. The living vat of goo will be her home for the next four months while it reproduces.""",
+      """|| bg="NorthEnd/Raid5"
+        -- The joys of motherhood. Doesn't she just glow with good health?""",
+    ]
+
+    """#{Math.choice c}
+    <span class='depravity'>-50</span>, <span class="resistance">-5</span>"""
+  effects:
+    depravity: -50
+    resistance: -5

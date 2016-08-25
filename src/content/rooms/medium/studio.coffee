@@ -33,6 +33,7 @@ add class PornStudio extends Job
   label: "Porn Studio"
   text: -> """Transmitting depravity around the globe... I like this 'internet' thing. The market is apparently rather crowded though, so I'll need a stand-out product if I want to whore my wares properly.
 
+  <span class="resistance">Up to -2</span>
   #{Page.statCheckDescription('lust', 130, Job.PornStudio.next, @context)}
   """
   people:
@@ -133,10 +134,11 @@ Job.PornStudio.next['good'] = add class PornGood extends Page
     return """|| class="jobStart" auto="1800"
       <h4>Porn Studio</h4>
     #{Math.choice(c)}
-    <em class='depravity'>+7</em>
+    <em><span class='depravity'>+7</span>, <span class="resistance">-1</span></em>
     """
   effects:
     depravity: 7
+    resistance: -1
 
 Job.PornStudio.next['veryGood'] = add class PornGood extends Page
   conditions:
@@ -185,7 +187,8 @@ Job.PornStudio.next['veryGood'] = add class PornGood extends Page
     return """|| class="jobStart" auto="1800"
       <h4>Porn Studio</h4>
     #{Math.choice(c)}
-    <em class='depravity'>+20</em>
+    <em><span class='depravity'>+20</span>, <span class="resistance">-2</span></em>
     """
   effects:
     depravity: 20
+    resistance: -2

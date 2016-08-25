@@ -78,7 +78,7 @@ Job.TrainingChamber::next = add class TrainingChamberDaily extends Page
     '|last': matches: (job)-> job.choice
     job: '|last'
     progress: fill: -> @trainer.intelligence + Math.floor(0.5 * @trainer.lust)
-    remaining: fill: -> Math.max(0, trainingDetails[@job.choice].duration - @job[@job.choice] - @progress)
+    remaining: fill: -> Math.max(0, trainingDetails[@job.choice]?.duration - @job[@job.choice] - @progress) or 0
   text: ->
     # Unlike most "boring" events, these are independent of each other.
     if $('page').length and Math.random() < 0.75 and @remaining then return false

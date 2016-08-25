@@ -48,6 +48,9 @@ window.Game = class Game extends GameObject
       cum:
         type: 'integer'
         optional: true
+      resistance:
+        type: 'integer'
+        optional: true
     strict: true
   @passDay: []
   @update: [] # Update items are in the format {pre: ()->, post: ()->}, both properties optional.
@@ -101,11 +104,11 @@ window.Game = class Game extends GameObject
     $('.day', element).html @date
     $('.depravity', element).html @depravity
     $('.space', element).html "#{@men + @women + @virgins}/#{@space}"
-    $('.men', element).html @men
-    $('.women', element).html @women
-    $('.virgins', element).html @virgins
-    if @milk? then $('.milk', element).removeClass('hidden').html(@milk) else $('.milk', element).addClass('hidden')
-    if @cum? then $('.cum', element).removeClass('hidden').html(@cum) else $('.cum', element).addClass('hidden')
+    e = (stat) -> $('.' + stat, element)
+    for stat in ['men', 'women', 'virgins']
+      e(stat).html @[stat]
+    for stat in ['milk', 'cum', 'resistance']
+      if @[stat]? then e(stat).removeClass('hidden').html(@[stat]) else e(stat).addClass('hidden')
     element.addTooltips()
 
   startDate = new Date(2021, 9, 31)
@@ -118,7 +121,7 @@ window.Game = class Game extends GameObject
   applyEffects: (effects, context)->
     applyAddRemove.call(@, effects)
 
-    for stat in ['depravity', 'virgins', 'women', 'men', 'milk', 'cum'] when effects[stat] and @[stat]?
+    for stat in ['depravity', 'virgins', 'women', 'men', 'milk', 'cum', 'resistance'] when effects[stat] and @[stat]?
       amount = if typeof effects[stat] is 'string' then context[effects[stat]] else effects[stat]
       if stat in ['women', 'men', 'virgins']
         amount = Math.min(amount, @freeSpace)
@@ -178,3 +181,6 @@ applyAddRemove = (effects)->
 
     if result.addAs then result.addAs property
     else @getItem(parts.join '|')[property] = result
+
+# Reduce resistance daily
+Game.passDay.push -> g.applyEffects {resistance: -2}
