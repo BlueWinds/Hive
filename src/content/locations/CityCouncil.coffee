@@ -83,7 +83,8 @@ add class Nudity extends Page
     remove:
       '|map|Council|jobs|Nudity': Job.Nudity
 
-Game.passDay.push -> g.applyEffects {resistance: -2}
+Game.passDay.push ->
+  if g.events.Nudity then g.applyEffects {resistance: -1}
 
 add class BlackmailOfficer extends Job
   place: 'Council'

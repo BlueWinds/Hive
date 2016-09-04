@@ -132,7 +132,7 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal11 extends Page
 add class TentacleRaid extends Job
   place: 'NorthEnd'
   conditions:
-    '|events|BreedingPitDails': {}
+    '|events|BreedingPitDaily': {}
     '|depravity':
       gte: 100
   people:
