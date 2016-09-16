@@ -194,7 +194,7 @@ add class Cats extends ResearchJob
     '|events|MagicCircle': {}
   label: "Train Catgirls and Catboys"
   progress: 150
-  text: ->"""Allows me to warp <span class="men"></span> and <span class="women"></span> slaves into Catboys and Catgirls at my Magic Circle."""
+  text: ->"""Allows me to warp <span class="men"></span> and <span class="women"></span> slaves into Catboys and Catgirls at the Magic Circle."""
 
 add class Cats extends Page
   text: ->"""|| bg="MagicCircle/Catgirl1"

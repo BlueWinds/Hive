@@ -65,6 +65,10 @@ Page.Port = class Port extends Page
       b = g.people[b.match(/data-key="(.*?)"/)[1]]
       (b.strength + b.magic + b.intelligence + b.lust) - (a.strength + a.magic + a.intelligence + a.lust)
 
+    buttons = for key of g.map.HolidayInn.destinations when key isnt g.location.constructor.name
+      g.map[key].name
+    buttons.unshift('Done')
+
     form = """<form class="clearfix">
       <div class="col-md-2">
         <ul class="job-tabs list-group"></ul>
@@ -81,7 +85,7 @@ Page.Port = class Port extends Page
       #{form}
       --
         #{g.location.description?() or g.location.description}
-        #{options ['Done', 'Map'], ['', '']}
+        #{options buttons}
     """
     $('.jobs', page).append(jobs)
     $('.job-tabs', page).append(jobLabels)
@@ -180,13 +184,16 @@ applyPort = (element)->
       jobDiv = $(@)
       updateJob(jobDiv)
 
-  # The page has been rendered. Once the player clicks "done", start the day.
-  $('button', element).last().prev().click doWorkClick
-
-  $('button', element).last().click (e)->
+  $('options button', element).click (e)->
     e.preventDefault()
-    (new Page.SetSail).show()
-    setTimeout(Game.gotoPage, 0)
+    if $(@).html() is 'Done' then return doWorkClick(element)
+
+    targetName = $(@).html()
+    target = Object.keys(g.map).find((key)-> g.map[key].name is targetName)
+
+    g.location = g.map[target]
+    g.queue.push new Page.Port
+    Game.gotoPage()
     return false
 
   return element
@@ -216,10 +223,7 @@ assignPersonToJob = (personDiv, job, jobDiv)->
     delete g.people[personDiv.attr('data-key')].active
     updateJob(prevJobDiv)
 
-doWorkClick = (e)->
-  e.preventDefault()
-  element = $(e.target).closest 'page'
-
+doWorkClick = (element)->
   $('.jobs > div', element).each ->
     jobDiv = $(@)
     job = jobDiv.data('job')

@@ -86,13 +86,12 @@ add class Nudity extends Page
 Game.passDay.push ->
   if g.events.Nudity then g.applyEffects {resistance: -1}
 
+
 add class BlackmailOfficer extends Job
   place: 'Council'
   type: 'plot'
   conditions:
     '|events|Zoning': {}
-    '|events|CatchPolice': {}
-    '|resistance': {gte: 20}
   people:
     Liana:
       is: Person.Liana
@@ -103,8 +102,7 @@ add class BlackmailOfficer2 extends Job
   place: 'Council'
   type: 'plot'
   conditions:
-    '|events|BlackmailOfficer|0': matches: (d)-> d < (g.day - 10)
-    '|resistance': {gte: 20}
+    '|events|Tentacles': {}
   people:
     'Dark Lady':
       is: Person.DarkLady
@@ -117,19 +115,23 @@ add class BlackmailOfficer extends Page
   text: ->"""|| bg="Council/Building"
     -- After several different slaves have reported being questioned by an attractive brunette police officer about magic and demons and similar areas, it's time to investigate. Liana is on the case. It's surprisingly simple - all she has to do is go down to the station and start poking around.
   || bg="Council/Police"
-    -- ` Do you have information for me.`
+    -- ` You have information for me.`
     --> `L Not information, exactly.` The air begins to hum. Liana has grown more powerful at an almost frightening rate. She looks most alive when she's bending reality to her will. Also when her eyes are rolling back just before an orgasm. They're both pretty great expressions.
     --> This time, however, nothing much happens. The officer looks puzzled, touches a necklace she's wearing. It's just slightly warm, and Liana can tell her spell didn't take.
 
     -- `L Oh, um, I was just nervous about it. Sycamore Street has seemed less safe for a while now, and I have to walk along it every night on my way home, and I heard you talking about demons...`
     --> The officer gives her an odd look. The lie was not believed. ` I have to recommend you avoid the area for now. We're still searching for the perpetrators. But don't worry, we'll catch them soon.`
-    --> Liana nods and thanks her for the advice. If the woman is resistant to our "charms", we'll have to find another way to deal with her. It may take some time.
+    --> Liana nods and thanks her for the advice. If the woman is resistant to our charms, we'll have to find another way to deal with her. It may take some time.
+    --><em><span class="resistance">+2</span> daily until she's dealt with</em>
   """
   effects:
     remove:
       '|map|Council|jobs|BlackmailOfficer': Job.BlackmailOfficer
     add:
       '|map|Council|jobs|BlackmailOfficer2': Job.BlackmailOfficer2
+
+Game.passDay.push ->
+  if g.events.BlackmailOfficer and not g.events.BlackmailOfficer2 then g.applyEffects {resistance: 2}
 
 add class BlackmailOfficer2 extends Page
   text: ->"""|| bg="Council/Police"
@@ -138,16 +140,16 @@ add class BlackmailOfficer2 extends Page
     --> ` Why would we do that? Also, I would like to ask you a few questions. Please step into the back with me.`
     --> `D That won't be necessary. It's a nice locket you have there - very old, very powerful. I can see you didn't make it yourself.` I step around the corner.
 
-    -- ` And who are you?` The officer is instantly on guard - we caught her just before going home in the evening. There are a few other officers sitting at their desks, but they won't bother us, I've made sure of that. She self-consciously touches her necklace - she doesn't really know what's going on. A dabbler woh got lucky and found an item of real power, then.
+    -- ` And who are you?` The officer is instantly on guard - we caught her just before going home in the evening. There are a few others sitting at their desks nearby, but they won't bother us, sitting completely frozen and vacant-eyed under my sway. She self-consciously touches her necklace - she doesn't really know what's going on. A dabbler who got lucky and found an item of real power, then.
 
     --> I snap my fingers, and a little scrying window appears. She jumps, reflexively putting a hand on her scabbard. I wouldn't normally worry too much, she can't have more than a dagger in there, but apparently the police in this day and age carry miniature crossbows or something? Liana made them sound pretty dangerous. That's still ok. She couldn't kill me.
 
-    -- Wait, no, not ok. Liana's here, and if she dies, I disappear again. I should have come alone. Also, I should teach her how to protect herself better. She doesn't draw her weapon though, and leans cautiously closer to look into my scrying pool.
+    -- Wait, no, not ok. Liana's here, and if she dies, I disappear again. I should have come alone. Also, I should teach her how to protect herself better. The policewoman doesn't draw her weapon though, and leans cautiously closer to look into my scrying pool.
 
   || bg="Council/MaleTentacles"
     --> ` Donny... what is...`
     --> `D Your husband, correct? He's enjoying himself. But he'd stop enjoying himself pretty quick without my powers. The magic in the slime is addictive.`
-    --> It only takes the policewoman a moment to process what she's seeing. A formidable woman. I hope she loves her husband as much as he loves her.
+    --> It only takes her a moment to process what she's seeing. A formidable woman. I hope she loves her husband as much as he loves her.
 
   || bg="Council/Police"
     -- ` Addictive tentacle slime.` Her voice is flat, and scary in its own way, but not disbelieving. Good.
@@ -158,6 +160,7 @@ add class BlackmailOfficer2 extends Page
     --> ` Fuck you. But as long as Donny's ok, I'll play ball.`
   || bg="Liana/Happy"
     --> Liana grins happily. `L Oh, he's fine. It's pretty fun, honestly, you should give it a try. Your necklace would keep you safe, don't worry. First visit's always free.`
+    --> <em>End of <span class="resistance">+2</span> daily from investigating officer</em>
   """
   effects:
     remove:

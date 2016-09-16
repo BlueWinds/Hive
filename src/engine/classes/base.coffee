@@ -92,12 +92,8 @@ window.Collection = class Collection
         unless data[key]?
           delete data[key]
         else
-          try
-            if simpleMatch(proto[key], data[key])
-              delete data[key]
-          catch e
-            console.log key, proto, data
-            throw e
+          if simpleMatch(proto[key], data[key])
+            delete data[key]
       return data
 
   Object.defineProperty @::, 'matches',
@@ -248,14 +244,16 @@ simpleMatch = (parent, child)->
     return true
   unless parent and child
     return false
-  for key, value of parent
-    if child[key] isnt value
-      return false
-  for key, value of child
-    if parent[key] isnt value
-      return false
 
-  return true
+  if typeof parent is 'object'
+    for key, value of parent
+      if child[key] isnt value
+        return false
+    for key, value of child
+      if parent[key] isnt value
+        return false
+    return true
+  return false
 
 Collection.numericComparison = (target, val)->
   if target >= val.lt or target > val.lte then return false

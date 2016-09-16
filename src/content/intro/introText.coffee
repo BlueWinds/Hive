@@ -241,9 +241,9 @@ add class MoreResources extends Job
 
 add class MoreResources extends Page
   text: ->"""|| bg="Inn/Pentagram"
-    -- I don't want to be chained to Liana forever. In addition to all the things that can go wrong with a frail human (not that she's particularly frail, mind you, anything but), as long as she's busy anchoring me to the world, I'm limited by her magic, and her magic is limited by me.
+    -- I don't want to be chained to Liana forever. In addition to all the things that can go wrong with a frail human (not that she's particularly frail, mind you), as long as she's busy anchoring me to the world, I'm limited by her magic, and her magic is limited by me.
 
-    She needs another few years to grow into her power, but when the time comes... the ritual to stop aging is difficult enough as is. I think she'll be powerful enough, but not if I'm tying up three quarters of her magic.
+    She needs another few years to grow into her power, but when the time comes... the ritual to stop aging is difficult. I think she'll be powerful enough, but not if I'm tying up three quarters of her magic.
 
     --> Anyway, distractions. It's time to start my minions collecting milk and cum, since the ley-lines in this part of the world are pathetically weak. Time for more research!
   """
@@ -259,6 +259,7 @@ add class Tentacles extends Job
   place: 'HolidayInn'
   conditions:
     '|events|MagicCircle': {}
+    '|events|BlackmailOfficer': {}
   people:
     'Dark Lady':
       is: Person.DarkLady
@@ -283,10 +284,13 @@ Job.Tentacles.next.push add class Tentacles1 extends Page
     --> `D Yes, you're easily powerful enough. I'll show you later. But the point is, I've been exploring. It appears that you and I are the most powerful magical beings in the world.`
     --> She doesn't get it. She can hear how much that bothers me, but she doesn't know why. Leana puts a hand on my forearm. I'm pathetic, to be reassured by contact with a human. I brush her arm off.
 
-    -- `D I've been intensely cautious in my approach, because by all rights we ought to have holy crusaders knocking down our doors by now, and I wanted to seem nothing more than a succubus or some such minor nonsense. But where are the gods and demon lords and sorcerers and saints? I can't find them. I don't know why. Clearly magic still works. There's you, the amulet that can resist you, some of the slaves have minor talents. But the world used to be swimming in magic, and all that's left are fragments.`
+    -- `D I've been intensely cautious in my approach, because by all rights we ought to have holy crusaders knocking down our doors by now, and I wanted to seem nothing more than a succubus or some such minor nonsense. But where are the gods and demon lords and sorcerers and saints? I can't find them. I don't know why.`
+    --> `D Clearly magic still works. There's you, the amulet that can resist you, some of the slaves have minor talents. But the world used to be swimming in magic, and all that's left are fragments.`
 
   || bg="Liana/Crying"
-    --> She's crying. Damn it. Of course I hadn't told her any of what has been bothering me - she's just a slave, even if a pretty one. I rub my hand on my forehead again. `D Look. I don't know where the gods are - I lost that war, but they're not here and I am. So I'm going to take over the world, and give you your revenge and any other little treats you like along the way. But it's only fair you know that I'm a bit confused, and I don't mean just the absurd complexity of your tell-a-visions.`"""
+    -- She's crying. Damn it. Of course I hadn't told her any of what has been bothering me - she's just a slave, even if a pretty one. I rub my hand on my forehead again.
+    --> `D Look. I don't know where the gods are - I lost that war, but they're not here and I am. So I'm going to take over the world, and give you your revenge and any other little treats you like along the way. But it's only fair you know that I'm a bit confused.`
+    --> I had more to discuss, but I'll try again another day when she's not so pitiful. `D And I don't just mean the absurd complexity of your tell-a-visions. Explain again how it knows which picture to show.`"""
 
 Job.Tentacles.next.push add class Tentacles2 extends Page
   text: ->"""||
@@ -295,7 +299,7 @@ Job.Tentacles.next.push add class Tentacles2 extends Page
     --> I gesture her to my side, and she kneels obediently on the floor, hands folded in her lap waiting for me to acknowledge her presence. To anyone else it might look like I'm just staring off into thin air, but she can feel the forces moving around me. This is delicate work. I finish a mental component of the spell, leave it hanging there and turn my attention to her as I continue to feed it power.
 
     -- `L I've been thinking about what you said, about where all the magic is, and... well, you're always saying what a powerful mage I am, but I wasn't, not until I met you. Summoning you was the first thing I was ever able to do, and I've just been getting stronger since then... well, anyway, I don't think there is magic in the world, I think it's just you and I was lucky to be nearby when you arrived.`
-    --> So that's what's been bothering her. She's been quiet ever since I spoke with her last time. `D Potential is inborn. I can't empower anyone else beyond very strict limits, defined from birth. You are... you are unusual, for a human, let's just leave it at that. If you'd been useless like most of the toys around here, I'd have corrupted your mind and broken the contract long ago.`
+    --> So that's what's been bothering her. She's been quiet ever since I spoke with her last time. `D Potential is inborn. Each person has very strict limits, defined from birth. You are... unusual, for a human. Let's just leave it at that. If you'd been useless like most of the toys around here, I'd have corrupted your mind and broken the contract long ago.`
 
     -- `D Don't look so shocked. You're my second because I chose you, not because of some silly contract you tried to force on me.`
     --> `L Uh. Um. I... I didn't... About the lack of magic...`

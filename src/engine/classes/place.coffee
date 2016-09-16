@@ -37,9 +37,6 @@ window.Place = class Place extends GameObject
         optional: true
 
   jobs: new Collection
-
-  renderBlock: (key, distance)-> """<div data-key="#{key}" class="location" style="left: #{@location[0]}px; top: #{@location[1]}px;"><div class="name">#{@name}</div></div>"""
-
   toString: -> return @name
 
 Game::map = new Collection

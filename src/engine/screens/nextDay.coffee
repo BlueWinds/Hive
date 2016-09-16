@@ -9,3 +9,9 @@ Page.NextDay = class NextDay extends Page
     for event in Game.passDay
       event()
     super()
+
+    if localStorage.auto
+      delete localStorage[localStorage.auto]
+
+    localStorage.auto = Date.now()
+    localStorage.setItem localStorage.auto, jsyaml.safeDump(g.export())

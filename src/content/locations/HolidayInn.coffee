@@ -21,31 +21,45 @@ add class Rest extends Job
   <span class="depravity">+25</span></em>"""
   next: Page.randomMatch
   @next: []
-
-Job.Rest.next.push add class Rest1 extends Page
-  text: ->"""|| bg="Liana/Rip"
-    -- Is it just me, or have her breasts grown a bit? It might be all the recent exposure to lust magic - that has been known to happen.
-    --> I spend a few minutes mauling her breasts before moving on to her clit. I give that a good flick, then order her to keep going on her own. She tends to slack off over time, so I have to keep an eye on her and occasionally remind her how hard I want her twisting her own nipples.
-      --> <em>Liana: <span class="lust">+1 Lust</span><br><span class="depravity">+25</span></em>
-  """
   apply: ->
     super()
     g.people.Liana.add('lust', 1)
   effects:
     depravity: 25
+
+Job.Rest.next.push add class Rest1 extends Page
+  text: ->"""|| bg="Liana/Rip"
+    -- Is it just me, or have her breasts grown a bit? It might be all the recent exposure to lust magic - that has been known to happen.
+    --> I spend a few minutes mauling her breasts before moving on to her clit. I give that a good flick, then order her to keep going on her own. She tends to slack off over time, so I have to keep an eye on her and occasionally remind her how hard I want her twisting her own nipples.
+    --> <em>Liana: <span class="lust">+1 Lust</span>, <span class="depravity">+25</span></em>
+  """
 
 Job.Rest.next.push add class Rest2 extends Page
   text: ->"""|| bg="Liana/Grope"
     -- What a slut. She starts moaning as soon as I grope her.
     --> Well, to be fair that probably has more to do with the dildo I've had her wearing underneath her panties all day. But still...
     --> `D Slut.`
-    --> <em>Liana: <span class="lust">+1 Lust</span><br><span class="depravity">+25</span></em>
+    --> <em>Liana: <span class="lust">+1 Lust</span>, <span class="depravity">+25</span></em>
   """
-  apply: ->
-    super()
-    g.people.Liana.add('lust', 1)
-  effects:
-    depravity: 25
+
+Job.Rest.next.push add class Rest3 extends Page
+  text: ->"""|| bg="Liana/Nude"
+    -- `D That's what I said. Water's off until you run two laps.`
+    --> `L O...outside?!?`
+    --> `D You can't very well run laps around the building from the inside, can you? Go.`
+    --> <em>Liana: <span class="lust">+1 Lust</span>, <span class="depravity">+25</span></em>
+  """
+
+Job.Rest.next.push add class Rest4 extends Page
+  text: ->"""|| bg="Liana/Bathroom"
+    -- `D You're a very pretty human.`
+    --> `L Um, yes mistress, thank you.`
+    --> `D I really like the way your breasts sit there, just the perfect size for touching and squeezing.`
+    --> `L I, uh...`
+
+    -- Heh. Cute blush. She's way more embarrassed by this than by just being fucked. Compliments as a weak point - who would have though it? `D Stop squirming and sit. Such a cute jawline, it looks so nice wrapped around a cock, especially the way your lips twitch...`
+    --> <em>Liana: <span class="lust">+1 Lust</span>, <span class="depravity">+25</span></em>
+  """
 
 add class Raid extends Job
   place: 'HolidayInn'
@@ -215,7 +229,7 @@ add class VisitGym extends Page
   text: ->"""|| bg="Gym/Treadmills"
     -- Ever since I started exercising my girls there, the gym has been quite popular with the locals. Usually the men, of course, who aren't at all adverse to the fact that some of the sluts like to take their shirts off when it gets too hot.
 
-    For some reason it's quite hard to heat the place up with magic - a spell or somesuch keeps sucking all the heat out. I'll figure it out someday.
+    For some reason it's quite hard to heat the place up with magic - an 'air conditioner' spell keeps sucking all the heat out. I'll figure it out someday.
 
     -- Today, though, something is amiss.
     --> `D Her.` I point, and security moves to surround her.
@@ -230,7 +244,7 @@ add class VisitGym extends Page
   || bg="Gym/VisitFingering1"
     -- We step into one of the gym's back offices, and the friend immediately blushes bright crimson. ` Kateyln?!`
   || bg="Gym/VisitFingering2"
-    --> ` A-Amanda? What're you doing here!` Kateyln tries to stand, but a strong hand from the "doctor" (and another busy one) keeps her in place.
+    --> ` A-Amanda? What're you doing here!` Kateyln tries to stand, but a strong hand (and another busy one) from the "doctor" keeps her in place.
     --> They stare at eachother flabbergasted. This is delightful. Amanda just can't seem to move. Kateyln can't help but moan. I grin and watch their increasingly mortified expressions.
 
   || bg="Gym/VisitGangbang1"

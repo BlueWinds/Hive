@@ -120,12 +120,14 @@ Job.TrainingChamber::next = add class TrainingChamberDaily extends Page
         || bg="TrainingChamber/SS4"
         || bg="TrainingChamber/SS5"
         || bg="TrainingChamber/SS6"
-          --"""
+        || bg="TrainingChamber/SS6"
+          -- """
       """|| bg="TrainingChamber/SS11"
         || bg="TrainingChamber/SS12"
         || bg="TrainingChamber/SS13"
         || bg="TrainingChamber/SS14"
         || bg="TrainingChamber/SS15"
+        || bg="TrainingChamber/SS16"
         || bg="TrainingChamber/SS16"
           -- """
       """|| bg="TrainingChamber/SS21"
@@ -166,7 +168,7 @@ Job.TrainingChamber::next = add class TrainingChamberDaily extends Page
 add class Maid extends ResearchJob
   label: "Train Maids"
   progress: 250
-  text: ->"""Allows me to train <span class="virgins"></span> slaves into Maids at Training Chambers."""
+  text: ->"""Allows me to train <span class="virgins"></span> slaves into Maids in my Training Chamber."""
 
 add class Maid extends Page
   text: ->"""|| bg="Library/Sexy1"
@@ -181,9 +183,9 @@ add class SexSlave extends ResearchJob
   conditions:
     '|events|Maid': {}
     '|events|Outreach': {}
-  label: "Train Sex Slaves"
+  label: "Train <span class='women'></span> Sex Slaves"
   progress: 500
-  text: ->"""Allows me to train <span class="women"></span> slaves into Sex Slaves at in my Training Chamber."""
+  text: ->"""Allows me to train <span class="women"></span> slaves into Sex Slaves in my Training Chamber."""
 
 add class SexSlave extends Page
   text: ->"""|| bg="Library/Sexy1"
@@ -198,9 +200,9 @@ add class ManWhore extends ResearchJob
   conditions:
     '|events|Maid': {}
     '|events|Outreach': {}
-  label: "Train Sex Slaves"
+  label: "Train <span class='men'></span> Sex Slaves"
   progress: 500
-  text: ->"""Allows me to train <span class="men"></span> slaves into Man Whores at in my Training Chamber."""
+  text: ->"""Allows me to train <span class="men"></span> slaves into Man Whores in my Training Chamber."""
 
 add class ManWhore extends Page
   text: ->"""|| bg="Library/Sexy1"

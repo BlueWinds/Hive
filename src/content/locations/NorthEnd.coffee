@@ -90,7 +90,7 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal6 extends Page
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal7 extends Page
   text: ->"""|| bg="Council/Professor2"
     -- Dear diary.
-    --> I had to buy more paper today, since I was careless and left my sign out yesterday when it rained. So, first some good news. I'm completely used to being nude now! It doesn't bother me at all anymore, and in fact I sort of forget, now and then, that I used to wear clothes all the time. I was reminded because I got female customer - she had me eat her out, and her panties were so cute. When I first got here, all I thought about was buying some of those for myself, but now I see there's no point in wasting the money.
+    --> I had to buy more paper today, since I was careless and left my sign out yesterday when it rained. So, first some good news. I'm completely used to being nude now! It doesn't bother me at all anymore, and in fact I sort of forget now and then that I used to wear clothes all the time. I was reminded because I got female customer - she had me eat her out, and her panties were so cute. When I first got here, all I thought about was buying some of those for myself, but now I see there's no point in wasting the money.
   """
 
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal8 extends Page

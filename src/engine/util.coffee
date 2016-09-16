@@ -143,7 +143,7 @@ $.render = (element)->
 
   pages = $('<div></div>')
   for line, index in lines = element.split("\n")
-    line = line.trim()
+    line = line.trim().replace(/`([a-zA-Z]*) (.+?)`/g, "<q class='$1'>$2</q>")
     if line.match /^\|\|/
       pages.append page = $('<page></page>')
       addAttrs(page, line)
@@ -174,7 +174,6 @@ textLine = (line, pages)->
   page.append(text)
   line = line.replace(/--\|?>?/, '')
 
-  line = line.replace(/`([a-zA-Z]*) (.+?)`/g, "<q class='$1'>$2</q>")
   text.append('<p>' + line + '</p>')
 
 addAttrs = (element, text)->

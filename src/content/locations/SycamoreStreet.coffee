@@ -86,6 +86,7 @@ add class CatchPoliceCapture extends Page
   apply: ->
     super()
     g.people.remove @context.worker
+    delete g.map.Sycamore.jobs.Catch.context.worker
     g.resistance += 5
 
 add class CatchNothing extends Page

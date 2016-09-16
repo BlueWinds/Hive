@@ -52,6 +52,18 @@ Job.Dungeon::next = add class DungeonDaily extends Page
         """|| bg="Dungeon/Cum4"
           -- Using one prisoner to satisfy another. Classy."""
       ]
+
+    if g.women and g.events.DungeonPregnancy
+      c.push """|| bg="Dungeon/Preg1"
+        -- They aren't <em>willing</em>, just fertile and at my mercy. I'll make their births easy and pleasurable though - that only takes a touch of magic, and I do want them healthy afterwards."""
+      c.push """|| bg="Dungeon/Preg2"
+        -- Tied up for daily inspection. The jailer is very... thorough, especially with those near birth."""
+      c.push """|| bg="Dungeon/Preg3"
+        -- Being pregnant is no reason for the fathers to stop fucking them. The fathers and their friends, that is. Or the fathers and their friends and some random strangers, and the male prisoners, and..."""
+      c.push """|| bg="Dungeon/Preg4"
+        -- I like to set aside a few hours each day to torment my prisoners, especially the pregnant ones. The orgasms are good for their babies, and stronger abdominal muscles will aid with  the birth."""
+
+
     return """|| class="jobStart" auto="1800"
         <h4>Dungeon</h4>
 
@@ -74,4 +86,22 @@ add class DungeonCum extends Page
       When she shouted for more,
       he said from the floor,
       The name, miss, is Simpson not Samson.
+  """
+
+add class DungeonPregnancy extends ResearchJob
+  conditions:
+    '|events|Resistance': {}
+  label: "Public Use"
+  progress: 300
+  text: ->"""Rent-a-womb - by selling my sluts' as wombs to the locals, I can bring in rich visitors... who will need to help protect my secrecy long-term if they want their new slave-wife to come to term.
+
+  <span class="resistance">-0.25</span> daily as long as there are <span class="women"></span> prisoners"""
+
+add class DungeonPregnancy extends Page
+  text: ->"""|| bg="Dungeon/Preg2"
+    -- Q. What is the most common pregnancy craving?
+       A. For men to be the ones who get pregnant.
+
+       Q. What’s the difference between a pregnant woman and a lightbulb?
+       A. You can unscrew a lightbulb.
   """

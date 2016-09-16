@@ -1,7 +1,7 @@
 #!/bin/bash
 set -o errexit
 grunt full-build
-scp Hive.zip 192.254.186.53:Hive.zip
+scp Hive.zip threewestwinds.com:Hive.zip
 echo "Unpacking..."
-ssh 192.254.186.53 "cd Hive && rm -rf * && mv ../Hive.zip . && unzip -q Hive.zip"
+ssh threewestwinds.com "cd Hive && rm -rf * && mv ../Hive.zip . && unzip -q Hive.zip"
 echo "Deployed."

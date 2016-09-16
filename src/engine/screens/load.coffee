@@ -13,8 +13,10 @@ Page.Load = class Load extends Page
       blob = new Blob [localStorage[key]], {type: 'text/plain'}
       blob = URL.createObjectURL blob
 
-      # game.money might not be defined in older saves. Be boring and just misreport it as 0.
-      name = "Day #{game.day} - #{game.location} - #{game.depravity}D"
+      name = if localStorage.auto is key
+        "Day #{game.day} - Autosave"
+      else
+        "Day #{game.day} - #{game.depravity}D - #{game.people.objectLength - 1} slaves"
       row = [
         name
         "#{months[date.getMonth()]} #{date.getDate()}, #{date.getHours()}:#{date.getMinutes()}"
