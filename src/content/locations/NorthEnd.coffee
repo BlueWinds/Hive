@@ -179,3 +179,58 @@ add class TentacleRaid extends Page
   effects:
     depravity: -50
     resistance: -5
+
+add class LianaTeleport extends Job
+  place: 'NorthEnd'
+  conditions:
+    '|events|TrainingFacilityNew': {}
+    '|events|Tentacles': {}
+    '|depravity': gte: 300
+  people:
+    'Dark Lady': '|people|DarkLady'
+    Liana: '|people|Liana'
+  type: 'plot'
+  label: "Liana's Training"
+  text: ->"""Liana's been practically drooling since I unveiled the training facility. Let's see what she wants, hm?"""
+
+Job.LianaTeleport::next = add class LianaTeleport extends Page
+  text: ->"""|| bg="Liana/Coat"
+    -- `L Mistress! Good to see you!`
+    --> `D You're excited today.`
+    --> `L I guess I am.`
+    --> `D Why?` I know why, but it's fun to make her say it when she doesn't want to.
+
+    -- She squirms under my gaze.
+    --> I wait for her to answer.
+    --> She blushes.
+    --> I watch her steadily.
+
+    -- Normally people for making me wait get punished, but I like looking at her wiggle.
+    --> `L ...um. Yeah. I missed you. Getting tormented by other people just isn't the same.`
+  || bg="Liana/noPants"
+    --> `L Hey!`
+    --> I snicker some more and let her counterspell my banishment only a moment after it's cast.
+
+  || bg="Liana/Coat"
+    -- Liana blushes furiously, but I can see a grin creeping up on her. Yes, I'm sure of it now. Her magic is strong enough for what I have in mind.
+    --> `D I have a spell for you to try. Watch closely.` I pull my magic out and step through the motions slowly for her benefit. From wings, compress it into a ball, give it solidity, hold on tightly, <em>shove...</em> Liana, following along with her own power, disappears with a pop. I laugh and follow her.
+
+  || bg="Liana/Magic"
+    -- `L ...woah.`
+    --> We've moved. This isn't a small town any more - huge towers, endless rows of buildings, and it's sunset. A moment before we were been in broad daylight.
+    --> `D You can control your destination with the right kind of focus, but that will come with practice.`
+    --> `D You'll be feeling a reaction-headache any moment now. Don't worry, it's just...`
+
+    -- She fainted.
+    --> Right across my lap.
+    --> Human girl.
+    --> In my lap.
+
+    -- I debate making her naked, but decide against it. Another time. She needs to rest now - teleportation is the strongest spell she's used yet, and her body isn't used to the strain of that much magic.
+    --> Human girl.
+    --> In my lap.
+    --> I mentally chastise my weakness for caring about such a thing, but let her remain close to me for now.
+  """
+  effects:
+    remove:
+      '|map|NorthEnd|jobs|LianaTeleport': Job.LianaTeleport

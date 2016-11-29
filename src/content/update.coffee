@@ -13,3 +13,9 @@ Game.update.push {
       person.max = new Collection(person.max)
     return
 }
+Game.update.push {
+  post: ->
+    if @events.Nudity
+      @map.NorthEnd.jobs[7] = new Job.LargeRoom
+    return
+}

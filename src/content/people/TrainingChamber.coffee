@@ -78,9 +78,9 @@ add class SexSlave extends Person
   description: ->"""She has one purpose in life, and she's learned to both accept her role and love it."""
   image: sticky
   @images: [
-    'TrainingChamber/SS31'
-    'TrainingChamber/SS41'
-    'TrainingChamber/SS51'
+    'TrainingChamber/SS3'
+    'TrainingChamber/SS4'
+    'TrainingChamber/SS5'
   ]
 
 add class ManWhore extends Person

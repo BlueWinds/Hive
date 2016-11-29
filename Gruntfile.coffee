@@ -1,4 +1,4 @@
-nsfwFiles = require('./src/loadOrder').map (f)->('src/' + f)
+files = require('./src/loadOrder').map (f)->('src/' + f)
 
 module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
@@ -12,7 +12,7 @@ module.exports = (grunt) ->
   config = {
     coffee:
       nsfw:
-        files: 'public/game/compiled.js': nsfwFiles
+        files: 'public/game/compiled.js': files
     coffeelint:
       app: ['src/**/*.coffee']
       options:
@@ -51,13 +51,16 @@ module.exports = (grunt) ->
           'public/Credits.txt': ['src/Credits.txt']
           'public/README.txt': ['src/README.txt']
           'public/game/engine/style.css': ['src/engine/style.css']
+    resize:
       images:
-        files: [{
-          cwd: 'src'
-          expand: true
-          src: ['**/*.png', '**/*.jpg']
-          dest: 'public/game'
-        }]
+        options:
+          maxWidth: 1280
+          maxHeight: 1280
+          quality: 90
+        cwd: 'src/images'
+        expand: true
+        src: ['**/*.jpg', '**/*.png']
+        dest: 'public/game/images'
     uglify:
       options:
         mangle: false
@@ -81,9 +84,10 @@ module.exports = (grunt) ->
   grunt.initConfig config
 
   require('./tasks/dump')(grunt)
+  require('./tasks/resize')(grunt)
 
   grunt.registerTask 'compile', ['coffee', 'copy:static']
-  grunt.registerTask 'lib', ['uglify', 'copy:libs', 'copy:images']
+  grunt.registerTask 'lib', ['uglify', 'copy:libs', 'resize']
   grunt.registerTask 'full-compile', ['lib', 'coffeelint', 'compile', 'dump']
   grunt.registerTask 'full-build', ['clean', 'full-compile', 'compress']
   grunt.registerTask 'default', ['lib', 'coffeelint', 'compile', 'watch:compile']

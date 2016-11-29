@@ -67,7 +67,6 @@ add class PornStudio extends Job
 
 Job.PornStudio.next['bad'] = add class PornBad extends Page
   text: ->
-    console.log(g.events.PornStudio, g.day)
     if $('page').length and (Math.random() < 0.5 or g.events.PornStudio?[1] is g.day) then return false
     c = [
       """|| bg="PornStudio/1"

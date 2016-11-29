@@ -59,7 +59,7 @@ page {
   background-color: #151515;
   background-position: 50% 50%;
   background-repeat: no-repeat;
-  background-size: 100% auto;
+  background-size: contain;
   height: 100%;
   overflow: auto;
   position: absolute;
@@ -653,30 +653,6 @@ input.inline:disabled {
   position: relative;
   top: 33%;
 }
-.set-sail {
-  overflow: hidden;
-}
-.set-sail form {
-  height: 715px;
-  width: 1003px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.set-sail .bg {
-  background-repeat: repeat;
-  background-size: 1003px 715px;
-  background-position: 0px 0px;
-  cursor: move;
-  width: 1003px;
-  height: 715px;
-  top: 0px;
-  left: 0px;
-  position: absolute;
-}
-.set-sail .tooltip {
-  min-width: 200px;
-}
 options {
   left: 0;
   pointer-events: none;
@@ -695,68 +671,6 @@ options button.btn {
   border-width: 1px 1px 0;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset;
   pointer-events: all;
-}
-.location {
-  margin-left: 4px;
-  margin-top: 4px;
-  position: absolute;
-}
-.location.no-sail {
-  cursor: default;
-}
-.location .name {
-  background: #000;
-  border: none;
-  border-radius: 6px;
-  color: #FFF;
-  font-weight: 700;
-  padding: 5px 10px;
-}
-.location.no-sail .name {
-  color: #BBB;
-}
-.location .full {
-  clip: rect(-25px, 350px, -25px, 0);
-  background: #000;
-  border: 1px solid #666;
-  border-radius: 0 6px 6px 6px;
-  cursor: default;
-  left: -1px;
-  padding: 0 15px 15px;
-  position: absolute;
-  transition: clip 0.5s ease 0s;
-  top: 25px;
-  width: 350px;
-  z-index: 1;
-}
-.location.show-full .full, .location:hover .full {
-  border-color: #777;
-  clip: rect(-25px, 350px, 350px, 0);
-}
-.location.no-sail.show-full .full, .location.no-sail:hover .full {
-  clip: rect(-25px, 350px, -25px, 0);
-}
-.location .full > .name {
-  border-color: #666;
-  border-radius: 6px 6px 0 0;
-  border-width: 1px 1px 1px 1px;
-  cursor: default;
-  font-size: 1.3em;
-  height: 26px;
-  left: -1px;
-  line-height: 26px;
-  padding: 0 15px;
-  top: -26px;
-  width: auto;
-}
-.location img {
-  float: left;
-  cursor: pointer;
-  margin: 1em 1em 1em 0;
-  width: 12em;
-}
-.location .full .description {
-  clear: none;
 }
 .dis {
   cursor: default;
@@ -846,7 +760,6 @@ page h4 {
 }
 q.DarkLady, q.D { color: #ff9368; }
 q.Liana, q.L { color: #ffd195; }
-
 
 text::before {
   bottom: 5px;

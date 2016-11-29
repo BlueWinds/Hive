@@ -24,21 +24,23 @@ effect = (workers)->
   fraction = if g.events.MilkingPregnancy then 2 else 3
   return Math.round(workers / fraction)
 
+effectDep = (workers)-> return workers
+
 add class Milking extends Job
   label: "Milking Barn"
   text: -> """A whole bunch of mooing slaves, all getting milked and occasionally fucked. I love this place.
 
   #{@workers} out of #{milkingMax()} stalls are filled.
 
-  <em><span class="depravity">+#{effect @workers}</span>, <span class="milk">+#{effect @workers}</span> daily.</em>"""
+  <em><span class="depravity">+#{effectDep @workers}</span>, <span class="milk">+#{effect @workers}</span> daily.</em>"""
   people:
     worker:
       optional: true
       matches: (worker, job)-> g.women and job.workers < milkingMax()
       label: ->
-        if g.women and @workers < milkingMax() then 'Add <span class="women"></span>'
-        else if g.women then 'Already full'
-        else 'Need <span class="women"></span>'
+        if @workers is milkingMax() then 'Already full'
+        else if not g.women then 'Need <span class="women"></span>'
+        else 'Add <span class="women"></span>'
   next: Page.firstMatch
   @next: []
   type: 'boring'
@@ -65,7 +67,7 @@ Job.Milking.next.push add class MilkingDaily extends Page
   conditions:
     job: '|last'
     depravity: fill: -> effect @job.workers
-    milk: fill: -> effect @job.workers
+    milk: fill: -> effectDep @job.workers
   text: ->
     if $('page').length and (Math.random() < 0.75 or g.events.MilkingDaily?[1] is g.day) then return false
 

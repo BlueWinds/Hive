@@ -128,7 +128,7 @@ Page.schema.properties.difficulty =
   gte: 1
   optional: true
 
-statCheckChances = (stats, diff, context)->
+Page.statCheckChances = (stats, diff, context)->
   diff += (g.resistance or 0)
   sum = 1
   for stat in stats.split('|')
@@ -149,7 +149,7 @@ statCheckChances = (stats, diff, context)->
 
 Page.statCheck = ->
   items = @constructor.next
-  chances = statCheckChances(@stat, @difficulty, @context)
+  chances = Page.statCheckChances(@stat, (@difficulty?() or @difficulty), @context)
   r = Math.random()
 
   r -= chances.veryBad
@@ -164,7 +164,7 @@ Page.statCheck = ->
   return items.veryGood or items.good
 
 Page.statCheckDescription = (stats, difficulty, items, context)->
-  chances = statCheckChances(stats, difficulty, context)
+  chances = Page.statCheckChances(stats, (difficulty?() or difficulty), context)
   percent = (chance)-> Math.round(chance * 100) + '%'
   results = []
 

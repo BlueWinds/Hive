@@ -54,10 +54,10 @@ Job.Galleria::next = add class GalleriaDaily extends Page
       c.push """|| bg="Galleria/Visitors2"
         -- Visitors tend to be a bit rougher on the girls than my own servants. I'm not really sure why that is. Oh well, they'll survive.""",
     if g.events.InWall
-      c.push """|| bg="Galleria/Wall1.1"
+      c.push """|| bg="Galleria/Wall11"
         -- "Nice day out today, isn't it?"
         --> "Um... a bit lewd to talk about the weather while you're wiping the spunk off my asshole, isn't it?"
-      || bg="Galleria/Wall1.2"
+      || bg="Galleria/Wall12"
         --> "Oh, I suppose so. Just trying to be friendly. Sorry, I'll come around this side first next time."
       """
       c.push """|| bg="Galleria/Wall2"

@@ -43,6 +43,7 @@ module.exports = [
   'content/rooms/large/galleria.coffee'
   'content/rooms/large/spawningPit.coffee'
   'content/rooms/large/breedingPit.coffee'
+  'content/rooms/large/trainingFacility.coffee'
 
 # Locations
   'content/locations/HolidayInn.coffee'

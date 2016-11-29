@@ -58,7 +58,7 @@ add class Nudity extends Job
       is: Person.Liana
       matches: -> g.depravity >= 800
   label: 'Public Nudity'
-  text: ->"""Fuck skulking about and cloaking my servants in clothes or concealing magic. People should be free to show their bodies.
+  text: ->"""Fuck skulking about and cloaking my servants in clothes or concealing magic. People should be free to show their bodies. Also, if public nudity is allowed, I can be more brazen in my activities.
 
   <em class="depravity">-800</em>, <span class="resistance">-1</span> daily"""
 
@@ -76,10 +76,12 @@ add class Nudity extends Page
   || bg="Council/Nudity"
     -- I give the still slightly dazed old men of the city council a nice little reward as the audience - composed almost entirely of attractive slaves of mine - shed their clothes and reveal what's been going on underneath. They did just do me a favor, after all, and it might encourage them to continue to see things my way in the future.
 
-    <em><span class="resistance">-1</span> daily</em>
+    <em><span class="resistance">-1</span> daily. Can build Training Facilities in North End.</em>
   """
   effects:
     depravity: -800
+    add:
+      '|map|NorthEnd|jobs|7': Job.LargeRoom
     remove:
       '|map|Council|jobs|Nudity': Job.Nudity
 
