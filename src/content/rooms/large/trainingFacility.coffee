@@ -108,6 +108,7 @@ Page.TrainingFacilityNew::next = Job.TrainingFacility.next['bad'] = add class Tr
     trainings: fill: ->
       Math.round((Page.sumStat 'lust', g.last.context, g.last.context) / 10)
   text: ->
+    unless g.trainingProgress.objectLength then return
     if $('page').length and (Math.random() < 0.5 or g.events.TrainingFacilityDaily?[0] is g.day) then return false
     c = [
       """|| bg="TrainingFacility/11"
@@ -143,6 +144,7 @@ Page.TrainingFacilityNew::next = Job.TrainingFacility.next['bad'] = add class Tr
     """
   apply: ->
     super()
+    unless g.trainingProgress.objectLength then return
     total = @context.trainings
     while total > 0
       thisTraining = Math.ceil(total / 3)
