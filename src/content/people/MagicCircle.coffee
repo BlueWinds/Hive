@@ -38,3 +38,24 @@ add class Catboy extends Person
     'MagicCircle/Catboy1'
     'MagicCircle/Catboy2'
   ]
+
+add class Succubus extends Person
+  name: 'Succubus'
+  gender: 'f'
+  strength: 20
+  magic: 5
+  intelligence: 10
+  lust: 40
+  max: new Collection
+    strength: 50
+    magic: 30
+    intelligence: 25
+    lust: 80
+  description: ->"""Cute? Yes. Sexy? Yes. Innocent? No. She will suck your soul out through your cock - and that's not just a metaphor. She keeps a jar of disembodied souls under her pillow to help her sleep at night."""
+  image: Person.sticky
+  @images: [
+    'MagicCircle/Succubus1'
+    'MagicCircle/Succubus2'
+    'MagicCircle/Succubus3'
+    'MagicCircle/Succubus4'
+  ]

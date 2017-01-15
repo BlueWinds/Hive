@@ -61,6 +61,14 @@ Job.Rest.next.push add class Rest4 extends Page
     --> <em>Liana: <span class="lust">+1 Lust</span>, <span class="depravity">+25</span></em>
   """
 
+Job.Rest.next.push add class Rest5 extends Page
+  text: ->"""|| bg="Liana/Coat"
+    -- `L Thank you, mistress! I had a wonderful day.`
+    --> I grumble to myself about her chipper attitude, and debate giving her a good grope. It'd feel nice, and she'd be embarrassed to have it done in public. But no, I decide, not everything needs sex in it.
+    --> `L Let's stop and get ice cream on the way home. What's your favorite flavor?`
+    --> <em>Liana: <span class="lust">+1 Lust</span>, <span class="depravity">+25</span></em>
+  """
+
 add class Raid extends Job
   place: 'HolidayInn'
   type: 'special'
@@ -264,3 +272,64 @@ add class VisitGym extends Page
   effects:
     remove:
       '|map|HolidayInn|jobs|VisitGym': Job.VisitGym
+
+add class LianaConcrete extends Job
+  place: 'HolidayInn'
+  conditions:
+    '|events|Galleria': {}
+  people:
+    Liana:
+      is: Person.Liana
+      stuck: true
+    'Dark Lady':
+      is: Person.DarkLady
+  type: 'plot'
+  label: "Long-term storage"
+  text: ->"""I've been far, far too nice to Liana recently. Let's remind her of her place, shall we?"""
+  next: Page.firstNew
+  @next: []
+
+Job.LianaConcrete.next.push add class LianaConcrete1 extends Page
+  text: ->"""|| bg="Liana/Bathroom"
+    -- `L Mistress, hello! I was just getting dressed. What can I do for you?`
+    --> `D I've been too nice to you recently. Also, your personal record is only six men in an hour - unacceptable.`
+  || bg="Liana/Nude`
+    --> `L Um...` She pulls a towel up around to cover her nudity. I laugh and grab her by the hair.
+    --> `D You won't need that where you're going. Come.`
+
+  || bg="Galleria/Wall4"
+    -- I lead her to the Galleria, tugging on her hair occasionally to remind her that she's mine, and never letting her fully catch up with my quick pace. We stop at the front desk, and I take away her towel.
+    --> `Now, relax and don't resist. If you resist, I'll have to squeeze harder, and that'll make your final position less comfortable.`
+    --> She is understandably nervous, but does her best to relax. I give her a smile, though it probably comes across as more predatory than reassuring.
+
+    -- I set my spell in motion. The air grows thick with magic, shimmering in a sphere around her. It tugs on Liana, changing her position, and heeding my words she doesn't resist.
+  || bg="Liana/Exposing`
+    --> The magic grows thicker, and she floads up into the air, drifting backwards. She doesn't notice when her elbows reach the concrete wall behind her, but just continues drifting backwards, passing straight through it. Finally, with a loud pop, her body snaps back into solidity.
+  || bg="Liana/Concrete`
+    `L I... what!?`
+    -->I grin and flick her clit harshly. `D You can come out when you've been used 600 times. Get to it.`
+  """
+
+Job.LianaConcrete.next.push add class LianaConcrete2 extends Page
+  text: ->"""|| bg="Liana/Concrete"
+    -- `L Oww, oww, oww,` Liana's howls attract considerable laughter from the rest of the line waiting to use her as a woman tugs on her nipple savagely. The woman's other hand is buried in Liana's cunt, twisting and thrusting its way until she can feel fingers brushing her cervix. `L Oh god, that's... I can't take... any more,` Her panting is, of course, ignored. She's here for their amusement, not her own.
+  """
+
+Job.LianaConcrete.next.push add class LianaConcrete3 extends Page
+  text: ->"""|| bg="Liana/ConcreteDone"
+    -- `L Oh, fuck, come on, rub my clit, please? I haven't cum in four hours, please, I'm begging you... Ah!`
+    --> The man cums inside her. Stuck in the wall, Liana can do no more than beg for release. A rare few grant her wish, but most either ignore her pleas or use her mouth in order to shut her up.
+  """
+
+Job.LianaConcrete.next.push add class LianaConcrete4 extends Page
+  text: ->"""|| bg="Liana/ConcreteDone"
+    -- `D So, how are you feeling, Liana? That was the 600th.`
+    --> It takes her a moment to focus on me. She's been fucked, abused, cummed in, cummed on, called names nearly continually for 4 days now. She's had men in her cunt, men in her ass, men in her mouth. She's had her breasts carressed, slapped, pinched and drawn on. No one has cleaned the cum from her - it oozes from every hole, covers her skin, pools in a puddle on the floor beneath her. I don't blame her for being a little slow.
+    --> `L Mistress. Hullo. I only... I only thought that was 562.`
+    -- `D Some of them used you while you were passed out.`
+    --> `L Oh. Well. Maybe those shouldn'st count?`
+    --> `D You really are a slut, aren't you.` I chuckle, and kiss her on the lips. A rare honor. I can taste the thick mix of cum coating her. `D Very well. A few more hours.`
+  """
+  effects:
+    remove:
+      '|map|HolidayInn|jobs|LianaConcrete': Job.LianaConcrete

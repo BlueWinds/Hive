@@ -89,14 +89,8 @@ Page.Port = class Port extends Page
     """
     $('.jobs', page).append(jobs)
     $('.job-tabs', page).append(jobLabels)
-    for div in jobs
-      location = $(div).attr('data-location')
-      job = g.map[location].jobs[$(div).attr('data-key')]
-      for key, conditions of job.people when job.context[key]?.matches conditions, job
-        slot = $('.job-people li[data-slot="' + key + '"]', div)
-        person = job.context[key]
-        person = $('.person-info[data-key="' + (if person.key? then person.key else person.name) + '"]', page)
-        person.prependTo(slot)
+    movePeopleToJobs(jobs, page)
+
     $('.job', page).each ->
       updateJob $(@)
 
@@ -104,6 +98,18 @@ Page.Port = class Port extends Page
     return page
 
   next: false
+
+movePeopleToJobs = (jobs, page)->
+  for div in jobs
+    location = $(div).attr('data-location')
+    job = g.map[location].jobs[$(div).attr('data-key')]
+    for key, conditions of job.people when job.context[key]?.matches conditions, job
+      slot = $('.job-people li[data-slot="' + key + '"]', div)
+      person = job.context[key]
+      person = $('.person-info[data-key="' + (if person.key? then person.key else person.name) + '"]', page)
+      person.prependTo(slot)
+      if conditions.stuck then person.addClass('stuck')
+  return
 
 getJobDivs = (jobs, location)->
   jobDivs = $('')
@@ -177,7 +183,7 @@ applyPort = (element)->
     if $(e.target).closest('.person-info').length
       return
     if $('.person-info.active', element).length
-      people = $('.person-info.active', element).appendTo @
+      people = $('.person-info.active:not(.stuck)', element).appendTo @
       .removeClass('active').each ->
         delete g.people[$(@).attr('data-key')].active
     $('.job', element).each ->
@@ -205,6 +211,7 @@ setTall = ->
     @removeClass('tall-tabs')
 
 assignPersonToJob = (personDiv, job, jobDiv)->
+  if personDiv.hasClass('stuck') then return
   key = personDiv.attr('data-key')
   person = g.people[key]
 

@@ -20,6 +20,7 @@ basePrice =
   'Man Whore': 1
   Catgirl: 2.5
   Catboy: 1.5
+  Succubus: 0.75
 sellPrice = (p)->
   unless p then return 0
   Math.floor(basePrice[p] * (40 + p.strength + p.intelligence + p.lust + p.magic * 5))
@@ -27,7 +28,7 @@ sellPrice = (p)->
 add class AuctionHouse extends Job
   label: "Auction House"
   people:
-    Dealer: is: [Person.DarkLady, Person.Liana, Person.Sadist, Person.Domme]
+    Dealer: is: [Person.DarkLady, Person.Liana, Person.Sadist, Person.Domme, Person.Succubus]
     Merchandise: isnt: [Person.DarkLady, Person.Liana]
   text: ->"""This isn't the sort of auction where low-grade human chattel is dealt with - exclusive merchandise, exclusive clientele. All the of the merchandise's stats contribute to the price.
 

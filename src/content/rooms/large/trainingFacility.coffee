@@ -21,7 +21,7 @@ Game::trainingProgress = new Collection
 
 # name: [name, start, duration, training]
 
-trainer = [Person.DarkLady, Person.Liana, Person.Domme, Person.Sadist, Person.Maid]
+trainer = [Person.DarkLady, Person.Liana, Person.Domme, Person.Sadist, Person.Maid, Person.Succubus]
 
 add class TrainingFacility extends Job
   label: "Training Facility"

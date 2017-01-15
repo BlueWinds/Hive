@@ -259,7 +259,6 @@ add class Tentacles extends Job
   place: 'HolidayInn'
   conditions:
     '|events|MagicCircle': {}
-    '|events|BlackmailOfficer': {}
   people:
     'Dark Lady':
       is: Person.DarkLady

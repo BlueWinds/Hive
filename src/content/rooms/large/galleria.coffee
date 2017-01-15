@@ -128,7 +128,7 @@ add class GaleriaPublicUse extends ResearchJob
     '|events|GalleriaVisitors': {}
   label: "Public Use"
   progress: 250
-  text: ->"""Vists to the Galeria generate <span class="lust">Lust / 10</span> <span class="cum"></span>.
+  text: ->"""Visits to the Galeria generate <span class="lust">Lust / 10</span> <span class="cum"></span>.
     <br>Tie 'em up, fuck 'em, get out of the way, let's keep the line moving."""
 
 add class GaleriaPublicUse extends Page

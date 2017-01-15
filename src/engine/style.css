@@ -390,6 +390,9 @@ input.inline:disabled {
   background-color: #040f14;
   border-color: #2a9fd6;
 }
+.person-info.stuck {
+  opacity: 0.6;
+}
 .name {
   border-bottom: 1px solid #666666;
   border-bottom-right-radius: 10px;

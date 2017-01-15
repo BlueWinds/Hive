@@ -88,12 +88,12 @@ add class Nudity extends Page
 Game.passDay.push ->
   if g.events.Nudity then g.applyEffects {resistance: -1}
 
-
 add class BlackmailOfficer extends Job
   place: 'Council'
   type: 'plot'
   conditions:
     '|events|Zoning': {}
+    '|events|Tentacles': {}
   people:
     Liana:
       is: Person.Liana
@@ -103,8 +103,6 @@ add class BlackmailOfficer extends Job
 add class BlackmailOfficer2 extends Job
   place: 'Council'
   type: 'plot'
-  conditions:
-    '|events|Tentacles': {}
   people:
     'Dark Lady':
       is: Person.DarkLady

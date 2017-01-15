@@ -16,6 +16,14 @@ trainingDetails =
     cost:
       cum: 10
       milk: 6
+  Succubus:
+    duration: 400
+    base: 'women'
+    research: 'Succubi'
+    cost:
+      cum: 10
+      depravity: 15
+      milk: 3
 
 add class BuildMagicCircle extends ResearchJob
   conditions:
@@ -86,7 +94,7 @@ add class MagicCircle extends Job
   people:
     worker:
       matches: (worker, job)->
-        if job.choice is 'Magic' then return worker.magic < worker.max.magic
+        if job.choice is 'Magic' and worker.magic is worker.max.magic then return false
         for c, amount of trainingDetails[job.choice].cost
           if g[c] < amount then return false
         return true
@@ -161,6 +169,13 @@ add class MagicCircleTrain extends Page
         -- Unlike the catgirl transformation, catboys manage to retain most of their education and intelligence. Also their sense of modesty. Come on, I can't check the health of your tail unless you take those pants off."""
       """|| bg="MagicCircle/Catboy2"
         -- Don't look so sad, kitty. You'll enjoy your new life more than you ever did your old. Here, have some yarn to play with."""
+    ] else if @job.choice is 'Succubus' then [
+      """|| bg="MagicCircle/Immersion1"
+        -- Creating a succubus is far more magically intense than a catgirl. Immersing the subject entirely in magically conductive liquid is the only way to get a survival rate above 60%."""
+      """|| bg="MagicCircle/Immersion2"
+        -- Yes luv, it <em>is</em> completely necessary. You have to be restrained or you'd hurt yourself, and the liquid is necessary to keep you magically insulated from your surroundings. The vibrators in your pussy and ass? Oh, right, I guess those aren't, strictly speaking, necessary. I just like watching you squirm."""
+      """|| bg="MagicCircle/Immersion3"
+        -- The pain gets rather intense during the final phase of the proceedure. But your beautiful new body will be ready soon, so bear with it."""
     ]
 
     cost = (for co, amount of trainingDetails[@job.choice].cost
@@ -203,4 +218,20 @@ add class Cats extends Page
       There's girls and there's boys,
       And all of my toys,
       It's tough this addiction to sex."
+  """
+
+add class Succubi extends ResearchJob
+  conditions:
+    '|events|Cats': {}
+  label: "Train Succubi"
+  progress: 300
+  text: ->"""Allows me to warp <span class="women"></span> slaves into Succubi at the Magic Circle."""
+
+add class Succubi extends Page
+  text: ->"""|| bg="MagicCircle/Immersion1"
+    -- The sea captain's tender young bride
+      Fell into the bay at low tide.
+      He could tell by her squeals
+      That some of the eels
+      Had discovered a good place to hide.
   """

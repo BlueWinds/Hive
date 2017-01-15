@@ -115,17 +115,36 @@ add class CatchMiss extends Page
     g.resistance += 2
 
 add class CatchMan extends Page
-  text: ->"""|| bg="Sycamore/#{Math.choice ['CaptureM1', 'CaptureM2']}"
-    -- <em><span class="men">+1</span>, <span class="resistance">+3</span></em>
-  """
+  text: ->
+    c = [
+      """|| bg="Sycamore/CaptureM1"
+        --"""
+      """|| bg="Sycamore/CaptureM2"
+        -- ` Oh, don't worry. You'll be seeing <em>plenty</em> more of me soon enough. Now let's see, where did I leave the chloroform..."""
+    ]
+
+    """#{Math.choice c}
+      --> <em><span class="men">+1</span>, <span class="resistance">+3</span></em>
+    """
+
   effects:
     men: 1
     resistance: 3
 
 add class CatchWoman extends Page
-  text: ->"""|| bg="Sycamore/#{Math.choice ['CaptureF1', 'CaptureF2']}"
-    -- <em><span class="women">+1</span>, <span class="resistance">+4</span></em>
-  """
+  text: ->
+    c = [
+      """|| bg="Sycamore/CaptureF1"
+        -- Swiming alone late at night may not have been the best choice. Or at least she doesn't think it's the best choice right now - I bet in six months she'll be glad she's my slut."""
+      """|| bg="Sycamore/CaptureF2"
+        -- ` You're not a virgin, are you? No? Good, that means I get to have some fun before I turn you over to my mistress."""
+      """|| bg="Sycamore/CaptureF4"
+        -- Schoolgirl - innocent enough to trust her new boyfriend when he wanted to take her for a special date, not innocent enough to be a virgin. That's ok, he'll still get paid a good sum for his trouble."""
+    ]
+
+    """#{Math.choice c}
+      --> <em><span class="women">+1</span>, <span class="resistance">+4</span></em>
+    """
   effects:
     women: 1
     resistance: 4
@@ -402,18 +421,18 @@ add class Whore extends Job
   <em><span class="depravity">+#{whoreDepravity(@context)}</span>, <span class="resistance">+1</span></em>"""
   people:
     pimp:
-      label: ->'Domme or Sadist'
-      is: [Person.Domme, Person.Sadist]
+      label: -> if g.events.Succubi then 'Domme, Sadist or Succubus' else 'Domme or Sadist'
+      is: [Person.Domme, Person.Sadist, Person.Succubus]
     w1:
       label: ->'Slut'
-      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy]
+      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy, Person.Succubus]
     w2:
       label: ->'Slut'
-      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy]
+      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy, Person.Succubus]
       optional: true
     w3:
       label: ->'Slut'
-      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy]
+      is: [Person.SexSlave, Person.Liana, Person.ManWhore, Person.Catgirl, Person.Catboy, Person.Succubus]
       optional: true
 
 add class Whore extends Page
