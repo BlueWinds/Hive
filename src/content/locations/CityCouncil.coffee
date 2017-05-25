@@ -227,7 +227,7 @@ dormDepravity = ->
 
 add class Dorm extends Job
   label: "College Dorm"
-  text: ->"""Men pay double rent. Women are free, but have to rent thoir clothing by the square foot by the hour. <span class="depravity">+#{dormDepravity()}</span> daily"""
+  text: ->"""Men pay double rent. Women are free, but have to rent their clothing by the square foot by the hour. <span class="depravity">+#{dormDepravity()}</span> daily"""
   people: {}
   type: 'boring'
 

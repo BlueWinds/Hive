@@ -41,11 +41,11 @@ Job.BreedingPit::next = add class BreedingPitDaily extends Page
       """|| bg="BreedingPit/2"
         -- Some women it likes to torment with the possibility of escape, but others it prefers not to hold back. Her womb and stomach are both flooded with cum, her orgasms continuous."""
       """|| bg="BreedingPit/31"
-        -- I pause it my inspection tour. `D She's too clean. Fix that, will you?`
+        -- I pause it on my inspection tour. `D She's too clean. Fix that, will you?`
       || bg="BreedingPit/32"
         --> Ah, there we go. I smile and continue on my way."""
       """|| bg="BreedingPit/4"
-        -- The creature is sulprisingly shy - it doesn't like to show its more specialized (and fragile) appendages to just anyone, but I'm special like that."""
+        -- The creature is surprisingly shy - it doesn't like to show its more specialized (and fragile) appendages to just anyone, but I'm special like that."""
       """|| bg="BreedingPit/51"
       || bg="BreedingPit/52"
       || bg="BreedingPit/51"
@@ -54,7 +54,7 @@ Job.BreedingPit::next = add class BreedingPitDaily extends Page
       """|| bg="BreedingPit/6"
         -- """
       """|| bg="BreedingPit/7"
-        -- New slaves are restrained for their own safty. The thrashing of the first few hundred orgasms can be quite hard on their bodies if not held in place."""
+        -- New slaves are restrained for their own safety. The thrashing of the first few hundred orgasms can be quite hard on their bodies if not held in place."""
       """|| bg="BreedingPit/81"
       || bg="BreedingPit/82"
       ||

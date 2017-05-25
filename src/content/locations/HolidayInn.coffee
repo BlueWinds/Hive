@@ -304,7 +304,7 @@ Job.LianaConcrete.next.push add class LianaConcrete1 extends Page
 
     -- I set my spell in motion. The air grows thick with magic, shimmering in a sphere around her. It tugs on Liana, changing her position, and heeding my words she doesn't resist.
   || bg="Liana/Exposing`
-    --> The magic grows thicker, and she floads up into the air, drifting backwards. She doesn't notice when her elbows reach the concrete wall behind her, but just continues drifting backwards, passing straight through it. Finally, with a loud pop, her body snaps back into solidity.
+    --> The magic grows thicker, and she floats up into the air, drifting backwards. She doesn't notice when her elbows reach the concrete wall behind her, but just continues drifting backwards, passing straight through it. Finally, with a loud pop, her body snaps back into solidity.
   || bg="Liana/Concrete`
     `L I... what!?`
     -->I grin and flick her clit harshly. `D You can come out when you've been used 600 times. Get to it.`

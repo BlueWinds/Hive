@@ -72,7 +72,7 @@ Job.PornStudio.next['bad'] = add class PornBad extends Page
       """|| bg="PornStudio/1"
         -- Put boobs on the internet, people will watch it. Today's production wasn't a smash hit though - somehow the chemistry just wasn't there. More variety might help."""
       """|| bg="PornStudio/2"
-        -- Put boobs on the internet, people will watch it. Today's production wasn't a smash hit though - even though the quality was there, it just got burried. More variety might help."""
+        -- Put boobs on the internet, people will watch it. Today's production wasn't a smash hit though - even though the quality was there, it just got buried. More variety might help."""
     ]
 
     return """|| class="jobStart" auto="1800"
@@ -98,7 +98,7 @@ Job.PornStudio.next['good'] = add class PornGood extends Page
       """|| bg="PornStudio/SexSlave1"
         -- Her breasts kept popping out, and the director made her redo the shot. He gave her an artsy excuse, but really he's just going to release a compilation of her tits springing free a dozen times and the faces she made."""
       """|| bg="PornStudio/SexSlave2"
-        -- ` Whores an film~ Whores on film~` The opening to our series has a new theme song. I like it."""
+        -- ` Whores on film~ Whores on film~` The opening to our series has a new theme song. I like it."""
       """|| bg="PornStudio/SexSlave3"
         -- I'm really enjoying this new form of entertainment. I'm not going to appear on camera myself, obviously, but telling one blushing girl what to do to her friend for an eventual audience of thousands? That I can very much get behind."""
     ]

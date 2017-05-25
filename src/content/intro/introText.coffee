@@ -281,7 +281,7 @@ Job.Tentacles.next.push add class Tentacles1 extends Page
     -- `D There is something very wrong with the world. I recently regained enough power to teleport, and I've been...`
     --> `L That's a thing you can do? Can I do that?`
     --> `D Yes, you're easily powerful enough. I'll show you later. But the point is, I've been exploring. It appears that you and I are the most powerful magical beings in the world.`
-    --> She doesn't get it. She can hear how much that bothers me, but she doesn't know why. Leana puts a hand on my forearm. I'm pathetic, to be reassured by contact with a human. I brush her arm off.
+    --> She doesn't get it. She can hear how much that bothers me, but she doesn't know why. Liana puts a hand on my forearm. I'm pathetic, to be reassured by contact with a human. I brush her arm off.
 
     -- `D I've been intensely cautious in my approach, because by all rights we ought to have holy crusaders knocking down our doors by now, and I wanted to seem nothing more than a succubus or some such minor nonsense. But where are the gods and demon lords and sorcerers and saints? I can't find them. I don't know why.`
     --> `D Clearly magic still works. There's you, the amulet that can resist you, some of the slaves have minor talents. But the world used to be swimming in magic, and all that's left are fragments.`
