@@ -9,7 +9,7 @@ add class BreedingPit extends RoomJob
     virgins: -3
     milk: -50
     cum: -40
-  text: ->"""Inellegant and messy, I should none the less be able to relieve the weight of of my existance from Liana's shoulders by using a breeding pit as a power source. Increases both of our maximum <span class="magic">Magic</span>."""
+  text: ->"""Inelegant and messy, I should nonetheless be able to relieve the weight of of my existance from Liana's shoulders by using a breeding pit as a power source. Increases both of our maximum <span class="magic">Magic</span>."""
 
 add class BreedingPit extends Page
   text: -> """|| bg="BreedingPit/Feed"

@@ -189,7 +189,7 @@ Job.IntroTakeOver::next = Page.IntroTakeOver = class IntroTakeOver extends Page
 
     -- Liana, perhaps sensing that I'm liable to keep ranting and raving and piling punishments on the hussy as long as that... thing... remains in my sight, banishes the bra with a spell.
   || bg="Inn/FrontDeskSex"
-    --> I nod to the slave to begin her fucking. The Holiday Inn is mine. I can set up some <em>proper</em> facilities inside it now, and send slaves into the outer world.
+    --> I nod to the slave to begin fucking her. The Holiday Inn is mine. I can set up some <em>proper</em> facilities inside it now, and send slaves into the outer world.
     -- <em>New location: <b>Sycamore Street</b></em>
     """
   effects:

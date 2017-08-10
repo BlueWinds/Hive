@@ -162,7 +162,7 @@ Job.PornStudio.next['veryGood'] = add class PornGood extends Page
           Ingredients: Pretty young girl, half a dozen rock-hard cocks, camera.
           Let everyone simmer for 10 minutes before removing their coverings.
           Set oven to "sexy times" and leave it there for one hour.
-          Enjoy your creamy nuw fuckslut."""
+          Enjoy your creamy new fuckslut."""
     if @Domme
       c.push """|| bg="PornStudio/Domme2"
           -- If she thought a female director was going to be kinder, she was sadly mistaken."""
@@ -181,7 +181,7 @@ Job.PornStudio.next['veryGood'] = add class PornGood extends Page
         || bg="PornStudio/Catboy23"
         || bg="PornStudio/Catboy24"
         || bg="PornStudio/Catboy24"
-          -- Geeze, leave your camera alone with the ca for just one one minute..."""
+          -- Geeze, leave your camera alone with the cat for just one minute..."""
 
     return """|| class="jobStart" auto="1800"
       <h4>Porn Studio</h4>

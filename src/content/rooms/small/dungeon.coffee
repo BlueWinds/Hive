@@ -61,7 +61,7 @@ Job.Dungeon::next = add class DungeonDaily extends Page
       c.push """|| bg="Dungeon/Preg3"
         -- Being pregnant is no reason for the fathers to stop fucking them. The fathers and their friends, that is. Or the fathers and their friends and some random strangers, and the male prisoners, and..."""
       c.push """|| bg="Dungeon/Preg4"
-        -- I like to set aside a few hours each day to torment my prisoners, especially the pregnant ones. The orgasms are good for their babies, and stronger abdominal muscles will aid with  the birth."""
+        -- I like to set aside a few hours each day to torment my prisoners, especially the pregnant ones. The orgasms are good for their babies, and stronger abdominal muscles will aid with the birth."""
 
 
     return """|| class="jobStart" auto="1800"

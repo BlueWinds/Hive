@@ -27,7 +27,7 @@ add class Cocoon extends Page
 
 add class Cocoon extends Job
   label: "Cocoon"
-  text: ->"""Trapped in eternal pleasure, seeing nothing but the inside of their living cocoon and smelling nothing but their own arrousal. <span class="milk">+#{cocoonMilk()}</span>, <span class="cum">+#{cocoonCum()}</span> daily"""
+  text: ->"""Trapped in eternal pleasure, seeing nothing but the inside of their living cocoon and smelling nothing but their own arousal. <span class="milk">+#{cocoonMilk()}</span>, <span class="cum">+#{cocoonCum()}</span> daily"""
   people: {}
   type: 'boring'
 
@@ -43,7 +43,7 @@ Job.Cocoon::next = add class CocoonDaily extends Page
       """|| bg="Cocoon/2"
         -- Underwater? Not a problem - tentacle monsters are very creative at keeping their victims alive and thrashing."""
       """|| bg="Cocoon/3"
-        -- You can tell by the fact that her clothes haven't finished disolving yet that the third woman is a new addition."""
+        -- You can tell by the fact that her clothes haven't finished dissolving yet that the third woman is a new addition."""
       """|| bg="Cocoon/4"
         -- There's not always light inside, but it does turn on occasionally to let them see themselves naked, shivering with ecstasy and drenched in cum."""
     ]
