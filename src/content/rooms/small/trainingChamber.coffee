@@ -64,9 +64,11 @@ add class TrainingChamber extends Job
     trainer:
       matches: (person, job)->
         if g.depravity < trainingCost then false
-        else true
+        unless g.women or g.men or (g.virgins and g.events.Maid) then false
+        true
       label: ->
         if g.depravity < trainingCost then 'Need <span class="depravity">' + trainingCost + '</span>'
+        unless g.women or g.men or (g.virgins and g.events.Maid) then 'Need slave to train'
         else ''
 
 for name of trainingDetails
