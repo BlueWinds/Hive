@@ -105,7 +105,7 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal8 extends Page
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal9 extends Page
   text: ->"""|| bg="Council/Professor3"
     -- Dear diary.
-    --> Today was amazing. This one woman wanted to try fisting my ass, and I had to add a new line to my price sheet for her, but it felt great. I think I'll make it cheeper, see if I can't get more people to try that.
+    --> Today was amazing. This one woman wanted to try fisting my ass, and I had to add a new line to my price sheet for her, but it felt great. I think I'll make it cheaper, see if I can't get more people to try that.
 
   || bg="Council/Professor1"
     --> Anyway, I'm making enough money now that I could easily switch back to real food, but what's the point? Semen tastes really nice, and I love the looks people give me when they see me drinking it. I'll have enough to buy a second letter soon. "L..." still don't remember her name. Oh well.
@@ -114,7 +114,7 @@ Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal9 extends Page
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal10 extends Page
   text: ->"""|| bg="Council/Professor2"
     -- Dear diary.
-    --> I bought the third letter today. "Lia..." I wracked my brains, but really, I'm just going to have to buy the whole thing. Anyway, I'm not sure why I was so desperate to get out originally? I mean, yeah, it'd be kind of nice to have some change of scenery - it'd probably be fun to fuck up by the side of the road, rather than under the bridge. I'd probably get more business too, if more people saw me.
+    --> I bought the third letter today. "Lia..." I racked my brains, but really, I'm just going to have to buy the whole thing. Anyway, I'm not sure why I was so desperate to get out originally? I mean, yeah, it'd be kind of nice to have some change of scenery - it'd probably be fun to fuck up by the side of the road, rather than under the bridge. I'd probably get more business too, if more people saw me.
   """
 
 Job.ProfessorsOrdeal.next.push add class ProfessorsOrdeal11 extends Page
@@ -205,7 +205,7 @@ Job.LianaTeleport::next = add class LianaTeleport extends Page
     --> She blushes.
     --> I watch her steadily.
 
-    -- Normally people for making me wait get punished, but I like looking at her wiggle.
+    -- Normally people get punished for making me wait, but I like looking at her wiggle.
     --> `L ...um. Yeah. I missed you. Getting tormented by other people just isn't the same.`
   || bg="Liana/noPants"
     --> `L Hey!`

@@ -123,7 +123,7 @@ Page.TrainingFacilityNew::next = Job.TrainingFacility.next['bad'] = add class Tr
       """|| bg="TrainingFacility/4"
         -- Field trip day! All the girls get to wear clothes (a rare treat) and go into the outer world for a bit. It's all part of their training, of course - #{Math.keyChoice g.trainingProgress} isn't allowed to wipe the cum off their faces, and must offer to suck off anyone who asks about it."""
       """|| bg="TrainingFacility/5"
-        -- #{Math.keyChoice g.trainingProgress} complained about the size of her butt plug this morning. The bruise will remind her for a few days that Mistress does <em>not</em> tollerate complaining."""
+        -- #{Math.keyChoice g.trainingProgress} complained about the size of her butt plug this morning. The bruise will remind her for a few days that Mistress does <em>not</em> tolerate complaining."""
       """|| bg="TrainingFacility/6"
         -- Hestitate and blush all you like, honey, you're going to follow the leash eventually. She'll only make your walk outside longer the more you delay."""
       """|| bg="TrainingFacility/71"

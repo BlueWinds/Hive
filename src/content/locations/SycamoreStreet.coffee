@@ -20,14 +20,14 @@ Job.Resistance::next = add class Resistance extends Page
   text: ->"""|| bg="Sycamore/Street"
     -- Liana leads me out into the daylight. It's not my favorite place to be - rather exposed to the accursed daystar, nothing fun happening near... wait, nope, I hear people fucking in one of the buildings nearby. Nothing fun happening nearby <i>that I get to watch.</i> My lieutenant seems rather happy, which I suppose is a good thing.
   || bg="Liana/Coat"
-    -- `L You know, when I summoned you I just wanted to abduct my professors, torture them a bit, maybe make them run around naked. I wasn't expecting you to be quite so... vigerous. Taking over everything's fun, mind you, just not what I was expecting to do.`
+    -- `L You know, when I summoned you I just wanted to abduct my professors, torture them a bit, maybe make them run around naked. I wasn't expecting you to be quite so... vigorous. Taking over everything's fun, mind you, just not what I was expecting to do.`
     --> I smirk, wait for her to go on.
     --> `L Anyway, I wanted to warn you about how things work here in the modern world. You can maybe get away with a couple of disappearances here or there, but too much more of what we did back at the motel and you'll start attracting attention. I'm amazed no one's reported your slaves missing yet.`
 
     -- `D Of course not. I've woven a Forgetting over our activities. People forget their suspicions unusually quickly in its presence.`
     --> `L Really? That's useful. I haven't felt anything.`
     --> `D Of course not. It would be a poor spell if it could be noticed casually. You're immune, of course, being a mage. Search for it sometime, you'll feel it blanketing the town.`
-    --> Liana blinks a few times, looking puzzled. Right. She's not a mage yet, just a dabbling ameture. I explain how she can see magical energy. An amature, but a gifted one - she picks up the principle instantly.
+    --> Liana blinks a few times, looking puzzled. Right. She's not a mage yet, just a dabbling amateur. I explain how she can see magical energy. An amateur, but a gifted one - she picks up the principle instantly.
 
     -- `L Anyway, that's what I wanted to tell you, but it sounds like you already know.` She smiles and twirls, long hair flowing in the wind.
     --> `D Your skirt.`
@@ -105,7 +105,7 @@ add class CatchMiss extends Page
   conditions:
     worker: {}
   text: ->"""|| bg="Sycamore/Street"
-    -- #{@worker} cornered a young #{Math.choice ['man', 'woman']}, but they kicked #{his} shins and knocked him into a wall escaped. It hurt not only #{his} pride, but also #{his} head.
+    -- #{@worker} cornered a young #{Math.choice ['man', 'woman']}, but they kicked #{his} shins, knocked #{him} into a wall and escaped. It hurt not only #{his} pride, but also #{his} head.
     <em><span class="lust">-1 Lust</span>, <span class="intelligence">-1 Intelligence</span>, <span class="resistance">+3</span></em>
   """
   apply: ->
@@ -135,7 +135,7 @@ add class CatchWoman extends Page
   text: ->
     c = [
       """|| bg="Sycamore/CaptureF1"
-        -- Swiming alone late at night may not have been the best choice. Or at least she doesn't think it's the best choice right now - I bet in six months she'll be glad she's my slut."""
+        -- Swimming alone late at night may not have been the best choice. Or at least she doesn't think it's the best choice right now - I bet in six months she'll be glad she's my slut."""
       """|| bg="Sycamore/CaptureF2"
         -- ` You're not a virgin, are you? No? Good, that means I get to have some fun before I turn you over to my mistress."""
       """|| bg="Sycamore/CaptureF4"

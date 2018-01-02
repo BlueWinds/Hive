@@ -28,7 +28,7 @@ add class Galleria extends Page
 
 add class Galleria extends Job
   label: "Galleria"
-  text: ->"""18 hours :ahem: using the facilities should help remind them why we do what we do..
+  text: ->"""18 hours :ahem: using the facilities should help remind them why we do what we do.
 
   <span class="lust">+#{effect()} Lust</span>, <span class="depravity">#{if g.events.GalleriaVisitors then '-0.5' else '-1'}</span> per current <span class="lust">lust</span>."""
   people:
@@ -111,7 +111,7 @@ add class InWall extends ResearchJob
   label: "Through the wall"
   progress: 500
   text: ->"""<span class="lust">+1 Lust</span> when visiting the galleria.
-  <br>If you lock them in, they can't squirm around and avoid your attentions. Fun."""
+  <br>If you lock them in, they can't squirm around and avoid your attention. Fun."""
 
 add class InWall extends Page
   text: ->"""|| bg="Galleria/Wall4"

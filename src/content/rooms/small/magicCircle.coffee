@@ -86,7 +86,7 @@ add class MagicCircle extends Job
       result = """#{@[@choice] or 0} / #{trainingDetails[@choice]?.duration or 0}
       <br> +#{(@context.worker?.magic + 20) or 0} daily"""
 
-    return """Raising witches and sorceresses is hard work. Or I could to warp humans into... other things with <span class="magic">magic</span>. Decisions, decisions.
+    return """Raising witches and sorceresses is hard work. Or I could warp humans into... other things with <span class="magic">magic</span>. Decisions, decisions.
 
     Train #{dropdown choices(), @choice} <strong>#{result}</strong>
     <em>#{cost.join ', '}</em>"""
@@ -159,7 +159,7 @@ add class MagicCircleTrain extends Page
       """|| bg="MagicCircle/Catgirl1"
         -- Mrrow."""
       """|| bg="MagicCircle/Catgirl2"
-        -- Good kitty, presenting for your mistress, holes ready for use and miscevious grin."""
+        -- Good kitty, presenting for your mistress, holes ready for use and mischievous grin."""
       """|| bg="MagicCircle/Catgirl3"
         -- Rrrrrow."""
       """|| bg="MagicCircle/Catgirl5"
@@ -175,7 +175,7 @@ add class MagicCircleTrain extends Page
       """|| bg="MagicCircle/Immersion2"
         -- Yes luv, it <em>is</em> completely necessary. You have to be restrained or you'd hurt yourself, and the liquid is necessary to keep you magically insulated from your surroundings. The vibrators in your pussy and ass? Oh, right, I guess those aren't, strictly speaking, necessary. I just like watching you squirm."""
       """|| bg="MagicCircle/Immersion3"
-        -- The pain gets rather intense during the final phase of the proceedure. But your beautiful new body will be ready soon, so bear with it."""
+        -- The pain gets rather intense during the final phase of the procedure. But your beautiful new body will be ready soon, so bear with it."""
     ]
 
     cost = (for co, amount of trainingDetails[@job.choice].cost

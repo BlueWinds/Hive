@@ -156,7 +156,7 @@ Job.Raid.next.push add class Raid5 extends Page
     --> The man blinks in surprise.
   || bg="Slutroom/Oral3"
     --> His former girlfriend, busy slurping on the pussy I assigned her a few days ago, doesn't notice anyone else in the room.
-    -- Before he can say anything, I hit him over the back of the head with a metal cannister. It would have been awkward if he'd screamed, and the girl's busy slurping and shouldn't be distracted, and now I have a bonus slave. Everyone wins.
+    -- Before he can say anything, I hit him over the back of the head with a metal canister. It would have been awkward if he'd screamed, and the girl's busy slurping and shouldn't be distracted, and now I have a bonus slave. Everyone wins.
     --> <em class="men">+1</em>
   """
   effects:
@@ -304,7 +304,7 @@ Job.LianaConcrete.next.push add class LianaConcrete1 extends Page
 
     -- I set my spell in motion. The air grows thick with magic, shimmering in a sphere around her. It tugs on Liana, changing her position, and heeding my words she doesn't resist.
   || bg="Liana/Exposing`
-    --> The magic grows thicker, and she floads up into the air, drifting backwards. She doesn't notice when her elbows reach the concrete wall behind her, but just continues drifting backwards, passing straight through it. Finally, with a loud pop, her body snaps back into solidity.
+    --> The magic grows thicker, and she floats up into the air, drifting backwards. She doesn't notice when her elbows reach the concrete wall behind her, but just continues drifting backwards, passing straight through it. Finally, with a loud pop, her body snaps back into solidity.
   || bg="Liana/Concrete`
     `L I... what!?`
     -->I grin and flick her clit harshly. `D You can come out when you've been used 600 times. Get to it.`
@@ -324,7 +324,7 @@ Job.LianaConcrete.next.push add class LianaConcrete3 extends Page
 Job.LianaConcrete.next.push add class LianaConcrete4 extends Page
   text: ->"""|| bg="Liana/ConcreteDone"
     -- `D So, how are you feeling, Liana? That was the 600th.`
-    --> It takes her a moment to focus on me. She's been fucked, abused, cummed in, cummed on, called names nearly continually for 4 days now. She's had men in her cunt, men in her ass, men in her mouth. She's had her breasts carressed, slapped, pinched and drawn on. No one has cleaned the cum from her - it oozes from every hole, covers her skin, pools in a puddle on the floor beneath her. I don't blame her for being a little slow.
+    --> It takes her a moment to focus on me. She's been fucked, abused, cummed in, cummed on, called names nearly continually for 4 days now. She's had men in her cunt, men in her ass, men in her mouth. She's had her breasts caressed, slapped, pinched and drawn on. No one has cleaned the cum from her - it oozes from every hole, covers her skin, pools in a puddle on the floor beneath her. I don't blame her for being a little slow.
     --> `L Mistress. Hullo. I only... I only thought that was 562.`
     -- `D Some of them used you while you were passed out.`
     --> `L Oh. Well. Maybe those shouldn'st count?`

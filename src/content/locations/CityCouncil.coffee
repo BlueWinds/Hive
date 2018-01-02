@@ -205,7 +205,7 @@ add class ConstructDorm extends Job
 add class DormApproval extends Page
   text: ->"""|| bg="Inn/FrontDeskPanties"
     -- ` As you can see in the proposal, I've managed the Holiday Inn here for five years, and during that time, patronage has grown immensely. With my experience in hospitality and guest management... aaah, um, I'm uniquely qualified to... ahh...`
-    --> ` Is everything allright, maam?`
+    --> ` Is everything alright, maam?`
     -->  ` Yes, I'm sorry. As sorry. Um. As I was saying...`
 
   || bg="Inn/FrontDeskSquirm"
@@ -227,7 +227,7 @@ dormDepravity = ->
 
 add class Dorm extends Job
   label: "College Dorm"
-  text: ->"""Men pay double rent. Women are free, but have to rent thoir clothing by the square foot by the hour. <span class="depravity">+#{dormDepravity()}</span> daily"""
+  text: ->"""Men pay double rent. Women are free, but have to rent their clothing by the square foot by the hour. <span class="depravity">+#{dormDepravity()}</span> daily"""
   people: {}
   type: 'boring'
 

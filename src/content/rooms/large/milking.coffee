@@ -79,13 +79,13 @@ Job.Milking.next.push add class MilkingDaily extends Page
       """|| bg="Milking/3"
         -- It's visitors' day! The milk store has a <em>very</em> popular customer loyalty program."""
       """|| bg="Milking/4"
-        -- Aww, looks like she hasn't accepted her now place yet. Don't worry, honey, you may have been kidnapped, brutallized and turned into human livestock, but you'll forget all about your old life in a month or two."""
+        -- Aww, looks like she hasn't accepted her now place yet. Don't worry, honey, you may have been kidnapped, brutalized and turned into human livestock, but you'll forget all about your old life in a month or two."""
     ]
     if g.events.MilkingPregnancy
       c.push """|| bg="Milking/Preg1"
         -- Pregnant cows are put in different positions throughout the work day to help ensure their health and the health of their children."""
       c.push """|| bg="Milking/Preg2"
-        -- Some cows volunteer for permanent installation, and are rewarded with 24-hour clitoral attachments. Stimulated constantly, milked twice and day, and pregnant for the rest of their lives - they'll never use their arms and legs again."""
+        -- Some cows volunteer for permanent installation, and are rewarded with 24-hour clitoral attachments. Stimulated constantly, milked twice a day, and pregnant for the rest of their lives - they'll never use their arms and legs again."""
       c.push """|| bg="Milking/Preg3"
         -- Taking some of the cows out for a walk. They're blindfolded so all the overstimulation of the outside world doesn't distract too much."""
       c.push """|| bg="Milking/Preg4"
