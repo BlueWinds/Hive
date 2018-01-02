@@ -41,7 +41,7 @@ Job.BreedingPit::next = add class BreedingPitDaily extends Page
       """|| bg="BreedingPit/2"
         -- Some women it likes to torment with the possibility of escape, but others it prefers not to hold back. Her womb and stomach are both flooded with cum, her orgasms continuous."""
       """|| bg="BreedingPit/31"
-        -- I pause it on my inspection tour. `D She's too clean. Fix that, will you?`
+        -- I pause in my inspection tour. `D She's too clean. Fix that, will you?`
       || bg="BreedingPit/32"
         --> Ah, there we go. I smile and continue on my way."""
       """|| bg="BreedingPit/4"
