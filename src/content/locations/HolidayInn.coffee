@@ -333,3 +333,67 @@ Job.LianaConcrete.next.push add class LianaConcrete4 extends Page
   effects:
     remove:
       '|map|HolidayInn|jobs|LianaConcrete': Job.LianaConcrete
+
+add class TheEnd extends Job
+  place: 'HolidayInn'
+  conditions:
+    '|events|LianaConcrete': {}
+    '|events|VisitGym': {}
+    '|events|DormDaily': {}
+    '|events|BlackmailOfficer2': {}
+    '|events|Nudity': {}
+    '|events|ProfessorsOrdeal11': {}
+    '|events|LianaTeleport': {}
+    '|events|TrainingFacilityGraduate': {}
+    '|events|TheEnd': false
+  people:
+    Liana:
+      is: Person.Liana
+    'Dark Lady':
+      is: Person.DarkLady
+  type: 'plot'
+  label: "The end (???)"
+  text: ->"""Having explored what this new world has to offer, it's time to consider my next moves. Liana, get in here."""
+
+add class TheEnd extends Page
+  text: ->
+    j = g.map.Research.jobs
+    research = Object.keys(j).length
+    researchUndone = Object.keys(j).filter((k)-> j[k]).map((k)-> j[k].label)
+
+    rooms = Object.keys(Place.Rooms::jobs).filter((k)-> not k.match('LeaveEmpty'))
+    roomsUnbuilt = rooms.filter((k)-> not g.events[k]).map((k)-> Place.Rooms::jobs[k]::label)
+
+    return """
+  || bg="Inn/Pentagram"
+    -- Magic. It flows through me. I'm not what I once was, but neither am I any more the troubled, pitiful version of myself that Liana summoned so many months ago. I'm strong enough now that tearing a door in reality is no trouble. I step through one fold, and grab a startled Liana's hand. Another step, and we're both elsewhere.
+  || bg="Liana/Rooftop"
+    --> The big city. It stretches away from us, resplendant in the setting sun.`D Ssh,` I hold a finger to her lips as she starts to say something, perhaps to ask why I've brought us here.
+    --> She waits silently while I consider what to say.
+
+    -- `D I once promised you revenge on the Dean's office.`
+    --> `L Huh, you remember that?`
+    --> `D Of course. It's the only term of our pact unfulfilled.`
+    --> `L I... it's not as important to me as it once was.` She shakes her head. `L Um... if I release you from the terms, what will you do?`
+  || bg="Liana/Magic"
+    -- I smirk. `D Release me? Silly girl.` Her hand jerks up, lays itself across her cheek. She's not controlling it - I am.
+    --> `D You are mine.` I stand, and force her body to relax completely.
+    --> `D My body, my mind.` She stares at me with mingled horror and desire as I move towards her. I can feel her heart pounding in her chest. Her magic stirs, but it's of no consequence. My hooks are set deep.
+    --> `D My soul.`
+
+    -- I step forward and plant a kiss on her forehead.
+  || bg="Liana/Rooftop"
+    --> `D Somehow, I too find things not as important to me as they once were.`
+    --> I sit down next to her, staring at the city, and relax my control. She doesn't move for a moment, then shifts a little closer to my side. Our shoulders touch.
+    --> It's been a long time since I've let someone get so close.
+
+    -- <em>You've reached the end of Hive's story (such as it is). Congrats! Feel free to continue exploring and enjoying things as long as you like - there's likely at least a few variations of daily events you haven't encountered yet.</em>
+    <em>#{if roomsUnbuilt.length then "You haven't built the " + roomsUnbuilt.wordJoin() + '.' else "You've constructed all building types."}</em>
+    <em>#{if researchUndone.length then "You haven't researched " + researchUndone.wordJoin() + '.' else "You've researched everything."}</em>
+  """
+  effects:
+    depravity: -800
+    add:
+      '|map|NorthEnd|jobs|7': Job.LargeRoom
+    remove:
+      '|map|Council|jobs|Nudity': Job.Nudity

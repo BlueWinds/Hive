@@ -213,7 +213,7 @@ Job.LianaTeleport::next = add class LianaTeleport extends Page
 
   || bg="Liana/Coat"
     -- Liana blushes furiously, but I can see a grin creeping up on her. Yes, I'm sure of it now. Her magic is strong enough for what I have in mind.
-    --> `D I have a spell for you to try. Watch closely.` I pull my magic out and step through the motions slowly for her benefit. From wings, compress it into a ball, give it solidity, hold on tightly, <em>shove...</em> Liana, following along with her own power, disappears with a pop. I laugh and follow her.
+    --> `D I have a spell for you to try. Watch closely.` I pull my magic out and step through the motions slowly for her benefit. Form wings, compress it into a ball, give it solidity, hold on tightly, <em>shove...</em> Liana, following along with her own power, disappears with a pop. I laugh and follow her.
 
   || bg="Liana/Magic"
     -- `L ...woah.`
@@ -226,7 +226,7 @@ Job.LianaTeleport::next = add class LianaTeleport extends Page
     --> Human girl.
     --> In my lap.
 
-    -- I debate making her naked, but decide against it. Another time. She needs to rest now - teleportation is the strongest spell she's used yet, and her body isn't used to the strain of that much magic.
+    -- I debate making her naked, but decide against it. Another time. She needs to rest now - teleportation is the strongest spell she's used yet, and her body isn't used to the strain.
     --> Human girl.
     --> In my lap.
     --> I mentally chastise my weakness for caring about such a thing, but let her remain close to me for now.

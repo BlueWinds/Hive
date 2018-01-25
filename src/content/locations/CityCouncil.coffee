@@ -176,7 +176,7 @@ Place.Council::jobs.Dorm = add class DormApproval extends Job
   conditions:
     '|events|BlackmailOfficer2|0': matches: (d)-> d < (g.day - 5)
   label: 'College Dormitory'
-  text: ->"""<q class="L">The city is accepting bids for a new dormitory. We're not state certified contractors, but one of you pets is.</q>
+  text: ->"""<q class="L">The city is accepting bids for a new dormitory. We're not state certified contractors, but one of your pets is.</q>
   <q class="D">Huh?</q>
   <q class="L">I can make people be naked even when they don't want to be.</q>
   <q class="D">Ah. By all means.</q>
